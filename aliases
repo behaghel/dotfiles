@@ -1,0 +1,4 @@
+alias sccala="scala -P:continuations:enable"
+alias sccalac="scalac -P:continuations:enable"
+alias e="mvim"
+alias p="cd ~/Documents/workspace/scala"
