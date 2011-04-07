@@ -9,6 +9,14 @@ for i in `cat .tobedotlinked`; do
 done
 
 # oh-my-zsh
-#wget --no-check-certificate https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | sh
+wget --no-check-certificate https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | sh
+
+# vim
+mkdir ~/.vim-plugins
+cd ~/.vim-plugins
+git clone git://github.com/MarcWeber/vim-addon-manager.git
+cd ~
+git clone git://github.com/behaghel/.vim.git
+
 
 
