@@ -45,7 +45,7 @@ hardstatus alwayslastline "%-Lw%{=b BW}%50>%n%f* %t%{-}%+Lw%< %>%-=%{=b B} %d/%m
 #caption always "%3n %t%? (%u)%?%?: %h%?"
 
 
-escape ^Xx
+#escape ^Xx
 defmonitor on
 #defhstatus "%-Lw%{= BW}%50>%n%f* %t%{-}%+Lw%<"
 msgminwait 1
