@@ -5,10 +5,14 @@ export PATH=/usr/bin:/bin:/usr/sbin:/sbin:/opt/local/bin:/opt/local/sbin:/usr/X1
 export PATH=/usr/local/bin:/usr/local/sbin:$PATH
 # Finished adapting your PATH environment variable for use with MacPorts.
 
-export PATH=/Users/hub/Applications/bin:$PATH:/Users/hub/Applications/android-sdk-mac_86/tools:/Users/hub/.gem/ruby/1.8/bin
-
 export JREBEL_HOME=/Applications/JRebel
 
 export MAVEN_HOME=/usr/local/Cellar/maven/3.0.2/
+
+export JAVA_HOME=/Library/Java/Home
+
+export PATH=/Users/hub/Applications/bin:$PATH:/Users/hub/Applications/android-sdk-mac_86/tools:/Users/hub/.gem/ruby/1.8/bin:$JAVA_HOME/bin
+
+export AKKA_HOME=/Users/hub/Applications/akka
 
 export EDITOR=vim
