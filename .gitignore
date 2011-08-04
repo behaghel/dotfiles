@@ -1,2 +1,6 @@
 *.log
 weechat/logs
+sbt/plugins/target/
+sbt/plugins/project/target/
+sbt/plugins/project/boot/
+sbt/boot/
