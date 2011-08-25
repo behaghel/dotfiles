@@ -10,6 +10,9 @@ alias mj="mvn jetty:run"
 alias mci="mvn clean install"
 alias mist="mvn -DskipTests=true install"
 alias mcist="mvn -DskipTests=true clean install"
+alias mpr="mvn process-resources"
+
+alias msc="mvn scala:console"
 
 if [ -e ~/etc/aliases ]; then
   source ~/etc/aliases
