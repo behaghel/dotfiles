@@ -27,6 +27,15 @@ defscrollback 8192
 bind '$' lockscreen
 bind '@' eval "screen mutt -s \"\""
 
+bind j focus down
+bind k focus up
+bind t focus top
+bind b focus bottom
+bind ^w focus down
+bind - resize -1
+bind + resize 1
+bind = resize =
+
 #bind 'R' colon "screen -ln rlogin faui -8^b^b^b"
 bind 'P' colon "^p"
 

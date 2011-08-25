@@ -19,3 +19,7 @@ export PATH=/Users/hub/bin:$PATH:/Users/hub/Applications/android-sdk-mac_86/tool
 export AKKA_HOME=/Users/hub/Applications/akka
 
 export EDITOR=vim
+
+if [ -e ~/etc/profile ]; then
+  source ~/etc/profile
+fi
