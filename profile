@@ -23,3 +23,6 @@ export EDITOR=vim
 if [ -e ~/etc/profile ]; then
   source ~/etc/profile
 fi
+if [ -f `brew --prefix`/etc/autojump ]; then
+  . `brew --prefix`/etc/autojump
+fi
