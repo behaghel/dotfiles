@@ -60,3 +60,10 @@ escape ^Xx
 defmonitor on
 #defhstatus "%-Lw%{= BW}%50>%n%f* %t%{-}%+Lw%<"
 msgminwait 1
+
+screen
+split
+screen weechat-curses
+focus down
+resize +12
+select 0
