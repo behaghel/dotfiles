@@ -1,4 +1,4 @@
-source ~/.unix-misc/screenrc-base
+source .unix-misc/screenrc-base
 
 screen
 split
