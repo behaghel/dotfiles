@@ -3,7 +3,7 @@ source .unix-misc/screenrc-base
 screen
 split
 split -v
-screen man ls
+screen weechat-curses
 focus down
 focus down
 resize +12
