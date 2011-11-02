@@ -1,4 +1,4 @@
-source ~/.unix-misc/screenrc-base
+source .unix-misc/screenrc-base
 
 screen
 split
@@ -9,4 +9,4 @@ focus down
 resize +12
 select 0
 
-# vim: ft=screenrc
+# vim:ft=screen
