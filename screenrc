@@ -2,7 +2,8 @@ source .unix-misc/screenrc-base
 
 screen
 split
-screen weechat-curses
+# inside bash to have alias for url open
+screen bash -ic weechat-curses
 focus down
 resize +12
 select 0
