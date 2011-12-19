@@ -22,6 +22,20 @@ source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
 
+# BÉPO
+bindkey -a c vi-backward-char
+bindkey -a r vi-forward-char
+bindkey -a t vi-down-line-or-history
+bindkey -a s vi-up-line-or-history
+bindkey -a $ vi-end-of-line
+bindkey -a 0 vi-digit-or-beginning-of-line 
+bindkey -a l vi-change
+bindkey -a L vi-change-eol
+bindkey -a dd vi-change-whole-line
+bindkey -a j vi-replace-chars
+bindkey -a J vi-replace
+bindkey -a k vi-substitute
+
 bindkey '\ee' edit-command-line
 
 setopt nocorrectall

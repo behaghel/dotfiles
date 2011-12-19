@@ -1,0 +1,8 @@
+source ~/.vim/bépo.vim
+map <M-o> <C-o>
+map <M-]> <C-]>
+map <M-g> <C-g>
+map <M-d> <C-d>
+map <M-u> <C-u>
+map <M-b> <C-b>
+map <M-f> <C-f>

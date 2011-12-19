@@ -27,11 +27,24 @@ defscrollback 8192
 bind '$' lockscreen
 bind '@' eval "screen mutt -s \"\""
 
+# bépo
+bind S focus top
+bind T focus bottom
+bind t focus down
+bind s focus up
+markkeys ^v=c
+bindkey -m t stuff j
+bindkey -m s stuff k
+bindkey -m r stuff l
+bindkey -m c stuff h
+bindkey -m t stuff j
+bindkey -m t stuff j
+
 bind j focus down
 bind k focus up
-bind t focus top
 bind b focus bottom
 bind ^w focus down
+bind ^à focus down
 bind - resize -1
 bind + resize +1
 bind = resize =
@@ -60,7 +73,7 @@ hardstatus alwayslastline "%-Lw%{=b BW}%50>%n%f* %t%{-}%+Lw%< %>%-=%{=b B} %d/%m
 #caption always "%3n %t%? (%u)%?%?: %h%?"
 
 
-escape ^Xx
+escape ^Yy
 defmonitor on
 #defhstatus "%-Lw%{= BW}%50>%n%f* %t%{-}%+Lw%<"
 msgminwait 1
