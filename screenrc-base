@@ -37,8 +37,8 @@ bindkey -m t stuff j
 bindkey -m s stuff k
 bindkey -m r stuff l
 bindkey -m c stuff h
-bindkey -m t stuff j
-bindkey -m t stuff j
+bindkey -m T stuff J
+bindkey -m S stuff K
 
 bind j focus down
 bind k focus up
