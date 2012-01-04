@@ -37,8 +37,8 @@ bindkey -m t stuff j
 bindkey -m s stuff k
 bindkey -m r stuff l
 bindkey -m c stuff h
-bindkey -m t stuff j
-bindkey -m t stuff j
+bindkey -m j stuff t
+bindkey -m k stuff s
 
 bind j focus down
 bind k focus up
@@ -48,6 +48,8 @@ bind ^à focus down
 bind - resize -1
 bind + resize +1
 bind = resize =
+bind _ split
+bind ^s silence
 # Add cool line to make copying to x clipboard possible.
 # This binds C-a b to copy screen's copy buffer to the system clipboard.
 # on Mac, use pbcopy instead of xsel

@@ -16,11 +16,13 @@ export ZSH_THEME="hub"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git github vi-mode osx brew)
+plugins=(git github vi-mode osx brew mvn)
+fpath=(~/.zsh/completion $fpath)
 
 source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
+export PATH=/home/hubert.behaghel/tools/maven/bin:/usr/lib/jvm/java-6-sun/bin:/home/hubert.behaghel/tools/scala/bin:/home/hubert.behaghel/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games
 
 # BÉPO
 bindkey -a c vi-backward-char
