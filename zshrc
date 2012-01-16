@@ -25,6 +25,10 @@ source $ZSH/oh-my-zsh.sh
 export PATH=/home/hubert.behaghel/tools/maven/bin:/usr/lib/jvm/java-6-sun/bin:/home/hubert.behaghel/tools/scala/bin:/home/hubert.behaghel/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games
 
 # BÉPO
+bindkey -a é vi-forward-word
+bindkey -a É vi-forward-blank-word
+bindkey -a c vi-backward-char
+bindkey -a c vi-backward-char
 bindkey -a c vi-backward-char
 bindkey -a r vi-forward-char
 bindkey -a t vi-down-line-or-history
@@ -33,12 +37,14 @@ bindkey -a $ vi-end-of-line
 bindkey -a 0 vi-digit-or-beginning-of-line 
 bindkey -a l vi-change
 bindkey -a L vi-change-eol
-bindkey -a dd vi-change-whole-line
+bindkey -a h vi-find-next-char-skip
+bindkey -a H vi-find-prev-char-skip
 bindkey -a j vi-replace-chars
-bindkey -a J vi-replace
 bindkey -a k vi-substitute
+bindkey -a K vi-change-whole-line
+bindkey -a dd vi-change-whole-line
 
-bindkey '\ee' edit-command-line
+bindkey -a v edit-command-line
 
 setopt nocorrectall
 source ~/.profile

@@ -1,4 +1,4 @@
-source ~/.vim/bépo.vim
+source ~/.vim/bepo.vim
 map <M-o> <C-o>
 map <M-]> <C-]>
 map <M-g> <C-g>
