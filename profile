@@ -14,3 +14,4 @@ export MAVEN_HOME=/usr/local/Cellar/maven/3.0.2/
 export EDITOR=vim
 
 export XSESSION="xmonad"
+export XSESSION="xfce4"
