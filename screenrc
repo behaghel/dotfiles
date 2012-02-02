@@ -1,51 +1,9 @@
-# $Id: screenrc,v 1.8 2002/03/20 22:20:21 laz Exp $
-#
-# /home/hub/.screenrc
+source .unix-misc/screenrc-base
 
-defutf8 on
-
-#deflogin on
-
-# turn visual bell off
-vbell on
-vbell_msg "   Wuff  ----  Wuff!!  "
-
-# le beep dans une fenêtre cachée se traduit par un beep
-#bell_msg "Bell in window %"
-# avec son
-bell_msg "^GBell in window %n"
-
-# define a bigger scrollback, default is 100 lines
-defscrollback 8192
-
-# ------------------------------------------------------------------------------
-# SCREEN KEYBINDINGS
-# ------------------------------------------------------------------------------
-
-bind '$' lockscreen
-bind '@' eval "screen mutt -s \"\""
-
-#bind 'R' colon "screen -ln rlogin faui -8^b^b^b"
-bind 'P' colon "^p"
-
-# An example of a "screen scraper" which will launch urlview on the current
-# screen window
-#
-bind ^B eval "hardcopy_append off" "hardcopy -h $HOME/.screen-urlview" "screen urlview $HOME/.screen-urlview"
-
-# use this for the hard status string
-# >> supprimé par hub
-#hardstatus string "%h%? users: %u%?"
-
-# An alternative hardstatus to display a bar at the bottom listing the
-# windownames and highlighting the current windowname in blue. (This is only
-# enabled if there is no hardstatus setting for your terminal)
-# >> ajouté par hub
-hardstatus alwayslastline "%-Lw%{=b BW}%50>%n%f* %t%{-}%+Lw%< %>%-=%{=b B} %d/%m/%Y %c "
-#caption always "%3n %t%? (%u)%?%?: %h%?"
-
-
-#escape ^Xx
-defmonitor on
-#defhstatus "%-Lw%{= BW}%50>%n%f* %t%{-}%+Lw%<"
-msgminwait 1
+screen
+split
+# inside bash to have alias for url open
+screen bash -ic weechat-curses
+focus down
+resize +12
+select 0

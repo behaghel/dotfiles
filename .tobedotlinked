@@ -1,6 +1,11 @@
+vimperatorrc
+lesskey
+bash_profile
 profile
 aliases
 ctags
 weechat
 screenrc
-gitconfig
+screewrc
+sbt
+zshrc

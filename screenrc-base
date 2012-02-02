@@ -1,0 +1,85 @@
+# $Id: screenrc,v 1.8 2002/03/20 22:20:21 laz Exp $
+#
+# /home/hub/.screenrc
+
+defutf8 on
+
+#deflogin on
+
+term screen-256color
+
+# turn visual bell off
+vbell on
+vbell_msg "   Wuff  ----  Wuff!!  "
+
+# le beep dans une fenêtre cachée se traduit par un beep
+#bell_msg "Bell in window %"
+# avec son
+bell_msg "^GBell in window %n"
+
+# define a bigger scrollback, default is 100 lines
+defscrollback 8192
+
+# ------------------------------------------------------------------------------
+# SCREEN KEYBINDINGS
+# ------------------------------------------------------------------------------
+
+bind '$' lockscreen
+bind '@' eval "screen mutt -s \"\""
+
+# bépo
+bind S focus top
+bind T focus bottom
+bind t focus down
+bind s focus up
+markkeys ^v=c
+bindkey -m t stuff j
+bindkey -m s stuff k
+bindkey -m r stuff l
+bindkey -m c stuff h
+bindkey -m j stuff t
+bindkey -m k stuff s
+bindkey -m T stuff J
+bindkey -m S stuff K
+
+bind j focus down
+bind k focus up
+bind b focus bottom
+bind ^w focus down
+bind ^à focus down
+bind - resize -1
+bind + resize +1
+bind = resize =
+bind _ split
+bind ^s silence
+# Add cool line to make copying to x clipboard possible.
+# This binds C-a b to copy screen's copy buffer to the system clipboard.
+# on Mac, use pbcopy instead of xsel
+bind B eval writebuf 'exec /bin/sh -c "xsel -i -b < /tmp/screen-exchange"' 'exec /bin/sh -c "killall xsel"'
+
+#bind 'R' colon "screen -ln rlogin faui -8^b^b^b"
+bind 'P' colon "^p"
+
+# An example of a "screen scraper" which will launch urlview on the current
+# screen window
+#
+bind ^B eval "hardcopy_append off" "hardcopy -h $HOME/.screen-urlview" "screen urlview $HOME/.screen-urlview"
+
+# use this for the hard status string
+# >> supprimé par hub
+#hardstatus string "%h%? users: %u%?"
+
+# An alternative hardstatus to display a bar at the bottom listing the
+# windownames and highlighting the current windowname in blue. (This is only
+# enabled if there is no hardstatus setting for your terminal)
+# >> ajouté par hub
+hardstatus alwayslastline "%-Lw%{=b BW}%50>%n%f* %t%{-}%+Lw%< %>%-=%{=b B} %d/%m/%Y %c "
+#caption always "%3n %t%? (%u)%?%?: %h%?"
+
+
+escape ^Yy
+defmonitor on
+#defhstatus "%-Lw%{= BW}%50>%n%f* %t%{-}%+Lw%<"
+msgminwait 1
+
+# vim: ft=screen:

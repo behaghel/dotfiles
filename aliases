@@ -1,4 +1,24 @@
+alias screew="screen -c .screewrc"
 alias sccala="scala -P:continuations:enable"
 alias sccalac="scalac -P:continuations:enable"
-alias e="mvim"
-alias p="cd ~/Documents/workspace/scala"
+alias e="gvim"
+alias p="cd $PROJECTS_DIR"
+alias gomon="mongod run --config /usr/local/Cellar/mongodb/2.0.1-x86_64/mongod.conf"
+alias open="xdg-open"
+alias jl="tail -f $JETTY_HOME/logs/`date +'%Y_%m_%d.stderrout.log'`"
+
+alias mi="mvn install"
+alias mt="mvn test"
+alias mj="mvn jetty:run"
+alias mci="mvn clean install"
+alias mist="mvn -DskipTests=true install"
+alias mcist="mvn -DskipTests=true clean install"
+alias mpr="mvn process-resources"
+alias mdj="mvn dependency:resolve -Dclassifier=javadoc"
+alias mds="mvn dependency:resolve -Dclassifier=sources"
+
+alias msc="mvn scala:console"
+
+if [ -e ~/etc/aliases ]; then
+  source ~/etc/aliases
+fi

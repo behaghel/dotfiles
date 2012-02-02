@@ -5,13 +5,27 @@ export PATH=/usr/bin:/bin:/usr/sbin:/sbin:/opt/local/bin:/opt/local/sbin:/usr/X1
 export PATH=/usr/local/bin:/usr/local/sbin:$PATH
 # Finished adapting your PATH environment variable for use with MacPorts.
 
-export PATH=/Users/hub/Applications/bin:$PATH:/Users/hub/Applications/android-sdk-mac_86/tools:/Users/hub/.gem/ruby/1.8/bin
-
 export JREBEL_HOME=/Applications/JRebel
+export JETTY_HOME=~/Applications/jetty
 
 export MAVEN_HOME=/usr/local/Cellar/maven/3.0.2/
+
+export JAVA_HOME=/Library/Java/Home
+
+export SCALA_HOME=/Users/hub/Applications/scala
+
+export PATH=/Users/hub/bin:$PATH:/Users/hub/Applications/android-sdk-mac_86/tools:/Users/hub/.gem/ruby/1.8/bin:$JAVA_HOME/bin:$SCALA_HOME/bin
+
+export AKKA_HOME=/Users/hub/Applications/akka
 
 export EDITOR=vim
 
 export XSESSION="xmonad"
 export XSESSION="xfce4"
+
+if [ -e ~/etc/profile ]; then
+  source ~/etc/profile
+fi
+if [ -f `brew --prefix`/etc/autojump ]; then
+  . `brew --prefix`/etc/autojump
+fi
