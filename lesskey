@@ -1,5 +1,5 @@
 #command
-s   noaction
+s   back-line
 c   next-tag
 C   prev-tag
 t   forw-line

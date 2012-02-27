@@ -1,4 +1,8 @@
 source ~/.vim/bepo.vim
+unmap «
+unmap »
+iunmap «
+iunmap »
 map <M-o> <C-o>
 map <M-]> <C-]>
 map <M-g> <C-g>
