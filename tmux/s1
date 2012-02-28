@@ -1,5 +1,5 @@
 
-new -s main 
+new -s main 'weechat-curses'
 
 # 's1' session with 4 window (pre-existing default at 0)
 #new-window -t 1  # session "s1", window 0
@@ -9,8 +9,8 @@ new -s main
 # 0 2
 # 1 1
 # s1:0.0 - (#0)
-split-window -v -p 85 -t:0 #weechat-curses # create #1
-split-window -h -p 50 -t:0 # create #2
+split-window -v -p 80 -t 0 # create #1
+split-window -h -p 50 -t 0 # create #2
 
 # split window 2:
 # 0 1
