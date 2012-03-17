@@ -3,6 +3,7 @@ unmap «
 unmap »
 iunmap «
 iunmap »
+" mac config: M and C modifier are swaped
 map <M-o> <C-o>
 map <M-]> <C-]>
 map <M-g> <C-g>
