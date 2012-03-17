@@ -1,4 +1,5 @@
 alias screew="screen -c .screewrc"
+alias scrin="screen -c .scrinrc"
 alias sccala="scala -P:continuations:enable"
 alias sccalac="scalac -P:continuations:enable"
 alias e="gvim"
