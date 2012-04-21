@@ -5,6 +5,9 @@ export PATH=/usr/bin:/bin:/usr/sbin:/sbin:/opt/local/bin:/opt/local/sbin:/usr/X1
 export PATH=/usr/local/bin:/usr/local/sbin:$PATH
 # Finished adapting your PATH environment variable for use with MacPorts.
 
+# homebrew python install
+export PATH=/usr/local/share/python:$PATH
+
 export JREBEL_HOME=/Applications/JRebel
 export JETTY_HOME=~/Applications/jetty
 
