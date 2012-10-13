@@ -13,3 +13,12 @@
 --regex-scala=/^[ \t]*object[ \t]+([a-zA-Z0-9_]+)/\1/o,objects/
 --regex-scala=/^[ \t]*private def[ \t]+([a-zA-Z0-9_]+)/\1/pd,defs/
 --regex-scala=/^[ \t]*import[ \t]*([a-zA-Z0-9_{}., \t=>]+$)/\1/i,includes/
+
+--langdef=deplate
+--langmap=deplate:.viki
+--regex-deplate=/^(\*+ .+)/\1/s,structure/
+--regex-deplate=/^(#[a-z][a-z0-9]+)/\1/s,structure/
+--regex-deplate=/\[\[[^\]]+\]\[([^\]]+)\]\]/\1/r,reference/
+--regex-deplate=/\[\[([^\]]+)\]\]/\1/r,reference/
+--regex-deplate=/([A-Z][a-z]+([A-Z][a-z]+)+)/\1/r,reference/
+--regex-deplate=/([a-z]+:\/\/[A-Za-z0-9.:%?=&_~@\/|-]+)/\1/u,url/

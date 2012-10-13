@@ -1,3 +1,4 @@
+source /apollo/env/envImprovement/var/zshrc
 # Path to your oh-my-zsh configuration.
 export ZSH=$HOME/.oh-my-zsh
 
@@ -16,13 +17,15 @@ export ZSH_THEME="hub"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git github vi-mode osx brew mvn)
+plugins=(git github vi-mode mvn)
 fpath=(~/.zsh/completion $fpath)
 
 source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
-export PATH=/home/hubert.behaghel/tools/maven/bin:/usr/lib/jvm/java-6-sun/bin:/home/hubert.behaghel/tools/scala/bin:/home/hubert.behaghel/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games
+source ~/.profile
+source ~/.aliases
+source ~/etc/*.zsh
 
 # BÉPO
 bindkey -a é vi-forward-word
@@ -47,5 +50,4 @@ bindkey -a dd vi-change-whole-line
 bindkey -a v edit-command-line
 
 setopt nocorrectall
-source ~/.profile
-source ~/.aliases
+
