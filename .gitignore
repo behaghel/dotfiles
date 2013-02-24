@@ -1,4 +1,5 @@
 *.log
+\#*#
 weechat/logs
 sbt/plugins/target/
 sbt/plugins/project/target/

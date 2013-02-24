@@ -1,31 +1,29 @@
-source /apollo/env/envImprovement/var/zshrc
-# Path to your oh-my-zsh configuration.
-export ZSH=$HOME/.oh-my-zsh
+source ~/etc/*.zsh
 
-# Set to the name theme to load.
-# Look in ~/.oh-my-zsh/themes/
-export ZSH_THEME="hub"
+if [[ -d $HOME/.oh-my-zsh ]]; then
+  export ZSH=$HOME/.oh-my-zsh;
 
-# Set to this to use case-sensitive completion
-# export CASE_SENSITIVE="true"
+  # Set to the name theme to load.
+  # Look in ~/.oh-my-zsh/themes/
+  export ZSH_THEME="hub";
 
-# Comment this out to disable weekly auto-update checks
-# export DISABLE_AUTO_UPDATE="true"
+  # Comment this out to disable weekly auto-update checks
+  # export DISABLE_AUTO_UPDATE="true"
 
-# Uncomment following line if you want to disable colors in ls
-# export DISABLE_LS_COLORS="true"
+  # Uncomment following line if you want to disable colors in ls
+  # export DISABLE_LS_COLORS="true"
 
-# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-# Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git github vi-mode mvn)
-fpath=(~/.zsh/completion $fpath)
+  # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
+  # Example format: plugins=(rails git textmate ruby lighthouse)
+  plugins=(git github vi-mode mvn);
 
-source $ZSH/oh-my-zsh.sh
+  source $ZSH/oh-my-zsh.sh;
+fi
 
 # Customize to your needs...
+fpath=(~/.zsh/completion $fpath)
 source ~/.profile
 source ~/.aliases
-source ~/etc/*.zsh
 
 # BÉPO
 bindkey -a é vi-forward-word

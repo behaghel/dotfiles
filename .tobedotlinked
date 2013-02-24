@@ -6,9 +6,6 @@ profile
 aliases
 ctags
 weechat
-screenrc
-screewrc
-scrinrc
 sbt
 zshrc
 tmux.conf
