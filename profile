@@ -1,5 +1,7 @@
 export EDITOR=vim
 
+export HOMEBREW_KEEP_INFO=1
+
 if [ -e ~/etc/profile ]; then
   source ~/etc/profile
 fi
