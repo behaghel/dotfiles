@@ -30,6 +30,10 @@ fi
 ## export AKKA_HOME=/Users/hub/Applications/akka
 
 # this should go into mac specific config
-# if [ -f `brew --prefix`/etc/autojump ]; then
-#   . `brew --prefix`/etc/autojump
-# fi
+if [ -f `brew --prefix`/etc/autojump ]; then
+  . `brew --prefix`/etc/autojump
+fi
+if [ -x /usr/libexec/path_helper ]; then 
+    eval `/usr/libexec/path_helper -s` 
+    defaults write $HOME/.MacOSX/environment PATH "$PATH"
+fi

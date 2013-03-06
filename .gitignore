@@ -6,3 +6,6 @@ sbt/plugins/project/target/
 sbt/plugins/project/boot/
 boot
 target
+/emacs~
+/mutt.tgz
+/profile~
