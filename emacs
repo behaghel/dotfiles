@@ -20,6 +20,8 @@
 
 ; let's make something useful with those french keys
 (global-set-key (kbd "C-é") 'undo)
+(autoload 'er/expand-region "expand-region" "expand-region.el" t)
+(global-set-key (kbd "M-r") 'er/expand-region)
 
 ;;; ido
 (require 'ido)
@@ -46,24 +48,37 @@
 ;;; ERC
 (autoload 'erc-select "erc" "IRC client." t)
 (setq erc-echo-notices-in-minibuffer-flag t)
-(eval-after-load "erc"
-  (lambda ()
+(eval-after-load 'erc
+  '(progn
+    (setq erc-modules '(autojoin button completion fill
+                                 irccontrols list match
+                                 menu move-to-prompt netsplit
+                                 networks noncommands readonly ring
+                                 scrolltobottom stamp track))
+    (setq erc-fill-function 'erc-fill-static)
+    (setq erc-fill-static-center 18)    ; margin for ts + nicks
+    (setq erc-timestamp-format "[%H:%M] "
+          erc-insert-timestamp-function 'erc-insert-timestamp-left)
+    (setq erc-input-line-position -2)
     (require 'erc-match)
-    (setq erc-keywords '("hub" "behaghel" "hubert" "alois"))
+    (setq erc-keywords '("hub" "behaghel" "hubert" "aloiscochard"))
     (erc-autojoin-mode t)
     (setq erc-autojoin-channels-alist
           '((".*\\.freenode.net" "#emacs" "#scala")))
     (setq erc-auto-query 'bury)
+    (setq erc-echo-notices-in-minibuffer-flag t)
     (setq erc-track-exclude-types '("JOIN" "NICK" "PART" "QUIT" "MODE"
                                     "324" "329" "332" "333" "353" "477"))
-    (setq erc-fill-function 'erc-fill-static)
-    (setq erc-timestamp-format "[%H:%M] "
-          erc-insert-timestamp-function 'erc-insert-timestamp-left)))
+))
 
 ;;; Git
 ;; magit
 (autoload 'magit-status "magit" nil t)
 (global-set-key (kbd "C-c g s") 'magit-status)
+(global-set-key (kbd "C-c g ?") 'magit-blame-mode)
+(global-set-key (kbd "C-c g /") 'vc-git-grep)
+;; require gist.el
+(global-set-key (kbd "C-c g h") 'gist-region-or-buffer)
 ;; mo-git-blame
 ;; (autoload 'mo-git-blame-file "mo-git-blame" nil t)
 ;; (autoload 'mo-git-blame-current "mo-git-blame" nil t)
@@ -87,6 +102,12 @@
      (setq eshell-smart-space-goes-to-end t)
      ))
 
+;; multiple-cursors
+(require 'multiple-cursors)
+(global-set-key (kbd "<M-C-down>") 'mc/mark-next-like-this)
+(global-set-key (kbd "<M-C-up>") 'mc/mark-previous-like-this)
+(global-set-key (kbd "C-c m @") 'mc/edit-lines)
+(global-set-key (kbd "C-c m a") 'mc/mark-all-like-this-dwim)
 
 ; coding
 (show-paren-mode 1)                     ; highlight matching brackets
@@ -125,15 +146,32 @@
                 (let ((mark-even-if-inactive transient-mark-mode))
                   (indent-region (region-beginning) (region-end) nil))))))
 ;scala
+(add-to-list 'load-path
+             "/Users/hub/Documents/workspace/scala/github/scala-mode2/")
 (autoload 'scala-mode "scala-mode2")
 (add-to-list 'auto-mode-alist '("\\.scala$" . scala-mode))
+(add-to-list 'load-path (format "%s/%s" (getenv "ENSIME_ROOT") "elisp/"))
+
+(defun hub-ensime-inf-reload ()
+  "Restart the REPL with the last definition"
+  (interactive)
+  (if (ensime-inf-running-p-1) (ensime-inf-quit-interpreter))
+  (ensime-inf-switch))
+(defun hub-ensime-setup ()
+  "ENSIME tweaking"
+  (local-set-key (kbd "C-c C-v Z") 'hub-ensime-inf-reload))
 (defun hub-scala-config ()
+  "config scala-mode to my liking and start ensime"
   (setq
    scala-indent:align-forms t
    scala-indent:align-parameters t
    scala-indent:default-run-on-strategy 0)
   (hub-anti-useless-whitespace)
-  (hub-set-newline-and-indent-comment))
+  (hub-set-newline-and-indent-comment)
+  (require 'ensime)
+  (add-hook 'ensime-source-buffer-loaded-hook 'hub-ensime-setup)
+  (ensime-scala-mode-hook))
+
 (add-hook 'scala-mode-hook 'hub-scala-config)
 
 ; Emacs Lisp
