@@ -1,8 +1,4 @@
 source ~/.vim/bepo.vim
-unmap «
-unmap »
-iunmap «
-iunmap »
 " mac config: M and C modifier are swaped
 map <M-o> <C-o>
 map <M-]> <C-]>
@@ -11,3 +7,7 @@ map <M-d> <C-d>
 map <M-u> <C-u>
 map <M-b> <C-b>
 map <M-f> <C-f>
+
+" passthrough
+set passkeys+=mail.google.com:tjk/cCnpouemxs+-!rRaAf#{}[]lvzNqyg*d?i
+set passkeys+=github.com:s?cyjkxIUeoliughnpr

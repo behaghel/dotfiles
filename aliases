@@ -7,9 +7,11 @@ alias p="cd $PROJECTS_DIR"
 alias gomon="mongod run --config /usr/local/Cellar/mongodb/2.0.1-x86_64/mongod.conf"
 alias open="xdg-open"
 alias jl="tail -f $JETTY_HOME/logs/`date +'%Y_%m_%d.stderrout.log'`"
-alias emacs="/usr/local/Cellar/emacs/24.2/Emacs.app/Contents/MacOS/Emacs -nw"
+alias emacs="/usr/local/Cellar/emacs/24.3/Emacs.app/Contents/MacOS/Emacs -nw"
 #alias emacs="/usr/local/Cellar/emacs/HEAD/Emacs.app/Contents/MacOS/Emacs -nw"
 
+# ultra important : bloody system
+alias mvn="MAVEN_OPTS=-Dfile.encoding=UTF-8 mvn"
 alias mi="mvn install"
 alias mt="mvn test"
 alias mj="mvn jetty:run"
