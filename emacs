@@ -195,6 +195,7 @@ C-x b RET. The buffer selected is the one returned by (other-buffer)."
 (evil-set-initial-state 'dired-mode 'emacs)
 (evil-set-initial-state 'Info 'emacs)
 (evil-set-initial-state 'ensime-scalex-mode 'emacs)
+(evil-set-initial-state 'erc-mode 'emacs)
 
 
 ;;; Comint
@@ -302,8 +303,6 @@ PWD is not in a git repo (or the git command is not found)."
 
 ;;; ERC
 ;;; start with M-x erc-select
-;;; TODO: remember my login/passwd on freenode
-;;; #emacs and #scala are in autojoin list
 ;;; switch channel by switching emacs buffer
 ;;; switch to last active channel C-c C-SPC
 (autoload 'erc-select "erc" "IRC client." t)
@@ -323,8 +322,8 @@ PWD is not in a git repo (or the git command is not found)."
     (setq erc-input-line-position -2)
     (require 'erc-match)
     (setq erc-keywords '("hub" "behaghel" "hubert" "hubertb"))
-    (erc-pals '("aloiscochard"))
-    (erc-autojoin-mode t)
+    (setq erc-pals '("aloiscochard"))
+    (setq erc-autojoin-mode t)
     (setq erc-autojoin-channels-alist
           '((".*\\.freenode.net" "#emacs" "#scala")
             ("irc.amazon.com" "#ingestion" "#reconciliation")))
@@ -534,6 +533,20 @@ This functions should be added to the hooks of major modes for programming."
 (add-to-list 'auto-mode-alist '("\\.st$" . shampoo-code-mode))
 (add-to-list 'load-path "~/Temp/shampoo-emacs/")
 (autoload 'shampoo-code-mode "shampoo-modes")
+
+;; Haskell
+(add-hook 'haskell-mode-hook 'turn-on-haskell-unicode-input-method)
+(add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
+(eval-after-load "haskell-mode"
+  '(progn
+     (define-key haskell-mode-map (kbd "M-left") 'haskell-move-nested-left)
+     (define-key haskell-mode-map (kbd "M-right") 'haskell-move-nested-right)))
+(eval-after-load "haskell-mode"
+  '(define-key haskell-mode-map (kbd "C-c C-c") 'haskell-compile))
+(eval-after-load "haskell-cabal"
+  '(define-key haskell-cabal-mode-map (kbd "C-c C-c") 'haskell-compile))
+
+
 ; tweaking to get my proper setup
 ; OSX
 ; * iTerm2
