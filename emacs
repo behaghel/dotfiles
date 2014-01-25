@@ -22,13 +22,13 @@
 (set-face-attribute 'default nil :font "Source Code Pro-12")
 
 ;; install
-;(require 'package)
-;(add-to-list 'package-archives 
-			 ;'("marmalade" . "http://marmalade-repo.org/packages/"))
-;(add-to-list 'package-archives
-             ;'("melpa" . "http://melpa.milkbox.net/packages/"))
-;; required to find melpa-installed package after restart at init time
-;(package-initialize)
+;; (require 'package)
+;; (add-to-list 'package-archives 
+;; 	     '("marmalade" . "http://marmalade-repo.org/packages/"))
+;; (add-to-list 'package-archives
+;;              '("melpa" . "http://melpa.milkbox.net/packages/"))
+;; ; required to find melpa-installed package after restart at init time
+;; (package-initialize)
 (require 'cask "~/.cask/cask.el")
 (cask-initialize)
 (require 'pallet)                       ; emacs addons mgmt using cask
@@ -74,7 +74,8 @@
 (add-hook 'find-file-hook 'auto-insert)
 (setq auto-insert-directory "~/.emacs.d/insert/")
 ;; TODO create template for .org
-;; you can use yasnippet to expand it ;; see: http://www.emacswiki.org/emacs/AutoInsertMode
+;; you can use yasnippet to expand it
+;; see: http://www.emacswiki.org/emacs/AutoInsertMode
 ;; the standard emacs way use skeleton
 ;; see: https://github.com/cinsk/emacs-scripts/blob/8212d714d5c6f6b95e873e8688b30ba130d07775/xskel.el
 
@@ -89,7 +90,7 @@
 (setq org-hide-leading-stars t)
 (setq org-startup-indented t)
 (setq org-return-follows-link t)
-(setq org-reveal-root "file:///Users/hub/Applications/reveal.js")
+(setq org-reveal-root (getenv "REVEAL_JS_ROOT_URL"))
 ;; (require 'org-install)
 ;; (require 'org-habit)
 (autoload 'google-contacts "google-contacts" "Google Contacts." t)
@@ -193,7 +194,7 @@ C-x b RET. The buffer selected is the one returned by (other-buffer)."
 ;;;; Default state
 (evil-set-initial-state 'help-mode 'emacs)
 (evil-set-initial-state 'dired-mode 'emacs)
-(evil-set-initial-state 'Info 'emacs)
+(evil-set-initial-state 'info 'emacs)
 (evil-set-initial-state 'ensime-scalex-mode 'emacs)
 (evil-set-initial-state 'erc-mode 'emacs)
 
@@ -473,8 +474,7 @@ This functions should be added to the hooks of major modes for programming."
 )
 
 ; scala
-(add-to-list 'load-path
-             "/Users/hub/Documents/workspace/scala/github/scala-mode2/")
+(add-to-list 'load-path (getenv "SCALA_MODE2_ROOT"))
 (autoload 'scala-mode "scala-mode2")
 (add-to-list 'auto-mode-alist '("\\.scala$" . scala-mode))
 (add-to-list 'load-path (format "%s/%s" (getenv "ENSIME_ROOT") "elisp/"))
