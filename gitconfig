@@ -1,0 +1,14 @@
+[include]
+  path = ~/.gitconfig.local
+
+[merge]
+	tool = vimdiff
+[alias]
+  hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
+	exec = "!exec "
+	g = grep --break --heading --line-number
+[push]
+	default = simple
+[grep]
+	extendRegexp = true
+	lineNumber = true
