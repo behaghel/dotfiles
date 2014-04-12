@@ -15,7 +15,7 @@ if [[ -d $HOME/.oh-my-zsh ]]; then
 
   # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
   # Example format: plugins=(rails git textmate ruby lighthouse)
-  plugins=(git github vi-mode mvn);
+  plugins=(git github vi-mode mvn brew cabal autojump rsync sbt scala ssh-agent);
 
   source $ZSH/oh-my-zsh.sh;
 fi
@@ -24,6 +24,7 @@ fi
 fpath=(~/.zsh/completion $fpath)
 source ~/.profile
 source ~/.aliases
+[[ -s `brew --prefix`/etc/autojump.sh ]] && . `brew --prefix`/etc/autojump.sh
 
 # BÉPO
 bindkey -a é vi-forward-word
