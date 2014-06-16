@@ -1,4 +1,3 @@
-source ~/.profile
 source ~/.aliases
 source ~/etc/*.zsh
 

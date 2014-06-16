@@ -1,6 +1,10 @@
 import sbt._
 import Defaults._
 
+// needed to have the Completions plugin to work 
+// (this enables completion eg in sbt-mode in emacs)
+sbtPlugin := true
+
 resolvers += Classpaths.typesafeResolver
 
 resolvers += "Sonatype snapshots" at "http://oss.sonatype.org/content/repositories/snapshots"
