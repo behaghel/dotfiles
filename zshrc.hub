@@ -1,5 +1,9 @@
 source ~/.aliases
+source ~/.profile
 source ~/etc/*.zsh
+if [ -e /usr/share/autojump/autojump.zsh ]; then
+  source /usr/share/autojump/autojump.zsh
+fi
 
 # Customize to your needs...
 #fpath=(~/.zsh/completion $fpath)
