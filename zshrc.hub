@@ -4,9 +4,11 @@ source ~/etc/*.zsh
 if [ -e /usr/share/autojump/autojump.zsh ]; then
   source /usr/share/autojump/autojump.zsh
 fi
+[[ -s `brew --prefix`/etc/autojump.sh ]] && . `brew --prefix`/etc/autojump.sh
 
 # Customize to your needs...
 #fpath=(~/.zsh/completion $fpath)
+fpath=(/usr/local/share/zsh-completions $fpath)
 
 # BÉPO
 bindkey -a é vi-forward-word
@@ -29,4 +31,4 @@ bindkey -a K vi-change-whole-line
 bindkey -a dd vi-change-whole-line
 
 bindkey -a v edit-command-line
-
+bindkey '^R' history-incremental-search-backward
