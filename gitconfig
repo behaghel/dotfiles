@@ -5,8 +5,8 @@
 	tool = vimdiff
 [alias]
   hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
-	exec = "!exec "
-	g = grep --break --heading --line-number
+  exec = "!exec "
+  g = grep --break --heading --line-number
   ls = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=short
   all-files-by-freshness = "!git ls-tree -r HEAD | while read filename; do echo \"$(git log -1 --format=\"%ai\" -- $filename) $filename\"; done | sort -nr"
 [push]
@@ -16,3 +16,7 @@
 	lineNumber = true
 [user]
 	email = behaghel@gmail.com
+[filter "hawser"]
+	clean = git hawser clean %f
+	smudge = git hawser smudge %f
+	required = true
