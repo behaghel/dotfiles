@@ -11,3 +11,5 @@ target
 /mutt.tgz
 /profile~
 mutt
+sbt/*/staging
+/sbt/repositories
