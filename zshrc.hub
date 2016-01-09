@@ -1,14 +1,10 @@
-source ~/.aliases
-source ~/.profile
-source ~/etc/*.zsh
-if [ -e /usr/share/autojump/autojump.zsh ]; then
-  source /usr/share/autojump/autojump.zsh
-fi
-[[ -s `brew --prefix`/etc/autojump.sh ]] && . `brew --prefix`/etc/autojump.sh
-
 # Customize to your needs...
 #fpath=(~/.zsh/completion $fpath)
 fpath=(/usr/local/share/zsh-completions $fpath)
+
+for i in $(ls ~/etc/*.profile); source $i;
+
+source ~/etc/*.zsh
 
 # BÉPO
 bindkey -a é vi-forward-word
