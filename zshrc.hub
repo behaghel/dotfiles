@@ -1,10 +1,22 @@
 # Customize to your needs...
 #fpath=(~/.zsh/completion $fpath)
 fpath=(/usr/local/share/zsh-completions $fpath)
+fpath=(/usr/local/share/zsh/site-functions $fpath)
 
-for i in $(ls ~/etc/*.profile); source $i;
+source ~/.profile
+
+for i in $(ls ~/etc/*.profile); source $i
 
 source ~/etc/*.zsh
+
+# TODO: move to ~/.profile make it part of .dotfiles
+# set PATH so it includes user's private bin if it exists
+if [ -d "$HOME/bin" ] ; then
+    PATH="$HOME/bin:$PATH"
+fi
+if [ -d "$HOME/.local/bin" ] ; then
+    PATH="$HOME/.local/bin:$PATH"
+fi
 
 # BÉPO
 bindkey -a é vi-forward-word
