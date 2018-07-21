@@ -16,7 +16,14 @@
 	lineNumber = true
 [user]
 	email = behaghel@gmail.com
+	signingkey = 99C4064A79317DDE
 [filter "hawser"]
 	clean = git hawser clean %f
 	smudge = git hawser smudge %f
 	required = true
+[github]
+	user = behaghel
+[commit]
+	gpgsign = true
+[diff "gpg"]
+	textconv = gpg --no-tty --decrypt
