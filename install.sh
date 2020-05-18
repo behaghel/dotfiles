@@ -4,6 +4,19 @@
 #   no partial install (eg without oh-my-zsh)
 #   need to be run from local dir
 
+user_cfg_dir=$HOME/.config
+
+echo "the following should have been installed manually:"
+echo "- https://github.com/ohmyzsh/ohmyzsh"
+echo "- https://github.com/gpakosz/.tmux"
+
+mkdir -p $user_cfg_dir
+
+ln -s $PWD/profile.d $user_cfg_dir/profile.d 2> /dev/null
+# TODO: automate this
+echo "To load your shell environment, add the following to your .profile"
+echo "source $HOME/.config/profile.d/*.profile"
+ln -s $PWD/zsh.d $user_cfg_dir/zsh.d 2> /dev/null
 
 for i in `cat .tobedotlinked`; do
   ln -s $PWD/$i ~/.$i

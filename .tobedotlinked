@@ -1,13 +1,6 @@
-pentadactylrc
 lesskey
-bash_profile
-profile
-aliases
 ctags
-weechat
-sbt
 zshrc
-zpreztorc
 tmux.conf
 gitconfig
 Rprofile
