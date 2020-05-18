@@ -4,3 +4,4 @@ zshrc
 tmux.conf
 gitconfig
 Rprofile
+direnvrc
