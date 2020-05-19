@@ -85,35 +85,29 @@ Channel gmail-all
 Channel gmail-starred
 
 
-IMAPAccount sky
+IMAPAccount mns
 Host localhost
 Port 1143
-User hubert.behaghel@sky.uk
-# Pass "K;tam0rph"
-PassCmd "pass sky/hbe07"
+User hubert.behaghel@mnscorp.net
+PassCmd "pass mns/login"
 SSLType None
 AuthMechs LOGIN
 Timeout 120
 CertificateFile /etc/ssl/certs/ca-certificates.crt
 
-IMAPStore sky-remote
-Account sky
+IMAPStore mns-remote
+Account mns
 
-MaildirStore sky-local
+MaildirStore mns-local
 Subfolders Verbatim
-Path ~/Maildir/sky/
-Inbox ~/Maildir/sky/INBOX
+Path ~/Maildir/mns/
+Inbox ~/Maildir/mns/INBOX
 
-Channel sky
-Master :sky-remote:
-Slave :sky-local:
-# Include everything
-Patterns "INBOX"
-# Patterns "INBOX" "*"
+Channel mns
+Master :mns-remote:
+Slave :mns-local:
+Patterns "INBOX" "*"
 Create Slave
-Expunge None
+Expunge Slave
 CopyArrivalDate yes
-Sync PushFlags Pull
-# unfortunately having deleted 30+k emails locally, pushing that is
-# almost impossible
-# Sync PushFlags
+Sync All
