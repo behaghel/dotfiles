@@ -28,7 +28,7 @@ After=local-fs.target network.target
 
 [Service]
 Type=simple
-ExecStart=/usr/bin/java -jar /usr/bin/davmail %h/.config/davmail.mns.properties
+ExecStart=/usr/bin/java -jar /usr/bin/davmail %h/.config/davmail.base.properties
 Restart=always
 #RestartSec=1
 
