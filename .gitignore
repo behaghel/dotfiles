@@ -13,3 +13,4 @@ target
 mutt
 sbt/*/staging
 /sbt/repositories
+/macos/karabiner/automatic_backups
