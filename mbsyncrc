@@ -10,10 +10,9 @@ PassCmd "pass sysadmin/chromebook/acer-spin-13/gmail-mu4e"
 #
 # Use SSL
 SSLType IMAPS
+AuthMechs LOGIN
 # The following line should work. If get certificate errors, uncomment the two following lines and read the "Troubleshooting" section.
-CertificateFile /etc/ssl/certs/ca-certificates.crt
-#CertificateFile ~/.cert/imap.gmail.com.pem
-#CertificateFile ~/.cert/Equifax_Secure_CA.pem
+#CertificateFile /etc/ssl/certs/ca-certificates.crt
 
 IMAPStore gmail-remote
 Account gmail
@@ -93,7 +92,7 @@ PassCmd "pass mns/login"
 SSLType None
 AuthMechs LOGIN
 Timeout 120
-CertificateFile /etc/ssl/certs/ca-certificates.crt
+#CertificateFile /etc/ssl/certs/ca-certificates.crt
 
 IMAPStore mns-remote
 Account mns

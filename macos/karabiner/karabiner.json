@@ -54,58 +54,58 @@
                     {
                         "description": "Control is Command in Desktop app",
                         "manipulators": [
-                          {
-                            "type": "basic",
-                            "from": {
-                              "key_code": "left_control",
-                              "modifiers": {
-                                "optional": [
-                                  "any"
-                                ]
-                              }
+                            {
+                                "conditions": [
+                                    {
+                                        "bundle_identifiers": [
+                                            "^org\\.vim\\.",
+                                            "^com.googlecode.iterm2",
+                                            "^org\\.gnu\\.Emacs"
+                                        ],
+                                        "type": "frontmost_application_unless"
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "left_control",
+                                    "modifiers": {
+                                        "optional": [
+                                            "any"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "left_command"
+                                    }
+                                ],
+                                "type": "basic"
                             },
-                            "to": [
-                              {
-                                "key_code": "left_command"
-                              }
-                            ],
-                            "conditions": [
-                              {
-                                "type": "frontmost_application_unless",
-                                "bundle_identifiers": [
-                                  "^org\\.vim\\.",
-                                  "^com.googlecode.iterm2",
-                                  "^org\\.gnu\\.Emacs"
-                                ]
-                              }
-                            ]
-                          },
-                         {
-                            "type": "basic",
-                            "from": {
-                              "key_code": "right_control",
-                              "modifiers": {
-                                "optional": [
-                                  "any"
-                                ]
-                              }
-                            },
-                            "to": [
-                              {
-                                "key_code": "right_command"
-                              }
-                            ],
-                            "conditions": [
-                              {
-                                "type": "frontmost_application_unless",
-                                "bundle_identifiers": [
-                                  "^org\\.vim\\.",
-                                  "^com.googlecode.iterm2",
-                                  "^org\\.gnu\\.Emacs"
-                                ]
-                              }
-                            ]
-                          }
+                            {
+                                "conditions": [
+                                    {
+                                        "bundle_identifiers": [
+                                            "^org\\.vim\\.",
+                                            "^com.googlecode.iterm2",
+                                            "^org\\.gnu\\.Emacs"
+                                        ],
+                                        "type": "frontmost_application_unless"
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "right_control",
+                                    "modifiers": {
+                                        "optional": [
+                                            "any"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "right_command"
+                                    }
+                                ],
+                                "type": "basic"
+                            }
                         ]
                     }
                 ]
@@ -166,7 +166,7 @@
                                 "key_code": "right_option"
                             },
                             "to": {
-                                "key_code": "right_command"
+                                "key_code": "right_control"
                             }
                         }
                     ]
