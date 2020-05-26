@@ -6,7 +6,7 @@ IMAPAccount gmail
 Host imap.gmail.com
 User behaghel@gmail.com
 # To store the password in an encrypted file use PassCmd instead of Pass
-PassCmd "pass sysadmin/chromebook/acer-spin-13/gmail-mu4e"
+PassCmd "pass dev/acer-spin-13/gmail-mu4e"
 #
 # Use SSL
 SSLType IMAPS
@@ -92,7 +92,6 @@ PassCmd "pass mns/login"
 SSLType None
 AuthMechs LOGIN
 Timeout 120
-#CertificateFile /etc/ssl/certs/ca-certificates.crt
 
 IMAPStore mns-remote
 Account mns
@@ -105,8 +104,41 @@ Inbox ~/Maildir/mns/INBOX
 Channel mns
 Master :mns-remote:
 Slave :mns-local:
-Patterns "INBOX" "*"
+Patterns "INBOX" "*" "!Drafts" "!Sent" "!Archive"
 Create Slave
 Expunge Slave
 CopyArrivalDate yes
 Sync All
+
+Channel mns-sent
+Master :mns-remote:"Sent"
+Slave :gmail-local:sent
+Patterns  "Sent"
+Create Slave
+Expunge Slave
+CopyArrivalDate yes
+Sync All
+
+Channel mns-drafts
+Master :mns-remote:"Drafts"
+Slave :gmail-local:drafts
+Patterns  "Drafts"
+Create Slave
+Expunge Slave
+CopyArrivalDate yes
+Sync All
+
+Channel mns-archive
+Master :mns-remote:"Archive"
+Slave :gmail-local:archive
+Patterns  "Archive"
+Create Slave
+Expunge Slave
+CopyArrivalDate yes
+Sync All
+
+Group mns
+Channel mns-inbox
+Channel mns-sent
+Channel mns-drafts
+Channel mns-archive
