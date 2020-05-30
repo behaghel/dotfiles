@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+    <dict>
+        <key>Label</key>
+        <string>com.github.karlicoss.grasp</string>
+
+            <key>ProgramArguments</key>
+            <array>
+                <string>/bin/sh</string>
+                <string>-c</string>
+                <string>/Users/C3923946/.pyenv/shims/python $HOME/ws/grasp/server/grasp_server.py --path=$HOME/Dropbox/Documents/org/inbox.org</string>
+                <!--<string>/Users/C3923946/.pyenv/shims/python</string>-->
+                <!--<string>/Users/C3923946/ws/grasp/server/grasp_server.py</string>-->
+                <!--<string>--path=/Users/C3923946/Dropbox/Documents/org/inbox.org</string>-->
+                <!--<string>--port=12212</string>-->
+                <!--<string>--template=TEMPLATE</string>-->
+            </array>
+
+        <key>RunAtLoad</key>
+        <true/>
+        <key>KeepAlive</key>
+        <true/>
+    </dict>
+</plist>
