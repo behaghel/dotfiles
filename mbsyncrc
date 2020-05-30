@@ -104,7 +104,7 @@ Inbox ~/Maildir/mns/INBOX
 Channel mns
 Master :mns-remote:
 Slave :mns-local:
-Patterns "INBOX" "*" "!Drafts" "!Sent" "!Archive"
+Patterns "INBOX" "*" "!Drafts" "!Sent" "!Archive" !drafts !sent !archive
 Create Slave
 Expunge Slave
 CopyArrivalDate yes
@@ -112,7 +112,7 @@ Sync All
 
 Channel mns-sent
 Master :mns-remote:"Sent"
-Slave :gmail-local:sent
+Slave :mns-local:sent
 Patterns  "Sent"
 Create Slave
 Expunge Slave
@@ -121,7 +121,7 @@ Sync All
 
 Channel mns-drafts
 Master :mns-remote:"Drafts"
-Slave :gmail-local:drafts
+Slave :mns-local:drafts
 Patterns  "Drafts"
 Create Slave
 Expunge Slave
@@ -130,7 +130,7 @@ Sync All
 
 Channel mns-archive
 Master :mns-remote:"Archive"
-Slave :gmail-local:archive
+Slave :mns-local:archive
 Patterns  "Archive"
 Create Slave
 Expunge Slave
