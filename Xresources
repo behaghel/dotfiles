@@ -1,0 +1,109 @@
+! Xft
+Xft.dpi:                96
+Xft.antialias:          true
+Xft.rgba:               rgb
+Xft.hinting:            true
+Xft.hintstyle:          hintslight
+
+! Typography
+URxvt*letterSpace:      -1
+URxvt*font:             xft:MesloLGS NF-16
+
+! Colors
+#define S_base03        #002b36
+#define S_base02        #073642
+#define S_base01        #586e75
+#define S_base00        #657b83
+#define S_base0         #839496
+#define S_base1         #93a1a1
+#define S_base2         #eee8d5
+#define S_base3         #fdf6e3
+
+*background:            S_base03
+*foreground:            S_base0
+*fadeColor:             S_base03
+*cursorColor:           S_base1
+*pointerColorBackground:S_base01
+*pointerColorForeground:S_base1
+
+
+! Transparency - true or false (default)
+!URxvt*transparent: true
+
+! tint with any color; i.e., blue, red, tomato4, olivedrab2, etc.
+!   some nice listings are at:
+!     http://www.nisrv.com/drupal/?q=node/11
+!     http://www.htmlgoodies.com/tutorials/colors/article.php/3478921
+!URxvt*tintColor: S_base03
+
+! shading - 0 to 99 darkens, 101 to 200 lightens.
+!   Do not use with tintColor; just use a darker or lighter color instead.
+URxvt*shading:          15
+URxvt.intensityStyles:  false
+
+#define S_yellow        #b58900
+#define S_orange        #cb4b16
+#define S_red           #dc322f
+#define S_magenta       #d33682
+#define S_violet        #6c71c4
+#define S_blue          #268bd2
+#define S_cyan          #2aa198
+#define S_green         #859900
+
+!! black dark/light
+*color0:                S_base02
+*color8:                S_base03
+
+!! red dark/light
+*color1:                S_red
+*color9:                S_orange
+
+!! green dark/light
+*color2:                S_green
+*color10:               S_base01
+
+!! yellow dark/light
+*color3:                S_yellow
+*color11:               S_base00
+
+!! blue dark/light
+*color4:                S_blue
+*color12:               S_base0
+
+!! magenta dark/light
+*color5:                S_magenta
+*color13:               S_violet
+
+!! cyan dark/light
+*color6:                S_cyan
+*color14:               S_base1
+
+!! white dark/light
+*color7:                S_base2
+*color15:               S_base3
+
+! URxvt UI
+! scrollbar - true (default) or false
+URxvt*scrollBar:        false
+! scrollbar position - left=false (default) or right=true
+URxvt*scrollBar_right:  false
+! scrollbar style - rxvt (default), plain, next, or xterm
+URxvt*scrollstyle:      plain
+URxvt.internalBorder:   3
+URxvt.lineSpace:        0
+! Cursor
+URxvt.cursorBlink:      true
+URxvt.cursorColor:      #657b83
+URxvt.cursorUnderline:  false
+! Pointer
+URxvt.pointerBlank:     true
+
+! URxvt Behaviour
+URxvt*saveLines:        12000
+! URxvt.urgentOnBell:   true
+! URxvt.visualBell:     true
+!
+! Perl extensions
+URxvt.perl-ext-common:      default,matcher
+URxvt.matcher.button:       1
+URxvt.urlLauncher:          sensible-browser
