@@ -2,12 +2,9 @@
 SyncState *
 
 IMAPAccount gmail
-# Address to connect to
 Host imap.gmail.com
 User behaghel@gmail.com
-# To store the password in an encrypted file use PassCmd instead of Pass
 PassCmd "pass dev/acer-spin-13/gmail-mu4e"
-#
 # Use SSL
 SSLType IMAPS
 AuthMechs LOGIN
@@ -30,9 +27,6 @@ Slave :gmail-local:
 Patterns "INBOX"
 # Or include everything
 #Patterns *
-# Automatically create missing mailboxes, both locally and on the server
-# Create Both
-# or only locally...
 Create Both
 Expunge Both
 # makes sure the date of the arrival stays the same
@@ -46,7 +40,7 @@ Sync All
 Channel gmail-all
 Master :gmail-remote:"[Gmail]/All Mail"
 Slave :gmail-local:archive
-Patterns  "[Gmail]/All Mail"
+Patterns  "*"
 Create Both
 Expunge Both
 CopyArrivalDate yes
@@ -55,7 +49,7 @@ Sync All
 Channel gmail-sent
 Master :gmail-remote:"[Gmail]/Sent Mail"
 Slave :gmail-local:sent
-Patterns  "[Gmail]/Sent Mail"
+Patterns  "*"
 Create Both
 Expunge Both
 CopyArrivalDate yes
@@ -64,7 +58,7 @@ Sync All
 Channel gmail-starred
 Master :gmail-remote:"[Gmail]/Starred"
 Slave :gmail-local:starred
-Patterns  "[Gmail]/Starred"
+Patterns  "*"
 Create Both
 Expunge Both
 CopyArrivalDate yes
@@ -113,7 +107,7 @@ Sync All
 Channel mns-sent
 Master :mns-remote:"Sent"
 Slave :mns-local:sent
-Patterns  "Sent"
+Patterns  "*"
 Create Slave
 Expunge Slave
 CopyArrivalDate yes
@@ -122,7 +116,7 @@ Sync All
 Channel mns-drafts
 Master :mns-remote:"Drafts"
 Slave :mns-local:drafts
-Patterns  "Drafts"
+Patterns  "*"
 Create Slave
 Expunge Slave
 CopyArrivalDate yes
@@ -131,7 +125,7 @@ Sync All
 Channel mns-archive
 Master :mns-remote:"Archive"
 Slave :mns-local:archive
-Patterns  "Archive"
+Patterns  "*"
 Create Slave
 Expunge Slave
 CopyArrivalDate yes
