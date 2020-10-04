@@ -8,3 +8,4 @@ Rprofile
 direnvrc
 mbsyncrc
 Xresources
+tmux.conf.local

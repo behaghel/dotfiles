@@ -23,12 +23,13 @@
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 [Unit]
-Description=davmail as a service
+Description=DavMail Gateway Service
 After=local-fs.target network.target
 
 [Service]
 Type=simple
-ExecStart=/usr/bin/java -jar /usr/bin/davmail %h/.config/davmail.base.properties
+ExecStart=/usr/bin/java -jar /usr/bin/davmail %h/.config/davmail.properties
+TimeoutSec=120
 Restart=always
 #RestartSec=1
 
