@@ -11,7 +11,7 @@ setup_dir_name="._setup"
 [ -n "$DOTFILES_DEBUG" ] && set -x
 
 command_exists() {
-  command -v "$@" >> /dev/null 2»&1
+  command -v "$@" >> /dev/null 2>&1
 }
 
 failed_checkout() {
@@ -20,18 +20,28 @@ failed_checkout() {
 }
 
 checkout() {
-  [ -d "$2" ] || git clone --branch "$BRANCH" "$1" "$2" || failed_checkout "$1"
+  git clone --branch "$BRANCH" "$1" "$2" || failed_checkout "$1"
 }
 
 run_if_exists() {
-  [ -x $1 ] && ($DOTFILES_DEBUG && echo "Simulation: $1" || $1) || \
+  if [ -x $1 ]; then
+    [ -n "$DOTFILES_DEBUG" ] && echo "Simulation: $1" || $1
+  else
     true # stay truthy even when no executable was run
+  fi
+}
+
+hook_file() {
+  echo "$DOTFILES_DIR/$1/$setup_dir_name/$2.sh"
 }
 
 run_hook() {
-  local capability=$1
-  local hook=$2
-  run_if_exists $DOTFILES_DIR/$capability/$setup_dir_name/$hook.sh
+  local hook=$(hook_file $1 $2)
+  run_if_exists $hook
+  if [ "$2" == 'verify' -a ! -x $hook ]; then
+    command_exists $1 && echo "command $1 exists already"
+    # default verification: check is command named like the ability exists
+  fi
 }
 
 bootstrap(){
@@ -41,8 +51,8 @@ bootstrap(){
     exit 1
   }
 
-  checkout $DOTFILES_REPO $DOTFILES_DIR
-  run_hook "." "pre"
+  [ -d "$DOTFILES_DIR" ] || (checkout $DOTFILES_REPO $DOTFILES_DIR && \
+    run_hook "." "pre")
 }
 
 read_list_from_file() {
@@ -51,10 +61,10 @@ read_list_from_file() {
 }
 
 is_ability() {
-  # TODO: ankify find
-  capabilities=$(find $DOTFILES_DIR -maxdepth 1 -type d -not \( -name "$(basename $DOTFILES_DIR)" -o -name "$setup_dir_name" -o -name ".*" \) -exec basename {} ';')
-  # TODO: ankify bash tests and array membership and predicate functions
-  [[ $capabilities[@] =~ "$1" ]]
+  #TODO: ankify bash tests and array membership and predicate functions and find
+  #FIXME: why can't I lazy initialise abilities in another function?
+  abilities=$(find $DOTFILES_DIR -maxdepth 1 -type d -not \( -name "$(basename $DOTFILES_DIR)" -o -name "$setup_dir_name" -o -name ".*" \) -exec basename {} ';')
+  [[ $abilities[@] =~ "$1" ]]
 }
 
 prepit() {
@@ -84,24 +94,32 @@ wrapit() {
 }
 
 package_install() {
-  apps=$@
+  local apps=$@
   echo "install package $apps"
   #TODO: implement me through either brew or ansible
   # remember to handle "DOTFILES_DEBUG" flag
+}
+
+already_installed() {
+  run_hook $1 "verify"
+}
+
+install_ability() {
+  already_installed $1 || \
+    ( prepit $1 && \
+    stowit $1 && \
+    wrapit $1 )
 }
 
 installit() {
   #TODO: allow to pass a list of names
   # that means figuring out dependencies and potentially cycles
   # that means reusing a package manager: either ansible or brew even for abilities
+  # also, fail if $1 is empty / undefined
   echo "install $1..."
 
-  is_ability $1 && \
-    #TODO: unless already installed
-    prepit $1 && \
-    stowit $1 && \
-    wrapit $1
-  is_ability $1 || package_install $1
+  #FIXME: should be more elegant
+  is_ability $1 && (install_ability $1 || exit -1) || package_install $1
 }
 
-bootstrap && installit "$@"
+bootstrap && [ $# -gt 0 ] && installit "$@"
