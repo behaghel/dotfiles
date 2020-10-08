@@ -1,8 +1,31 @@
 #!/usr/bin/env bash
+# This script should be run via curl:
+#   sh -c "$(curl -fsSL https://raw.githubusercontent.com/behaghel/dotfiles/master/install.sh)"
+# or via wget:
+#   sh -c "$(wget -qO- https://raw.githubusercontent.com/behaghel/dotfiles/master/install.sh)"
+# or via fetch:
+#   sh -c "$(fetch -o - https://raw.githubusercontent.com/behaghel/dotfiles/master/install.sh)"
+#
+# As an alternative, you can first download the install script and run it afterwards:
+#   wget https://raw.githubusercontent.com/behaghel/dotfiles/master/install.sh
+#   sh install.sh
+#
+# You can tweak the install behavior by setting variables when running the script. For
+# example, to change the path to the Oh My Zsh repository:
+#   DOTFILES_DIR=~/.config/dotfiles sh install.sh
+#
+# Respects the following environment variables:
+#   BRANCH  - branch to check out immediately after install (default: master)
+#
+# Other options:
+#   DOTFILES_DIR  - path to the dotfiles dir
+#   DOTFILES_REPO - origin of the dotfiles git repository
+#
+#
 set -e
 
 #FIXME: delete next line when ready
-DOTFILES_DEBUG=${DOTFILES_DEBUG:-true}
+#DOTFILES_DEBUG=${DOTFILES_DEBUG:-true}
 DOTFILES_DIR=${DOTFILES_DIR:-~/.dotfiles}
 DOTFILES_REPO=${DOTFILES_REPO:-git@github.com:behaghel/dotfiles.git}
 BRANCH=${BRANCH:-master}
@@ -91,6 +114,15 @@ wrapit() {
   echo "wrapping for $1..."
   run_hook $1 "post"
   echo "$1 is ready."
+}
+
+ansible_install() {
+  command_exists ansible_galaxy || installit ansible
+  ansible-galaxy install "$role"
+  tmpfile=$(mktemp /tmp/abc-script.XXXXXX)
+  echo "- hosts: all\n  roles:\n    - $role" >> "$tmpfile"
+  ansible-playbook -K -b -i $DOTFILES_DIR/._setup/ansible/hosts "$tmpfile"
+  rm "$tmpfile"
 }
 
 package_install() {
