@@ -12,7 +12,7 @@
 #
 # You can tweak the install behavior by setting variables when running the script. For
 # example, to change the path to the Oh My Zsh repository:
-#   DOTFILES_DIR=~/.config/dotfiles sh install.sh
+#   DOTFILES_DIR=$HOME/.config/dotfiles sh install.sh
 #
 # Respects the following environment variables:
 #   BRANCH  - branch to check out immediately after install (default: master)
@@ -90,13 +90,17 @@ is_ability() {
   [[ $abilities[@] =~ "$1" ]]
 }
 
+is_ansible_role() {
+  echo "$1" | awk -F: '$1 ~ "ansible" {print $2}'
+}
+
 prepit() {
   echo "prepping $1..."
+  #TODO: allow for different dependencies on linux vs macos
   needs=$DOTFILES_DIR/$1/$setup_dir_name/needs
   [ -f $needs ] && \
     local deps=( $(read_list_from_file $needs) ) && \
-    installit $deps
-  #FIXME: if the ability has the same name as one of its dependencies, then infinite loop => force package_install in that scenario
+    installit $deps $1
 
   run_hook $1 "pre"
   echo "$1 prepped."
@@ -116,16 +120,19 @@ wrapit() {
   echo "$1 is ready."
 }
 
-ansible_install() {
-  command_exists ansible_galaxy || installit ansible
+install_ansible() {
+  command_exists ansible_galaxy || install_ability ansible
   ansible-galaxy install "$role"
-  tmpfile=$(mktemp /tmp/abc-script.XXXXXX)
+  tmpfile=$(mktemp)
   echo "- hosts: all\n  roles:\n    - $role" >> "$tmpfile"
+  # -K ask for sudo passwold
+  # -b become sudo
+  # -i [file] inventory (prepackage with only localhost)
   ansible-playbook -K -b -i $DOTFILES_DIR/._setup/ansible/hosts "$tmpfile"
   rm "$tmpfile"
 }
 
-package_install() {
+install_package() {
   local apps=$@
   echo "install package $apps"
   #TODO: implement me through either brew or ansible
@@ -137,21 +144,42 @@ already_installed() {
 }
 
 install_ability() {
-  already_installed $1 || \
-    ( prepit $1 && \
-    stowit $1 && \
-    wrapit $1 )
+  # for i in "${!1[@]}"; do
+      already_installed $1 || \
+          ( prepit $1 && \
+                stowit $1 && \
+                wrapit $1 )
+  # done
 }
 
 installit() {
-  #TODO: allow to pass a list of names
-  # that means figuring out dependencies and potentially cycles
-  # that means reusing a package manager: either ansible or brew even for abilities
-  # also, fail if $1 is empty / undefined
-  echo "install $1..."
+  [ -n $1 ] || exit -1 # nothing to install
+  local instal_list=$1
+  local requester=$2
+  local abilities=()
+  local ansible_roles=()
+  local packages=()
+  for i in "${!install_list[@]}"; do
+    if [[ ${install_list[i]} = $1 ]]; then
+      # ability $1 has a dependency of the same name, stop the infinite loop
+      packages+=( $1 )
+    elif [[ -n $(is_ansible_role ${install_list[i]}) ]]; then
+      ansible_roles+=( $(is_ansible_role ${install_list[i]}) )
+    elif [[ $(is_ability ${install_list[i]}) ]]; then
+      abilities+=( ${install_list[i]} )
+    else
+      packages+=( ${install_list[i]} )
+    fi
+  done
+
+  [[ ${#packages[@]} -gt 0 ]] && install_package ${packages[@]}
+  [[ ${#ansible_roles[@]} -gt 0 ]] && install_ansible ${ansible_roles[@]}
+  [[ ${#abilities[@]} -gt 0 ]] && install_ability ${abilities[@]}
+  #TODO: ansible and packages XXX
+  #btw we can't postpone / batch at the end because iteration will fail without their deps in place
 
   #FIXME: should be more elegant
-  is_ability $1 && (install_ability $1 || exit -1) || package_install $1
+  is_ability $1 && (install_ability $1 || exit -1) || install_package $1
 }
 
 bootstrap && [ $# -gt 0 ] && installit "$@"
