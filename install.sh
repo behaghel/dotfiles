@@ -144,16 +144,16 @@ already_installed() {
 
 install_ability() {
   # we treat "." as an ability but we don't stow it for obvious reasons
-  [ -n $1 ] || { # nothing to install
+  [ -n "$1" ] || { # nothing to install
     echo "nothing to install"
     exit -1
   }
-  if [ "$1" == "."]; then
-      [ -d "$DOTFILES_DIR" ] || {
-        checkout $DOTFILES_REPO $DOTFILES_DIR
-        git submodule init
-        git submodule update
-      }
+  if [ "$1" == "." ]; then
+    [ -d "$DOTFILES_DIR" ] || {
+      checkout $DOTFILES_REPO $DOTFILES_DIR
+      git submodule init
+      git submodule update
+    }
   else
     already_installed $1 || \
       ( prepit $1 && \
