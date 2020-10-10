@@ -148,10 +148,18 @@ install_ability() {
     echo "nothing to install"
     exit -1
   }
-  already_installed $1 || \
-    ( prepit $1 && \
-    ( [ "." == $1 ] || stowit $1 ) && \
-    wrapit $1 )
+  if [ "$1" == "."]; then
+      [ -d "$DOTFILES_DIR" ] || {
+        checkout $DOTFILES_REPO $DOTFILES_DIR
+        git submodule init
+        git submodule update
+      }
+  else
+    already_installed $1 || \
+      ( prepit $1 && \
+        stowit $1 && \
+        wrapit $1 )
+  fi
 }
 
 installit() {
