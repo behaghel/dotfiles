@@ -1,5 +1,6 @@
 #!/bin/bash
 
+checkout $DOTFILES_REPO $DOTFILES_DIR 
 git submodule init
 git submodule update
 
