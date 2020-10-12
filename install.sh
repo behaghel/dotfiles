@@ -14,6 +14,10 @@
 # example, to change the path to the Oh My Zsh repository:
 #   DOTFILES_DIR=$HOME/.config/dotfiles sh install.sh
 #
+# Dependencies:
+#   - git must be installed with your SSH keys in place for checking
+#     out your dotfiles
+#
 # Respects the following environment variables:
 #   BRANCH  - branch to check out immediately after install (default: master)
 #
@@ -43,12 +47,17 @@ failed_checkout() {
 }
 
 checkout() {
+  command_exists git || { #TODO: remove this once you have figure "." as an ability
+    echo "git is not installed."
+    exit 1
+  }
+  #FIXME: need ssh key in place which needs dropbox which needs python…
   git clone --branch "$BRANCH" "$1" "$2" || failed_checkout "$1"
 }
 
 run_if_exists() {
   if [ -x $1 ]; then
-    ([ -n "$DOTFILES_PRETEND" ] && echo "Simulation: $1") || $1
+    ([ -n "$DOTFILES_PRETEND" -a "$2" != "verify" ] && echo "Simulation: $1") || $1
   else
     true # stay truthy even when no executable was run
   fi
@@ -60,10 +69,11 @@ hook_file() {
 
 run_hook() {
   local hook=$(hook_file $1 $2)
-  run_if_exists $hook
   if [ "$2" == 'verify' -a ! -x $hook ]; then
     command_exists $1 && echo "command $1 exists already"
     # default verification: check is command named like the ability exists
+  else
+    run_if_exists $hook $2
   fi
 }
 
@@ -105,6 +115,18 @@ stowit() {
 
 wrapit() {
   echo "wrapping for $1..."
+  provides=$DOTFILES_DIR/$1/$setup_dir_name/provides
+  [ -f $provides ] && \
+    local services=( $(read_list_from_file $provides) ) && \
+    systemctl --user daemon-reload && \
+    for service in ${services[@]}; do
+      if [ -z "$DOTFILES_PRETEND" ]; then
+        systemctl --user enable $service
+        systemctl --user start $service
+      else
+        echo "Simulation: activation of $service through systemctl"
+      fi
+    done
   run_hook $1 "post"
   echo "$1 is ready."
 }
@@ -148,7 +170,8 @@ install_ability() {
     echo "nothing to install"
     exit -1
   }
-  if [ "$1" == "." ]; then
+  if [ "$1" == "." ]; then #TODO: figure how to treat "." as an
+      #ability and use pre.sh instead of this block
     [ -d "$DOTFILES_DIR" ] || {
       checkout $DOTFILES_REPO $DOTFILES_DIR
       git submodule init
