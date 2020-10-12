@@ -1,15 +1,4 @@
 #!/usr/bin/env bash
-# This script should be run via curl:
-#   sh -c "$(curl -fsSL https://raw.githubusercontent.com/behaghel/dotfiles/master/install.sh)"
-# or via wget:
-#   sh -c "$(wget -qO- https://raw.githubusercontent.com/behaghel/dotfiles/master/install.sh)"
-# or via fetch:
-#   sh -c "$(fetch -o - https://raw.githubusercontent.com/behaghel/dotfiles/master/install.sh)"
-#
-# As an alternative, you can first download the install script and run it afterwards:
-#   wget https://raw.githubusercontent.com/behaghel/dotfiles/master/install.sh
-#   sh install.sh
-#
 # You can tweak the install behavior by setting variables when running the script. For
 # example, to change the path to the Oh My Zsh repository:
 #   DOTFILES_DIR=$HOME/.config/dotfiles sh install.sh
@@ -28,7 +17,6 @@
 #
 set -e
 
-#FIXME: delete next line when ready
 DOTFILES_DEBUG=${DOTFILES_DEBUG:-$DOTFILES_PRETEND}
 DOTFILES_DIR=${DOTFILES_DIR:-~/.dotfiles}
 DOTFILES_REPO=${DOTFILES_REPO:-git@github.com:behaghel/dotfiles.git}
@@ -47,11 +35,11 @@ failed_checkout() {
 }
 
 checkout() {
-  command_exists git || { #TODO: remove this once you have figure "." as an ability
-    echo "git is not installed."
-    exit 1
-  }
-  #FIXME: need ssh key in place which needs dropbox which needs python…
+  command_exists git || install_ability git
+  # { #TODO: remove this once you have figure "." as an ability
+  #   echo "git is not installed."
+  #   exit 1
+  # }
   git clone --branch "$BRANCH" "$1" "$2" || failed_checkout "$1"
 }
 
@@ -170,19 +158,19 @@ install_ability() {
     echo "nothing to install"
     exit -1
   }
-  if [ "$1" == "." ]; then #TODO: figure how to treat "." as an
-      #ability and use pre.sh instead of this block
-    [ -d "$DOTFILES_DIR" ] || {
-      checkout $DOTFILES_REPO $DOTFILES_DIR
-      git submodule init
-      git submodule update
-    }
-  else
+  # if [ "$1" == "." ]; then #TODO: figure how to treat "." as an
+  #     #ability and use pre.sh instead of this block
+  #   [ -d "$DOTFILES_DIR" ] || {
+  #     checkout $DOTFILES_REPO $DOTFILES_DIR
+  #     git submodule init
+  #     git submodule update
+  #   }
+  # else
     already_installed $1 || \
       ( prepit $1 && \
-        stowit $1 && \
+      ( [ "$1" == "." ] || stowit $1 ) && \
         wrapit $1 )
-  fi
+  # fi
 }
 
 installit() {
@@ -216,3 +204,4 @@ installit() {
 }
 
 install_ability "." && [ $# -gt 0 ] && installit "$@"
+#TODO: have a help printed when no arguments

@@ -1,5 +1,12 @@
 Managing my dotfiles and bringing the "home sweet home" feeling on any machine in no time.
 
+# Getting Started
+
+``` shell
+$ git clone [this repo url] ~/.dotfiles
+$ cd .dotfiles && install.sh
+```
+
 # Tenets
 
 ## Embrace The UNIX Philosophy
