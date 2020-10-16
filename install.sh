@@ -148,29 +148,19 @@ install_package() {
   playbook "$tmpfile"
 }
 
-already_installed() {
-  run_hook $1 "verify"
-}
-
 install_ability() {
-  # we treat "." as an ability but we don't stow it for obvious reasons
-  [ -n "$1" ] || { # nothing to install
+  local abis=$@
+  [ ${#abis[@]} -gt 0 ] || { # nothing to install
     echo "nothing to install"
     exit -1
   }
-  # if [ "$1" == "." ]; then #TODO: figure how to treat "." as an
-  #     #ability and use pre.sh instead of this block
-  #   [ -d "$DOTFILES_DIR" ] || {
-  #     checkout $DOTFILES_REPO $DOTFILES_DIR
-  #     git submodule init
-  #     git submodule update
-  #   }
-  # else
-    already_installed $1 || \
-      ( prepit $1 && \
-      ( [ "$1" == "." ] || stowit $1 ) && \
-        wrapit $1 )
-  # fi
+  # we treat "." as an ability but we don't stow it for obvious reasons
+  for i in "${abis[@]}"; do
+    run_hook $i "verify" || \
+      ( prepit $i && \
+      ( [ "$i" == "." ] || stowit $i ) && \
+        wrapit $i )
+  done
 }
 
 installit() {
