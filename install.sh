@@ -78,7 +78,7 @@ is_ansible_role() {
 }
 
 prepit() {
-  git submodule update --init "$1"
+  ( [ "$i" == "." ] || git submodule update --init "$1")
   #TODO: allow for different dependencies on linux vs macos
   needs=$DOTFILES_DIR/$1/$setup_dir_name/needs
   [ -f $needs ] && \
@@ -115,6 +115,7 @@ wrapit() {
 }
 
 playbook() {
+  command_exists ansible-playbook || install_ability ansible
   # -K ask for sudo passwold
   # -b become sudo
   # -i [file] inventory (prepackage with only localhost)
@@ -122,7 +123,7 @@ playbook() {
 }
 
 install_ansible() {
-  command_exists ansible_galaxy || install_ability ansible
+  command_exists ansible-galaxy || install_ability ansible
   tmpfile=$(mktemp)
   echo -e "---\n- hosts: all\n  roles:\n" >> "$tmpfile"
   for role in "${1[@]}"; do
