@@ -36,10 +36,6 @@ failed_checkout() {
 
 checkout() {
   command_exists git || install_ability git
-  # { #TODO: remove this once you have figure "." as an ability
-  #   echo "git is not installed."
-  #   exit 1
-  # }
   git clone --branch "$BRANCH" "$1" "$2" || failed_checkout "$1"
 }
 
@@ -82,7 +78,7 @@ is_ansible_role() {
 }
 
 prepit() {
-  echo "prepping $1..."
+  git submodule update --init "$1"
   #TODO: allow for different dependencies on linux vs macos
   needs=$DOTFILES_DIR/$1/$setup_dir_name/needs
   [ -f $needs ] && \
@@ -90,10 +86,10 @@ prepit() {
     installit $deps $1
 
   run_hook $1 "pre"
-  echo "$1 prepped."
 }
 
 stowit() {
+    command_exists stow || install_package stow
     # -v verbose
     # -n DOTFILES_PRETEND but don't do anything
     # -R recursive
@@ -102,7 +98,6 @@ stowit() {
 }
 
 wrapit() {
-  echo "wrapping for $1..."
   provides=$DOTFILES_DIR/$1/$setup_dir_name/provides
   [ -f $provides ] && \
     local services=( $(read_list_from_file $provides) ) && \
