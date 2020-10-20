@@ -89,7 +89,10 @@ prepit() {
 }
 
 stowit() {
-    command_exists stow || install_package stow
+    #FIXME: nice try but triggers install_ability ansible which will
+    # want stow: infinite loop
+    #command_exists stow || install_package stow
+
     # -v verbose
     # -n DOTFILES_PRETEND but don't do anything
     # -R recursive
