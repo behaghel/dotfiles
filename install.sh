@@ -113,8 +113,7 @@ wrapit() {
         echo "Simulation: activation of $service through systemctl"
       fi
     done
-  run_hook $1 "post"
-  echo "$1 is ready."
+  run_hook $1 "post" && echo "$1 is ready."
 }
 
 playbook() {
