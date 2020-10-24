@@ -1,2 +1,3 @@
-# debian
-build-essential
+# KEEP EMPTY
+# python cannot have dependencies as it would create a circular dependency
+# on debian, the only requirement is build-essential
