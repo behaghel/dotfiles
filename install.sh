@@ -83,7 +83,7 @@ prepit() {
   needs=$DOTFILES_DIR/$1/$setup_dir_name/needs
   [ -f $needs ] && \
     local deps=( $(read_list_from_file $needs) ) && \
-    installit $deps $1
+    [ -n "$deps" ] && installit $deps $1
 
   run_hook $1 "pre"
 }
