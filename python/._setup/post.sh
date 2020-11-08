@@ -5,4 +5,5 @@ eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
 
 #pyenv install-latest
+pyenv latest install
 pyenv latest global
