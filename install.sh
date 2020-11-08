@@ -115,7 +115,7 @@ wrapit() {
     done
   run_hook $1 "post" && echo "$1 is ready."
   # if $DOTFILES_DIR/$1/.config/profile.d/ not empty, then reload shell
-  [ -d "$DOTFILES_DIR/$1/.config/profile.d/" ] && exec "$SHELL"
+  [ -d "$DOTFILES_DIR/$1/.config/profile.d/" ] && exec "$SHELL" || true
 }
 
 playbook() {
@@ -193,5 +193,6 @@ installit() {
   [[ ${#abilities_to_install[@]} -gt 0 ]] && install_ability ${abilities_to_install[@]}
 }
 
-install_ability "." && [ $# -gt 0 ] && installit "$@"
+#install_ability "." &&
+[ $# -gt 0 ] && installit "$@"
 #TODO: have a help printed when no arguments
