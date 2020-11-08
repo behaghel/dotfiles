@@ -114,6 +114,8 @@ wrapit() {
       fi
     done
   run_hook $1 "post" && echo "$1 is ready."
+  # if $DOTFILES_DIR/$1/.config/profile.d/ not empty, then reload shell
+  [ "$(ls -A $DOTFILES_DIR/$1/.config/profile.d/)" ] && exec "$SHELL"
 }
 
 playbook() {
