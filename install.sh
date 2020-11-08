@@ -156,12 +156,11 @@ install_ability() {
   }
   # we treat "." as an ability but we don't stow it for obvious reasons
   for i in "${abis[@]}"; do
-    ( # sub shell to protect i
-      run_hook $i "verify" || \
-      ( prepit $i && \
-      ( [ "$i" == "." ] || stowit $i ) && \
-        wrapit $i )
-    )
+    run_hook $i "verify" || {
+      prepit $i && {
+        [ "$i" == "." ] || stowit $i
+      } && wrapit $i
+    }
   done
 }
 
