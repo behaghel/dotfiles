@@ -78,6 +78,7 @@ is_ansible_role() {
 }
 
 prepit() {
+  local i
   ( [ "$i" == "." ] || git submodule update --init "$1")
   #TODO: allow for different dependencies on linux vs macos
   needs=$DOTFILES_DIR/$1/$setup_dir_name/needs
@@ -139,6 +140,7 @@ install_ansible() {
 
 install_package() {
   local apps=$@
+  local i
   echo "install package $apps"
   tmpfile=$(mktemp)
   echo -e "---\n- hosts: all\n  tasks:\n    - name: Install $apps\n      package:\n        state: present\n        name:\n" >> "$tmpfile"
@@ -155,6 +157,7 @@ install_ability() {
     exit -1
   }
   # we treat "." as an ability but we don't stow it for obvious reasons
+  local i
   for i in "${abis[@]}"; do
     run_hook $i "verify" || {
       prepit $i && {
@@ -174,6 +177,7 @@ installit() {
   local abilities_to_install=()
   local ansible_roles=()
   local packages=()
+  local i
   for i in "${install_list[@]}"; do
     local ansible_role=$(is_ansible_role $i)
     local ability=$(is_ability $i)
