@@ -70,7 +70,7 @@ is_ability() {
   #TODO: ankify bash tests and array membership and predicate functions and find
   #FIXME: why can't I lazy initialise abilities in another function?
   abilities=$(find $DOTFILES_DIR -maxdepth 1 -type d -not \( -name "$(basename $DOTFILES_DIR)" -o -name "$setup_dir_name" -o -name ".*" \) -exec basename {} ';')
-  [[ "$abilities" =~ "*$1*" ]] && echo "$1"
+  [[ "$abilities" =~ "$1" ]] && echo "$1"
 }
 
 is_ansible_role() {
