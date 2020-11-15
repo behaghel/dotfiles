@@ -12,7 +12,7 @@
 	url = https://github.com/zsh-users/zsh-syntax-highlighting.git
 [submodule "zsh/.oh-my-zsh/custom/themes/powerlevel10k"]
 	path = zsh/.oh-my-zsh/custom/themes/powerlevel10k
-	url = https://github.com/romkatv/powerlevel10k.git
+	url = git://github.com/romkatv/powerlevel10k.git
 [submodule "javascript/.pyenv/plugins/xxenv-latest"]
 	path = javascript/.pyenv/plugins/xxenv-latest
 	url = https://github.com/momo-lab/xxenv-latest.git
