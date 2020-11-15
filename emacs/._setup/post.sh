@@ -1,6 +1,15 @@
 #!/bin/bash
 
-cd ~/.local/share/fonts
+cd $HOME/install/git/emacs
+# ensure at least one deb-src in /etc/apt/sources.list
+sudo apt-get build-dep emacs
+./autogen.sh
+./configure CFLAGS='-O3'
+make
+sudo make install
+make clean
+
+cd $HOME/.local/share/fonts
 iosevka_version=3.6.1
 hasklig_version=1.1
 jetbrainsmono_version=2.001
@@ -16,15 +25,10 @@ for font in ${fonts[@]}; do
   rm $(basename $font)
 done
 
-cd ~/install/git/mu
-./autogen.sh && make && sudo make install
-
-mu init --my-address=hubert.behaghel@sky.uk --my-address=hubert.behaghel@bskyb.com --my-address=behaghel@gmail.com --my-address=hubert@behaghel.org --my-address=hubert@behaghel.fr -m ~/Maildir
-
 # next follow https://wiki.debian.org/Exim4Gmail
 # org capture with grasp
 cd ~/install/git/grasp
-server/setup --path /home/behaghel/Dropbox/Documents/org/inbox.org  --template "\n** %U [[%:link][%:description]] %:tags
+server/setup --path $HOME/Dropbox/Documents/org/inbox.org  --template "\n** %U [[%:link][%:description]] %:tags
 %:selection
 *** Comment
 %:comment"
