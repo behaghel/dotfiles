@@ -34,3 +34,6 @@
 [submodule "mail/install/git/mu"]
 	path = mail/install/git/mu
 	url = git://github.com/djcb/mu.git
+[submodule "emacs/install/git/emacs"]
+	path = emacs/install/git/emacs
+	url = git://git.savannah.gnu.org/emacs.git
