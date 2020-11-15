@@ -31,3 +31,6 @@
 [submodule "emacs/.emacs.d"]
 	path = emacs/.emacs.d
 	url = git@github.com:behaghel/.emacs.d.git
+[submodule "mail/install/git/mu"]
+	path = mail/install/git/mu
+	url = git://github.com/djcb/mu.git
