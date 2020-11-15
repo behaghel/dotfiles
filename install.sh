@@ -114,9 +114,11 @@ wrapit() {
         echo "Simulation: activation of $service through systemctl"
       fi
     done
-  run_hook $1 "post" && echo "$1 is ready."
-  # if $DOTFILES_DIR/$1/.config/profile.d/ not empty, then reload shell
-  [ -d "$DOTFILES_DIR/$1/.config/profile.d/" ] && source "$HOME/.profile" || true
+  run_hook $1 "post" && {
+    echo "$1 is ready."
+    # if $DOTFILES_DIR/$1/.config/profile.d/ not empty, then reload shell
+    [ -d "$DOTFILES_DIR/$1/.config/profile.d/" ] && exec $SHELL || true
+  }
 }
 
 playbook() {
