@@ -22,6 +22,7 @@ DOTFILES_DIR=${DOTFILES_DIR:-~/.dotfiles}
 DOTFILES_REPO=${DOTFILES_REPO:-git@github.com:behaghel/dotfiles.git}
 BRANCH=${BRANCH:-master}
 setup_dir_name="._setup"
+restart_shell=""
 
 [ -n "$DOTFILES_DEBUG" ] && set -x
 
@@ -117,7 +118,7 @@ wrapit() {
   run_hook $1 "post" || exit -5
   echo "$1 is ready."
   # if $DOTFILES_DIR/$1/.config/profile.d/ not empty, then reload shell
-  [ -d "$DOTFILES_DIR/$1/.config/profile.d/" ] && exec $SHELL || true
+  [ -d "$DOTFILES_DIR/$1/.config/profile.d/" ] && restart_shell="true" || true
 }
 
 playbook() {
@@ -202,3 +203,6 @@ installit() {
 #install_ability "." &&
 [ $# -gt 0 ] && installit "$@"
 #TODO: have a help printed when no arguments
+[ -z "$restart_shell" ] && \
+    echo "Restarting $SHELL to update config..." && \
+    exec $SHELL
