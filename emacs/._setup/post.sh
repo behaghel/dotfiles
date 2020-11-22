@@ -16,7 +16,7 @@ jetbrainsmono_version=2.001
 fonts=(
 https://github.com/be5invis/Iosevka/releases/download/v$iosevka_version/ttf-iosevka-$iosevka_version.zip
 https://github.com/i-tu/Hasklig/releases/download/$hasklig_version/Hasklig-$hasklig_version.zip
-https://download.jetbrains.com/fonts/JetBrainsMono-$jetbrains_version.zip
+https://download.jetbrains.com/fonts/JetBrainsMono-$jetbrainsmono_version.zip
 )
 # install apps available to local users and root
 for font in ${fonts[@]}; do
