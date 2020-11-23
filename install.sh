@@ -203,6 +203,6 @@ installit() {
 #install_ability "." &&
 [ $# -gt 0 ] && installit "$@"
 #TODO: have a help printed when no arguments
-[ -z "$restart_shell" ] && \
+[ -n "$restart_shell" ] && \
     echo "Restarting $SHELL to update config..." && \
     exec $SHELL
