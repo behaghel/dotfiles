@@ -37,3 +37,6 @@
 [submodule "emacs/install/git/emacs"]
 	path = emacs/install/git/emacs
 	url = git://git.savannah.gnu.org/emacs.git
+[submodule "emacs/install/git/grasp"]
+	path = emacs/install/git/grasp
+	url = git://github.com/karlicoss/grasp.git
