@@ -35,6 +35,10 @@ failed_checkout() {
   exit -1
 }
 
+reload_context() {
+  source "$HOME"/.config/profile.d/*.profile
+}
+
 checkout() {
   command_exists git || install_ability git
   git clone --branch "$BRANCH" "$1" "$2" || failed_checkout "$1"
@@ -118,7 +122,7 @@ wrapit() {
   run_hook $1 "post" || exit -5
   echo "$1 is ready."
   # if $DOTFILES_DIR/$1/.config/profile.d/ not empty, then reload shell
-  [ -d "$DOTFILES_DIR/$1/.config/profile.d/" ] && restart_shell="true" || true
+  [ -d "$DOTFILES_DIR/$1/.config/profile.d/" ] && reload_context && restart_shell="true" || true
 }
 
 playbook() {
