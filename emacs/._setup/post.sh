@@ -2,11 +2,15 @@
 
 cd $HOME/install/git/emacs
 # ensure at least one deb-src in /etc/apt/sources.list
-sudo apt-get build-dep emacs
+sudo=''
+if (( $EUID != 0 )); then
+    sudo='sudo'
+fi
+$sudo apt-get build-dep emacs
 ./autogen.sh
 ./configure CFLAGS='-O3'
 make
-sudo make install
+$sudo make install
 make clean
 
 cd $HOME/.local/share/fonts
