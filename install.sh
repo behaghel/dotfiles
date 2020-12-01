@@ -26,6 +26,10 @@ restart_shell=""
 
 [ -n "$DOTFILES_DEBUG" ] && set -x
 
+log() {
+    $silent || echo $@
+}
+
 command_exists() {
   command -v "$@" >> /dev/null 2>&1
 }
@@ -136,7 +140,7 @@ playbook() {
 install_ansible() {
   command_exists ansible-galaxy || install_ability ansible
   tmpfile=$(mktemp)
-  echo -e "---\n- hosts: all\n  roles:\n" >> "$tmpfile"
+  echo -ne "---\n- hosts: all\n  roles:\n" >> "$tmpfile"
   for role in "${1[@]}"; do
     ansible-galaxy install "$role"
     echo "    - $role" >> "$tmpfile"
@@ -147,10 +151,10 @@ install_ansible() {
 install_package() {
   local apps=$@
   local i
-  echo "install package $apps"
+  log "install package $apps"
   tmpfile=$(mktemp)
-  echo -e "---\n- hosts: all\n  tasks:\n    - name: Install $apps\n      package:\n        state: present\n        name:\n" >> "$tmpfile"
-  for i in "${apps[@]}"; do
+  echo -ne "---\n- hosts: all\n  tasks:\n    - name: Install $apps\n      package:\n        state: present\n        name:\n" >> "$tmpfile"
+  for i in $@; do
     echo "          - $i" >> "$tmpfile"
   done
   playbook "$tmpfile"
@@ -204,9 +208,16 @@ installit() {
   [[ ${#abilities_to_install[@]} -gt 0 ]] && install_ability ${abilities_to_install[@]}
 }
 
-#install_ability "." &&
-[ $# -gt 0 ] && installit "$@"
-#TODO: have a help printed when no arguments
-[ -n "$restart_shell" ] && \
+main(){
+  #install_ability "." &&
+  [ $# -gt 0 ] && installit "$@"
+  #TODO: have a help printed when no arguments
+  [ -n "$restart_shell" ] && \
     echo "Restarting $SHELL to update config..." && \
     exec $SHELL
+}
+
+if [[ "${BASH_SOURCE[0]}" == "${0}" ]]
+then
+    main
+fi
