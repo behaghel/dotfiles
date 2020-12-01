@@ -17,3 +17,11 @@ profile_script="../../install.sh"
   # echo "'" "$result" "'"
   [ "$result" == "a b c" ]
 }
+
+@test "read_list_from_file handles in-line comment" {
+  source ${profile_script}
+  local result
+  result=$(read_list_from_file ./data/needs_inline_comments | xargs)
+  echo "'""$result""'"
+  [ "$result" == "a b c" ]
+}

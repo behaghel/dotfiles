@@ -72,7 +72,7 @@ run_hook() {
 
 read_list_from_file() {
   # allow several item on one line (sep by space) and allow commenting out a line with #
-  cat $1 | egrep -v '^#' | sed 's/ /\n/g'
+  cat $1 | egrep -v '^#' | sed 's/[ \t]*#.*$//' | sed 's/ /\n/g'
 }
 
 is_ability() {
