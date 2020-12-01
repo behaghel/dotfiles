@@ -1,11 +1,14 @@
 #!/bin/bash
 
+set -e
+
 cd $HOME/install/git/emacs
-# ensure at least one deb-src in /etc/apt/sources.list
 sudo=''
 if (( $EUID != 0 )); then
     sudo='sudo'
 fi
+# ensure at least one deb-src in /etc/apt/sources.list
+$sudo sed -i '/deb-src/s/^# //' /etc/apt/sources.list && $sudo apt update
 $sudo apt-get build-dep emacs
 ./autogen.sh
 ./configure CFLAGS='-O3'
