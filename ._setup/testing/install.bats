@@ -25,3 +25,29 @@ profile_script="../../install.sh"
   echo "'""$result""'"
   [ "$result" == "a b c" ]
 }
+
+@test "is_ability detects abilities" {
+  source ${profile_script}
+  export DOTFILES_DIR=./data/dotfiles_for_test_1
+  is_ability "package"
+}
+
+@test "is_ability rejects non-abilities" {
+  source ${profile_script}
+  export DOTFILES_DIR=./data/dotfiles_for_test_1
+  [ -z $(is_ability "a") ]
+}
+
+@test "prepit handles multiple dependencies" {
+  source ${profile_script}
+  playbook() {
+    # xargs trims whitespace
+    tail -n 3 $1 | sed 's/^ \+- //' | tr '\n' ' ' | xargs
+  }
+  export -f playbook
+  export DOTFILES_DIR=./data/dotfiles_for_test_1
+  local result
+  result=$(install_deps "package")
+  echo "'""$result""'"
+  [ "$result" == "a b c" ]
+}

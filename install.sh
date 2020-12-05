@@ -79,22 +79,25 @@ is_ability() {
   #TODO: ankify bash tests and array membership and predicate functions and find
   #FIXME: why can't I lazy initialise abilities in another function?
   abilities=$(find $DOTFILES_DIR -maxdepth 1 -type d -not \( -name "$(basename $DOTFILES_DIR)" -o -name "$setup_dir_name" -o -name ".*" \) -exec basename {} ';')
-  [[ "$abilities" =~ "$1" ]] && echo "$1"
+  local re="\\b$1\\b"
+  [[ "$abilities" =~ $re ]] && echo "$1"
 }
 
 is_ansible_role() {
   echo "$1" | awk -F: '$1 ~ "ansible" {print $2}'
 }
 
-prepit() {
-  local i
-  ( [ "$i" == "." ] || git submodule update --init "$1")
+install_deps() {
   #TODO: allow for different dependencies on linux vs macos
-  needs=$DOTFILES_DIR/$1/$setup_dir_name/needs
+  local needs=$DOTFILES_DIR/$1/$setup_dir_name/needs
   [ -f $needs ] && \
     local deps=( $(read_list_from_file $needs) ) && \
-    [ -n "$deps" ] && installit $deps $1
+    [ -n "$deps" ] && installit $1 "${deps[@]}"
+}
 
+prepit() {
+  ( [ "$1" == "." ] || git submodule update --init "$1")
+  install_deps $1
   run_hook $1 "pre"
 }
 
@@ -182,8 +185,9 @@ installit() {
     echo "nothing to install"
     exit -1
   }
-  local install_list=$1
-  local requester=$2
+  local requester=$1
+  shift
+  local install_list=( "$@" )
   local abilities_to_install=()
   local ansible_roles=()
   local packages=()
@@ -203,14 +207,14 @@ installit() {
     fi
   done
 
-  [[ ${#packages[@]} -gt 0 ]] && install_package ${packages[@]}
   [[ ${#ansible_roles[@]} -gt 0 ]] && install_ansible ${ansible_roles[@]}
   [[ ${#abilities_to_install[@]} -gt 0 ]] && install_ability ${abilities_to_install[@]}
+  [[ ${#packages[@]} -gt 0 ]] && install_package ${packages[@]}
 }
 
 main(){
   #install_ability "." &&
-  [ $# -gt 0 ] && installit "$@"
+  [ $# -gt 0 ] && installit '_root_' "$@"
   #TODO: have a help printed when no arguments
   [ -n "$restart_shell" ] && \
     echo "Restarting $SHELL to update config..." && \

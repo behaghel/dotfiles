@@ -9,7 +9,7 @@ if (( $EUID != 0 )); then
 fi
 # ensure at least one deb-src in /etc/apt/sources.list
 # $sudo sed -i '/deb-src/s/^# //' /etc/apt/sources.list && $sudo apt update
-$sudo apt-get build-dep emacs
+$sudo apt-get -y build-dep emacs
 ./autogen.sh
 ./configure CFLAGS='-O3'
 make
