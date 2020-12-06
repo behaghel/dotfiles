@@ -96,7 +96,7 @@ install_deps() {
 }
 
 prepit() {
-  ( [ "$1" == "." ] || git submodule update --init --depth 1 -- "$1")
+  ( [ "$1" == "." ] || git submodule update --init "$1")
   install_deps $1
   run_hook $1 "pre"
 }
