@@ -96,7 +96,7 @@ install_deps() {
 }
 
 prepit() {
-  ( [ "$1" == "." ] || git submodule update --init "$1")
+  ( [ "$1" == "." ] || git submodule update --init --depth 1 -- "$1")
   install_deps $1
   run_hook $1 "pre"
 }
@@ -164,7 +164,7 @@ install_package() {
 }
 
 install_ability() {
-  local abis=$@
+  local abis=( $@ )
   [ ${#abis[@]} -gt 0 ] || { # nothing to install
     echo "nothing to install"
     exit -1
