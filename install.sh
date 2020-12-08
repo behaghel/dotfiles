@@ -134,8 +134,9 @@ wrapit() {
 
 playbook() {
   command_exists ansible-playbook || { install_ability ansible &&\
+    source ~/.config/profile.d/path.profile 2> /dev/null &&\
     source ~/.config/profile.d/python.profile 2> /dev/null;
-    # ensure python profile is loaded
+    # ensure python profile is loaded and pip executables are on PATH
   }
   # -K ask for sudo passwold
   # -b become sudo
