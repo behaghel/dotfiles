@@ -133,7 +133,10 @@ wrapit() {
 }
 
 playbook() {
-  command_exists ansible-playbook || install_ability ansible
+  command_exists ansible-playbook || { install_ability ansible &&\
+    source ~/.config/profile.d/python.profile 2> /dev/null;
+    # ensure python profile is loaded
+  }
   # -K ask for sudo passwold
   # -b become sudo
   # -i [file] inventory (prepackage with only localhost)
@@ -163,12 +166,14 @@ install_package() {
   playbook "$tmpfile"
 }
 
+noop() {
+    echo "nothing to install";
+    exit -1;
+}
+
 install_ability() {
   local abis=( $@ )
-  [ ${#abis[@]} -gt 0 ] || { # nothing to install
-    echo "nothing to install"
-    exit -1
-  }
+  [ ${#abis[@]} -gt 0 ] || noop
   # we treat "." as an ability but we don't stow it for obvious reasons
   local i
   for i in "${abis[@]}"; do
@@ -181,10 +186,7 @@ install_ability() {
 }
 
 installit() {
-  [ -n $1 ] || { # nothing to install
-    echo "nothing to install"
-    exit -1
-  }
+  [ -n $1 ] || noop
   local requester=$1
   shift
   local install_list=( "$@" )
