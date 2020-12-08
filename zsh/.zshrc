@@ -5,8 +5,12 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-source ~/.config/profile.d/*.profile
-source ~/.config/zsh.d/*.zsh
+for i in ~/.config/profile.d/*.profile; do
+  source $i
+done
+for i in ~/.config/zsh.d/*.zsh; do
+  source $i
+done
 
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
