@@ -4,6 +4,3 @@
 # own …and you never know
 #TODO: make it idempotent
 echo 'for i in $HOME/.config/profile.d/*.profile; do source $i; done' >> ~/.bashrc
-
-mkdir -p $HOME/tmp
-mkdir -p $HOME/ws
