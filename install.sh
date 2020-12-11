@@ -115,7 +115,7 @@ stowit() {
 
 wrapit() {
   provides=$DOTFILES_DIR/$1/$setup_dir_name/provides
-  [ -f $provides ] && \
+  [ -f $provides ] && systemctl &&\
     local services=( $(read_list_from_file $provides) ) && \
     systemctl --user daemon-reload && \
     for service in ${services[@]}; do
