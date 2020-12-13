@@ -40,7 +40,9 @@ failed_checkout() {
 }
 
 reload_context() {
-  source "$HOME"/.config/profile.d/*.profile
+  for i in "$HOME"/.config/profile.d/*.profile; do
+    source $i
+  done
 }
 
 checkout() {
@@ -102,15 +104,15 @@ prepit() {
 }
 
 stowit() {
-    #FIXME: nice try but triggers install_ability ansible which will
-    # want stow: infinite loop
-    #command_exists stow || install_package stow
+  #FIXME: nice try but triggers install_ability ansible which will
+  # want stow: infinite loop
+  #command_exists stow || install_package stow
 
-    # -v verbose
-    # -n DOTFILES_PRETEND but don't do anything
-    # -R recursive
-    # -t target
-    stow -v${DOTFILES_PRETEND:+ -n} -R -t ${HOME} --ignore ${setup_dir_name} $1
+  # -v verbose
+  # -n DOTFILES_PRETEND but don't do anything
+  # -R recursive
+  # -t target
+  stow -v${DOTFILES_PRETEND:+ -n} -R -t ${HOME} --ignore ${setup_dir_name} $1
 }
 
 wrapit() {
@@ -132,12 +134,13 @@ wrapit() {
   [ -d "$DOTFILES_DIR/$1/.config/profile.d/" ] && reload_context && restart_shell="true" || true
 }
 
+ensure_ansible() {
+  command_exists ansible-playbook || \
+    { install_ability ansible && reload_context }
+}
+
 playbook() {
-  command_exists ansible-playbook || { install_ability ansible &&\
-    source ~/.config/profile.d/path.profile 2> /dev/null &&\
-    source ~/.config/profile.d/python.profile 2> /dev/null;
-    # ensure python profile is loaded and pip executables are on PATH
-  }
+  ensure_ansible
   # -K ask for sudo passwold
   # -b become sudo
   # -i [file] inventory (prepackage with only localhost)
@@ -145,7 +148,7 @@ playbook() {
 }
 
 install_ansible() {
-  command_exists ansible-galaxy || install_ability ansible
+  ensure_ansible
   tmpfile=$(mktemp)
   echo -ne "---\n- hosts: all\n  roles:\n" >> "$tmpfile"
   for role in "${1[@]}"; do
@@ -168,8 +171,8 @@ install_package() {
 }
 
 noop() {
-    echo "nothing to install";
-    exit -1;
+  echo "nothing to install";
+  exit -1;
 }
 
 install_ability() {
@@ -226,5 +229,5 @@ main(){
 
 if [[ "${BASH_SOURCE[0]}" == "${0}" ]]
 then
-    main "$@"
+  main "$@"
 fi
