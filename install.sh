@@ -135,13 +135,14 @@ wrapit() {
 }
 
 ensure_ansible() {
-  command_exists ansible-playbook || \
-    { install_ability ansible && reload_context }
+  command_exists ansible-playbook || {
+    install_ability ansible && reload_context
+  }
 }
 
 playbook() {
   ensure_ansible
-  # -K ask for sudo passwold
+  # -K ask for sudo password
   # -b become sudo
   # -i [file] inventory (prepackage with only localhost)
   ansible-playbook -K -b${DOTFILES_PRETEND:+ --syntax-check} -i $DOTFILES_DIR/._setup/ansible/hosts "$1" && rm "$1"
@@ -227,7 +228,6 @@ main(){
     exec $SHELL
 }
 
-if [[ "${BASH_SOURCE[0]}" == "${0}" ]]
-then
+if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
   main "$@"
 fi
