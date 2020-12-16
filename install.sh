@@ -43,6 +43,7 @@ reload_context() {
   for i in "$HOME"/.config/profile.d/*.profile; do
     source $i
   done
+  echo "context reloaded"
 }
 
 checkout() {
@@ -98,7 +99,7 @@ install_deps() {
 }
 
 prepit() {
-  ( [ "$1" == "." ] || git submodule update --init "$1")
+  ( [ "$1" == "." ] || git submodule update --init "$1" )
   install_deps $1
   run_hook $1 "pre"
 }
@@ -116,6 +117,9 @@ stowit() {
 }
 
 wrapit() {
+  # if $DOTFILES_DIR/$1/.config/profile.d/ not empty, then reload shell
+  [ -d "$DOTFILES_DIR/$1/.config/profile.d/" ] && \
+    reload_context && restart_shell=true
   provides=$DOTFILES_DIR/$1/$setup_dir_name/provides
   [ -f $provides ] && systemctl &&\
     local services=( $(read_list_from_file $provides) ) && \
@@ -130,8 +134,6 @@ wrapit() {
     done
   run_hook $1 "post" || exit -5
   echo "$1 is ready."
-  # if $DOTFILES_DIR/$1/.config/profile.d/ not empty, then reload shell
-  [ -d "$DOTFILES_DIR/$1/.config/profile.d/" ] && reload_context && restart_shell="true" || true
 }
 
 ensure_ansible() {
