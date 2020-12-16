@@ -222,7 +222,7 @@ main(){
   #FIXME: restart_shell seems to get set in a subshell…
   # indeed one level of {} doesn't create subshell but any deeper
   # level will… unbelievable
-  [ -n $restart_shell ] && \
+  [ -n "$restart_shell" ] && \
     echo "Restarting $SHELL to update config..." && \
     exec $SHELL
 }
