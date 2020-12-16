@@ -43,7 +43,6 @@ reload_context() {
   for i in "$HOME"/.config/profile.d/*.profile; do
     source $i
   done
-  echo "context reloaded"
 }
 
 checkout() {
@@ -105,15 +104,13 @@ prepit() {
 }
 
 stowit() {
-  #FIXME: nice try but triggers install_ability ansible which will
-  # want stow: infinite loop
-  #command_exists stow || install_package stow
-
   # -v verbose
   # -n DOTFILES_PRETEND but don't do anything
   # -R recursive
   # -t target
-  stow -v${DOTFILES_PRETEND:+ -n} -R -t ${HOME} --ignore ${setup_dir_name} $1
+  # we treat "." as an ability but we don't stow it for obvious reasons
+  [ "$1" == "." ] || \
+    stow -v${DOTFILES_PRETEND:+ -n} -R -t ${HOME} --ignore ${setup_dir_name} $1
 }
 
 wrapit() {
@@ -181,13 +178,10 @@ noop() {
 install_ability() {
   local abis=( $@ )
   [ ${#abis[@]} -gt 0 ] || noop
-  # we treat "." as an ability but we don't stow it for obvious reasons
   local i
   for i in "${abis[@]}"; do
     run_hook $i "verify" || {
-      prepit $i && {
-        [ "$i" == "." ] || stowit $i
-      } && wrapit $i
+      prepit $i && stowit $i && wrapit $i;
     }
   done
 }
@@ -225,7 +219,10 @@ main(){
   #install_ability "." &&
   [ $# -gt 0 ] && installit '_root_' "$@"
   #TODO: have a help printed when no arguments
-  [ -n "$restart_shell" ] && \
+  #FIXME: restart_shell seems to get set in a subshell…
+  # indeed one level of {} doesn't create subshell but any deeper
+  # level will… unbelievable
+  [ -n $restart_shell ] && \
     echo "Restarting $SHELL to update config..." && \
     exec $SHELL
 }
