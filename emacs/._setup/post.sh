@@ -37,7 +37,7 @@ done
 # next follow https://wiki.debian.org/Exim4Gmail
 # org capture with grasp
 cd ~/install/git/grasp
-systemctl && server/setup --path $HOME/Dropbox/Documents/org/inbox.org  --template "\n** %U [[%:link][%:description]] %:tags
+$has_systemd && server/setup --path $HOME/Dropbox/Documents/org/inbox.org  --template "\n** %U [[%:link][%:description]] %:tags
 %:selection
 *** Comment
 %:comment"
