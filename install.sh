@@ -33,7 +33,7 @@ command_exists() {
 }
 
 restart_shell=""
-has_systemd=$(command_exists systemctl && systemctl || echo $?)
+has_systemd=$([ $(command_exists systemctl) ] && systemctl; echo $?)
 abilities=$(find $DOTFILES_DIR -maxdepth 1 -type d -not \( -name "$(basename $DOTFILES_DIR)" -o -name "$setup_dir_name" -o -name ".*" \) -exec basename {} ';')
 
 failed_checkout() {
@@ -118,7 +118,7 @@ wrapit() {
   [ -d "$DOTFILES_DIR/$1/.config/profile.d/" ] && \
     reload_context && restart_shell=true
   provides=$DOTFILES_DIR/$1/$setup_dir_name/provides
-  [ -f $provides ] && $has_systemd &&\
+  [ -f $provides ] && [ $has_systemd -eq 0 ] &&\
     local services=( $(read_list_from_file $provides) ) && \
     systemctl --user daemon-reload && \
     for service in ${services[@]}; do
