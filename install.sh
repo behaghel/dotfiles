@@ -33,7 +33,7 @@ command_exists() {
 }
 
 restart_shell=""
-has_systemd=$(command_exists systemctl && systemctl || return -1)
+has_systemd=$(command_exists systemctl && systemctl || echo $?)
 abilities=$(find $DOTFILES_DIR -maxdepth 1 -type d -not \( -name "$(basename $DOTFILES_DIR)" -o -name "$setup_dir_name" -o -name ".*" \) -exec basename {} ';')
 
 failed_checkout() {
