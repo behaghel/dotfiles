@@ -23,9 +23,6 @@ DOTFILES_REPO=${DOTFILES_REPO:-git@github.com:behaghel/dotfiles.git}
 BRANCH=${BRANCH:-master}
 setup_dir_name="._setup"
 restart_shell=""
-has_systemd=$(systemctl)
-abilities=$(find $DOTFILES_DIR -maxdepth 1 -type d -not \( -name "$(basename $DOTFILES_DIR)" -o -name "$setup_dir_name" -o -name ".*" \) -exec basename {} ';')
-
 [ -n "$DOTFILES_DEBUG" ] && set -x
 
 log() {
@@ -35,6 +32,10 @@ log() {
 command_exists() {
   command -v "$@" >> /dev/null 2>&1
 }
+
+has_systemd=$(command_exists systemctl && systemctl)
+abilities=$(find $DOTFILES_DIR -maxdepth 1 -type d -not \( -name "$(basename $DOTFILES_DIR)" -o -name "$setup_dir_name" -o -name ".*" \) -exec basename {} ';')
+
 
 failed_checkout() {
   echo "Failed to git clone $1"
