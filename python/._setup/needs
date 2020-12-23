@@ -1,3 +1,4 @@
 # KEEP EMPTY
 # python cannot have dependencies as it would create a circular dependency
-# on debian, the only requirement is build-essential
+# on debian, the only requirements are: build-essential, zlib1g-dev, libssl-dev
+# other interesting package related to python (dev): direnv
