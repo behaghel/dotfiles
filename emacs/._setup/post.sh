@@ -16,28 +16,10 @@ make
 $sudo make install
 make clean
 
-local_fonts_dir=$HOME/.local/share/fonts
-iosevka_version=3.6.1
-hasklig_version=1.1
-jetbrainsmono_version=2.001
-fonts=(
-https://github.com/be5invis/Iosevka/releases/download/v$iosevka_version/ttf-iosevka-$iosevka_version.zip
-https://github.com/i-tu/Hasklig/releases/download/$hasklig_version/Hasklig-$hasklig_version.zip
-https://download.jetbrains.com/fonts/JetBrainsMono-$jetbrainsmono_version.zip
-)
-mkdir -p $local_fonts_dir 2> /dev/null
-cd $local_fonts_dir
-# install apps available to local users and root
-for font in ${fonts[@]}; do
-  wget $font
-  unzip $(basename $font)
-  rm $(basename $font)
-done
-
 # next follow https://wiki.debian.org/Exim4Gmail
 # org capture with grasp
-has_systemd=$([ $(command -v systemctl) ] && systemctl; echo $?)
-[ $has_systemd -eq 0 ] && cd ~/install/git/grasp && \
+has_systemd=$([ $(command -v systemctl) ] && systemctl > /dev/null 2>&1; echo $?)
+[[ $has_systemd -eq 0 ]] && cd ~/install/git/grasp && \
   server/setup --path $HOME/Dropbox/Documents/org/inbox.org\
                --template "\n** %U [[%:link][%:description]] %:tags
 %:selection

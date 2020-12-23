@@ -31,9 +31,11 @@ log() {
 command_exists() {
   command -v "$@" >> /dev/null 2>&1
 }
+export -f command_exists
 
 restart_shell=""
 abilities=$(find $DOTFILES_DIR -maxdepth 1 -type d -not \( -name "$(basename $DOTFILES_DIR)" -o -name "$setup_dir_name" -o -name ".*" \) -exec basename {} ';')
+has_systemd=$([ $(command_exists systemctl) ] && systemctl; echo $?)
 
 failed_checkout() {
   echo "Failed to git clone $1"
@@ -45,6 +47,7 @@ reload_context() {
     source $i
   done
 }
+export -f reload_context
 
 checkout() {
   command_exists git || install_ability git
@@ -77,6 +80,7 @@ read_list_from_file() {
   # allow several item on one line (sep by space) and allow commenting out a line with #
   cat $1 | egrep -v '^#' | sed 's/[ \t]*#.*$//' | sed 's/ /\n/g'
 }
+export -f read_list_from_file
 
 is_ability() {
   #TODO: ankify bash tests and array membership and predicate functions and find
@@ -96,9 +100,28 @@ install_deps() {
     [ -n "$deps" ] && installit $1 "${deps[@]}"
 }
 
+install_fonts() {
+  local fonts_file=$DOTFILES_DIR/$1/$setup_dir_name/fonts
+  [ -f $fonts_file ] && \
+    local fonts=( $(read_list_from_file $fonts_file) ) || return 0
+  local_fonts_dir=$HOME/.local/share/fonts
+  mkdir -p $local_fonts_dir 2> /dev/null
+  cd $local_fonts_dir
+  # install apps available to local users and root
+  local font
+  local font_url
+  for font_url in ${fonts[@]}; do
+    wget $font_url
+    font=$(basename $font_url)
+    [[ "$font" == *zip ]] && unzip $font
+    rm $(basename $font)
+  done
+}
+
 prepit() {
   ( [ "$1" == "." ] || git submodule update --init "$1" )
   install_deps $1
+  install_fonts $1
   run_hook $1 "pre"
 }
 
@@ -117,7 +140,6 @@ wrapit() {
   [ -d "$DOTFILES_DIR/$1/.config/profile.d/" ] && \
     reload_context && restart_shell=true
   provides=$DOTFILES_DIR/$1/$setup_dir_name/provides
-  has_systemd=$([ $(command_exists systemctl) ] && systemctl; echo $?)
   [ -f $provides ] && [ $has_systemd -eq 0 ] &&\
     local services=( $(read_list_from_file $provides) ) && \
     systemctl --user daemon-reload && \
