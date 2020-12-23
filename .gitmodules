@@ -13,9 +13,6 @@
 [submodule "zsh/.oh-my-zsh/custom/themes/powerlevel10k"]
 	path = zsh/.oh-my-zsh/custom/themes/powerlevel10k
 	url = git://github.com/romkatv/powerlevel10k.git
-[submodule "javascript/.pyenv/plugins/xxenv-latest"]
-	path = javascript/.pyenv/plugins/xxenv-latest
-	url = https://github.com/momo-lab/xxenv-latest.git
 [submodule "tmux/.oh-my-tmux"]
 	path = tmux/.oh-my-tmux
 	url = https://github.com/gpakosz/.tmux.git
