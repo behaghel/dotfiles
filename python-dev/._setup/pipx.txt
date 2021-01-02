@@ -1,21 +1,21 @@
-# --include-deps jupyterlab
+--include-deps jupyter
 # argcomplete
 # autoflake
 # awscli
 # gimme-aws-creds
 pipenv
 cookiecutter
-git-up
+# git-up
 httpie
 # docformatter
 # emacs-keys-everywhere
 # jupyter-console
 # pip-tools
-poetry
+# poetry
 # powerline-status
-pre-commit
-pyment
-python-language-server
-tox
-nox
-twine
+# pre-commit
+# pyment
+# python-language-server
+# tox
+# nox
+# twine

@@ -13,4 +13,4 @@ for plugin in "${plugins[@]}"; do
   git clone https://github.com/$plugin "$plugin_dir"
 done
 
-pip3 install --user pipx
+PIP_REQUIRE_VIRTUALENV="" pip3 install --user pipx

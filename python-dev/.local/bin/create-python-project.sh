@@ -9,6 +9,7 @@ project_slug=$(echo "$project_name" | iconv -t ascii//TRANSLIT | sed -r s/[^a-zA
 cd ~/ws
 
 pyenv virtualenv $(pyenv latest --print) "$project_slug"
+
 cookiecutter https://github.com/audreyfeldroy/cookiecutter-pypackage.git "project_name=$project_name" "project_slug=$project_slug"
 cd "$project_slug"
 pyenv local "$project_slug"

@@ -1,12 +1,20 @@
-# pip
-# cookiecutter
+pip
+isort
+docformatter
+black
+autoflake
+pyment
+cookiecutter
+ipykernel
+jupyter
+jupyter-console
+pytest
+mypy
+
 # pip-tools
 # ipdb
 # importmagic
 # black
 # bump2version
 # flake8
-# isort
-# mypy
-# pytest
 # pytest-cov
