@@ -1,0 +1,11 @@
+
+[Unit]
+Description=Grasp extension server conterpart
+
+[Install]
+WantedBy=default.target
+
+[Service]
+ExecStart=/home/behaghel/.dotfiles/emacs/install/git/grasp/server/grasp_server.py --port 12212 --path /home/behaghel/Dropbox/Documents/org/inbox.org --template '\n** %%U [[%%:link][%%:description]] %%:tags\n%%:selection\n*** Comment\n%%:comment'
+Type=simple
+Restart=always
