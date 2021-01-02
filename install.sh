@@ -132,7 +132,7 @@ stowit() {
   # -t target
   # we treat "." as an ability but we don't stow it for obvious reasons
   [ "$1" == "." ] || \
-    stow -v${DOTFILES_PRETEND:+ -n} -R -t ${HOME} --ignore ${setup_dir_name} $1
+    stow -v${DOTFILES_PRETEND:+ -n} -R -t ${HOME} --no-folding --ignore ${setup_dir_name} $1
 }
 
 wrapit() {
