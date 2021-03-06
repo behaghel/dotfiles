@@ -106,7 +106,7 @@ install_fonts() {
     local fonts=( $(read_list_from_file $fonts_file) ) || return 0
   local_fonts_dir=$HOME/.local/share/fonts
   mkdir -p $local_fonts_dir 2> /dev/null
-  cd $local_fonts_dir
+  pushd $local_fonts_dir
   # install apps available to local users and root
   local font
   local font_url
@@ -116,6 +116,7 @@ install_fonts() {
     [[ "$font" == *zip ]] && unzip $font
     rm $(basename $font)
   done
+  popd
 }
 
 prepit() {
