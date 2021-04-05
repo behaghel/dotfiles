@@ -141,7 +141,7 @@ wrapit() {
   [ -d "$DOTFILES_DIR/$1/.config/profile.d/" ] && \
     reload_context && restart_shell=true
   provides=$DOTFILES_DIR/$1/$setup_dir_name/provides
-  [ -f $provides ] && [ $has_systemd -eq 0 ] &&\
+  [ -f $provides ] && [ $has_systemd -eq 0 ] &&\
     local services=( $(read_list_from_file $provides) ) && \
     systemctl --user daemon-reload && \
     for service in ${services[@]}; do
