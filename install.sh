@@ -68,7 +68,9 @@ hook_file() {
 
 run_hook() {
   local hook=$(hook_file $1 $2)
-  if [ "$2" == 'verify' -a ! -x $hook ]; then
+  if [ "$2" == 'verify' -a -n "$DOTFILES_FORCE" ]; then
+    false
+  elif [ "$2" == 'verify' -a ! -x $hook ]; then
     command_exists $1 && echo "command $1 exists already"
     # default verification: check is command named like the ability exists
   else
