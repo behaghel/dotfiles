@@ -52,3 +52,6 @@
 [submodule "._setup/testing/libs/bats-core"]
 	path = ._setup/testing/libs/bats-core
 	url = https://github.com/bats-core/bats-core.git
+[submodule ".password-store"]
+	path = .password-store
+	url = git@gitlab.com:behaghel/pass.git
