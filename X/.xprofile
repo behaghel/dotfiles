@@ -1,0 +1,4 @@
+# i3 uses $TERMINAL on $mod+Return
+export TERMINAL=termite
+# otherwise firefox doesn't scroll with touch screen
+export MOZ_USE_XINPUT2=1

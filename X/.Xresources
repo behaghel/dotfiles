@@ -1,13 +1,20 @@
 ! Xft
-Xft.dpi:                96
-Xft.antialias:          true
+! this controls firefox among other apps
+!Xft.dpi:                96
+Xft.antialias:          1
 Xft.rgba:               rgb
-Xft.hinting:            true
+Xft.autohint:           0
+Xft.lcdfilter:          lcddefault
+Xft.hinting:            1
 Xft.hintstyle:          hintslight
+!Xft.hintstyle:          hintmedium
+!Xft.hintstyle:          hintfull
 
 ! Typography
 URxvt*letterSpace:      -1
-URxvt*font:             xft:MesloLGS NF-16
+URxvt*font:             xft:Iosevka:pixelsize=18
+! URxvt*font:             xft:JetBrainsMono Nerd Font:pixelsize=12
+
 
 ! Colors
 #define S_base03        #002b36
@@ -104,6 +111,7 @@ URxvt*saveLines:        12000
 ! URxvt.visualBell:     true
 !
 ! Perl extensions
-URxvt.perl-ext-common:      default,matcher
+URxvt.perl-ext-common:      default,matcher,clipboard
 URxvt.matcher.button:       1
-URxvt.urlLauncher:          sensible-browser
+URxvt.url-launcher:         xdg-open
+URxvt.clipboard.autocopy:   true
