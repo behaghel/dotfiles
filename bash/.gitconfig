@@ -15,6 +15,7 @@
 	extendRegexp = true
 	lineNumber = true
 [user]
+        name = Hubert Behaghel
 	email = behaghel@gmail.com
 	signingkey = 99C4064A79317DDE
 [filter "hawser"]

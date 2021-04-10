@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # set up ZSH
 # APT update upgrade install list from install.apt goes here

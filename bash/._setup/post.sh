@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-ln -s "$HOME/.local/bin" "$HOME/bin"
+# ln -s "$HOME/.local/bin" "$HOME/bin"
 
 # we don't provide our own ~/.profile as systems tend to have their
 # own …and you never know
