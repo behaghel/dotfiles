@@ -20,7 +20,9 @@ in {
   home.homeDirectory = "/home/hub";
 
   # TODO: DRY
-  home.file.".direnvrc".source = ../../../bash/.direnvrc;
+  # technically that should look like
+  # home.file.".config".source = ../../../bash/.config;
+  # home.file.".config".recursive = true;
   home.file.".gitconfig".source = ../../../bash/.gitconfig;
   home.file.".lesskey".source = ../../../bash/.lesskey;
   home.file.".ctags".source = ../../../bash/.ctags;
@@ -89,15 +91,19 @@ in {
   xdg.configFile."zsh.d/gpg.zsh".source = ../../../zsh/.config/zsh.d/gpg.zsh;
   xdg.configFile."zsh.d/bepo.zsh".source = ../../../zsh/.config/zsh.d/bepo.zsh;
 
-  # required for nix, nix.el, python…
+  # required for nix, nix.el, lorri, python…
   programs.direnv = {
     enable = true;
     enableZshIntegration = true;
     # enableNixDirenvIntegration = true;
   };
+  xdg.configFile."direnv".source = ../../../bash/.direnvrc;
 
   services.dropbox.enable = true;
   services.dunst.enable = true;
+
+  # https://github.com/nix-community/lorri
+  services.lorri.enable = true;
 
   # This value determines the Home Manager release that your
   # configuration is compatible with. This helps avoid breakage
