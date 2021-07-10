@@ -12,7 +12,7 @@ let
         # websocket_client for wee-slack and dbus-python for notifications
         (python.withPackages (ps: with ps; [ websocket_client dbus-python ]))
       ];
-    scripts = [ weechat-matrix ];
+    scripts = [ pkgs.weechatScripts.weechat-matrix ];
     };
   };
 in {
