@@ -1,0 +1,9 @@
+default_context:
+    full_name: "Hubert Behaghel"
+    email: "behaghel@gmail.com"
+    github_username: "behaghel"
+    version: "0.1.0"
+    use_pytest: "y"
+    use_pypi_deployment_with_travis: "n"
+    add_pyup_badge: "n"
+cookiecutters_dir: "~/.cookiecutters/"

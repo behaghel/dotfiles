@@ -1,0 +1,14 @@
+
+[Unit]
+Description=Dropbox
+After=local-fs.target network.target
+
+[Install]
+WantedBy=default.target
+
+[Service]
+Type=simple
+#ExecStart=/home/behaghel/bin/dropbox.py start
+ExecStart=/usr/bin/env "/home/behaghel/.dropbox-dist/dropboxd"
+Restart=on-failure
+RestartSec=1

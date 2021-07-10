@@ -1,0 +1,21 @@
+--include-deps jupyter
+# argcomplete
+# autoflake
+# awscli
+# gimme-aws-creds
+pipenv
+cookiecutter
+# git-up
+httpie
+# docformatter
+# emacs-keys-everywhere
+# jupyter-console
+# pip-tools
+# poetry
+# powerline-status
+# pre-commit
+# pyment
+# python-language-server
+# tox
+# nox
+# twine

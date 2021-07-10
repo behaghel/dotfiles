@@ -1,0 +1,13 @@
+[Desktop Entry]
+Name=PharoLauncher
+GenericName=Pharo Launcher
+Comment=The Computer Revolution is waiting for you!
+TryExec=pharo-launcher
+Exec=pharo-launcher %F
+Terminal=false
+Type=Application
+Keywords=SmallTalk;Pharo;Code
+Icon=/home/behaghel/install/pharolauncher/icons/pharo-launcher.png
+Categories=Development
+StartupNotify=false
+MimeType=image/*

@@ -1,0 +1,4 @@
+# debian
+libjansson-dev
+unzip # to install fonts
+pinentry-gnome3

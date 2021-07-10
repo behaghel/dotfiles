@@ -1,37 +1,24 @@
-#!/bin/sh
-# this is a very basic script:
-#   no uninstall
-#   no partial install (eg without oh-my-zsh)
-#   need to be run from local dir
+#!/usr/bin/env bash
+# You can tweak the install behavior by setting variables when running the script. For
+# example, to change the path to the Oh My Zsh repository:
+#   DOTFILES_DIR=$HOME/.config/dotfiles sh install.sh
+#
+# Dependencies:
+#   - git must be installed with your SSH keys in place for checking
+#     out your dotfiles
+#
+# Respects the following environment variables:
+#   BRANCH  - branch to check out immediately after install (default: master)
+#
+# Other options:
+#   DOTFILES_DIR  - path to the dotfiles dir
+#   DOTFILES_REPO - origin of the dotfiles git repository
+#   DOTFILES_PRETEND - if not empty will not modify the system
+#
+set -e
 
-user_cfg_dir=$HOME/.config
+source $(dirname $0)/setup.sh
 
-echo "the following should have been installed manually:"
-echo "- https://github.com/ohmyzsh/ohmyzsh"
-echo "- https://github.com/gpakosz/.tmux"
-
-mkdir -p $user_cfg_dir
-
-ln -s $PWD/profile.d $user_cfg_dir/profile.d 2> /dev/null
-# TODO: automate this
-echo "To load your shell environment, add the following to your .profile"
-echo "source $HOME/.config/profile.d/*.profile"
-ln -s $PWD/zsh.d $user_cfg_dir/zsh.d 2> /dev/null
-
-for i in `cat .tobedotlinked`; do
-  ln -s $PWD/$i ~/.$i
-done
-
-# oh-my-zsh XXX not useful since we embed my full zshrc.
-#wget --no-check-certificate https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | sh
-
-# vim
-# uncomment if you want vim-plugins. requires git. TODO make it an option with getopts.
-#mkdir ~/.vim-plugins
-#cd ~/.vim-plugins
-#git clone git://github.com/MarcWeber/vim-addon-manager.git
-#cd ~
-#git clone git://github.com/behaghel/.vim.git
-
-
-
+if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
+  main "$@"
+fi

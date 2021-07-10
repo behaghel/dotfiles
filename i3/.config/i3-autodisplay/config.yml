@@ -1,0 +1,8 @@
+displays:
+  - name: eDP-1
+    workspaces: [1]
+    randr_extra_options: "--pos 3200x0"
+  - name: HDMI-1
+    workspaces: [2]
+    #randr_extra_options: "--mode 2560x1440R --left-of eDP-1 --dpi 165"
+    randr_extra_options: "--mode 2560x1440R --scale 1.25x1.25 --dpi 192"
