@@ -43,6 +43,9 @@ in {
     aspell aspellDicts.en aspellDicts.fr
     emojione
     libnotify
+    # other apps
+    kitty
+    firefox
   ];
 
   programs.zsh = {
