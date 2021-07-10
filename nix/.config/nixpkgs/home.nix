@@ -4,7 +4,7 @@ let
   # weechat-matrix broken in stable: can't find matrix_helper_sso
   # still broken in unstable but less so: it now wants me to identify
   # myself only through facebook/google/...
-  weechat-matrix = pkgs.python3Packages.callPackage <nixos-unstable/pkgs/applications/networking/irc/weechat/scripts/weechat-matrix> {};
+  weechat-matrix = pkgs.python3Packages.callPackage <nixpkgs/pkgs/applications/networking/irc/weechat/scripts/weechat-matrix> {};
   weechat = pkgs.weechat.override { configure = { availablePlugins, ... }: {
     plugins = with availablePlugins; [
         # PodParser for Pod::Select.pm for menu.pl for spell suggestions
