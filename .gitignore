@@ -16,3 +16,4 @@ sbt/*/staging
 /macos/karabiner/automatic_backups
 /mail/Maildir/*/**
 .python-version
+/weechat/.weechat/logs/
