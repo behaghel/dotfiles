@@ -10,10 +10,9 @@
     };
   };
 
-  outputs = { self, nixpkgs, homeManager, nur }: {
-    let {
-      home = import ./nix/.config/nixpkgs/home.nix;
-    } in {
+  outputs = { self, nixpkgs, homeManager, nur }:
+    let home = import ./nix/.config/nixpkgs/home.nix;
+    in {
       homeConfigurations = {
         "hub@dell-laptop" = homeManager.lib.homeManagerConfiguration {
           configuration = home;
@@ -28,8 +27,7 @@
         };
       };
       home = {
-        hub = config;
-      }
-    }
-  };
+        hub = home;
+      };
+    };
 }
