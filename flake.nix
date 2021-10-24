@@ -11,18 +11,25 @@
   };
 
   outputs = { self, nixpkgs, homeManager, nur }: {
-    homeConfigurations = {
-      "hub@dell-laptop" = homeManager.lib.homeManagerConfiguration {
-        configuration = import ./nix/.config/nixpkgs/home.nix;
-        pkgs = import nixpkgs {
+    let {
+      home = import ./nix/.config/nixpkgs/home.nix;
+    } in {
+      homeConfigurations = {
+        "hub@dell-laptop" = homeManager.lib.homeManagerConfiguration {
+          configuration = home;
+          pkgs = import nixpkgs {
+            system = "x86_64-linux";
+            overlays = [ nur.overlay ];
+          };
           system = "x86_64-linux";
-          overlays = [ nur.overlay ];
+          homeDirectory = "/home/hub";
+          username = "hub";
+          stateVersion = "21.05";
         };
-        system = "x86_64-linux";
-        homeDirectory = "/home/hub";
-        username = "hub";
-        stateVersion = "21.05";
       };
-    };
+      home = {
+        hub = config;
+      }
+    }
   };
 }
