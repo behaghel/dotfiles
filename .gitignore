@@ -16,3 +16,5 @@ sbt/*/staging
 /macos/karabiner/automatic_backups
 /mail/Maildir/*/**
 .python-version
+/weechat/.weechat/logs/
+/i3/._setup/i3-autodisplay/result
