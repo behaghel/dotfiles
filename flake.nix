@@ -1,12 +1,12 @@
 {
   description = "hub's home";
 
+  # Nix User Repository: user-contributed packages
   inputs.nur.url = "github:nix-community/NUR";
 
-  outputs = { self, nixpkgs, nur}: {
+  outputs = { self, nixpkgs, nur }: {
     nixosModules = {
-      # User configuration for desktop
-      home = {
+      dotfiles = {
         imports = [
           ./nix/.config/nixpkgs/home.nix
           { nixpkgs.overlays = [ nur.overlay ]; }
