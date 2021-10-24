@@ -107,7 +107,7 @@ in {
     enableZshIntegration = true;
     # enableNixDirenvIntegration = true;
   };
-  xdg.configFile."direnv".source = ../../../bash/.direnvrc;
+  xdg.configFile."direnv/direnvrc".source = ../../../bash/.direnvrc;
 
   services.dropbox.enable = true;
   services.dunst.enable = true;
