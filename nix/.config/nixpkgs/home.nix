@@ -46,6 +46,7 @@ in {
     # other apps
     kitty
     firefox
+    hello
   ];
 
   programs.zsh = {
