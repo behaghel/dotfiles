@@ -8,7 +8,7 @@
     nixosModules = {
       dotfiles = {
         imports = [
-          ./nix/.config/nixpkgs/home.nix
+          (./nix/.config/nixpkgs/home.nix)
           { nixpkgs.overlays = [ nur.overlay ]; }
         ];
       };
