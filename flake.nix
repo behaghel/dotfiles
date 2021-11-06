@@ -5,7 +5,7 @@
   inputs = {
     nur.url = "github:nix-community/NUR";
     home-manager = {
-      url = "github:nix-community/home-manager";
+      url = "github:nix-community/home-manager/release-21.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
@@ -13,7 +13,6 @@
   outputs = { self, nixpkgs, home-manager, nur, ...}@inputs:
     let
       system = "x86_64-linux";
-      defaultHubHomeNix = import ./nix/.config/nixpkgs/home.nix;
       pkgs = import nixpkgs {
         inherit system;
         config = import ./nix/.config/nixpkgs/config.nix;
@@ -23,24 +22,20 @@
       inherit (nixpkgs) lib;
       util = import ./._setup/nix/lib {
         inherit system pkgs home-manager lib;
-        overlay = (pkgs.overlays);
+        overlays = (pkgs.overlays);
       };
       inherit (util) user;
       inherit (util) host;
     in {
-      homeConfigurations = {
+      homeManagerConfigurations = {
         "hub@dell-laptop" = user.mkHMUser {
+          username = "hub";
           userConfig = {
             git.enable = true;
+            desktop.enable = true;
+            nix.lorri = true;
           };
         };
-        # homeManager.lib.homeManagerConfiguration {
-        #   configuration = defaultHubHomeNix;
-        #   inherit system
-        #   homeDirectory = "/home/hub";
-        #   username = "hub";
-        #   stateVersion = "21.05";
-        # };
       };
       nixosConfigurations = {
         dell-laptop = host.mkHost {

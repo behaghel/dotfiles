@@ -33,7 +33,10 @@ with builtins;
           # home.stateVersion = "21.05";
           # home.username = username;
           # homeDirectory = "/home/${username}";
-          imports = [ ../../.. machineModule ];
+          imports = [
+            ../../.. # default user modules
+            machineModule
+          ];
         };
       homeDirectory = "/home/${username}";
     };

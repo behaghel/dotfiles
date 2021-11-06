@@ -13,13 +13,13 @@ in {
 
     userName = mkOption {
       description = "user's name for git";
-      type = types.string;
+      type = types.str;
       default = "behaghel";
     };
 
     userEmail = mkOption {
       description = "user's email for git";
-      type = types.string;
+      type = types.str;
       default = "behaghel@gmail.com";
     };
   };

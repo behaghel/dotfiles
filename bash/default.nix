@@ -1,0 +1,40 @@
+{ pkgs, config, lib, ... }:
+with lib;
+
+let
+  cfg = config.hub.bash;
+in {
+  options.hub.bash = {
+    enable = mkOption {
+      description = "Enable bash";
+      type = types.bool;
+      default = true;
+    };
+
+    direnv = mkOption {
+      description = "Enable my direnv config";
+      type = types.bool;
+      default = true;
+    };
+  };
+
+  config = mkIf (cfg.enable) {
+    # TODO: DRY
+    # technically that should look like
+    # home.file.".config".source = ./.config;
+    # home.file.".config".recursive = true;
+    home.file.".lesskey".source = ./.lesskey;
+    home.file.".ctags".source = ./.ctags;
+    home.file.".aliases".source = ./.aliases;
+    xdg.configFile."profile.d/hub.profile".source = ./.config/profile.d/hub.profile;
+    xdg.configFile."profile.d/zz_path.profile".source = ./.config/profile.d/zz_path.profile;
+
+
+    programs.direnv = {
+      enable = cfg.direnv;
+      enableZshIntegration = config.hub.zsh.enable;
+      # enableNixDirenvIntegration = true;
+    };
+    xdg.configFile."direnv/direnvrc".source = ./.direnvrc;
+  };
+}
