@@ -83,7 +83,7 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(branch git pass pip pyenv pipenv virtualenv direnv sbt scala zsh-syntax-highlighting zsh-autosuggestions)
+plugins=(branch git pass pip pyenv pipenv virtualenv sbt scala zsh-syntax-highlighting zsh-autosuggestions)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -122,3 +122,4 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=23'
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+if [ -e $HOME/.nix-profile/etc/profile.d/nix.sh ]; then . $HOME/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
