@@ -9,7 +9,7 @@
             <array>
                 <string>/bin/sh</string>
                 <string>-c</string>
-                <string>/Users/C3923946/.pyenv/shims/python $HOME/ws/grasp/server/grasp_server.py --path=$HOME/Dropbox/Documents/org/inbox.org</string>
+                <string>/Users/C3923946/.pyenv/shims/python $HOME/ws/grasp/server/grasp_server.py --path=$HOME/Dropbox/Documents/org/inbox.org --template "** %U %:description %:tags\n%:link\n%:initial\n"</string>
                 <!--<string>/Users/C3923946/.pyenv/shims/python</string>-->
                 <!--<string>/Users/C3923946/ws/grasp/server/grasp_server.py</string>-->
                 <!--<string>--path=/Users/C3923946/Dropbox/Documents/org/inbox.org</string>-->

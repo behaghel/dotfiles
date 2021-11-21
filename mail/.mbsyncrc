@@ -42,9 +42,9 @@ Master :gmail-remote:"[Gmail]/All Mail"
 Slave :gmail-local:archive
 Patterns  "*"
 Create Both
-Expunge Both
+Expunge Slave
 CopyArrivalDate yes
-Sync All
+Sync Push
 
 Channel gmail-sent
 Master :gmail-remote:"[Gmail]/Sent Mail"
@@ -95,10 +95,10 @@ Subfolders Verbatim
 Path ~/Maildir/mns/
 Inbox ~/Maildir/mns/INBOX
 
-Channel mns
+Channel mns-inbox
 Master :mns-remote:
 Slave :mns-local:
-Patterns "INBOX" "*" "!Drafts" "!Sent" "!Archive" !drafts !sent !archive
+Patterns "INBOX" "*" "!Drafts" "!Sent" "!Archive" "!Junk" !drafts !sent !archive
 Create Slave
 Expunge Slave
 CopyArrivalDate yes
