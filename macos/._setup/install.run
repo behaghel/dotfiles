@@ -1,0 +1,35 @@
+sh <(curl -L https://nixos.org/nix/install) --darwin-use-unencrypted-nix-store-volume --daemon
+
+#create nix.conf attached and 
+export NIX_CONF_DIR="/Users/hub/install"
+# not sure it's necessary in 2.4+
+nix-env -iA nixpkgs.nixFlakes
+
+# since it was my first time configure a macos with nix, 
+# I used a little help
+mkdir nix-typeform-macbook && cd nix-typeform-macbook
+nix flake init -t github:vic/mk-darwin-system
+# in the future I shall merge this into my nixfiles
+
+nix build --show-trace
+echo 'run	private/var/run' | sudo tee -a /etc/synthetic.conf
+/System/Library/Filesystems/apfs.fs/Contents/Resources/apfs.util -t
+sudo mv /etc/nix/nix.conf /etc/nix/nix.conf.old
+nix run
+
+# install rosetta by lauching a (gui) app that needs it
+# then system asks you
+# I did that by going to Applications > Utilities > 
+# right click on Terminal, "duplicate" 
+# then Get Info then tick launch with rosetta then launched it
+
+# Firefox
+# I had to launch it with 
+# open  -n ~/Applications/Firefox.app --args -P home (or ’work’)
+# then go in settings to activate extensions the first time
+# then go to Vimium wiki to copy paste bépo mappings in Vimium Options
+
+# git and dotfiles
+# login to Dropbox via Firefox
+# download and uncompress relevant archives
+
