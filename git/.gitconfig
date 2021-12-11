@@ -31,5 +31,6 @@
 
 [includeIf "gitdir:~/ws/mns/"]
     path = ~/ws/mns/.gitconfig
+
 [init]
 	defaultBranch = main
