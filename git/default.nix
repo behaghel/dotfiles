@@ -22,6 +22,12 @@ in {
       type = types.str;
       default = "behaghel@gmail.com";
     };
+
+    github = mkOption {
+      description = "Enable github tooling";
+      type = types.bool;
+      default = false;
+    };
   };
 
   config = mkIf (cfg.enable) {
@@ -29,18 +35,12 @@ in {
       enable = true;
       userName = cfg.userName;
       userEmail = cfg.userEmail;
-      extraConfig = {
-        credential.helper = "${
-          pkgs.git.override { withLibsecret = true; }
-        }/bin/git-credential-libsecret";
-      };
     };
 
     home.file.".gitconfig".source = ./.gitconfig;
 
-    # pass-git-helper
     home.packages = with pkgs; [
-      pass-git-helper
+      gh              # TODO: condition this to github option above
     ];
     xdg.configFile."pass-git-helper/git-pass-mapping.ini".source = .config/pass-git-helper/git-pass-mapping.ini;
   };
