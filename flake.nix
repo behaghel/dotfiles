@@ -5,6 +5,7 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/21.11";
     nur.url = "github:nix-community/NUR";
+    nur.inputs.nixpkgs.follows = "nixpkgs";
     home-manager = {
       url = "github:nix-community/home-manager/release-21.05";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -114,6 +115,13 @@
                 enable = true;
                 userName = "Hubert Behaghel";
                 userEmail = "behaghel@gmail.com";
+              };
+              home.file.".vim".source = ./vim/.vim;
+              programs.password-store = {
+                enable = true;
+		settings = { 
+                  PASSWORD_STORE_DIR = "$HOME/.password-store";
+                };
               };
               programs.zsh.enable = true;
               programs.firefox = {

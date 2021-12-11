@@ -1,10 +1,5 @@
 {
   "nodes": {
-<<<<<<< HEAD
-    "home-manager": {
-      "inputs": {
-        "nixpkgs": [
-=======
     "flake-utils": {
       "locked": {
         "lastModified": 1638122382,
@@ -21,6 +16,27 @@
       }
     },
     "home-manager": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1638281721,
+        "narHash": "sha256-d3vAVFG6zov9NwjSuYntBiD+I5KjJLwX09c7uAzbONI=",
+        "owner": "nix-community",
+        "repo": "home-manager",
+        "rev": "7329ffc6e911106494183557fc249180d5422929",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "ref": "release-21.05",
+        "repo": "home-manager",
+        "type": "github"
+      }
+    },
+    "home-manager_2": {
       "inputs": {
         "nixpkgs": [
           "mk-darwin-system",
@@ -41,45 +57,10 @@
         "type": "github"
       }
     },
-    "homeManager": {
-      "inputs": {
-        "nixpkgs": [
->>>>>>> 91b8ef3 (Typeform machine: I am doing it properly on macOS this time)
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-<<<<<<< HEAD
-        "lastModified": 1634544068,
-        "narHash": "sha256-RlRQBaAHfdWqfRyHdWuDPMkplBTYwuyDQqDcNbP/Sog=",
-        "owner": "nix-community",
-        "repo": "home-manager",
-        "rev": "ff2bed9dac84fb202bbb3c49fdcfe30c29d0b12f",
-=======
-        "lastModified": 1639223729,
-        "narHash": "sha256-C+OYsFVCNZwzQ4ShMBTJaFS489auGr42cDrceckKpXc=",
-        "owner": "nix-community",
-        "repo": "home-manager",
-        "rev": "6fe3b539e057feadbf94e845412f4b438260690b",
->>>>>>> 91b8ef3 (Typeform machine: I am doing it properly on macOS this time)
-        "type": "github"
-      },
-      "original": {
-        "owner": "nix-community",
-<<<<<<< HEAD
-        "ref": "release-21.05",
-=======
->>>>>>> 91b8ef3 (Typeform machine: I am doing it properly on macOS this time)
-        "repo": "home-manager",
-        "type": "github"
-      }
-    },
-<<<<<<< HEAD
-=======
     "mk-darwin-system": {
       "inputs": {
         "flake-utils": "flake-utils",
-        "home-manager": "home-manager",
+        "home-manager": "home-manager_2",
         "nix-darwin": "nix-darwin",
         "nixpkgs": [
           "nixpkgs"
@@ -121,7 +102,6 @@
         "type": "github"
       }
     },
->>>>>>> 91b8ef3 (Typeform machine: I am doing it properly on macOS this time)
     "nixpkgs": {
       "locked": {
         "lastModified": 1638239011,
@@ -140,11 +120,11 @@
     },
     "nur": {
       "locked": {
-        "lastModified": 1635061961,
-        "narHash": "sha256-5NqbwkGi4EGobrYZYqsWKjpfqCJn0dIn0NWj625RSKc=",
+        "lastModified": 1639224323,
+        "narHash": "sha256-jZLJrHfzJDBAx44aNvqE5y4qXVs+rBRfLPQTBaUrsdk=",
         "owner": "nix-community",
         "repo": "NUR",
-        "rev": "f50850b1e860a87ae725bf9209fbdc6fb0a9657c",
+        "rev": "d19c0c8fdf20f52a0d6a0ed08256682727eb70a7",
         "type": "github"
       },
       "original": {
@@ -155,12 +135,8 @@
     },
     "root": {
       "inputs": {
-<<<<<<< HEAD
         "home-manager": "home-manager",
-=======
-        "homeManager": "homeManager",
         "mk-darwin-system": "mk-darwin-system",
->>>>>>> 91b8ef3 (Typeform machine: I am doing it properly on macOS this time)
         "nixpkgs": "nixpkgs",
         "nur": "nur"
       }
