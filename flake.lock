@@ -1,37 +1,141 @@
 {
   "nodes": {
+<<<<<<< HEAD
     "home-manager": {
       "inputs": {
         "nixpkgs": [
+=======
+    "flake-utils": {
+      "locked": {
+        "lastModified": 1638122382,
+        "narHash": "sha256-sQzZzAbvKEqN9s0bzWuYmRaA03v40gaJ4+iL1LXjaeI=",
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "rev": "74f7e4319258e287b0f9cb95426c9853b282730b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "type": "github"
+      }
+    },
+    "home-manager": {
+      "inputs": {
+        "nixpkgs": [
+          "mk-darwin-system",
           "nixpkgs"
         ]
       },
       "locked": {
+        "lastModified": 1638571010,
+        "narHash": "sha256-KSO7u13VRLdklQTKYJaBSfVcurEvw+HifAsHR7V2i5E=",
+        "owner": "nix-community",
+        "repo": "home-manager",
+        "rev": "781d25b315def05cd7ede3765226c54216f0b1fe",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "home-manager",
+        "type": "github"
+      }
+    },
+    "homeManager": {
+      "inputs": {
+        "nixpkgs": [
+>>>>>>> 91b8ef3 (Typeform machine: I am doing it properly on macOS this time)
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+<<<<<<< HEAD
         "lastModified": 1634544068,
         "narHash": "sha256-RlRQBaAHfdWqfRyHdWuDPMkplBTYwuyDQqDcNbP/Sog=",
         "owner": "nix-community",
         "repo": "home-manager",
         "rev": "ff2bed9dac84fb202bbb3c49fdcfe30c29d0b12f",
+=======
+        "lastModified": 1639223729,
+        "narHash": "sha256-C+OYsFVCNZwzQ4ShMBTJaFS489auGr42cDrceckKpXc=",
+        "owner": "nix-community",
+        "repo": "home-manager",
+        "rev": "6fe3b539e057feadbf94e845412f4b438260690b",
+>>>>>>> 91b8ef3 (Typeform machine: I am doing it properly on macOS this time)
         "type": "github"
       },
       "original": {
         "owner": "nix-community",
+<<<<<<< HEAD
         "ref": "release-21.05",
+=======
+>>>>>>> 91b8ef3 (Typeform machine: I am doing it properly on macOS this time)
         "repo": "home-manager",
         "type": "github"
       }
     },
-    "nixpkgs": {
+<<<<<<< HEAD
+=======
+    "mk-darwin-system": {
+      "inputs": {
+        "flake-utils": "flake-utils",
+        "home-manager": "home-manager",
+        "nix-darwin": "nix-darwin",
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
       "locked": {
-        "lastModified": 1625905697,
-        "narHash": "sha256-gM4sBtguedJrQorU+YzT64/yTdm8Dzyzk4zHfhVqwFc=",
-        "path": "/nix/store/p0n2d9swr2xc5iww1f32g83q7bkl2vld-source",
-        "rev": "54db964a8b8505d0ea2b0c6dee9e6e51bf05246c",
-        "type": "path"
+        "lastModified": 1638855889,
+        "narHash": "sha256-htLxwYjR4Dqi9i76soGPlA4Istp/hwOiBnzBeh2ZCZE=",
+        "owner": "vic",
+        "repo": "mk-darwin-system",
+        "rev": "65ac2d71dd13c62ab863ab2434b418d654404da1",
+        "type": "github"
       },
       "original": {
-        "id": "nixpkgs",
-        "type": "indirect"
+        "owner": "vic",
+        "ref": "v0.2.0",
+        "repo": "mk-darwin-system",
+        "type": "github"
+      }
+    },
+    "nix-darwin": {
+      "inputs": {
+        "nixpkgs": [
+          "mk-darwin-system",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1634994402,
+        "narHash": "sha256-xmlCVVOYGpZoxgOqsDOVF0B0ASrnbNGVAEzID9qh2xo=",
+        "owner": "lnl7",
+        "repo": "nix-darwin",
+        "rev": "44da835ac40dab5fd231298b59d83487382d2fab",
+        "type": "github"
+      },
+      "original": {
+        "owner": "lnl7",
+        "repo": "nix-darwin",
+        "type": "github"
+      }
+    },
+>>>>>>> 91b8ef3 (Typeform machine: I am doing it properly on macOS this time)
+    "nixpkgs": {
+      "locked": {
+        "lastModified": 1638239011,
+        "narHash": "sha256-AjhmbT4UBlJWqxY0ea8a6GU2C2HdKUREkG43oRr3TZg=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "a7ecde854aee5c4c7cd6177f54a99d2c1ff28a31",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "ref": "21.11",
+        "repo": "nixpkgs",
+        "type": "github"
       }
     },
     "nur": {
@@ -51,7 +155,12 @@
     },
     "root": {
       "inputs": {
+<<<<<<< HEAD
         "home-manager": "home-manager",
+=======
+        "homeManager": "homeManager",
+        "mk-darwin-system": "mk-darwin-system",
+>>>>>>> 91b8ef3 (Typeform machine: I am doing it properly on macOS this time)
         "nixpkgs": "nixpkgs",
         "nur": "nur"
       }
