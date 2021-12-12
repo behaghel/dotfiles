@@ -33,3 +33,7 @@ nix run
 # login to Dropbox via Firefox
 # download and uncompress relevant archives
 
+cd ~/.dotfiles/vim # git init submodule .vim there (I screwed up with git submodule update --init which init *ALL* submodules in this repo...)
+cd ~
+ln -s ~/.dotfiles/vim/.vim
+# then same submodule init and symlink from ~ for pass
