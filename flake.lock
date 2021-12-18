@@ -104,16 +104,16 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1638239011,
-        "narHash": "sha256-AjhmbT4UBlJWqxY0ea8a6GU2C2HdKUREkG43oRr3TZg=",
+        "lastModified": 1639239143,
+        "narHash": "sha256-9fFMUs6m3/4ZMflSqRgO4iEkBtFBnDyLWa3AB2tOvfs=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "a7ecde854aee5c4c7cd6177f54a99d2c1ff28a31",
+        "rev": "e6df26a654b7fdd59a068c57001eab5736b1363c",
         "type": "github"
       },
       "original": {
         "owner": "nixos",
-        "ref": "21.11",
+        "ref": "nixpkgs-unstable",
         "repo": "nixpkgs",
         "type": "github"
       }
@@ -155,7 +155,8 @@
         "mk-darwin-system": "mk-darwin-system",
         "nixpkgs": "nixpkgs",
         "nur": "nur",
-        "spacebar": "spacebar"
+        "spacebar": "spacebar",
+        "yabai-src": "yabai-src"
       }
     },
     "spacebar": {
@@ -174,6 +175,23 @@
         "owner": "cmacrae",
         "ref": "v1.3.0",
         "repo": "spacebar",
+        "type": "github"
+      }
+    },
+    "yabai-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1639654108,
+        "narHash": "sha256-Lzim9h9aZopS7BjLzGghZQpgHx183psTLHCM9ndJCXo=",
+        "owner": "koekeishiya",
+        "repo": "yabai",
+        "rev": "f403e609e32b4100494c5afb089d0010e7e4ef91",
+        "type": "github"
+      },
+      "original": {
+        "owner": "koekeishiya",
+        "ref": "master",
+        "repo": "yabai",
         "type": "github"
       }
     }

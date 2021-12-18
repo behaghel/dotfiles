@@ -3,7 +3,7 @@
 
   # Nix User Repository: user-contributed packages
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/21.11";
+    nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     nur.url = "github:nix-community/NUR";
     nur.inputs.nixpkgs.follows = "nixpkgs";
     home-manager = {
@@ -12,6 +12,10 @@
     };
 
     spacebar.url = "github:cmacrae/spacebar/v1.3.0";
+    yabai-src = {
+      url = "github:koekeishiya/yabai/master";
+      flake = false;
+    };
     mk-darwin-system.url = "github:vic/mk-darwin-system/v0.2.0";
     mk-darwin-system.inputs.nixpkgs.follows = "nixpkgs";
   };
@@ -113,6 +117,7 @@
                  enableWindowsFonts = true;
                  fonts = [ "Iosevka" "FiraCode" "Inconsolata" "JetBrainsMono" "Hasklig" "Meslo" "Noto" ];
                 })
+                font-awesome
               ];
               # the modern way in NixOS: fontDir.enable = true;
               enableFontDir = true;
@@ -124,24 +129,24 @@
               package = pkgs.yabai;
               enableScriptingAddition = true;
               config = {
-                focus_follows_mouse = "autoraise";
-                mouse_follows_focus = "off";
-                mouse_drop_action = "stack";
                 window_placement = "second_child";
-                window_opacity = "off";
+                window_opacity = "on";
                 window_topmost = "on";
-                window_shadow = "float";
+                window_shadow = "on";
                 window_border = "on";
-                window_border_width = 5;
-                active_window_border_color = "0xff81a1c1";
-                normal_window_border_color = "0xff3b4252";
+                # window_border_width = 5;
+                # active_window_border_color = "0xff81a1c1";
+                # normal_window_border_color = "0xff3b4252";
                 active_window_opacity = "1.0";
-                normal_window_opacity = "1.0";
+                normal_window_opacity = "0.9";
                 split_ratio = "0.50";
                 auto_balance = "on";
                 mouse_modifier = "fn";
                 mouse_action1 = "move";
                 mouse_action2 = "resize";
+                focus_follows_mouse = "autoraise";
+                mouse_follows_focus = "off";
+                mouse_drop_action = "stack";
                 layout = "bsp";
                 top_padding = 10;
                 bottom_padding = 10;
@@ -156,7 +161,7 @@
                 yabai -m rule --add app='Emacs' title='.*Minibuf.*' manage=off border=off
                 '';
             };
-            launchd.user.agents.yabai.serviceConfig.StandardErrorPath = "/tmp/yabai.log";
+            launchd.user.agents.yabai.serviceConfig.StandardErrorPath = "/tmp/yabai.err.log";
             launchd.user.agents.yabai.serviceConfig.StandardOutPath = "/tmp/yabai.log";
 
             # Spacebar
@@ -217,7 +222,11 @@
           # An example of user environment. Change your username.
           ({ pkgs, lib, ... }: {
             home-manager.users."hub" = {
-              home.packages = with pkgs; [ neofetch pandoc wget ];
+              home.packages = with pkgs; [ 
+              neofetch pandoc wget 
+              # macos only
+              terminal-notifier
+              ];
               home.file.".config/foo".text = "bar";
               home.file."Library/Keyboard Layouts/bepo.keylayout".source = ./macos/Library + "/Keyboard\ Layouts/bepo.keylayout";
               programs = {
@@ -271,7 +280,7 @@
                   browsers = [ "firefox" ];
                 };
                 kitty = {
-                  enable = true;
+                  enable = false; # see https://github.com/NixOS/nixpkgs/pull/137512
                   settings = {
                     font_size = (if pkgs.stdenv.isDarwin then 14 else 12);
                     strip_trailing_spaces = "smart";
@@ -313,6 +322,26 @@
                      src = nivSources.Firefox;
                    };
                  })
+                 (final: prev: {
+                  yabai = let
+                    version = "4.0.0-dev";
+                    buildSymlinks = prev.runCommand "build-symlinks" { } ''
+                      mkdir -p $out/bin
+                      ln -s /usr/bin/xcrun /usr/bin/xcodebuild /usr/bin/tiffutil /usr/bin/qlmanage $out/bin
+                    '';
+                  in prev.yabai.overrideAttrs (old: {
+                    inherit version;
+                    src = inputs.yabai-src;
+                    buildInputs = with prev.darwin.apple_sdk.frameworks; [
+                      Carbon
+                      Cocoa
+                      ScriptingBridge
+                      prev.xxd
+                      SkyLight
+                    ];
+                    nativeBuildInputs = [ buildSymlinks ];
+                  });
+                })
                ];
 
             # You can enable supported services (if they work on arm and are not linux only)

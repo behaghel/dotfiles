@@ -37,3 +37,6 @@ cd ~/.dotfiles/vim # git init submodule .vim there (I screwed up with git submod
 cd ~
 ln -s ~/.dotfiles/vim/.vim
 # then same submodule init and symlink from ~ for pass
+
+# for Yabai I had to disable System Integrity Protection
+# https://github.com/koekeishiya/yabai/wiki/Disabling-System-Integrity-Protection
