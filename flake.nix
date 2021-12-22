@@ -34,7 +34,7 @@
           #  ./modules/user-two-module.nix
           # Or you can inline them here, eg.
 
-          # for configurable nix-darwin modules see 
+          # for configurable nix-darwin modules see
           # https://github.com/LnL7/nix-darwin/blob/master/modules/module-list.nix
           ({ config, pkgs, ... }: {
             environment.systemPackages = with pkgs; [ niv hello ];
@@ -220,15 +220,21 @@
           }
 
           # An example of user environment. Change your username.
-          ({ pkgs, lib, ... }: {
-            home-manager.users."hub" = {
-              home.packages = with pkgs; [ 
-              neofetch pandoc wget 
-              # macos only
-              terminal-notifier
+          ({ pkgs, lib, config, ... }: {
+            home-manager.users.hub = {
+              #home.homeDirectory = "/Users/hub";
+              home.packages = with pkgs; [
+                neofetch pandoc wget
+                # macos only
+                terminal-notifier
               ];
               home.file.".config/foo".text = "bar";
               home.file."Library/Keyboard Layouts/bepo.keylayout".source = ./macos/Library + "/Keyboard\ Layouts/bepo.keylayout";
+              # Emacs
+              home.file.".emacs.d".source = ./emacs/emacs.d;
+              programs.emacs = {
+                enable = true;
+              };
               programs = {
                 git = {
                   enable = true;
@@ -238,11 +244,10 @@
                 # FIXME: it's empty in the store home.file.".vim".source = ./vim/.vim;
                 password-store = {
                   enable = true;
-		              settings = { 
+		              settings = {
                     PASSWORD_STORE_DIR = "$HOME/.password-store";
                   };
                 };
-                zsh.enable = true;
                 firefox = {
                   enable = true;
                   package = pkgs.Firefox;
@@ -252,7 +257,7 @@
                     org-capture
                     vimium
                   ];
-                  profiles = 
+                  profiles =
                     let settings = {
                       "app.update.auto" = false;
                     };
@@ -295,7 +300,31 @@
                     name = "JetBrains Mono";
                   };
                 };
+                alacritty = {
+                  enable = true;
+                  settings = {
+                    # to make Option (alt) work on macOS
+                    alt_send_esc = false;
+                    font = {
+                      size = 15; # 14 creates glitches on p10k prompt
+                      normal.family = "MesloLGS NF"; # p10k recommends
+                    };
+                  };
+                };
               };
+
+              # Emacs
+              # FIXME: rework all my other git repo that need to be in ~
+              # home.file.".emacs.d".source = ./emacs/emacs.d;
+              programs.emacs = {
+                enable = true;
+              };
+
+              imports = [
+                ./bash # FIXME: has to be here for ./zsh to work
+                ./zsh
+              ];
+              hub.zsh.enable = true;
 
               # Link apps installed by home-manager.
               home.activation = {
@@ -372,8 +401,8 @@
           };
         };
       };
-      nixosConfigurations = 
-      let 
+      nixosConfigurations =
+      let
         system = "x86_64-linux";
         pkgs = import nixpkgs {
           inherit system;

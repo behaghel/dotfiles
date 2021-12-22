@@ -1,6 +1,8 @@
 { pkgs, config, lib, ... }:
 with lib;
 
+# TODO: it's not really bash, it's shell, a precursor to any shell env
+# currently if I enable my zsh module without this, it breaks it
 let
   cfg = config.hub.bash;
 in {
