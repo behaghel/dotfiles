@@ -228,9 +228,15 @@
               };
               extraConfig = pkgs.lib.mkDefault ''
                 # rules
+                yabai -m rule --add app='About This Mac' manage=off
+                yabai -m rule --add app='System Information' manage=off
                 yabai -m rule --add app='System Preferences' manage=off
-                yabai -m rule --add app='Emacs' title='.*Minibuf.*' manage=off border=off
+                yabai -m rule --add app='zoom.us' manage=off
+                yabai -m rule --add app=emacs-27.2 manage=on
+                yabai -m rule --add label=emacs app=Emacs manage=on
                 '';
+                # zoom.us simply crashes if its windows are managed by yabai...
+                # yabai -m rule --add app='Emacs' title='.*Minibuf.*' manage=off border=off
             };
             launchd.user.agents.yabai.serviceConfig.StandardErrorPath = "/tmp/yabai.err.log";
             launchd.user.agents.yabai.serviceConfig.StandardOutPath = "/tmp/yabai.log";
