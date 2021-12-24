@@ -181,11 +181,11 @@
     "yabai-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1639654108,
-        "narHash": "sha256-Lzim9h9aZopS7BjLzGghZQpgHx183psTLHCM9ndJCXo=",
+        "lastModified": 1640297514,
+        "narHash": "sha256-xrq3Wr07qWrUggcmPmrC1NWyVeTPUlZ+XX5AnQ+ujBY=",
         "owner": "koekeishiya",
         "repo": "yabai",
-        "rev": "f403e609e32b4100494c5afb089d0010e7e4ef91",
+        "rev": "18985a1c44039c34ca9580c165810f1b32084eb8",
         "type": "github"
       },
       "original": {
