@@ -6,6 +6,7 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     nur.url = "github:nix-community/NUR";
     nur.inputs.nixpkgs.follows = "nixpkgs";
+    emacs-overlay.url = "github:nix-community/emacs-overlay";
     home-manager = {
       url = "github:nix-community/home-manager/release-21.05";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -20,7 +21,7 @@
     mk-darwin-system.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { self, nixpkgs, home-manager, mk-darwin-system, nur, spacebar, ...}@inputs:
+  outputs = { self, nixpkgs, home-manager, mk-darwin-system, nur, emacs-overlay, spacebar, ...}@inputs:
     let
       home = import ./nix/.config/nixpkgs/home.nix;
       darwinFlakeOutput = mk-darwin-system.mkDarwinSystem.m1 {
@@ -400,6 +401,40 @@
               # home.file.".emacs.d".source = ./emacs/emacs.d;
               programs.emacs = {
                 enable = true;
+                package =
+                  let
+                    # TODO: derive 'name' from assignment
+                    elPackage = name: src:
+                      pkgs.runCommand "${name}.el" { } ''
+            mkdir -p  $out/share/emacs/site-lisp
+            cp -r ${src}/* $out/share/emacs/site-lisp/
+          '';
+                  in
+                    (
+                      pkgs.emacsWithPackagesFromUsePackage {
+                        alwaysEnsure = true;
+                        # alwaysTangle = true;
+
+                        # Custom overlay derived from 'emacs' flake input
+                        package = pkgs.emacs;
+                        config = ./emacs/.emacs.d/init.el;
+
+                        override = epkgs: epkgs // {
+                          mu4e-dashboard = elPackage "mu4e-dashboard" (
+                            pkgs.fetchFromGitHub {
+                              owner = "rougier";
+                              repo = "mu4e-dashboard";
+                              rev = "40b2d48da55b7ac841d62737ea9cdf54e8442cf3";
+                              sha256 = "1i94gdyk9f5c2vyr184znr54cbvg6apcq38l2389m3h8lxg1m5na";
+                            }
+                          );
+                        };
+
+                        extraEmacsPackages = epkgs: with epkgs; [
+                          mu4e-dashboard
+                        ];
+                      }
+                    );
               };
 
               imports = [
