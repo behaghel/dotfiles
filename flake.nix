@@ -6,13 +6,11 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     nur.url = "github:nix-community/NUR";
     nur.inputs.nixpkgs.follows = "nixpkgs";
-    emacs-overlay.url = "github:nix-community/emacs-overlay";
+    # emacs-overlay.url = "github:nix-community/emacs-overlay";
     home-manager = {
       url = "github:nix-community/home-manager/release-21.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    spacebar.url = "github:cmacrae/spacebar/v1.3.0";
     yabai-src = {
       url = "github:koekeishiya/yabai/master";
       flake = false;
@@ -21,7 +19,7 @@
     mk-darwin-system.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { self, nixpkgs, home-manager, mk-darwin-system, nur, emacs-overlay, spacebar, ...}@inputs:
+  outputs = { self, nixpkgs, home-manager, mk-darwin-system, nur, ...}@inputs:
     let
       home = import ./nix/.config/nixpkgs/home.nix;
       darwinFlakeOutput = mk-darwin-system.mkDarwinSystem.m1 {
@@ -150,7 +148,7 @@
                   NSAutomaticCapitalizationEnabled     = false;
                   NSAutomaticSpellingCorrectionEnabled = false;
                   NSAutomaticPeriodSubstitutionEnabled = false;
-                  _HIHideMenuBar                       = true;
+                  # _HIHideMenuBar                       = true;
                   NSNavPanelExpandedStateForSaveMode = true;
                   NSNavPanelExpandedStateForSaveMode2 = true;
                   # Enable full keyboard access for all controls
@@ -196,11 +194,17 @@
             };
 
             # Yabai
+            # csrutil enable --without fs --without debug --without nvram
+            # nvram boot-args=-arm64e_preview_abi
+            environment.etc."sudoers.d/yabai".text = ''
+              hub ALL = (root) NOPASSWD: ${pkgs.yabai}/bin/yabai --load-sa
+            ''; # TODO: don't hardcode user 'hub'
             services.yabai = {
               enable = true;
               package = pkgs.yabai;
               enableScriptingAddition = true;
               config = {
+                debug_output = "on";
                 window_placement = "second_child";
                 window_opacity = "on";
                 window_topmost = "on";
@@ -216,7 +220,7 @@
                 mouse_modifier = "fn";
                 mouse_action1 = "move";
                 mouse_action2 = "resize";
-                focus_follows_mouse = "autoraise";
+                # focus_follows_mouse = "autoraise";
                 mouse_follows_focus = "off";
                 mouse_drop_action = "stack";
                 layout = "bsp";
@@ -225,7 +229,7 @@
                 left_padding = 10;
                 right_padding = 10;
                 window_gap = 10;
-                external_bar = "main:26:0";
+                # external_bar = "main:26:0";
               };
               extraConfig = pkgs.lib.mkDefault ''
                 # rules
@@ -242,48 +246,6 @@
             launchd.user.agents.yabai.serviceConfig.StandardErrorPath = "/tmp/yabai.err.log";
             launchd.user.agents.yabai.serviceConfig.StandardOutPath = "/tmp/yabai.log";
 
-            # Spacebar
-            services.spacebar.enable = true;
-            services.spacebar.package = pkgs.spacebar;
-            services.spacebar.config = {
-              # general
-              debug_output = "on";
-              display = "all";
-              position = "top";
-              background_color = "0xff222222";
-              foreground_color = "0xffd8dee9";
-              text_font = ''"Roboto Mono:Regular:12.0"'';
-              icon_font = ''"Font Awesome 5 Free:Solid:12.0"'';
-              # spaces (left)
-              space_icon = "•";
-              space_icon_color = "0xffffab91";
-              space_icon_color_secondary = "0xff78c4d4";
-              space_icon_color_tertiary = "0xfffff9b0";
-              space_icon_strip = "1 2 3 4 5 6 7 8 9 10";
-              spaces_for_all_displays = "on";
-              display_separator = "on";
-              display_separator_icon = "";
-              # info (right)
-              clock_format = "%R";
-              clock_icon = "";
-              clock_icon_color = "0xffd8dee9";
-              dnd_icon = "";
-              dnd_icon_color = "0xffd8dee9";
-              power_icon_strip = " ";
-              power_icon_color = "0xffd8dee9";
-              battery_icon_color = "0xffd8dee9";
-              right_shell = "on";
-              right_shell_icon = "";
-              right_shell_icon_color = "0xffd8dee9";
-              # TODO: print # unread emails
-              right_shell_command = "whoami";
-            };
-
-            #launchd.user.agents.spacebar.serviceConfig.EnvironmentVariables.PATH = pkgs.lib.mkForce
-            #  (builtins.replaceStrings [ "$HOME" ] [ config.users.users.hub.home ] config.environment.systemPath);
-            launchd.user.agents.spacebar.serviceConfig.StandardErrorPath = "/tmp/spacebar.err.log";
-            launchd.user.agents.spacebar.serviceConfig.StandardOutPath = "/tmp/spacebar.out.log";
-
             # skhd
             services.skhd.enable = true;
             services.skhd.skhdConfig = builtins.readFile ./macos/._setup/skhd.conf;
@@ -292,6 +254,9 @@
             # Recreate /run/current-system symlink after boot
             services.activate-system.enable = true;
           })
+
+          ./macos/._setup/services/sketchybar
+          ./macos/._setup/darwin/sketchybar
 
           # or configurable home-manager modules see:
           # https://github.com/nix-community/home-manager/blob/master/modules/modules.nix
@@ -368,7 +333,7 @@
                   browsers = [ "firefox" ];
                 };
                 kitty = {
-                  enable = false; # see https://github.com/NixOS/nixpkgs/pull/137512
+                  enable = true; # see https://github.com/NixOS/nixpkgs/pull/137512
                   settings = {
                     font_size = (if pkgs.stdenv.isDarwin then 14 else 12);
                     strip_trailing_spaces = "smart";
@@ -388,6 +353,7 @@
                   settings = {
                     # to make Option (alt) work on macOS
                     alt_send_esc = false;
+                    mouse_bindings = [{ mouse = "Middle"; action = "PasteSelection";}];
                     font = {
                       size = 15; # 14 creates glitches on p10k prompt
                       normal.family = "MesloLGS NF"; # p10k recommends
@@ -455,40 +421,11 @@
           # for configurable nixos modules see (note that many of them might be linux-only):
           # https://github.com/NixOS/nixpkgs/blob/master/nixos/modules/module-list.nix
           ({ lib, ... }: {
-            # You can provide an overlay for packages not available or that fail to compile on arm.
-             nixpkgs.overlays = let nivSources = import ./macos/._setup/nix/sources.nix;
-               in [
-                 nur.overlay
-                 spacebar.overlay
-                 (new: old: {
-                   inherit (nixpkgs.legacyPackages.x86_64-darwin) pandoc niv;
-
-                   Firefox = lib.mds.installNivDmg {
-                     name = "Firefox";
-                     src = nivSources.Firefox;
-                   };
-                 })
-                 (final: prev: {
-                  yabai = let
-                    version = "4.0.0-dev";
-                    buildSymlinks = prev.runCommand "build-symlinks" { } ''
-                      mkdir -p $out/bin
-                      ln -s /usr/bin/xcrun /usr/bin/xcodebuild /usr/bin/tiffutil /usr/bin/qlmanage $out/bin
-                    '';
-                  in prev.yabai.overrideAttrs (old: {
-                    inherit version;
-                    src = inputs.yabai-src;
-                    buildInputs = with prev.darwin.apple_sdk.frameworks; [
-                      Carbon
-                      Cocoa
-                      ScriptingBridge
-                      prev.xxd
-                      SkyLight
-                    ];
-                    nativeBuildInputs = [ buildSymlinks ];
-                  });
-                })
-               ];
+            nixpkgs.overlays = import ./macos/._setup/overlay.nix {
+              pkgsX86 = nixpkgs.legacyPackages.x86_64-darwin;
+              inherit (lib.mds) installNivDmg;
+              inherit nur;
+            };
 
             # You can enable supported services (if they work on arm and are not linux only)
             #services.lorri.enable = true;

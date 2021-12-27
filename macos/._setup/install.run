@@ -55,3 +55,5 @@ ln -s ~/.dotfiles/vim/.vim
 # map N Vomnibar.activateTabSelection
 # map ( previousTab
 # map ) nextTab
+
+mu init --maildir=~/Mail --my-address=behaghel@gmail.com --my-address=hubert.behaghel@typeform.com
