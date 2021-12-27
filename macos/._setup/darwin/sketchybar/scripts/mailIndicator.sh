@@ -1,9 +1,6 @@
 #!/usr/bin/env bash
-RUNNING=$(osascript -e 'if application "Mail" is running then return 0')
-COUNT=0
-
-if [ $RUNNING == 0 ]; then
-  COUNT=$(osascript -e 'tell application "Mail" to return the unread count of inbox')
+COUNT=$(/etc/profiles/per-user/hub/bin/mu find flag:unread | sort | uniq  | wc -l | tr -d ' ')
+if [ $? == 0 ]; then
   sketchybar -m --set $NAME label="$COUNT"
 else
   sketchybar -m --set $NAME label=

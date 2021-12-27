@@ -5,7 +5,7 @@ let scripts = ./scripts;
 in
 
 {
-  environment.systemPackages = [ pkgs.jq ];
+  environment.systemPackages = [ pkgs.jq pkgs.gh ];
   launchd.user.agents.sketchybar.serviceConfig = {
     StandardErrorPath = "/tmp/sketchybar.log";
     StandardOutPath = "/tmp/sketchybar.log";
@@ -37,36 +37,46 @@ sketchybar -m --default updates=when_shown                    \
 sketchybar -m --default label.padding_left=2  \
                         label.padding_right=2 \
                         icon.padding_left=8   \
-                        label.padding_right=8
+                        icon.padding_right=8
 
 ############## PRIMARY DISPLAY SPACES ##############
-sketchybar -m --add space code left                              \
-              --set code associated_space=1                      \
+sketchybar -m --add space perso left                             \
+              --set perso associated_space=1                     \
                          associated_display=1                    \
                          icon.font="Hack Nerd Font:Bold:20.0"    \
-                         icon=                                  \
+                         icon=                                  \
                          icon.highlight_color=0xff48aa2a         \
-                         label=code                              \
+                         label=perso                             \
                          click_script="yabai -m space --focus 1" \
                                                                  \
-              --add space tex left                               \
-              --set tex  associated_display=1                    \
+              --add space emacs left                             \
+              --set emacs  associated_display=1                  \
                          associated_space=2                      \
-                         icon.highlight_color=0xfffab402         \
-                         icon=                                  \
-                         label=tex                               \
-                         click_script="yabai -m space --focus 2"
+                         icon.highlight_color=0xffc065db         \
+                         icon.font="file-icons:Regular:20.0"     \
+                         icon=                                 \
+                         label=emacs                             \
+                         click_script="yabai -m space --focus 2" \
+                                                                 \
+              --add space work left                              \
+              --set work  associated_display=1                   \
+                         associated_space=3                      \
+                         icon.highlight_color=0xffffce20         \
+                         icon.font="Hack Nerd Font:Bold:20.0"    \
+                         icon=                                 \
+                         label=work                             \
+                         click_script="yabai -m space --focus 3"
 
 
 ############## SECONDARY DISPLAY SPACES ##############
-sketchybar -m --add space misc left                              \
-              --set misc associated_display=2                    \
+sketchybar -m --add space diary left                             \
+              --set diary associated_display=2                   \
                          associated_space=5                      \
                          icon.font="Hack Nerd Font:Bold:20.0"    \
-                         icon=                                  \
+                         icon=                                  \
                          icon.highlight_color=0xff48aa2a         \
                          icon.padding_left=0                     \
-                         label=misc                              \
+                         label=diary                             \
                          click_script="yabai -m space --focus 5"
 
 ############## ITEM DEFAULTS ###############
@@ -79,48 +89,47 @@ sketchybar -m --default label.padding_left=2  \
 ############## LEFT ITEMS ##############
 sketchybar -m --add item space_separator left                                                  \
               --set space_separator  icon=                                                    \
-                                     associated_space=1                                        \
-                                     associated_space=3                                        \
+                                     associated_space=1,2,3                                    \
                                      icon.padding_left=15                                      \
                                      label.padding_right=15                                    \
                                      icon.font="Hack Nerd Font:Bold:15.0"                      \
                                                                                                \
               --add item gitNotifications left                                                 \
-              --set gitNotifications associated_space=1                                        \
+              --set gitNotifications associated_space=2                                        \
                                      update_freq=300                                           \
                                      icon.font="Hack Nerd Font:Bold:18.0"                      \
                                      icon=                                                    \
-                                     script="${scripts}/gitNotifications.sh" \
+                                     script="${scripts}/gitNotifications.sh"                   \
                                      click_script="open https://github.com/notifications"      \
               --subscribe gitNotifications system_woke                                         \
                                                                                                \
               --add item githubIndicator left                                                  \
-              --set githubIndicator  associated_space=1                                        \
+              --set githubIndicator  associated_space=2                                        \
                                      update_freq=1000                                          \
                                      icon.font="Hack Nerd Font:Bold:18.0"                      \
-                                     icon=                                                    \
+                                     icon=                                                    \
                                      click_script="open https://github.com"                    \
-                                     script="${scripts}/githubIndicator.sh"  \
+                                     script="${scripts}/githubIndicator.sh"                    \
               --subscribe githubIndicator system_woke                                          \
                                                                                                \
               --add item topmem left                                                           \
-              --set topmem           associated_space=1                                        \
+              --set topmem           associated_space=1,2,3,5                                  \
                                      icon.padding_left=10                                      \
                                      update_freq=15                                            \
                                      script="${scripts}/topmem.sh"
 ##
 ############## RIGHT ITEMS ##############
-sketchybar -m --add item clock right                                                                  \
-              --set clock         update_freq=10                                                      \
-                                  script="${scripts}/clock.sh"                      \
-                                                                                                      \
-              --add item mailIndicator right                                                          \
-              --set mailIndicator associated_space=1,2,3                                              \
-                                  update_freq=30                                                      \
-                                  script="${scripts}/mailIndicator.sh"              \
-                                  icon.font="Hack Nerd Font:Bold:20.0"                                \
-                                  icon=                                                              \
-                                  click_script="osascript -e 'tell application \"Mail\" to activate'"
+sketchybar -m --add item clock right                                                          \
+              --set clock         update_freq=10                                              \
+                                  script="${scripts}/clock.sh"                                \
+                                                                                              \
+              --add item mailIndicator right                                                  \
+              --set mailIndicator associated_space=1,2,3,5                                    \
+                                  update_freq=30                                              \
+                                  script="${scripts}/mailIndicator.sh"                        \
+                                  icon.font="Hack Nerd Font:Bold:20.0"                        \
+                                  icon=                                                      \
+                                  click_script="yabai -m space --focus 2"
 ##
 # Creating Graphs
 sketchybar -m --add graph cpu_user right 200                                        \
