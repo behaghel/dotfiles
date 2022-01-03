@@ -185,7 +185,7 @@
                 source-serif-pro
                 (nerdfonts.override {
                  enableWindowsFonts = true;
-                 fonts = [ "Iosevka" "FiraCode" "Inconsolata" "JetBrainsMono" "Hasklig" "Meslo" "Noto" ];
+                 fonts = [ "Iosevka" "FiraCode" "Hack" "Inconsolata" "JetBrainsMono" "Hasklig" "Meslo" "Noto" ];
                 })
                 font-awesome
               ];
@@ -237,8 +237,10 @@
                 yabai -m rule --add app='System Information' manage=off
                 yabai -m rule --add app='System Preferences' manage=off
                 yabai -m rule --add app='zoom.us' manage=off
-                yabai -m rule --add app=emacs-27.2 manage=on
-                yabai -m rule --add label=emacs app=Emacs manage=on
+                yabai -m rule --add app=alacritty border=off
+                yabai -m rule --add app=kitty border=off
+                yabai -m rule --add app=emacs-27.2 manage=on space=2 border=off grid=1:10:5:0:5:1
+                yabai -m rule --add label=emacs app=Emacs manage=on space=2 border=off grid=1:10:5:0:5:1
                 '';
                 # zoom.us simply crashes if its windows are managed by yabai...
                 # yabai -m rule --add app='Emacs' title='.*Minibuf.*' manage=off border=off
@@ -304,10 +306,13 @@
                     browserpass
                     org-capture
                     vimium
+                    auto-tab-discard
+                    tab-session-manager
+                    tabcenter-reborn
                   ];
                   profiles =
                     let settings = {
-                      "app.update.auto" = false;
+                      "app.update.auto" = true;
                     };
                     in {
                       home = {
@@ -316,12 +321,6 @@
                       };
                       work = {
                         id = 1;
-                        settings = settings // {
-                          "extensions.activeThemeID" = "cheers-bold-colorway@mozilla.org";
-                        };
-                      };
-                      ext-typeform = {
-                        id = 2;
                         settings = settings // {
                           "extensions.activeThemeID" = "cheers-bold-colorway@mozilla.org";
                         };
@@ -361,46 +360,48 @@
                   };
                 };
               };
+              home.file.".config/sketchybar/sketchybarrc".text = config.services.sketchybar.extraConfig;
+              home.file.".config/sketchybar/sketchybarrc".executable = true;
 
               # Emacs
               # FIXME: rework all my other git repo that need to be in ~
               # home.file.".emacs.d".source = ./emacs/emacs.d;
               programs.emacs = {
                 enable = true;
-                package =
-                  let
-                    # TODO: derive 'name' from assignment
-                    elPackage = name: src:
-                      pkgs.runCommand "${name}.el" { } ''
-            mkdir -p  $out/share/emacs/site-lisp
-            cp -r ${src}/* $out/share/emacs/site-lisp/
-          '';
-                  in
-                    (
-                      pkgs.emacsWithPackagesFromUsePackage {
-                        alwaysEnsure = true;
-                        # alwaysTangle = true;
-
-                        # Custom overlay derived from 'emacs' flake input
-                        package = pkgs.emacs;
-                        config = ./emacs/.emacs.d/init.el;
-
-                        override = epkgs: epkgs // {
-                          mu4e-dashboard = elPackage "mu4e-dashboard" (
-                            pkgs.fetchFromGitHub {
-                              owner = "rougier";
-                              repo = "mu4e-dashboard";
-                              rev = "40b2d48da55b7ac841d62737ea9cdf54e8442cf3";
-                              sha256 = "1i94gdyk9f5c2vyr184znr54cbvg6apcq38l2389m3h8lxg1m5na";
-                            }
-                          );
-                        };
-
-                        extraEmacsPackages = epkgs: with epkgs; [
-                          mu4e-dashboard
-                        ];
-                      }
-                    );
+#                 package =
+#                   let
+#                     # TODO: derive 'name' from assignment
+#                     elPackage = name: src:
+#                       pkgs.runCommand "${name}.el" { } ''
+#             mkdir -p  $out/share/emacs/site-lisp
+#             cp -r ${src}/* $out/share/emacs/site-lisp/
+#           '';
+#                   in
+#                     (
+#                       pkgs.emacsWithPackagesFromUsePackage {
+#                         alwaysEnsure = true;
+#                         # alwaysTangle = true;
+# 
+#                         # Custom overlay derived from 'emacs' flake input
+#                         package = pkgs.emacs;
+#                         config = builtins.readFile "${pkgs.hubert-emacs.d}/init.el";
+# 
+#                         override = epkgs: epkgs // {
+#                           mu4e-dashboard = elPackage "mu4e-dashboard" (
+#                             pkgs.fetchFromGitHub {
+#                               owner = "rougier";
+#                               repo = "mu4e-dashboard";
+#                               rev = "40b2d48da55b7ac841d62737ea9cdf54e8442cf3";
+#                               sha256 = "1i94gdyk9f5c2vyr184znr54cbvg6apcq38l2389m3h8lxg1m5na";
+#                             }
+#                           );
+#                         };
+# 
+#                         extraEmacsPackages = epkgs: with epkgs; [
+#                           mu4e-dashboard
+#                         ];
+#                       }
+#                     );
               };
 
               imports = [

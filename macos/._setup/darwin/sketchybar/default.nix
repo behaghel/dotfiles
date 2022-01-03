@@ -95,7 +95,7 @@ sketchybar -m --add item space_separator left                                   
                                      icon.font="Hack Nerd Font:Bold:15.0"                      \
                                                                                                \
               --add item gitNotifications left                                                 \
-              --set gitNotifications associated_space=2                                        \
+              --set gitNotifications associated_space=1,2                                        \
                                      update_freq=300                                           \
                                      icon.font="Hack Nerd Font:Bold:18.0"                      \
                                      icon=                                                    \
@@ -104,7 +104,7 @@ sketchybar -m --add item space_separator left                                   
               --subscribe gitNotifications system_woke                                         \
                                                                                                \
               --add item githubIndicator left                                                  \
-              --set githubIndicator  associated_space=2                                        \
+              --set githubIndicator  associated_space=1,2                                        \
                                      update_freq=1000                                          \
                                      icon.font="Hack Nerd Font:Bold:18.0"                      \
                                      icon=                                                    \
@@ -144,12 +144,12 @@ sketchybar -m --add graph cpu_user right 200                                    
                                                                                     \
               --add graph cpu_sys right 200                                         \
               --set cpu_sys      label.padding_left=0                               \
-                                 associated_space=1                                 \
+                                 associated_space=1,2                                 \
                                  icon=                                             \
                                  graph.color=0xff48aa2a                             \
                                                                                     \
               --add item topproc right                                              \
-              --set topproc      associated_space=1                                 \
+              --set topproc      associated_space=1,2                                 \
                                  label.padding_right=10                             \
                                  update_freq=15                                     \
                                  script="${scripts}/topproc.sh"
