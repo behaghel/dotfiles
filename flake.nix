@@ -270,21 +270,118 @@
           }
 
           # An example of user environment. Change your username.
-          ({ pkgs, lib, config, ... }: {
-            home-manager.users.hub = {
+          (let
+            USER = "hub";
+            HOME = "/Users/${USER}";
+            sent = "sent";
+            gmailAccount = name: email:
+              let account = email; in {
+                flavor = "gmail.com";
+                address = account;
+                userName = account;
+                realName = "Hubert Behaghel";
+                folders = {
+                  inbox = "inbox";
+                  drafts = "drafts";
+                  inherit sent;
+                  trash = "trash";
+                };
+                gpg.key = account;
+
+                mu.enable = true;
+                msmtp.enable = true;
+                mbsync = {
+                  enable = true;
+                  create = "maildir";
+                  remove = "none";
+                  expunge = "both";
+                  groups.${name}.channels = {
+                    inbox = {
+                      patterns = [ "INBOX" ];
+                      extraConfig = {
+                        CopyArrivalDate = "yes";
+                      };
+                    };
+                    # FIXME: I couldn't find a way to guarantee to
+                    # have all my GMail emails in my client
+                    # (Gmail/All Mail does that) without creating
+                    # duplicates and particularly unread duplicates
+                    # the "fix" is to never archive emails elsewhere
+                    # but on the client (e.g. no send + archive on
+                    # the web client)
+                    # all = {
+                    #   farPattern = "[Gmail]/All Mail";
+                    #   nearPattern = "archive";
+                    #   extraConfig = {
+                    #     CopyArrivalDate = "yes";
+                    #     Create = "Near";
+                    #     # Sync = "Flags PullNew";
+                    #   };
+                    # };
+                    sent = {
+                      farPattern = "[Gmail]/Sent Mail";
+                      nearPattern = sent;
+                      extraConfig = {
+                        CopyArrivalDate = "yes";
+                        Create = "Near";
+                      };
+                    };
+                    starred = {
+                      farPattern = "[Gmail]/Starred";
+                      nearPattern = "starred";
+                      extraConfig = {
+                        Sync = "All";
+                        CopyArrivalDate = "yes";
+                        Create = "Near";
+                      };
+                    };
+                  };
+                };
+              };
+          in { pkgs, lib, config, ... }: {
+            users.users.${USER}.home = HOME;
+            home-manager.users.${USER} = {
               #home.homeDirectory = "/Users/hub";
-              home.packages = with pkgs; [
-                neofetch pandoc wget
-                # macos only
-                terminal-notifier
-              ];
+              home.packages = with pkgs;
+                let my-aspell = aspellWithDicts (ds: with ds; [en fr es]);
+                in [
+                  neofetch pandoc wget
+                  mu
+                  my-aspell
+                  # macos only
+                  terminal-notifier
+                ];
               home.file.".config/foo".text = "bar";
               home.file."Library/Keyboard Layouts/bepo.keylayout".source = ./macos/Library + "/Keyboard\ Layouts/bepo.keylayout";
-              # Emacs
-              home.file.".emacs.d".source = ./emacs/emacs.d;
-              programs.emacs = {
-                enable = true;
+
+              # Email
+              accounts.email = {
+                maildirBasePath = "${HOME}/Mail";
+                accounts = {
+                  gmail = gmailAccount "gmail" "behaghel@gmail.com" // {
+                    primary = true;
+                    passwordCommand = "${pkgs.pass}/bin/pass online/gmail/token";
+                  };
+                  typeform = gmailAccount "typeform" "hubert.behaghel@typeform.com" // {
+                    primary = false;
+                    passwordCommand = "${pkgs.pass}/bin/pass typeform/login";
+                  };
+                };
               };
+              programs = {
+                # at activation it want to init db
+                # but mu isn't in the path => home package instead
+                mu.enable = false;
+                msmtp.enable = true;
+                mbsync = {
+                 enable = true;
+                 extraConfig = ''
+SyncState "*"
+
+                 '';
+                };
+              };
+
               programs = {
                 git = {
                   enable = true;
