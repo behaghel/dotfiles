@@ -280,7 +280,7 @@
                   inbox = "inbox";
                   drafts = "drafts";
                   inherit sent;
-                  trash = "trash";
+                  #trash = "trash";
                 };
                 gpg.key = account;
 
@@ -305,30 +305,38 @@
                     # the "fix" is to never archive emails elsewhere
                     # but on the client (e.g. no send + archive on
                     # the web client)
-                    # all = {
-                    #   farPattern = "[Gmail]/All Mail";
-                    #   nearPattern = "archive";
-                    #   extraConfig = {
-                    #     CopyArrivalDate = "yes";
-                    #     Create = "Near";
-                    #     # Sync = "Flags PullNew";
-                    #   };
-                    # };
+#                     all = {
+#                       farPattern = "[Gmail]/All Mail";
+#                       nearPattern = "archive";
+#                       extraConfig = {
+#                         CopyArrivalDate = "yes";
+#                         Create = "Near";
+#                       };
+#                     };
+#                     starred = {
+#                       farPattern = "[Gmail]/Starred";
+#                       nearPattern = "starred";
+#                       extraConfig = {
+#                         CopyArrivalDate = "yes";
+#                         Create = "Near";
+#                       };
+#                     };
+#                     trash = {
+#                       farPattern = "[Gmail]/Trash";
+#                       nearPattern = "trash";
+#                       extraConfig = {
+#                         CopyArrivalDate = "yes";
+#                         Create = "Near";
+#                         Sync = "Pull";
+#                       };
+#                     };
                     sent = {
                       farPattern = "[Gmail]/Sent Mail";
                       nearPattern = sent;
                       extraConfig = {
                         CopyArrivalDate = "yes";
                         Create = "Near";
-                      };
-                    };
-                    starred = {
-                      farPattern = "[Gmail]/Starred";
-                      nearPattern = "starred";
-                      extraConfig = {
-                        Sync = "All";
-                        CopyArrivalDate = "yes";
-                        Create = "Near";
+                        Sync = "Pull";
                       };
                     };
                   };
@@ -508,6 +516,9 @@ SyncState "*"
               home.activation = {
                 aliasApplications = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
                   sudo ln -sfn $genProfilePath/home-path/Applications "$HOME/Applications/HomeManagerApps"
+                '';
+                aliasMu4e = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+                  sudo ln -sfn ${pkgs.mu}/share/emacs $genProfilePath/share
                 '';
               };
             };
