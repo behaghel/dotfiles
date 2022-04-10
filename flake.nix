@@ -205,7 +205,7 @@
                 window_opacity = "on";
                 window_topmost = "on";
                 window_shadow = "on";
-                window_border = "on";
+                window_border = "off"; # broken in "many ways"
                 # window_border_width = 5;
                 # active_window_border_color = "0xff81a1c1";
                 # normal_window_border_color = "0xff3b4252";

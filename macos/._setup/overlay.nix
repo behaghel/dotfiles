@@ -37,15 +37,6 @@ in
         CFLAGS = "-DMAC_OS_X_VERSION_MAX_ALLOWED=110203 -g -O2";
       }
     );
-    kitty = super.kitty.overrideAttrs (
-      o: rec {
-        buildInputs = o.buildInputs ++
-                      super.lib.optionals
-                        (super.stdenv.isDarwin && (builtins.hasAttr "UserNotifications" super.darwin.apple_sdk.frameworks))
-                        [ super.darwin.apple_sdk.frameworks.UserNotifications ];
-        patches = super.lib.optionals super.stdenv.isDarwin [ ./pkgs/kitty/apple-sdk-11.patch ];
-      }
-    );
   }
   )
 ]

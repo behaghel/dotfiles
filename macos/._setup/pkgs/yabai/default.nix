@@ -1,13 +1,29 @@
-{ lib, stdenvNoCC, fetchzip }:
+{ lib, stdenv, fetchzip, fetchFromGitHub, runCommand, darwin }:
 
-stdenvNoCC.mkDerivation rec {
+stdenv.mkDerivation rec {
   pname = "yabai";
-  version = "4.0.0-2";
+  version = "4.0.0";
 
-  src = fetchzip {
-    url = "https://github.com/azuwis/yabai/releases/download/v3.3.10/yabai-v${version}.tar.gz";
-    sha256 = "sha256-1tMiOAPUTNad9wllbL4gHHb1XMcAg9XBsUzfQTUciRk=";
+  src = fetchFromGitHub {
+    owner = "koekeishiya";
+    repo = pname;
+    rev = "a4030e771f76d4f135f5b830eedd7234592df51e";
+    sha256 = "sha256-SwoXH6d0blE+S5i4n0Y9Q8AJuQAAaQs+CK3y1hAQoPU=";
   };
+
+  buildSymlinks = runCommand "build-symlinks" { } ''
+    mkdir -p $out/bin
+    ln -s /usr/bin/xxd /usr/bin/xcrun /usr/bin/xcodebuild /usr/bin/tiffutil /usr/bin/qlmanage $out/bin
+    '';
+
+  nativeBuildInputs = [ buildSymlinks ];
+
+  buildInputs = with darwin.apple_sdk.frameworks; [
+    Carbon
+    Cocoa
+    ScriptingBridge
+    SkyLight
+  ];
 
   installPhase = ''
     mkdir -p $out/bin
