@@ -399,20 +399,21 @@ SyncState "*"
                     browserpass
                     org-capture
                     vimium
-                    auto-tab-discard
-                    tab-session-manager
-                    tabcenter-reborn
                   ];
                   profiles =
                     let settings = {
                       "app.update.auto" = true;
+                      # no top tabs => tabcenter on the side
+                      "browser.tabs.inTitlebar" = 0;
+                      # reopen windows and tabs on startup
+                      "browser.startup.page" = 3;
                     };
                     in {
                       home = {
                         id = 0;
                         inherit settings;
                       };
-                      work = {
+                      work2 = {
                         id = 1;
                         settings = settings // {
                           "extensions.activeThemeID" = "cheers-bold-colorway@mozilla.org";
