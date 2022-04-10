@@ -11,10 +11,6 @@
       url = "github:nix-community/home-manager/release-21.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    yabai-src = {
-      url = "github:koekeishiya/yabai/master";
-      flake = false;
-    };
     mk-darwin-system.url = "github:vic/mk-darwin-system/v0.2.0";
     mk-darwin-system.inputs.nixpkgs.follows = "nixpkgs";
   };
@@ -533,7 +529,7 @@ SyncState "*"
       };
     in darwinFlakeOutput // {
       # Your custom flake output here.
-      darwinConfigurations."TF-GR3BFQ05PM" =
+      darwinConfigurations."UK-033-GR3BFQ05PM" =
         darwinFlakeOutput.darwinConfiguration.aarch64-darwin;
 
       homeConfigurations = {
