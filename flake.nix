@@ -463,6 +463,11 @@ SyncState "*"
                     };
                   };
                 };
+                texlive = {
+                  enable = true;
+                  extraPackages =  tpkgs: { inherit (tpkgs) scheme-basic wrapfig amsmath ulem hyperref capt-of xcolor dvisvgm dvipng; };
+                };
+
               };
               home.file.".config/sketchybar/sketchybarrc".text = config.services.sketchybar.extraConfig;
               home.file.".config/sketchybar/sketchybarrc".executable = true;
