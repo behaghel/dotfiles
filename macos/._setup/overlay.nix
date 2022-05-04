@@ -17,6 +17,16 @@ in
       src = nivSources.Firefox;
     };
 
+    Anki = installNivDmg {
+      name = "Anki";
+      src = nivSources.Anki;
+    };
+
+    VLC = installNivDmg {
+      name = "VLC";
+      src = nivSources.VLC;
+    };
+
     # overrides
     emacsUnstable = (super.emacs.override { srcRepo = true; nativeComp = false; }).overrideAttrs (
       o: rec {

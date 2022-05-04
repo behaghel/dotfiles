@@ -354,6 +354,8 @@
                   my-aspell
                   # macos only
                   terminal-notifier
+                  Anki
+                  VLC
                 ];
               home.file.".config/foo".text = "bar";
               home.file."Library/Keyboard Layouts/bepo.keylayout".source = ./macos/Library + "/Keyboard\ Layouts/bepo.keylayout";

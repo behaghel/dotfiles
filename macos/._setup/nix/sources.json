@@ -1,10 +1,24 @@
 {
+    "Anki": {
+        "sha256": "11hkxpa74szx31b4sdmh20zp6y75b1nkxbmkcb8vw22819jmcidh",
+        "type": "file",
+        "url": "https://github.com/ankitects/anki/releases/download/2.1.49/anki-2.1.49-mac.dmg",
+        "url_template": "https://github.com/ankitects/anki/releases/download/<version>/anki-<version>-mac.dmg",
+        "version": "2.1.49"
+    },
     "Firefox": {
         "sha256": "1l0d3wq6ky706znm0rmdljslw35qw2v3hxrba1y3irhwchdwc2c1",
         "type": "file",
         "url": "https://download-installer.cdn.mozilla.net/pub/firefox/releases/95.0/mac/en-GB/Firefox%2095.0.dmg",
         "url_template": "https://download-installer.cdn.mozilla.net/pub/firefox/releases/<version>/mac/en-GB/Firefox%20<version>.dmg",
         "version": "95.0"
+    },
+    "VLC": {
+        "sha256": "002jcljzgbp2pgyfq6xy4jc9cz6vzf6r891lmb5mi1y8c2k7ivnd",
+        "type": "file",
+        "url": "https://get.videolan.org/vlc/3.0.17.3/macosx/vlc-3.0.17.3-arm64.dmg",
+        "url_template": "https://get.videolan.org/vlc/<version>/macosx/vlc-<version>-arm64.dmg",
+        "version": "3.0.17.3"
     },
     "niv": {
         "branch": "master",
