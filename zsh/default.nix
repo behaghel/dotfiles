@@ -49,6 +49,8 @@ in {
         if [[ -r "''${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-''${(%):-%n}.zsh" ]]; then
           source "''${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-''${(%):-%n}.zsh"
         fi
+        # password-store completion broken
+        fpath=(${pkgs.pass}/share/zsh/site-functions $fpath)
       '';
       initExtra = ''
         for i in ~/.config/profile.d/*.profile; do
