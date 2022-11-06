@@ -2,12 +2,12 @@
 
 stdenv.mkDerivation rec {
   pname = "yabai";
-  version = "4.0.0";
+  version = "4.0.2";
 
   src = fetchFromGitHub {
     owner = "koekeishiya";
     repo = pname;
-    rev = "a4030e771f76d4f135f5b830eedd7234592df51e";
+    rev = "v4.0.2";
     sha256 = "sha256-SwoXH6d0blE+S5i4n0Y9Q8AJuQAAaQs+CK3y1hAQoPU=";
   };
 
