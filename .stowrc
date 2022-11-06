@@ -1,1 +1,1 @@
--v -t /home/hub --no-folding --ignore ._setup
+-v -t /home/hub --no-folding --ignore ._setup --ignore default.nix --ignore README.org --ignore README.md
