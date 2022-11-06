@@ -548,7 +548,7 @@ SyncState "*"
       };
     in darwinFlakeOutput // {
       # Your custom flake output here.
-      darwinConfigurations."UK-033-GR3BFQ05PM" =
+      darwinConfigurations."ES-658-GR3BFQ05PM" =
         darwinFlakeOutput.darwinConfiguration.aarch64-darwin;
 
       homeConfigurations = {
