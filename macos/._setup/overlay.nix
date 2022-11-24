@@ -27,6 +27,11 @@ in
       src = nivSources.VLC;
     };
 
+    Zotero = installNivDmg {
+      name = "Zotero";
+      src = nivSources.Zotero;
+    };
+
     # overrides
     emacsUnstable = (super.emacs.override { srcRepo = true; nativeComp = false; }).overrideAttrs (
       o: rec {

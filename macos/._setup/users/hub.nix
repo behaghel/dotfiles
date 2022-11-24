@@ -87,8 +87,11 @@ in { pkgs, lib, config, ... }: {
         my-aspell
         # macos only
         terminal-notifier
+        coreutils
+        # dmg through niv
         Anki
         VLC
+        Zotero
       ];
     home.file.".config/foo".text = "bar";
     home.file."Library/Keyboard Layouts/bepo.keylayout".source = ../../Library + "/Keyboard\ Layouts/bepo.keylayout";
