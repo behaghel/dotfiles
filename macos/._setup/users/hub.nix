@@ -213,7 +213,7 @@ SyncState "*"
     # home.file.".emacs.d".source = ./emacs/emacs.d;
     programs.emacs = {
       enable = true;
-      #                 package =
+      package = pkgs.emacsUnstable;
       #                   let
       #                     # TODO: derive 'name' from assignment
       #                     elPackage = name: src:
