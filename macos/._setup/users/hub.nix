@@ -1,10 +1,11 @@
 let
   USER = "hub";
   HOME = "/Users/${USER}";
-  gmailAccount = name: email:
+  gmailAccount = name: email: lang:
     let
       account = email;
       sent = "sent";
+      farSent = if lang == "fr" then "[Gmail]/Messages envoyés" else "[Gmail]/Sent Mail";
     in {
       flavor = "gmail.com";
       address = account;
@@ -65,7 +66,7 @@ let
           #                       };
           #                     };
           sent = {
-            farPattern = "[Gmail]/Sent Mail";
+            farPattern = farSent;
             nearPattern = sent;
             extraConfig = {
               CopyArrivalDate = "yes";
@@ -104,9 +105,9 @@ in { pkgs, lib, config, ... }: {
           primary = true;
           passwordCommand = "${pkgs.pass}/bin/pass online/gmail/token";
         };
-        typeform = gmailAccount "typeform" "hubert.behaghel@typeform.com" // {
+        "behaghel.fr" = gmailAccount "behaghel.fr" "hubert@behaghel.fr" // {
           primary = false;
-          passwordCommand = "${pkgs.pass}/bin/pass typeform/login";
+          passwordCommand = "${pkgs.pass}/bin/pass online/behaghel.fr/token";
         };
       };
     };
