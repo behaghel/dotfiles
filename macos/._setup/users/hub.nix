@@ -5,7 +5,7 @@ let
     let
       account = email;
       sent = "sent";
-      farSent = if lang == "fr" then "[Gmail]/Messages envoyés" else "[Gmail]/Sent Mail";
+      farSent = if lang == "fr" then "[Gmail]/Messages envoy&AOk-s" else "[Gmail]/Sent Mail";
     in {
       flavor = "gmail.com";
       address = account;
@@ -101,11 +101,11 @@ in { pkgs, lib, config, ... }: {
     accounts.email = {
       maildirBasePath = "${HOME}/Mail";
       accounts = {
-        gmail = gmailAccount "gmail" "behaghel@gmail.com" // {
+        gmail = gmailAccount "gmail" "behaghel@gmail.com" "en" // {
           primary = true;
           passwordCommand = "${pkgs.pass}/bin/pass online/gmail/token";
         };
-        "behaghel.fr" = gmailAccount "behaghel.fr" "hubert@behaghel.fr" // {
+        "behaghel.fr" = gmailAccount "behaghel.fr" "hubert@behaghel.fr" "fr" // {
           primary = false;
           passwordCommand = "${pkgs.pass}/bin/pass online/behaghel.fr/token";
         };
