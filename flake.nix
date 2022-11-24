@@ -8,7 +8,7 @@
     nur.inputs.nixpkgs.follows = "nixpkgs";
     # emacs-overlay.url = "github:nix-community/emacs-overlay";
     home-manager = {
-      url = "github:nix-community/home-manager/release-21.05";
+      url = "github:nix-community/home-manager/release-22.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     mk-darwin-system.url = "github:vic/mk-darwin-system/v0.2.0";
