@@ -23,7 +23,7 @@
     "Zotero": {
         "sha256": "0gcav9ihm54l3hik2h83yyyrr3gzkp263m072yfy7csr78vqhfi6",
         "type": "file",
-        "url": "https://www.zotero.org/download/client/dl?channel=release&platform=mac&version=6.0.18",
+        "url": "https://www.zotero.org/download/client/dl?channel=release&platform=mac&version=6.0.18&ignore=.dmg",
         "url_template": "https://www.zotero.org/download/client/dl?channel=release&platform=mac&version=<version>",
         "version": "6.0.18"
     },
