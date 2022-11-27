@@ -12,7 +12,7 @@
 {
   environment.systemPackages = with pkgs; [nixVersions.stable];
 
-  modules = [
+  imports = [
     ./../darwin/system.nix
 
     ({ pkgs, lib, ... }: {
