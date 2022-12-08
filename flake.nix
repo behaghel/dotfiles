@@ -5,14 +5,15 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     nur.url = "github:nix-community/NUR";
-    # nur.inputs.nixpkgs.follows = "nixpkgs";
-    # emacs-overlay.url = "github:nix-community/emacs-overlay";
     home-manager = {
-      url = "github:nix-community/home-manager/release-22.05";
+      url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nix-darwin.url = "github:lnl7/nix-darwin/master";
     mk-darwin-system.url = "github:vic/mk-darwin-system/1321309223d7ef11937bd2539e2da77e5b7e0151";
     mk-darwin-system.inputs.nixpkgs.follows = "nixpkgs";
+    mk-darwin-system.inputs.home-manager.follows = "home-manager";
+    mk-darwin-system.inputs.nix-darwin.follows = "nix-darwin";
   };
 
   outputs = { self, nixpkgs, home-manager, mk-darwin-system, nur, ...}@inputs:

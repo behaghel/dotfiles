@@ -11,7 +11,14 @@
         "type": "file",
         "url": "https://download-installer.cdn.mozilla.net/pub/firefox/releases/95.0/mac/en-GB/Firefox%2095.0.dmg",
         "url_template": "https://download-installer.cdn.mozilla.net/pub/firefox/releases/<version>/mac/en-GB/Firefox%20<version>.dmg",
-        "version": "95.0"
+        "version": "107.0"
+    },
+    "Kindle": {
+        "sha256": "12ssvxdsc6ixqfvpmszb7jggqc8ny3cxlpk01i0n5kpqg7780ljx",
+        "type": "file",
+        "url": "https://kindleformac.s3.amazonaws.com/65301/KindleForMac-installer-1.39.65301.dmg",
+        "url_template": "https://kindleformac.s3.amazonaws.com/65301/KindleForMac-installer-<version>.dmg",
+        "version": "1.39.65301"
     },
     "VLC": {
         "sha256": "002jcljzgbp2pgyfq6xy4jc9cz6vzf6r891lmb5mi1y8c2k7ivnd",

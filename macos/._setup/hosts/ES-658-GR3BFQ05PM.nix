@@ -41,7 +41,7 @@
           font-awesome
         ];
         # the modern way in NixOS: fontDir.enable = true;
-        enableFontDir = true;
+        fontDir.enable = true;
       };
 
       # System / General

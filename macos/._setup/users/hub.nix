@@ -90,9 +90,10 @@ in { pkgs, lib, config, ... }: {
         terminal-notifier
         coreutils
         # dmg through niv
-        Anki
-        VLC
-        Zotero
+        nivApps.Anki
+        nivApps.VLC
+        nivApps.Zotero
+        nivApps.Kindle
       ];
     home.file.".config/foo".text = "bar";
     home.file."Library/Keyboard Layouts/bepo.keylayout".source = ../../Library + "/Keyboard\ Layouts/bepo.keylayout";
@@ -206,7 +207,7 @@ SyncState "*"
       };
 
     };
-    home.file.".config/sketchybar/sketchybarrc".text = config.services.sketchybar.extraConfig;
+    home.file.".config/sketchybar/sketchybarrc".source = ../../.config/sketchybar/sketchybarrc;
     home.file.".config/sketchybar/sketchybarrc".executable = true;
 
     # Emacs
