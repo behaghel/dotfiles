@@ -14,10 +14,10 @@ let
         # websocket_client for wee-slack and dbus-python for notifications
         # TODO: dbus-python if cfg.notify
         # TODO: websocket_client if cfg.slack
-        (python.withPackages (ps: with ps; [ websocket_client dbus-python ]))
+        # (python.withPackages (ps: with ps; [ websocket_client dbus-python ]))
       ];
     # TODO: if cfg.weechat-matrix
-    scripts = [ pkgs.weechatScripts.weechat-matrix ];
+    # scripts = [ pkgs.weechatScripts.weechat-matrix ];
     };
   };
 in {
@@ -50,13 +50,14 @@ in {
   };
 
   config = mkIf (cfg.enable) {
-    home.packages = with pkgs; [
+    home.packages = [
         weechat
         # weechat deps
-        aspell aspellDicts.en aspellDicts.fr
-        emojione
+        pkgs.aspell pkgs.aspellDicts.en pkgs.aspellDicts.fr
+        pkgs.emojione
         # TODO: if cfg.notify
-        libnotify
+        # pkgs.libnotify
     ];
+    home.file.".config/weechat".source = ./.weechat;
   };
 }

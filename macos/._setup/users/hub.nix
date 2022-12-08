@@ -1,85 +1,96 @@
-let
-  USER = "hub";
-  HOME = "/Users/${USER}";
-  gmailAccount = name: email: lang:
-    let
-      account = email;
-      sent = "sent";
-      farSent = if lang == "fr" then "[Gmail]/Messages envoy&AOk-s" else "[Gmail]/Sent Mail";
-    in {
-      flavor = "gmail.com";
-      address = account;
-      userName = account;
-      realName = "Hubert Behaghel";
-      folders = {
-        inbox = "inbox";
-        drafts = "drafts";
-        inherit sent;
-        #trash = "trash";
-      };
-      gpg.key = account;
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}: {
+  imports = [
+    ../../../bash # FIXME: has to be here for ./zsh to work
+    ../../../zsh
+    ../../../weechat
+  ];
 
-      mu.enable = true;
-      msmtp.enable = true;
-      mbsync = {
-        enable = true;
-        create = "maildir";
-        remove = "none";
-        expunge = "both";
-        groups.${name}.channels = {
-          inbox = {
-            patterns = [ "INBOX" ];
-            extraConfig = {
-              CopyArrivalDate = "yes";
+  config = let
+    USER = "hub";
+    HOME = "/Users/${USER}";
+    emailAccountDefault = email: {
+        address = email;
+        userName = email;
+        realName = "Hubert Behaghel";
+        folders = {
+          inbox = "inbox";
+          drafts = "drafts";
+          sent = "sent";
+          trash = "trash";
+        };
+        gpg.key = email;
+
+        mu.enable = true;
+        msmtp.enable = true;
+    };
+    gmailAccount = name: email: lang:
+      let
+        farSent = if lang == "fr" then "[Gmail]/Messages envoy&AOk-s" else "[Gmail]/Sent Mail";
+        farTrash = if lang == "fr" then "[Gmail]/Corbeille" else "[Gmail]/Trash";
+        farDraft = if lang == "fr" then "[Gmail]/Brouillons" else "[Gmail]/Draft";
+        farStarred = if lang == "fr" then "[Gmail]/Important" else "[Gmail]/Starred";
+        farAll = if lang == "fr" then "[Gmail]/Tous les messages" else "[Gmail]/All Mail";
+        base = emailAccountDefault email;
+      in base // {
+        flavor = "gmail.com";
+        mbsync = {
+          enable = true;
+          create = "maildir";
+          remove = "none";
+          expunge = "both";
+          groups.${name}.channels = {
+            inbox = {
+              patterns = [ "INBOX" ];
+              extraConfig = {
+                CopyArrivalDate = "yes";
+                Sync = "All";
+              };
             };
-          };
-          # FIXME: I couldn't find a way to guarantee to
-          # have all my GMail emails in my client
-          # (Gmail/All Mail does that) without creating
-          # duplicates and particularly unread duplicates
-          # the "fix" is to never archive emails elsewhere
-          # but on the client (e.g. no send + archive on
-          # the web client)
-          #                     all = {
-          #                       farPattern = "[Gmail]/All Mail";
-          #                       nearPattern = "archive";
-          #                       extraConfig = {
-          #                         CopyArrivalDate = "yes";
-          #                         Create = "Near";
-          #                       };
-          #                     };
-          #                     starred = {
-          #                       farPattern = "[Gmail]/Starred";
-          #                       nearPattern = "starred";
-          #                       extraConfig = {
-          #                         CopyArrivalDate = "yes";
-          #                         Create = "Near";
-          #                       };
-          #                     };
-          #                     trash = {
-          #                       farPattern = "[Gmail]/Trash";
-          #                       nearPattern = "trash";
-          #                       extraConfig = {
-          #                         CopyArrivalDate = "yes";
-          #                         Create = "Near";
-          #                         Sync = "Pull";
-          #                       };
-          #                     };
-          sent = {
-            farPattern = farSent;
-            nearPattern = sent;
-            extraConfig = {
-              CopyArrivalDate = "yes";
-              Create = "Near";
-              Sync = "Pull";
+            all = {
+              farPattern = farAll;
+              nearPattern = "archive";
+              extraConfig = {
+                CopyArrivalDate = "yes";
+                Create = "Near";
+                Sync = "All";
+              };
+            };
+            starred = {
+              farPattern = farStarred;
+              nearPattern = "starred";
+              extraConfig = {
+                CopyArrivalDate = "yes";
+                Create = "Near";
+                Sync = "All";
+              };
+            };
+            trash = {
+              farPattern = farTrash;
+              nearPattern = "trash";
+              extraConfig = {
+                CopyArrivalDate = "yes";
+                Create = "Near";
+                Sync = "All";
+              };
+            };
+            sent = {
+              farPattern = farSent;
+              nearPattern = "sent";
+              extraConfig = {
+                CopyArrivalDate = "yes";
+                Create = "Near";
+                Sync = "Pull";
+              };
             };
           };
         };
       };
-    };
-in { pkgs, lib, config, ... }: {
-  users.users.${USER}.home = HOME;
-  home-manager.users.${USER} = {
+  in {
     home.packages = with pkgs;
       let my-aspell = aspellWithDicts (ds: with ds; [en fr es]);
       in [
@@ -110,6 +121,71 @@ in { pkgs, lib, config, ... }: {
           primary = false;
           passwordCommand = "${pkgs.pass}/bin/pass online/behaghel.fr/token";
         };
+        "behaghel.org" = emailAccountDefault "hubert@behaghel.org" // {
+          primary = false;
+          userName = "behaghel@mailfence.com";
+          passwordCommand = "${pkgs.pass}/bin/pass online/mailfence.com";
+          aliases = ["behaghel@mailfence.com"];
+          gpg.signByDefault = true;
+          imap = {
+            host = "imap.mailfence.com";
+            port = 993;
+            tls = {
+              enable = true;
+            };
+          };
+          smtp = {
+            host = "smtp.mailfence.com";
+            port = 465;
+            tls = {
+              enable = true;
+            };
+          };
+          mbsync = {
+            enable = true;
+            create = "maildir";
+            remove = "none";
+            expunge = "both";
+
+            groups."behaghel.org".channels = {
+              inbox = {
+                # patterns = [ "*" "INBOX" "!Spam?" "!Sent Items" "!Archive" "!Trash" "!Drafts" ];
+                patterns = [ "INBOX" ];
+                extraConfig = {
+                  CopyArrivalDate = "yes";
+                  Sync = "All";
+                };
+              };
+              archive = {
+                farPattern = "Archive";
+                nearPattern = "archive";
+                extraConfig = {
+                  CopyArrivalDate = "yes";
+                  Create = "Near";
+                  Sync = "All";
+                };
+              };
+              trash = {
+                farPattern = "Trash";
+                nearPattern = "trash";
+                extraConfig = {
+                  CopyArrivalDate = "yes";
+                  Create = "Near";
+                  Sync = "All";
+                };
+              };
+              sent = {
+                farPattern = "Sent";
+                nearPattern = "sent";
+                extraConfig = {
+                  CopyArrivalDate = "yes";
+                  Create = "Near";
+                  Sync = "All";
+                };
+              };
+            };
+          };
+        };
       };
     };
     programs = {
@@ -117,6 +193,7 @@ in { pkgs, lib, config, ... }: {
       # but mu isn't in the path => home package instead
       mu.enable = false;
       msmtp.enable = true;
+      gpg.enable = true;
       mbsync = {
         enable = true;
         extraConfig = ''
@@ -216,56 +293,20 @@ SyncState "*"
     programs.emacs = {
       enable = true;
       package = pkgs.emacsUnstable;
-      #                   let
-      #                     # TODO: derive 'name' from assignment
-      #                     elPackage = name: src:
-      #                       pkgs.runCommand "${name}.el" { } ''
-      #             mkdir -p  $out/share/emacs/site-lisp
-      #             cp -r ${src}/* $out/share/emacs/site-lisp/
-      #           '';
-      #                   in
-      #                     (
-      #                       pkgs.emacsWithPackagesFromUsePackage {
-      #                         alwaysEnsure = true;
-      #                         # alwaysTangle = true;
-      # 
-      #                         # Custom overlay derived from 'emacs' flake input
-      #                         package = pkgs.emacs;
-      #                         config = builtins.readFile "${pkgs.hubert-emacs.d}/init.el";
-      # 
-      #                         override = epkgs: epkgs // {
-      #                           mu4e-dashboard = elPackage "mu4e-dashboard" (
-      #                             pkgs.fetchFromGitHub {
-      #                               owner = "rougier";
-      #                               repo = "mu4e-dashboard";
-      #                               rev = "40b2d48da55b7ac841d62737ea9cdf54e8442cf3";
-      #                               sha256 = "1i94gdyk9f5c2vyr184znr54cbvg6apcq38l2389m3h8lxg1m5na";
-      #                             }
-      #                           );
-      #                         };
-      # 
-      #                         extraEmacsPackages = epkgs: with epkgs; [
-      #                           mu4e-dashboard
-      #                         ];
-      #                       }
-      #                     );
     };
 
-    imports = [
-      ../../../bash # FIXME: has to be here for ./zsh to work
-      ../../../zsh
-    ];
-    hub.zsh.enable = true;
+    programs.zsh.enable = true;
+
+    hub.weechat = {
+      enable = false;
+    };
 
     # Link apps installed by home-manager.
     home.activation = {
-      aliasApplications = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-                  sudo ln -sfn $genProfilePath/home-path/Applications "$HOME/Applications/HomeManagerApps"
-                '';
       # FIXME: I had to hardcode the path of mu4e in emacs
       # in the end…
       aliasMu4e = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-                  sudo ln -sfn ${pkgs.mu}/share/emacs $genProfilePath/share
+                  $DRY_RUN_CMD sudo ln -sfn ${pkgs.mu}/share/emacs $HOME/.local/share
                 '';
     };
   };
