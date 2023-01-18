@@ -1,7 +1,6 @@
 (self: super: {
   # pkgs
   sketchybar = super.callPackage ./pkgs/sketchybar { };
-  yabai = super.callPackage ./pkgs/yabai { };
 
   # overrides
   emacsUnstable = (super.emacs.override { srcRepo = true; nativeComp = false; }).overrideAttrs (

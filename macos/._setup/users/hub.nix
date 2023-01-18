@@ -175,7 +175,7 @@
                 };
               };
               sent = {
-                farPattern = "Sent";
+                farPattern = "Sent Items";
                 nearPattern = "sent";
                 extraConfig = {
                   CopyArrivalDate = "yes";
@@ -218,13 +218,13 @@ SyncState "*"
       };
       firefox = {
         enable = true;
-        package = pkgs.Firefox;
-        extensions = with pkgs.nur.repos.rycee.firefox-addons; [
-          ublock-origin
-          browserpass
-          org-capture
-          vimium
-        ];
+        package = pkgs.nivApps.Firefox;
+        # extensions = with pkgs.nur.repos.rycee.firefox-addons; [
+        #   ublock-origin
+        #   browserpass
+        #   org-capture
+        #   vimium
+        # ];
         profiles =
           let settings = {
                 "app.update.auto" = true;
