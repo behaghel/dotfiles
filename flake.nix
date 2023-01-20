@@ -23,7 +23,7 @@
       home = import ./nix/.config/nixpkgs/home.nix;
       typeformFlake = mk-darwin-system.mkFlake rec {
         userName = "hub";
-        hostName = "ES-658-GR3BFQ05PM";
+        hostName = "tfmbp";
         flake = ./.;
         hostModules = ["${flake}/macos/._setup/hosts/${hostName}.nix"];
         userModules = ["${flake}/macos/._setup/users/${userName}.nix"];
