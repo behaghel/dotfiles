@@ -107,7 +107,7 @@
         nivApps.Kindle
       ];
     home.file.".config/foo".text = "bar";
-    home.file."Library/Keyboard Layouts/bepo.keylayout".source = ../../Library + "/Keyboard\ Layouts/bepo.keylayout";
+    home.file."Library/Keyboard Layouts/bepo1.1.bundle".source = ../../Library + "/Keyboard\ Layouts/bepo1.1.bundle";
 
     # Email
     accounts.email = {

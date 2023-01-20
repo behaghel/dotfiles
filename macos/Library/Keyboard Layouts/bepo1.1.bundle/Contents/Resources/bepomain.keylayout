@@ -1,0 +1,4430 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE keyboard SYSTEM "file://localhost/System/Library/DTDs/KeyboardLayout.dtd">
+<!-- bépo 1.1rc2 Layout -->
+<!-- http://www.bepo.fr/ -->
+<!-- version 1.1rc2 -->
+<keyboard group="126" id="-6538" name="bépo v1.1rc2 main" maxout="5">
+  <!--
+    This layout is designed for ISO and ANSI keyboards. The extra
+    key on an ISO keyboard (next to the left Shift) is optional,
+    characters on it are also accessible through other keys.
+
+    Problem: On Mac ANSI keyboards, that extra key is not simply
+    missing: on ISO keyboards, the extra key sends the code 50 and
+    the key below the Esc key sends the code 10; on ANSI keyboards,
+    the key below the Esc key sends the code 50. So the key next to
+    the left Shift on ISO keyboards is moved below the Esc key on
+    ANSI keyboards, the real missing key being the one that sends
+    the code 10.
+
+    So we need a specific layout for ANSI keyboards. There is
+    unfortunately no obvious way for identifying ANSI or ISO
+    keyboards, we need to specify each hardware ID individually. As
+    new keyboards are created, we need to add them to the list.
+    Since this is a layout for the French language and the French
+    AZERTY layout is defined for ISO keyboards, it will mostly be
+    used with ISO keyboards. So we will define the default layout
+    for ISO keyboards and specify ANSI keyboards individually. This
+    will less likely cause problems as it will cause problems only
+    with new ANSI keyboards.
+
+    Individual keyboard hardware IDs are defined in:
+    /Developer/SDKs/MacOSX10.4u.sdk/System/Library/Frameworks/
+    CoreServices.framework/Versions/A/Frameworks/
+    CarbonCore.framework/Versions/A/Headers/Gestalt.h
+    We assume that any keyboard not containing ISO or JIS in its
+    name has an ANSI layout.
+  -->
+  <layouts>
+    <layout first="0" last="0" modifiers="commonModifiers" mapSet="ISO" />
+    <!-- gestaltMacKbd                 = 1, -->
+    <!-- gestaltMacAndPad              = 2, -->
+    <!-- gestaltUnknownThirdPartyKbd   = 3,    /* Unknown 3rd party keyboard. */ -->
+    <!-- gestaltExtADBKbd              = 4, -->
+    <!-- gestaltStdADBKbd              = 5, -->
+    <!-- gestaltPrtblADBKbd            = 6, -->
+    <layout first="1" last="6" modifiers="commonModifiers" mapSet="ANSI" />
+    <!-- gestaltPrtblISOKbd            = 7, -->
+    <!-- gestaltStdISOADBKbd           = 8, -->
+    <!-- gestaltExtISOADBKbd           = 9, -->
+    <!-- gestaltADBKbdII               = 10, -->
+    <layout first="10" last="10" modifiers="commonModifiers" mapSet="ANSI" />
+    <!-- gestaltADBISOKbdII            = 11, -->
+    <!-- gestaltPwrBookADBKbd          = 12, -->
+    <layout first="12" last="12" modifiers="commonModifiers" mapSet="ANSI" />
+    <!-- gestaltPwrBookISOADBKbd       = 13, -->
+    <!-- gestaltAppleAdjustKeypad      = 14, -->
+    <!-- gestaltAppleAdjustADBKbd      = 15, -->
+    <layout first="14" last="15" modifiers="commonModifiers" mapSet="ANSI" />
+    <!-- gestaltAppleAdjustISOKbd      = 16, -->
+    <!-- gestaltJapanAdjustADBKbd      = 17,   /* Japan Adjustable Keyboard */ -->
+    <!-- gestaltPwrBkExtISOKbd         = 20,   /* PowerBook Extended International Keyboard with function keys */ -->
+    <!-- gestaltPwrBkExtJISKbd         = 21,   /* PowerBook Extended Japanese Keyboard with function keys      */ -->
+    <!-- gestaltPwrBkExtADBKbd         = 24,   /* PowerBook Extended Domestic Keyboard with function keys      */ -->
+    <layout first="24" last="24" modifiers="commonModifiers" mapSet="ANSI" />
+    <!-- gestaltPS2Keyboard            = 27,   /* PS2 keyboard */ -->
+    <!-- gestaltPwrBkSubDomKbd         = 28,   /* PowerBook Subnote Domestic Keyboard with function keys w/  inverted T  */ -->
+    <layout first="27" last="28" modifiers="commonModifiers" mapSet="ANSI" />
+    <!-- gestaltPwrBkSubISOKbd         = 29,   /* PowerBook Subnote International Keyboard with function keys w/  inverted T     */ -->
+    <!-- gestaltPwrBkSubJISKbd         = 30,   /* PowerBook Subnote Japanese Keyboard with function keys w/ inverted T    */ -->
+    <!-- gestaltPortableUSBANSIKbd     = 37,   /* Powerbook USB-based internal keyboard, ANSI layout */ -->
+    <layout first="37" last="37" modifiers="commonModifiers" mapSet="ANSI" />
+    <!-- gestaltPortableUSBISOKbd      = 38,   /* Powerbook USB-based internal keyboard, ISO layout */ -->
+    <!-- gestaltPortableUSBJISKbd      = 39,   /* Powerbook USB-based internal keyboard, JIS layout */ -->
+    <!-- gestaltThirdPartyANSIKbd      = 40,   /* Third party keyboard, ANSI layout.  Returned in Mac OS X Tiger and later. */ -->
+    <layout first="40" last="40" modifiers="commonModifiers" mapSet="ANSI" />
+    <!-- gestaltThirdPartyISOKbd       = 41,   /* Third party keyboard, ISO layout. Returned in Mac OS X Tiger and later. */ -->
+    <!-- gestaltThirdPartyJISKbd       = 42,   /* Third party keyboard, JIS layout. Returned in Mac OS X Tiger and later. */ -->
+    <!-- gestaltPwrBkEKDomKbd          = 195,  /* (0xC3) PowerBook Domestic Keyboard with Embedded Keypad, function keys & inverted T    */ -->
+    <layout first="195" last="195" modifiers="commonModifiers" mapSet="ANSI" />
+    <!-- gestaltPwrBkEKISOKbd          = 196,  /* (0xC4) PowerBook International Keyboard with Embedded Keypad, function keys & inverted T   */ -->
+    <!-- gestaltPwrBkEKJISKbd          = 197,  /* (0xC5) PowerBook Japanese Keyboard with Embedded Keypad, function keys & inverted T      */ -->
+    <!-- gestaltUSBCosmoANSIKbd        = 198,  /* (0xC6) original USB Domestic (ANSI) Keyboard */ -->
+    <layout first="198" last="198" modifiers="commonModifiers" mapSet="ANSI" />
+    <!-- gestaltUSBCosmoISOKbd         = 199,  /* (0xC7) original USB International (ISO) Keyboard */ -->
+    <!-- gestaltUSBCosmoJISKbd         = 200,  /* (0xC8) original USB Japanese (JIS) Keyboard */ -->
+    <!-- gestaltPwrBk99JISKbd          = 201,  /* (0xC9) '99 PowerBook JIS Keyboard with Embedded Keypad, function keys & inverted T               */ -->
+    <!-- gestaltUSBAndyANSIKbd         = 204,  /* (0xCC) USB Pro Keyboard Domestic (ANSI) Keyboard                                 */ -->
+    <layout first="204" last="204" modifiers="commonModifiers" mapSet="ANSI" />
+    <!-- gestaltUSBAndyISOKbd          = 205,  /* (0xCD) USB Pro Keyboard International (ISO) Keyboard                               */ -->
+    <!-- gestaltUSBAndyJISKbd          = 206   /* (0xCE) USB Pro Keyboard Japanese (JIS) Keyboard                                    */ -->
+    <!-- gestaltPortable2001ANSIKbd    = 202,  /* (0xCA) PowerBook and iBook Domestic (ANSI) Keyboard with 2nd cmd key right & function key moves.     */ -->
+    <layout first="202" last="202" modifiers="commonModifiers" mapSet="ANSI" />
+    <!-- gestaltPortable2001ISOKbd     = 203,  /* (0xCB) PowerBook and iBook International (ISO) Keyboard with 2nd cmd key right & function key moves.   */ -->
+    <!-- gestaltPortable2001JISKbd     = 207   /* (0xCF) PowerBook and iBook Japanese (JIS) Keyboard with function key moves.                   */ -->
+    <!-- gestaltUSBProF16ANSIKbd       = 34,   /* (0x22) USB Pro Keyboard w/ F16 key Domestic (ANSI) Keyboard */ -->
+    <layout first="34" last="34" modifiers="commonModifiers" mapSet="ANSI" />
+    <!-- gestaltUSBProF16ISOKbd        = 35,   /* (0x23) USB Pro Keyboard w/ F16 key International (ISO) Keyboard */ -->
+    <!-- gestaltUSBProF16JISKbd        = 36,   /* (0x24) USB Pro Keyboard w/ F16 key Japanese (JIS) Keyboard */ -->
+    <!-- gestaltProF16ANSIKbd          = 31,   /* (0x1F) Pro Keyboard w/F16 key Domestic (ANSI) Keyboard */ -->
+    <layout first="31" last="31" modifiers="commonModifiers" mapSet="ANSI" />
+    <!-- gestaltProF16ISOKbd           = 32,   /* (0x20) Pro Keyboard w/F16 key International (ISO) Keyboard */ -->
+    <!-- gestaltProF16JISKbd           = 33    /* (0x21) Pro Keyboard w/F16 key Japanese (JIS) Keyboard */ -->
+  </layouts>
+  <modifierMap id="commonModifiers" defaultIndex="0">
+    <keyMapSelect mapIndex="0">
+      <modifier keys="" />
+      <modifier keys="anyShift? command caps?" />
+    </keyMapSelect>
+    <keyMapSelect mapIndex="1">
+      <!-- <modifier keys="anyShift caps?" /> -->
+      <modifier keys="anyShift" />
+    </keyMapSelect>
+    <keyMapSelect mapIndex="2">
+      <modifier keys="caps" />
+    </keyMapSelect>
+    <keyMapSelect mapIndex="3">
+      <modifier keys="anyShift caps" />
+    </keyMapSelect>
+    <keyMapSelect mapIndex="4">
+      <modifier keys="anyOption" />
+    </keyMapSelect>
+    <keyMapSelect mapIndex="5">
+      <!-- <modifier keys="anyShift anyOption command? caps?" /> -->
+      <modifier keys="anyShift anyOption command?" />
+    </keyMapSelect>
+    <keyMapSelect mapIndex="6">
+      <modifier keys="anyShift anyOption command? caps" />
+    </keyMapSelect>
+    <keyMapSelect mapIndex="7">
+      <modifier keys="anyOption caps" />
+    </keyMapSelect>
+    <keyMapSelect mapIndex="8">
+      <modifier keys="anyOption command caps?" />
+    </keyMapSelect>
+    <keyMapSelect mapIndex="9">
+      <modifier keys="anyShift? anyOption? anyControl command? caps?" />
+    </keyMapSelect>
+  </modifierMap>
+  <keyMapSet id="ISO">
+    <keyMap index="0">  <!-- No modifiers -->
+      <key code="0" action="a" />
+      <key code="1" action="u" />
+      <key code="2" action="i" />
+      <key code="3" action="e" />
+      <key code="4" action="c" />
+      <key code="5" action="," />
+      <key code="6" action="à" />
+      <key code="7" action="y" />
+      <key code="8" action="x" />
+      <key code="9" action="." />
+      <key code="10" action="$" />
+      <key code="11" action="k" />
+      <key code="12" action="b" />
+      <key code="13" action="é" />
+      <key code="14" action="p" />
+      <key code="15" action="o" />
+      <key code="16" action="circonflexe" />
+      <key code="17" action="è" />
+      <key code="18" action="guillemet" />
+      <key code="19" action="«" />
+      <key code="20" action="»" />
+      <key code="21" action="(" />
+      <key code="22" action="@" />
+      <key code="23" action=")" />
+      <key code="24" action="%" />
+      <key code="25" action="/" />
+      <key code="26" action="+" />
+      <key code="27" action="=" />
+      <key code="28" action="-" />
+      <key code="29" action="*" />
+      <key code="30" action="w" />
+      <key code="31" action="l" />
+      <key code="32" action="v" />
+      <key code="33" action="z" />
+      <key code="34" action="d" />
+      <key code="35" action="j" />
+      <key code="36" output="&#x000d;" /> <!-- Return -->
+      <key code="37" action="r" />
+      <key code="38" action="t" />
+      <key code="39" action="m" />
+      <key code="40" action="s" />
+      <key code="41" action="n" />
+      <key code="42" action="ç" />
+      <key code="43" action="g" />
+      <key code="44" action="f" />
+      <key code="45" action="’" />
+      <key code="46" action="q" />
+      <key code="47" action="h" />
+      <key code="48" output="&#x0009;" /> <!-- Tab -->
+      <key code="49" action="espace" />
+      <key code="50" action="ê" />
+      <key code="51" output="&#x0008;" /> <!-- Backspace -->
+      <key code="52" output="&#x0003;" /> <!-- Enter (Fn-Return) -->
+      <key code="53" output="&#x001b;" /> <!-- Escape -->
+      <!-- gap, 54 through 64 -->
+      <key code="65" action="," /> <!-- keypad -->
+      <key code="66" output="&#x001d;" /> <!-- keypad right arrow? -->
+      <key code="67" action="*" /> <!-- keypad -->
+      <!-- gap, 68 -->
+      <key code="69" action="+" /> <!-- keypad -->
+      <key code="70" output="&#x001c;" /> <!-- keypad left arrow? -->
+      <key code="71" output="&#x001b;" /> <!-- Clear -->
+      <key code="72" output="&#x001f;" /> <!-- keypad down arrow? -->
+      <!-- gap, 73 through 74 -->
+      <key code="75" action="/" /> <!-- keypad -->
+      <key code="76" output="&#x0003;" /> <!-- Enter -->
+      <key code="77" output="&#x001e;" /> <!-- keypad up arrow? -->
+      <key code="78" action="-" /> <!-- keypad -->
+      <!-- gap, 79 through 80 -->
+      <key code="81" action="=" /> <!-- keypad -->
+      <key code="82" action="0" /> <!-- keypad -->
+      <key code="83" action="1" /> <!-- keypad -->
+      <key code="84" action="2" /> <!-- keypad -->
+      <key code="85" action="3" /> <!-- keypad -->
+      <key code="86" action="4" /> <!-- keypad -->
+      <key code="87" action="5" /> <!-- keypad -->
+      <key code="88" action="6" /> <!-- keypad -->
+      <key code="89" action="7" /> <!-- keypad -->
+      <!-- gap, 90 -->
+      <key code="91" action="8" /> <!-- keypad -->
+      <key code="92" action="9" /> <!-- keypad -->
+      <!-- gap, 93 through 95 -->
+      <key code="96" output="&#x0010;" /> <!-- F5 -->
+      <key code="97" output="&#x0010;" /> <!-- F6 -->
+      <key code="98" output="&#x0010;" /> <!-- F7 -->
+      <key code="99" output="&#x0010;" /> <!-- F3 -->
+      <key code="100" output="&#x0010;" /> <!-- F8 -->
+      <key code="101" output="&#x0010;" /> <!-- F9 -->
+      <key code="102" output="&#x0010;" /> <!-- ?? -->
+      <key code="103" output="&#x0010;" /> <!-- F11 -->
+      <key code="104" output="&#x0010;" /> <!-- ?? -->
+      <key code="105" output="&#x0010;" /> <!-- F13 -->
+      <key code="106" output="&#x0010;" /> <!-- F16 -->
+      <key code="107" output="&#x0010;" /> <!-- F14 -->
+      <key code="108" output="&#x0010;" /> <!-- ?? -->
+      <key code="109" output="&#x0010;" /> <!-- F10 -->
+      <key code="110" output="&#x0010;" /> <!-- ?? -->
+      <key code="111" output="&#x0010;" /> <!-- F12 -->
+      <key code="112" output="&#x0010;" /> <!-- ?? -->
+      <key code="113" output="&#x0010;" /> <!-- F15 -->
+      <key code="114" output="&#x0005;" /> <!-- Help -->
+      <key code="115" output="&#x0001;" /> <!-- Home -->
+      <key code="116" output="&#x000b;" /> <!-- Page Up -->
+      <key code="117" output="&#x007f;" /> <!-- Delete -->
+      <key code="118" output="&#x0010;" /> <!-- F4 -->
+      <key code="119" output="&#x0004;" /> <!-- End -->
+      <key code="120" output="&#x0010;" /> <!-- F2 -->
+      <key code="121" output="&#x000c;" /> <!-- Page Down -->
+      <key code="122" output="&#x0010;" /> <!-- F1 -->
+      <key code="123" output="&#x001c;" /> <!-- left arrow -->
+      <key code="124" output="&#x001d;" /> <!-- right arrow -->
+      <key code="125" output="&#x001f;" /> <!-- down arrow -->
+      <key code="126" output="&#x001e;" /> <!-- up arrow -->
+      <!-- gap, 127 -->
+    </keyMap>
+    <keyMap index="1">  <!-- shift -->
+      <key code="0" action="A" />
+      <key code="1" action="U" />
+      <key code="2" action="I" />
+      <key code="3" action="E" />
+      <key code="4" action="C" />
+      <key code="5" action=";" />
+      <key code="6" action="À" />
+      <key code="7" action="Y" />
+      <key code="8" action="X" />
+      <key code="9" action=":" />
+      <key code="10" action="#" />
+      <key code="11" action="K" />
+      <key code="12" action="B" />
+      <key code="13" action="É" />
+      <key code="14" action="P" />
+      <key code="15" action="O" />
+      <key code="16" action="!" />
+      <key code="17" action="È" />
+      <key code="18" action="1" />
+      <key code="19" action="2" />
+      <key code="20" action="3" />
+      <key code="21" action="4" />
+      <key code="22" action="6" />
+      <key code="23" action="5" />
+      <key code="24" action="`" />
+      <key code="25" action="9" />
+      <key code="26" action="7" />
+      <key code="27" action="°" />
+      <key code="28" action="8" />
+      <key code="29" action="0" />
+      <key code="30" action="W" />
+      <key code="31" action="L" />
+      <key code="32" action="V" />
+      <key code="33" action="Z" />
+      <key code="34" action="D" />
+      <key code="35" action="J" />
+      <key code="36" output="&#x000d;" /> <!-- Return -->
+      <key code="37" action="R" />
+      <key code="38" action="T" />
+      <key code="39" action="M" />
+      <key code="40" action="S" />
+      <key code="41" action="N" />
+      <key code="42" action="Ç" />
+      <key code="43" action="G" />
+      <key code="44" action="F" />
+      <key code="45" action="?" />
+      <key code="46" action="Q" />
+      <key code="47" action="H" />
+      <key code="48" output="&#x0009;" /> <!-- Tab -->
+      <key code="49" action="fineinsecable" />
+      <key code="50" action="Ê" />
+      <key code="51" output="&#x0008;" /> <!-- Backspace -->
+      <key code="52" output="&#x0003;" /> <!-- Enter (Fn-Return) -->
+      <key code="53" output="&#x001b;" /> <!-- Escape -->
+      <!-- gap, 54 through 64 -->
+      <key code="65" action="," /> <!-- keypad -->
+      <key code="66" output="&#x001d;" /> <!-- keypad right arrow? -->
+      <key code="67" action="*" /> <!-- keypad -->
+      <!-- gap, 68 -->
+      <key code="69" action="+" /> <!-- keypad -->
+      <key code="70" output="&#x001c;" /> <!-- keypad left arrow? -->
+      <key code="71" output="&#x001b;" /> <!-- Clear -->
+      <key code="72" output="&#x001f;" /> <!-- keypad down arrow? -->
+      <!-- gap, 73 through 74 -->
+      <key code="75" action="/" /> <!-- keypad -->
+      <key code="76" output="&#x0003;" /> <!-- Enter -->
+      <key code="77" output="&#x001e;" /> <!-- keypad up arrow? -->
+      <key code="78" action="-" /> <!-- keypad -->
+      <!-- gap, 79 through 80 -->
+      <key code="81" action="=" /> <!-- keypad -->
+      <key code="82" action="0" /> <!-- keypad -->
+      <key code="83" action="1" /> <!-- keypad -->
+      <key code="84" action="2" /> <!-- keypad -->
+      <key code="85" action="3" /> <!-- keypad -->
+      <key code="86" action="4" /> <!-- keypad -->
+      <key code="87" action="5" /> <!-- keypad -->
+      <key code="88" action="6" /> <!-- keypad -->
+      <key code="89" action="7" /> <!-- keypad -->
+      <!-- gap, 90 -->
+      <key code="91" action="8" /> <!-- keypad -->
+      <key code="92" action="9" /> <!-- keypad -->
+      <!-- gap, 93 through 95 -->
+      <key code="96" output="&#x0010;" /> <!-- F5 -->
+      <key code="97" output="&#x0010;" /> <!-- F6 -->
+      <key code="98" output="&#x0010;" /> <!-- F7 -->
+      <key code="99" output="&#x0010;" /> <!-- F3 -->
+      <key code="100" output="&#x0010;" /> <!-- F8 -->
+      <key code="101" output="&#x0010;" /> <!-- F9 -->
+      <key code="102" output="&#x0010;" /> <!-- ?? -->
+      <key code="103" output="&#x0010;" /> <!-- F11 -->
+      <key code="104" output="&#x0010;" /> <!-- ?? -->
+      <key code="105" output="&#x0010;" /> <!-- F13 -->
+      <key code="106" output="&#x0010;" /> <!-- F16 -->
+      <key code="107" output="&#x0010;" /> <!-- F14 -->
+      <key code="108" output="&#x0010;" /> <!-- ?? -->
+      <key code="109" output="&#x0010;" /> <!-- F10 -->
+      <key code="110" output="&#x0010;" /> <!-- ?? -->
+      <key code="111" output="&#x0010;" /> <!-- F12 -->
+      <key code="112" output="&#x0010;" /> <!-- ?? -->
+      <key code="113" output="&#x0010;" /> <!-- F15 -->
+      <key code="114" output="&#x0005;" /> <!-- Help -->
+      <key code="115" output="&#x0001;" /> <!-- Home -->
+      <key code="116" output="&#x000b;" /> <!-- Page Up -->
+      <key code="117" output="&#x007f;" /> <!-- Delete -->
+      <key code="118" output="&#x0010;" /> <!-- F4 -->
+      <key code="119" output="&#x0004;" /> <!-- End -->
+      <key code="120" output="&#x0010;" /> <!-- F2 -->
+      <key code="121" output="&#x000c;" /> <!-- Page Down -->
+      <key code="122" output="&#x0010;" /> <!-- F1 -->
+      <key code="123" output="&#x001c;" /> <!-- left arrow -->
+      <key code="124" output="&#x001d;" /> <!-- right arrow -->
+      <key code="125" output="&#x001f;" /> <!-- down arrow -->
+      <key code="126" output="&#x001e;" /> <!-- up arrow -->
+    </keyMap>
+    <keyMap index="2">  <!-- caps lock -->
+      <key code="0" action="A" />
+      <key code="1" action="U" />
+      <key code="2" action="I" />
+      <key code="3" action="E" />
+      <key code="4" action="C" />
+      <key code="5" action="," />
+      <key code="6" action="À" />
+      <key code="7" action="Y" />
+      <key code="8" action="X" />
+      <key code="9" action="." />
+      <key code="10" action="$" />
+      <key code="11" action="K" />
+      <key code="12" action="B" />
+      <key code="13" action="É" />
+      <key code="14" action="P" />
+      <key code="15" action="O" />
+      <key code="16" action="circonflexe" />
+      <key code="17" action="È" />
+      <key code="18" action="1" />
+      <key code="19" action="2" />
+      <key code="20" action="3" />
+      <key code="21" action="4" />
+      <key code="22" action="6" />
+      <key code="23" action="5" />
+      <key code="24" action="%" />
+      <key code="25" action="9" />
+      <key code="26" action="7" />
+      <key code="27" action="=" />
+      <key code="28" action="8" />
+      <key code="29" action="0" />
+      <key code="30" action="W" />
+      <key code="31" action="L" />
+      <key code="32" action="V" />
+      <key code="33" action="Z" />
+      <key code="34" action="D" />
+      <key code="35" action="J" />
+      <key code="36" output="&#x000d;" /> <!-- Return -->
+      <key code="37" action="R" />
+      <key code="38" action="T" />
+      <key code="39" action="M" />
+      <key code="40" action="S" />
+      <key code="41" action="N" />
+      <key code="42" action="Ç" />
+      <key code="43" action="G" />
+      <key code="44" action="F" />
+      <key code="45" action="’" />
+      <key code="46" action="Q" />
+      <key code="47" action="H" />
+      <key code="48" output="&#x0009;" /> <!-- Tab -->
+      <key code="49" action="espace" />
+      <key code="50" action="Ê" />
+      <key code="51" output="&#x0008;" /> <!-- Backspace -->
+      <key code="52" output="&#x0003;" /> <!-- Enter (Fn-Return) -->
+      <key code="53" output="&#x001b;" /> <!-- Escape -->
+      <!-- gap, 54 through 64 -->
+      <key code="65" action="." /> <!-- keypad -->
+      <key code="66" output="&#x001d;" /> <!-- keypad right arrow? -->
+      <key code="67" action="*" /> <!-- keypad -->
+      <!-- gap, 68 -->
+      <key code="69" action="+" /> <!-- keypad -->
+      <key code="70" output="&#x001c;" /> <!-- keypad left arrow? -->
+      <key code="71" output="&#x001b;" /> <!-- Clear -->
+      <key code="72" output="&#x001f;" /> <!-- keypad down arrow? -->
+      <!-- gap, 73 through 74 -->
+      <key code="75" action="/" /> <!-- keypad -->
+      <key code="76" output="&#x0003;" /> <!-- Enter -->
+      <key code="77" output="&#x001e;" /> <!-- keypad up arrow? -->
+      <key code="78" action="-" /> <!-- keypad -->
+      <!-- gap, 79 through 80 -->
+      <key code="81" action="=" /> <!-- keypad -->
+      <key code="82" action="0" /> <!-- keypad -->
+      <key code="83" action="1" /> <!-- keypad -->
+      <key code="84" action="2" /> <!-- keypad -->
+      <key code="85" action="3" /> <!-- keypad -->
+      <key code="86" action="4" /> <!-- keypad -->
+      <key code="87" action="5" /> <!-- keypad -->
+      <key code="88" action="6" /> <!-- keypad -->
+      <key code="89" action="7" /> <!-- keypad -->
+      <!-- gap, 90 -->
+      <key code="91" action="8" /> <!-- keypad -->
+      <key code="92" action="9" /> <!-- keypad -->
+      <!-- gap, 93 through 95 -->
+      <key code="96" output="&#x0010;" /> <!-- F5 -->
+      <key code="97" output="&#x0010;" /> <!-- F6 -->
+      <key code="98" output="&#x0010;" /> <!-- F7 -->
+      <key code="99" output="&#x0010;" /> <!-- F3 -->
+      <key code="100" output="&#x0010;" /> <!-- F8 -->
+      <key code="101" output="&#x0010;" /> <!-- F9 -->
+      <key code="102" output="&#x0010;" /> <!-- ?? -->
+      <key code="103" output="&#x0010;" /> <!-- F11 -->
+      <key code="104" output="&#x0010;" /> <!-- ?? -->
+      <key code="105" output="&#x0010;" /> <!-- F13 -->
+      <key code="106" output="&#x0010;" /> <!-- F16 -->
+      <key code="107" output="&#x0010;" /> <!-- F14 -->
+      <key code="108" output="&#x0010;" /> <!-- ?? -->
+      <key code="109" output="&#x0010;" /> <!-- F10 -->
+      <key code="110" output="&#x0010;" /> <!-- ?? -->
+      <key code="111" output="&#x0010;" /> <!-- F12 -->
+      <key code="112" output="&#x0010;" /> <!-- ?? -->
+      <key code="113" output="&#x0010;" /> <!-- F15 -->
+      <key code="114" output="&#x0005;" /> <!-- Help -->
+      <key code="115" output="&#x0001;" /> <!-- Home -->
+      <key code="116" output="&#x000b;" /> <!-- Page Up -->
+      <key code="117" output="&#x007f;" /> <!-- Delete -->
+      <key code="118" output="&#x0010;" /> <!-- F4 -->
+      <key code="119" output="&#x0004;" /> <!-- End -->
+      <key code="120" output="&#x0010;" /> <!-- F2 -->
+      <key code="121" output="&#x000c;" /> <!-- Page Down -->
+      <key code="122" output="&#x0010;" /> <!-- F1 -->
+      <key code="123" output="&#x001c;" /> <!-- left arrow -->
+      <key code="124" output="&#x001d;" /> <!-- right arrow -->
+      <key code="125" output="&#x001f;" /> <!-- down arrow -->
+      <key code="126" output="&#x001e;" /> <!-- up arrow -->
+    </keyMap>
+    <keyMap index="3">  <!-- shift caps lock -->
+      <key code="0" action="a" />
+      <key code="1" action="u" />
+      <key code="2" action="i" />
+      <key code="3" action="e" />
+      <key code="4" action="c" />
+      <key code="5" action=";" />
+      <key code="6" action="à" />
+      <key code="7" action="y" />
+      <key code="8" action="x" />
+      <key code="9" action=":" />
+      <key code="10" action="#" />
+      <key code="11" action="k" />
+      <key code="12" action="b" />
+      <key code="13" action="é" />
+      <key code="14" action="p" />
+      <key code="15" action="o" />
+      <key code="16" action="!" />
+      <key code="17" action="è" />
+      <key code="18" action="guillemet" />
+      <key code="19" action="«" />
+      <key code="20" action="»" />
+      <key code="21" action="(" />
+      <key code="22" action="@" />
+      <key code="23" action=")" />
+      <key code="24" action="`" />
+      <key code="25" action="/" />
+      <key code="26" action="+" />
+      <key code="27" action="°" />
+      <key code="28" action="-" />
+      <key code="29" action="*" />
+      <key code="30" action="w" />
+      <key code="31" action="l" />
+      <key code="32" action="v" />
+      <key code="33" action="z" />
+      <key code="34" action="d" />
+      <key code="35" action="j" />
+      <key code="36" output="&#x000d;" /> <!-- Return -->
+      <key code="37" action="r" />
+      <key code="38" action="t" />
+      <key code="39" action="m" />
+      <key code="40" action="s" />
+      <key code="41" action="n" />
+      <key code="42" action="ç" />
+      <key code="43" action="g" />
+      <key code="44" action="f" />
+      <key code="45" action="?" />
+      <key code="46" action="q" />
+      <key code="47" action="h" />
+      <key code="48" output="&#x0009;" /> <!-- Tab -->
+      <key code="49" action="fineinsecable" />
+      <key code="50" action="ê" />
+      <key code="51" output="&#x0008;" /> <!-- Backspace -->
+      <key code="52" output="&#x0003;" /> <!-- Enter (Fn-Return) -->
+      <key code="53" output="&#x001b;" /> <!-- Escape -->
+      <!-- gap, 54 through 64 -->
+      <key code="65" action="." /> <!-- keypad -->
+      <key code="66" output="&#x001d;" /> <!-- keypad right arrow? -->
+      <key code="67" action="*" /> <!-- keypad -->
+      <!-- gap, 68 -->
+      <key code="69" action="+" /> <!-- keypad -->
+      <key code="70" output="&#x001c;" /> <!-- keypad left arrow? -->
+      <key code="71" output="&#x001b;" /> <!-- Clear -->
+      <key code="72" output="&#x001f;" /> <!-- keypad down arrow? -->
+      <!-- gap, 73 through 74 -->
+      <key code="75" action="/" /> <!-- keypad -->
+      <key code="76" output="&#x0003;" /> <!-- Enter -->
+      <key code="77" output="&#x001e;" /> <!-- keypad up arrow? -->
+      <key code="78" action="-" /> <!-- keypad -->
+      <!-- gap, 79 through 80 -->
+      <key code="81" action="=" /> <!-- keypad -->
+      <key code="82" action="0" /> <!-- keypad -->
+      <key code="83" action="1" /> <!-- keypad -->
+      <key code="84" action="2" /> <!-- keypad -->
+      <key code="85" action="3" /> <!-- keypad -->
+      <key code="86" action="4" /> <!-- keypad -->
+      <key code="87" action="5" /> <!-- keypad -->
+      <key code="88" action="6" /> <!-- keypad -->
+      <key code="89" action="7" /> <!-- keypad -->
+      <!-- gap, 90 -->
+      <key code="91" action="8" /> <!-- keypad -->
+      <key code="92" action="9" /> <!-- keypad -->
+      <!-- gap, 93 through 95 -->
+      <key code="96" output="&#x0010;" /> <!-- F5 -->
+      <key code="97" output="&#x0010;" /> <!-- F6 -->
+      <key code="98" output="&#x0010;" /> <!-- F7 -->
+      <key code="99" output="&#x0010;" /> <!-- F3 -->
+      <key code="100" output="&#x0010;" /> <!-- F8 -->
+      <key code="101" output="&#x0010;" /> <!-- F9 -->
+      <key code="102" output="&#x0010;" /> <!-- ?? -->
+      <key code="103" output="&#x0010;" /> <!-- F11 -->
+      <key code="104" output="&#x0010;" /> <!-- ?? -->
+      <key code="105" output="&#x0010;" /> <!-- F13 -->
+      <key code="106" output="&#x0010;" /> <!-- F16 -->
+      <key code="107" output="&#x0010;" /> <!-- F14 -->
+      <key code="108" output="&#x0010;" /> <!-- ?? -->
+      <key code="109" output="&#x0010;" /> <!-- F10 -->
+      <key code="110" output="&#x0010;" /> <!-- ?? -->
+      <key code="111" output="&#x0010;" /> <!-- F12 -->
+      <key code="112" output="&#x0010;" /> <!-- ?? -->
+      <key code="113" output="&#x0010;" /> <!-- F15 -->
+      <key code="114" output="&#x0005;" /> <!-- Help -->
+      <key code="115" output="&#x0001;" /> <!-- Home -->
+      <key code="116" output="&#x000b;" /> <!-- Page Up -->
+      <key code="117" output="&#x007f;" /> <!-- Delete -->
+      <key code="118" output="&#x0010;" /> <!-- F4 -->
+      <key code="119" output="&#x0004;" /> <!-- End -->
+      <key code="120" output="&#x0010;" /> <!-- F2 -->
+      <key code="121" output="&#x000c;" /> <!-- Page Down -->
+      <key code="122" output="&#x0010;" /> <!-- F1 -->
+      <key code="123" output="&#x001c;" /> <!-- left arrow -->
+      <key code="124" output="&#x001d;" /> <!-- right arrow -->
+      <key code="125" output="&#x001f;" /> <!-- down arrow -->
+      <key code="126" output="&#x001e;" /> <!-- up arrow -->
+    </keyMap>
+    <keyMap index="4">  <!-- option -->
+      <key code="0" action="æ" />
+      <key code="1" action="ù" />
+      <key code="2" action="trema" />
+      <key code="3" action="€" />
+      <key code="4" action="cedille" />
+      <key code="5" action="'" />
+      <key code="6" action="\" />
+      <key code="7" action="{" />
+      <key code="8" action="}" />
+      <key code="9" action="…" />
+      <key code="10" action="–" />
+      <key code="11" action="~" />
+      <key code="12" action="|" />
+      <key code="13" action="aigu" />
+      <key code="14" action="esperluette" />
+      <key code="15" action="œ" />
+      <key code="16" action="¡" />
+      <key code="17" action="grave" />
+      <key code="18" action="—" />
+      <key code="19" action="inferieur" />
+      <key code="20" action=">" />
+      <key code="21" action="[" />
+      <key code="22" action="^" />
+      <key code="23" action="]" />
+      <key code="24" action="‰" />
+      <key code="25" action="÷" />
+      <key code="26" action="±" />
+      <key code="27" action="≠" />
+      <key code="28" action="−" />
+      <key code="29" action="×" />
+      <key code="30" action="⚜" />
+      <key code="31" action="barre" />
+      <key code="32" action="caron" />
+      <key code="33" action="raye" />
+      <key code="34" action="scientifique" />
+      <key code="35" action="☮" />
+      <key code="36" output="&#x000d;" /> <!-- Return -->
+      <key code="37" action="breve" />
+      <key code="38" action="exposant" />
+      <key code="39" action="macron" />
+      <key code="40" action="latin" />
+      <key code="41" action="tilde" />
+      <key code="42" action="✈" />
+      <key code="43" action="grec" />
+      <key code="44" action="ogonek" />
+      <key code="45" action="¿" />
+      <key code="46" action="rond" />
+      <key code="47" action="pointsouscrit" />
+      <key code="48" output="&#x0009;" /> <!-- Tab -->
+      <key code="49" action="_" />
+      <key code="50" action="/" />
+      <key code="51" output="&#x0008;" /> <!-- Backspace -->
+      <key code="52" output="&#x0003;" /> <!-- Enter (Fn-Return) -->
+      <key code="53" output="&#x001b;" /> <!-- Escape -->
+      <!-- gap, 54 through 64 -->
+      <key code="65" action="," /> <!-- keypad -->
+      <key code="66" output="&#x001d;" /> <!-- keypad right arrow? -->
+      <key code="67" action="*" /> <!-- keypad -->
+      <!-- gap, 68 -->
+      <key code="69" action="+" /> <!-- keypad -->
+      <key code="70" output="&#x001c;" /> <!-- keypad left arrow? -->
+      <key code="71" output="&#x001b;" /> <!-- Clear -->
+      <key code="72" output="&#x001f;" /> <!-- keypad down arrow? -->
+      <!-- gap, 73 through 74 -->
+      <key code="75" action="/" /> <!-- keypad -->
+      <key code="76" output="&#x0003;" /> <!-- Enter -->
+      <key code="77" output="&#x001e;" /> <!-- keypad up arrow? -->
+      <key code="78" action="-" /> <!-- keypad -->
+      <!-- gap, 79 through 80 -->
+      <key code="81" action="=" /> <!-- keypad -->
+      <key code="82" action="0" /> <!-- keypad -->
+      <key code="83" action="1" /> <!-- keypad -->
+      <key code="84" action="2" /> <!-- keypad -->
+      <key code="85" action="3" /> <!-- keypad -->
+      <key code="86" action="4" /> <!-- keypad -->
+      <key code="87" action="5" /> <!-- keypad -->
+      <key code="88" action="6" /> <!-- keypad -->
+      <key code="89" action="7" /> <!-- keypad -->
+      <!-- gap, 90 -->
+      <key code="91" action="8" /> <!-- keypad -->
+      <key code="92" action="9" /> <!-- keypad -->
+      <!-- gap, 93 through 95 -->
+      <key code="96" output="&#x0010;" /> <!-- F5 -->
+      <key code="97" output="&#x0010;" /> <!-- F6 -->
+      <key code="98" output="&#x0010;" /> <!-- F7 -->
+      <key code="99" output="&#x0010;" /> <!-- F3 -->
+      <key code="100" output="&#x0010;" /> <!-- F8 -->
+      <key code="101" output="&#x0010;" /> <!-- F9 -->
+      <key code="102" output="&#x0010;" /> <!-- ?? -->
+      <key code="103" output="&#x0010;" /> <!-- F11 -->
+      <key code="104" output="&#x0010;" /> <!-- ?? -->
+      <key code="105" output="&#x0010;" /> <!-- F13 -->
+      <key code="106" output="&#x0010;" /> <!-- F16 -->
+      <key code="107" output="&#x0010;" /> <!-- F14 -->
+      <key code="108" output="&#x0010;" /> <!-- ?? -->
+      <key code="109" output="&#x0010;" /> <!-- F10 -->
+      <key code="110" output="&#x0010;" /> <!-- ?? -->
+      <key code="111" output="&#x0010;" /> <!-- F12 -->
+      <key code="112" output="&#x0010;" /> <!-- ?? -->
+      <key code="113" output="&#x0010;" /> <!-- F15 -->
+      <key code="114" output="&#x0005;" /> <!-- Help -->
+      <key code="115" output="&#x0001;" /> <!-- Home -->
+      <key code="116" output="&#x000b;" /> <!-- Page Up -->
+      <key code="117" output="&#x007f;" /> <!-- Delete -->
+      <key code="118" output="&#x0010;" /> <!-- F4 -->
+      <key code="119" output="&#x0004;" /> <!-- End -->
+      <key code="120" output="&#x0010;" /> <!-- F2 -->
+      <key code="121" output="&#x000c;" /> <!-- Page Down -->
+      <key code="122" output="&#x0010;" /> <!-- F1 -->
+      <key code="123" output="&#x001c;" /> <!-- left arrow -->
+      <key code="124" output="&#x001d;" /> <!-- right arrow -->
+      <key code="125" output="&#x001f;" /> <!-- down arrow -->
+      <key code="126" output="&#x001e;" /> <!-- up arrow -->
+    </keyMap>
+    <keyMap index="5">  <!-- shift option -->
+      <key code="0" action="Æ" />
+      <key code="1" action="Ù" />
+      <key code="2" action="pointsuscrit" />
+      <key code="3" action="monnaie" />
+      <key code="4" action="©" />
+      <key code="5" action="virgule" />
+      <key code="6" action="‚" />
+      <key code="7" action="‘" />
+      <key code="8" action="’" />
+      <key code="9" action="·" />
+      <key code="10" action="¶" />
+      <key code="11" action="‑" />
+      <key code="12" action="_" />
+      <key code="13" action="♥" />
+      <key code="14" action="§" />
+      <key code="15" action="Œ" />
+      <key code="16" action="☠" />
+      <key code="17" action="`" />
+      <key code="18" action="„" />
+      <key code="19" action="“" />
+      <key code="20" action="”" />
+      <key code="21" action="⩽" />
+      <key code="22" action="☭" />
+      <key code="23" action="⩾" />
+      <key code="24" action="″" />
+      <key code="25" action="½" />
+      <key code="26" action="¬" />
+      <key code="27" action="′" />
+      <key code="28" action="¼" />
+      <key code="29" action="¾" />
+      <key code="30" action="♿" />
+      <key code="31" action="£" />
+      <key code="32" action="☢" />
+      <key code="33" action="☙" />
+      <key code="34" action="☣" />
+      <key code="35" action="☯" />
+      <key code="36" output="&#x000d;" /> <!-- Return -->
+      <key code="37" action="®" />
+      <key code="38" action="™" />
+      <key code="39" action="⛽" />
+      <key code="40" action="ſ" />
+      <key code="41" action="⚓" />
+      <key code="42" action="copyleft" />
+      <key code="43" action="†" />
+      <key code="44" action="⛄" />
+      <key code="45" action="crochet" />
+      <key code="46" action="corne" />
+      <key code="47" action="‡" />
+      <key code="48" output="&#x0009;" /> <!-- Tab -->
+      <key code="49" action="insecable" />
+      <key code="50" action="^" />
+      <key code="51" output="&#x0008;" /> <!-- Backspace -->
+      <key code="52" output="&#x0003;" /> <!-- Enter (Fn-Return) -->
+      <key code="53" output="&#x001b;" /> <!-- Escape -->
+      <!-- gap, 54 through 64 -->
+      <key code="65" action="." /> <!-- keypad -->
+      <key code="66" output="&#x001d;" /> <!-- keypad right arrow? -->
+      <key code="67" action="*" /> <!-- keypad -->
+      <!-- gap, 68 -->
+      <key code="69" action="+" /> <!-- keypad -->
+      <key code="70" output="&#x001c;" /> <!-- keypad left arrow? -->
+      <key code="71" output="&#x001b;" /> <!-- Clear -->
+      <key code="72" output="&#x001f;" /> <!-- keypad down arrow? -->
+      <!-- gap, 73 through 74 -->
+      <key code="75" action="/" /> <!-- keypad -->
+      <key code="76" output="&#x0003;" /> <!-- Enter -->
+      <key code="77" output="&#x001e;" /> <!-- keypad up arrow? -->
+      <key code="78" action="-" /> <!-- keypad -->
+      <!-- gap, 79 through 80 -->
+      <key code="81" action="=" /> <!-- keypad -->
+      <key code="82" action="0" /> <!-- keypad -->
+      <key code="83" action="1" /> <!-- keypad -->
+      <key code="84" action="2" /> <!-- keypad -->
+      <key code="85" action="3" /> <!-- keypad -->
+      <key code="86" action="4" /> <!-- keypad -->
+      <key code="87" action="5" /> <!-- keypad -->
+      <key code="88" action="6" /> <!-- keypad -->
+      <key code="89" action="7" /> <!-- keypad -->
+      <!-- gap, 90 -->
+      <key code="91" action="8" /> <!-- keypad -->
+      <key code="92" action="9" /> <!-- keypad -->
+      <!-- gap, 93 through 95 -->
+      <key code="96" output="&#x0010;" /> <!-- F5 -->
+      <key code="97" output="&#x0010;" /> <!-- F6 -->
+      <key code="98" output="&#x0010;" /> <!-- F7 -->
+      <key code="99" output="&#x0010;" /> <!-- F3 -->
+      <key code="100" output="&#x0010;" /> <!-- F8 -->
+      <key code="101" output="&#x0010;" /> <!-- F9 -->
+      <key code="102" output="&#x0010;" /> <!-- ?? -->
+      <key code="103" output="&#x0010;" /> <!-- F11 -->
+      <key code="104" output="&#x0010;" /> <!-- ?? -->
+      <key code="105" output="&#x0010;" /> <!-- F13 -->
+      <key code="106" output="&#x0010;" /> <!-- F16 -->
+      <key code="107" output="&#x0010;" /> <!-- F14 -->
+      <key code="108" output="&#x0010;" /> <!-- ?? -->
+      <key code="109" output="&#x0010;" /> <!-- F10 -->
+      <key code="110" output="&#x0010;" /> <!-- ?? -->
+      <key code="111" output="&#x0010;" /> <!-- F12 -->
+      <key code="112" output="&#x0010;" /> <!-- ?? -->
+      <key code="113" output="&#x0010;" /> <!-- F15 -->
+      <key code="114" output="&#x0005;" /> <!-- Help -->
+      <key code="115" output="&#x0001;" /> <!-- Home -->
+      <key code="116" output="&#x000b;" /> <!-- Page Up -->
+      <key code="117" output="&#x007f;" /> <!-- Delete -->
+      <key code="118" output="&#x0010;" /> <!-- F4 -->
+      <key code="119" output="&#x0004;" /> <!-- End -->
+      <key code="120" output="&#x0010;" /> <!-- F2 -->
+      <key code="121" output="&#x000c;" /> <!-- Page Down -->
+      <key code="122" output="&#x0010;" /> <!-- F1 -->
+      <key code="123" output="&#x001c;" /> <!-- left arrow -->
+      <key code="124" output="&#x001d;" /> <!-- right arrow -->
+      <key code="125" output="&#x001f;" /> <!-- down arrow -->
+      <key code="126" output="&#x001e;" /> <!-- up arrow -->
+    </keyMap>
+    <keyMap index="6">  <!-- shift option caps lock -->
+      <key code="0" action="æ" />
+      <key code="1" action="ù" />
+      <key code="2" action="pointsuscrit" />
+      <key code="3" action="monnaie" />
+      <key code="4" action="©" />
+      <key code="5" action="virgule" />
+      <key code="6" action="‚" />
+      <key code="7" action="‘" />
+      <key code="8" action="’" />
+      <key code="9" action="·" />
+      <key code="10" action="¶" />
+      <key code="11" action="‑" />
+      <key code="12" action="_" />
+      <key code="13" action="♥" />
+      <key code="14" action="§" />
+      <key code="15" action="œ" />
+      <key code="16" action="☠" />
+      <key code="17" action="`" />
+      <key code="18" action="„" />
+      <key code="19" action="“" />
+      <key code="20" action="”" />
+      <key code="21" action="⩽" />
+      <key code="22" action="☭" />
+      <key code="23" action="⩾" />
+      <key code="24" action="″" />
+      <key code="25" action="½" />
+      <key code="26" action="¬" />
+      <key code="27" action="′" />
+      <key code="28" action="¼" />
+      <key code="29" action="¾" />
+      <key code="30" action="♿" />
+      <key code="31" action="£" />
+      <key code="32" action="☢" />
+      <key code="33" action="☙" />
+      <key code="34" action="☣" />
+      <key code="35" action="☯" />
+      <key code="36" output="&#x000d;" /> <!-- Return -->
+      <key code="37" action="®" />
+      <key code="38" action="™" />
+      <key code="39" action="⛽" />
+      <key code="40" action="ſ" />
+      <key code="41" action="⚓" />
+      <key code="42" action="copyleft" />
+      <key code="43" action="†" />
+      <key code="44" action="⛄" />
+      <key code="45" action="crochet" />
+      <key code="46" action="corne" />
+      <key code="47" action="‡" />
+      <key code="48" output="&#x0009;" /> <!-- Tab -->
+      <key code="49" action="insecable" />
+      <key code="50" action="^" />
+      <key code="51" output="&#x0008;" /> <!-- Backspace -->
+      <key code="52" output="&#x0003;" /> <!-- Enter (Fn-Return) -->
+      <key code="53" output="&#x001b;" /> <!-- Escape -->
+      <!-- gap, 54 through 64 -->
+      <key code="65" action="." /> <!-- keypad -->
+      <key code="66" output="&#x001d;" /> <!-- keypad right arrow? -->
+      <key code="67" action="*" /> <!-- keypad -->
+      <!-- gap, 68 -->
+      <key code="69" action="+" /> <!-- keypad -->
+      <key code="70" output="&#x001c;" /> <!-- keypad left arrow? -->
+      <key code="71" output="&#x001b;" /> <!-- Clear -->
+      <key code="72" output="&#x001f;" /> <!-- keypad down arrow? -->
+      <!-- gap, 73 through 74 -->
+      <key code="75" action="/" /> <!-- keypad -->
+      <key code="76" output="&#x0003;" /> <!-- Enter -->
+      <key code="77" output="&#x001e;" /> <!-- keypad up arrow? -->
+      <key code="78" action="-" /> <!-- keypad -->
+      <!-- gap, 79 through 80 -->
+      <key code="81" action="=" /> <!-- keypad -->
+      <key code="82" action="0" /> <!-- keypad -->
+      <key code="83" action="1" /> <!-- keypad -->
+      <key code="84" action="2" /> <!-- keypad -->
+      <key code="85" action="3" /> <!-- keypad -->
+      <key code="86" action="4" /> <!-- keypad -->
+      <key code="87" action="5" /> <!-- keypad -->
+      <key code="88" action="6" /> <!-- keypad -->
+      <key code="89" action="7" /> <!-- keypad -->
+      <!-- gap, 90 -->
+      <key code="91" action="8" /> <!-- keypad -->
+      <key code="92" action="9" /> <!-- keypad -->
+      <!-- gap, 93 through 95 -->
+      <key code="96" output="&#x0010;" /> <!-- F5 -->
+      <key code="97" output="&#x0010;" /> <!-- F6 -->
+      <key code="98" output="&#x0010;" /> <!-- F7 -->
+      <key code="99" output="&#x0010;" /> <!-- F3 -->
+      <key code="100" output="&#x0010;" /> <!-- F8 -->
+      <key code="101" output="&#x0010;" /> <!-- F9 -->
+      <key code="102" output="&#x0010;" /> <!-- ?? -->
+      <key code="103" output="&#x0010;" /> <!-- F11 -->
+      <key code="104" output="&#x0010;" /> <!-- ?? -->
+      <key code="105" output="&#x0010;" /> <!-- F13 -->
+      <key code="106" output="&#x0010;" /> <!-- F16 -->
+      <key code="107" output="&#x0010;" /> <!-- F14 -->
+      <key code="108" output="&#x0010;" /> <!-- ?? -->
+      <key code="109" output="&#x0010;" /> <!-- F10 -->
+      <key code="110" output="&#x0010;" /> <!-- ?? -->
+      <key code="111" output="&#x0010;" /> <!-- F12 -->
+      <key code="112" output="&#x0010;" /> <!-- ?? -->
+      <key code="113" output="&#x0010;" /> <!-- F15 -->
+      <key code="114" output="&#x0005;" /> <!-- Help -->
+      <key code="115" output="&#x0001;" /> <!-- Home -->
+      <key code="116" output="&#x000b;" /> <!-- Page Up -->
+      <key code="117" output="&#x007f;" /> <!-- Delete -->
+      <key code="118" output="&#x0010;" /> <!-- F4 -->
+      <key code="119" output="&#x0004;" /> <!-- End -->
+      <key code="120" output="&#x0010;" /> <!-- F2 -->
+      <key code="121" output="&#x000c;" /> <!-- Page Down -->
+      <key code="122" output="&#x0010;" /> <!-- F1 -->
+      <key code="123" output="&#x001c;" /> <!-- left arrow -->
+      <key code="124" output="&#x001d;" /> <!-- right arrow -->
+      <key code="125" output="&#x001f;" /> <!-- down arrow -->
+      <key code="126" output="&#x001e;" /> <!-- up arrow -->
+    </keyMap>
+    <keyMap index="7">  <!-- option caps lock -->
+      <key code="0" action="Æ" />
+      <key code="1" action="Ù" />
+      <key code="2" action="trema" />
+      <key code="3" action="€" />
+      <key code="4" action="cedille" />
+      <key code="5" action="'" />
+      <key code="6" action="\" />
+      <key code="7" action="{" />
+      <key code="8" action="}" />
+      <key code="9" action="…" />
+      <key code="10" action="–" />
+      <key code="11" action="~" />
+      <key code="12" action="|" />
+      <key code="13" action="aigu" />
+      <key code="14" action="esperluette" />
+      <key code="15" action="Œ" />
+      <key code="16" action="¡" />
+      <key code="17" action="grave" />
+      <key code="18" action="—" />
+      <key code="19" action="inferieur" />
+      <key code="20" action=">" />
+      <key code="21" action="[" />
+      <key code="22" action="^" />
+      <key code="23" action="]" />
+      <key code="24" action="‰" />
+      <key code="25" action="÷" />
+      <key code="26" action="±" />
+      <key code="27" action="≠" />
+      <key code="28" action="−" />
+      <key code="29" action="×" />
+      <key code="30" action="⚜" />
+      <key code="31" action="barre" />
+      <key code="32" action="caron" />
+      <key code="33" action="raye" />
+      <key code="34" action="scientifique" />
+      <key code="35" action="☮" />
+      <key code="36" output="&#x000d;" /> <!-- Return -->
+      <key code="37" action="breve" />
+      <key code="38" action="exposant" />
+      <key code="39" action="macron" />
+      <key code="40" action="latin" />
+      <key code="41" action="tilde" />
+      <key code="42" action="✈" />
+      <key code="43" action="grec" />
+      <key code="44" action="ogonek" />
+      <key code="45" action="¿" />
+      <key code="46" action="rond" />
+      <key code="47" action="pointsouscrit" />
+      <key code="48" output="&#x0009;" /> <!-- Tab -->
+      <key code="49" action="_" />
+      <key code="50" action="/" />
+      <key code="51" output="&#x0008;" /> <!-- Backspace -->
+      <key code="52" output="&#x0003;" /> <!-- Enter (Fn-Return) -->
+      <key code="53" output="&#x001b;" /> <!-- Escape -->
+      <!-- gap, 54 through 64 -->
+      <key code="65" action="," /> <!-- keypad -->
+      <key code="66" output="&#x001d;" /> <!-- keypad right arrow? -->
+      <key code="67" action="*" /> <!-- keypad -->
+      <!-- gap, 68 -->
+      <key code="69" action="+" /> <!-- keypad -->
+      <key code="70" output="&#x001c;" /> <!-- keypad left arrow? -->
+      <key code="71" output="&#x001b;" /> <!-- Clear -->
+      <key code="72" output="&#x001f;" /> <!-- keypad down arrow? -->
+      <!-- gap, 73 through 74 -->
+      <key code="75" action="/" /> <!-- keypad -->
+      <key code="76" output="&#x0003;" /> <!-- Enter -->
+      <key code="77" output="&#x001e;" /> <!-- keypad up arrow? -->
+      <key code="78" action="-" /> <!-- keypad -->
+      <!-- gap, 79 through 80 -->
+      <key code="81" action="=" /> <!-- keypad -->
+      <key code="82" action="0" /> <!-- keypad -->
+      <key code="83" action="1" /> <!-- keypad -->
+      <key code="84" action="2" /> <!-- keypad -->
+      <key code="85" action="3" /> <!-- keypad -->
+      <key code="86" action="4" /> <!-- keypad -->
+      <key code="87" action="5" /> <!-- keypad -->
+      <key code="88" action="6" /> <!-- keypad -->
+      <key code="89" action="7" /> <!-- keypad -->
+      <!-- gap, 90 -->
+      <key code="91" action="8" /> <!-- keypad -->
+      <key code="92" action="9" /> <!-- keypad -->
+      <!-- gap, 93 through 95 -->
+      <key code="96" output="&#x0010;" /> <!-- F5 -->
+      <key code="97" output="&#x0010;" /> <!-- F6 -->
+      <key code="98" output="&#x0010;" /> <!-- F7 -->
+      <key code="99" output="&#x0010;" /> <!-- F3 -->
+      <key code="100" output="&#x0010;" /> <!-- F8 -->
+      <key code="101" output="&#x0010;" /> <!-- F9 -->
+      <key code="102" output="&#x0010;" /> <!-- ?? -->
+      <key code="103" output="&#x0010;" /> <!-- F11 -->
+      <key code="104" output="&#x0010;" /> <!-- ?? -->
+      <key code="105" output="&#x0010;" /> <!-- F13 -->
+      <key code="106" output="&#x0010;" /> <!-- F16 -->
+      <key code="107" output="&#x0010;" /> <!-- F14 -->
+      <key code="108" output="&#x0010;" /> <!-- ?? -->
+      <key code="109" output="&#x0010;" /> <!-- F10 -->
+      <key code="110" output="&#x0010;" /> <!-- ?? -->
+      <key code="111" output="&#x0010;" /> <!-- F12 -->
+      <key code="112" output="&#x0010;" /> <!-- ?? -->
+      <key code="113" output="&#x0010;" /> <!-- F15 -->
+      <key code="114" output="&#x0005;" /> <!-- Help -->
+      <key code="115" output="&#x0001;" /> <!-- Home -->
+      <key code="116" output="&#x000b;" /> <!-- Page Up -->
+      <key code="117" output="&#x007f;" /> <!-- Delete -->
+      <key code="118" output="&#x0010;" /> <!-- F4 -->
+      <key code="119" output="&#x0004;" /> <!-- End -->
+      <key code="120" output="&#x0010;" /> <!-- F2 -->
+      <key code="121" output="&#x000c;" /> <!-- Page Down -->
+      <key code="122" output="&#x0010;" /> <!-- F1 -->
+      <key code="123" output="&#x001c;" /> <!-- left arrow -->
+      <key code="124" output="&#x001d;" /> <!-- right arrow -->
+      <key code="125" output="&#x001f;" /> <!-- down arrow -->
+      <key code="126" output="&#x001e;" /> <!-- up arrow -->
+    </keyMap>
+    <keyMap index="8">  <!-- option command -->
+      <key code="0" action="æ" />
+      <key code="1" action="ù" />
+      <key code="2" action="trema" />
+      <key code="3" action="€" />
+      <key code="4" action="cedille" />
+      <key code="5" action="'" />
+      <key code="6" action="\" />
+      <key code="7" action="{" />
+      <key code="8" action="}" />
+      <key code="9" action="…" />
+      <key code="10" action="–" />
+      <key code="11" action="~" />
+      <key code="12" action="|" />
+      <key code="13" action="aigu" />
+      <key code="14" action="esperluette" />
+      <key code="15" action="œ" />
+      <key code="16" action="¡" />
+      <key code="17" action="grave" />
+      <key code="18" action="—" />
+      <key code="19" action="inferieur" />
+      <key code="20" action=">" />
+      <key code="21" action="[" />
+      <key code="22" action="^" />
+      <key code="23" action="]" />
+      <key code="24" action="‰" />
+      <key code="25" action="÷" />
+      <key code="26" action="±" />
+      <key code="27" action="≠" />
+      <key code="28" action="−" />
+      <key code="29" action="×" />
+      <key code="30" action="⚜" />
+      <key code="31" action="barre" />
+      <key code="32" action="caron" />
+      <key code="33" action="raye" />
+      <key code="34" action="scientifique" />
+      <key code="35" action="☮" />
+      <key code="36" output="&#x000d;" /> <!-- Return -->
+      <key code="37" action="breve" />
+      <key code="38" action="exposant" />
+      <key code="39" action="macron" />
+      <key code="40" action="latin" />
+      <key code="41" action="tilde" />
+      <key code="42" action="✈" />
+      <key code="43" action="grec" />
+      <key code="44" action="ogonek" />
+      <key code="45" action="¿" />
+      <key code="46" action="rond" />
+      <key code="47" action="pointsouscrit" />
+      <key code="48" output="&#x0009;" /> <!-- Tab -->
+      <key code="49" action="_" />
+      <key code="50" action="/" />
+      <key code="51" output="&#x0008;" /> <!-- Backspace -->
+      <key code="52" output="&#x0003;" /> <!-- Enter (Fn-Return) -->
+      <key code="53" output="&#x001b;" /> <!-- Escape -->
+      <!-- gap, 54 through 64 -->
+      <key code="65" action="," /> <!-- keypad -->
+      <key code="66" output="&#x001d;" /> <!-- keypad right arrow? -->
+      <key code="67" action="*" /> <!-- keypad -->
+      <!-- gap, 68 -->
+      <key code="69" action="+" /> <!-- keypad -->
+      <key code="70" output="&#x001c;" /> <!-- keypad left arrow? -->
+      <key code="71" output="&#x001b;" /> <!-- Clear -->
+      <key code="72" output="&#x001f;" /> <!-- keypad down arrow? -->
+      <!-- gap, 73 through 74 -->
+      <key code="75" action="/" /> <!-- keypad -->
+      <key code="76" output="&#x0003;" /> <!-- Enter -->
+      <key code="77" output="&#x001e;" /> <!-- keypad up arrow? -->
+      <key code="78" action="-" /> <!-- keypad -->
+      <!-- gap, 79 through 80 -->
+      <key code="81" action="=" /> <!-- keypad -->
+      <key code="82" action="0" /> <!-- keypad -->
+      <key code="83" action="1" /> <!-- keypad -->
+      <key code="84" action="2" /> <!-- keypad -->
+      <key code="85" action="3" /> <!-- keypad -->
+      <key code="86" action="4" /> <!-- keypad -->
+      <key code="87" action="5" /> <!-- keypad -->
+      <key code="88" action="6" /> <!-- keypad -->
+      <key code="89" action="7" /> <!-- keypad -->
+      <!-- gap, 90 -->
+      <key code="91" action="8" /> <!-- keypad -->
+      <key code="92" action="9" /> <!-- keypad -->
+      <!-- gap, 93 through 95 -->
+      <key code="96" output="&#x0010;" /> <!-- F5 -->
+      <key code="97" output="&#x0010;" /> <!-- F6 -->
+      <key code="98" output="&#x0010;" /> <!-- F7 -->
+      <key code="99" output="&#x0010;" /> <!-- F3 -->
+      <key code="100" output="&#x0010;" /> <!-- F8 -->
+      <key code="101" output="&#x0010;" /> <!-- F9 -->
+      <key code="102" output="&#x0010;" /> <!-- ?? -->
+      <key code="103" output="&#x0010;" /> <!-- F11 -->
+      <key code="104" output="&#x0010;" /> <!-- ?? -->
+      <key code="105" output="&#x0010;" /> <!-- F13 -->
+      <key code="106" output="&#x0010;" /> <!-- F16 -->
+      <key code="107" output="&#x0010;" /> <!-- F14 -->
+      <key code="108" output="&#x0010;" /> <!-- ?? -->
+      <key code="109" output="&#x0010;" /> <!-- F10 -->
+      <key code="110" output="&#x0010;" /> <!-- ?? -->
+      <key code="111" output="&#x0010;" /> <!-- F12 -->
+      <key code="112" output="&#x0010;" /> <!-- ?? -->
+      <key code="113" output="&#x0010;" /> <!-- F15 -->
+      <key code="114" output="&#x0005;" /> <!-- Help -->
+      <key code="115" output="&#x0001;" /> <!-- Home -->
+      <key code="116" output="&#x000b;" /> <!-- Page Up -->
+      <key code="117" output="&#x007f;" /> <!-- Delete -->
+      <key code="118" output="&#x0010;" /> <!-- F4 -->
+      <key code="119" output="&#x0004;" /> <!-- End -->
+      <key code="120" output="&#x0010;" /> <!-- F2 -->
+      <key code="121" output="&#x000c;" /> <!-- Page Down -->
+      <key code="122" output="&#x0010;" /> <!-- F1 -->
+      <key code="123" output="&#x001c;" /> <!-- left arrow -->
+      <key code="124" output="&#x001d;" /> <!-- right arrow -->
+      <key code="125" output="&#x001f;" /> <!-- down arrow -->
+      <key code="126" output="&#x001e;" /> <!-- up arrow -->
+    </keyMap>
+    <keyMap index="9">  <!-- control -->
+      <key code="0" output="&#x0001;" />
+      <key code="1" output="&#x0015;" />
+      <key code="2" output="&#x0009;" />
+      <key code="3" output="&#x0005;" />
+      <key code="4" output="&#x0003;" />
+      <key code="5" output="," />
+      <key code="6" output=";" />
+      <key code="7" output="&#x0019;" />
+      <key code="8" output="&#x0008;" />
+      <key code="9" output="." />
+      <key code="10" action="0" />
+      <key code="11" output="&#x000b;" />
+      <key code="12" output="&#x0002;" />
+      <key code="13" output="/" />
+      <key code="14" output="&#x0010;" />
+      <key code="15" output="&#x000f;" />
+      <key code="16" output="&#x001c;" />
+      <key code="17" output="&#x001b;" />
+      <key code="18" action="1" />
+      <key code="19" action="2" />
+      <key code="20" action="3" />
+      <key code="21" action="4" />
+      <key code="22" action="6" />
+      <key code="23" action="5" />
+      <key code="24" action="=" />
+      <key code="25" action="9" />
+      <key code="26" action="7" />
+      <key code="27" output="&#x001f;" />
+      <key code="28" action="8" />
+      <key code="29" action="0" />
+      <key code="30" output="&#x0017;" />
+      <key code="31" output="&#x000c;" />
+      <key code="32" output="&#x0016;" />
+      <key code="33" output="&#x001a;" />
+      <key code="34" output="&#x0004;" />
+      <key code="35" output="&#x0006;" />
+      <key code="36" output="&#x000d;" /> <!-- Return -->
+      <key code="37" output="&#x000e;" />
+      <key code="38" output="&#x0014;" />
+      <key code="39" output="&#x000d;" />
+      <key code="40" output="&#x0013;" />
+      <key code="41" output="&#x0012;" />
+      <key code="42" output="&#x001d;" />
+      <key code="43" output="&#x0007;" />
+      <key code="44" output="&#x000a;" />
+      <key code="45" output="'" />
+      <key code="46" output="&#x0011;" />
+      <key code="47" output="&#x0018;" />
+      <key code="48" output="&#x0009;" /> <!-- Tab -->
+      <key code="49" action="espace" />
+      <key code="50" output="`" />
+      <key code="51" output="&#x0008;" /> <!-- Backspace -->
+      <key code="52" output="&#x0003;" /> <!-- Enter (Fn-Return) -->
+      <key code="53" output="&#x001b;" /> <!-- Escape -->
+      <!-- gap, 54 through 64 -->
+      <key code="65" output="." /> <!-- keypad -->
+      <key code="66" output="&#x001d;" /> <!-- keypad right arrow? -->
+      <key code="67" output="*" /> <!-- keypad -->
+      <!-- gap, 68 -->
+      <key code="69" action="+" /> <!-- keypad -->
+      <key code="70" output="&#x001c;" /> <!-- keypad left arrow? -->
+      <key code="71" output="&#x001b;" /> <!-- Clear -->
+      <key code="72" output="&#x001f;" /> <!-- keypad down arrow? -->
+      <!-- gap, 73 through 74 -->
+      <key code="75" output="/" /> <!-- keypad -->
+      <key code="76" output="&#x0003;" /> <!-- Enter -->
+      <key code="77" output="&#x001e;" /> <!-- keypad up arrow? -->
+      <key code="78" action="-" /> <!-- keypad -->
+      <!-- gap, 79 through 80 -->
+      <key code="81" action="=" /> <!-- keypad -->
+      <key code="82" action="0" /> <!-- keypad -->
+      <key code="83" action="1" /> <!-- keypad -->
+      <key code="84" action="2" /> <!-- keypad -->
+      <key code="85" action="3" /> <!-- keypad -->
+      <key code="86" action="4" /> <!-- keypad -->
+      <key code="87" action="5" /> <!-- keypad -->
+      <key code="88" action="6" /> <!-- keypad -->
+      <key code="89" action="7" /> <!-- keypad -->
+      <!-- gap, 90 -->
+      <key code="91" action="8" /> <!-- keypad -->
+      <key code="92" action="9" /> <!-- keypad -->
+      <!-- gap, 93 through 95 -->
+      <key code="96" output="&#x0010;" /> <!-- F5 -->
+      <key code="97" output="&#x0010;" /> <!-- F6 -->
+      <key code="98" output="&#x0010;" /> <!-- F7 -->
+      <key code="99" output="&#x0010;" /> <!-- F3 -->
+      <key code="100" output="&#x0010;" /> <!-- F8 -->
+      <key code="101" output="&#x0010;" /> <!-- F9 -->
+      <key code="102" output="&#x0010;" /> <!-- ?? -->
+      <key code="103" output="&#x0010;" /> <!-- F11 -->
+      <key code="104" output="&#x0010;" /> <!-- ?? -->
+      <key code="105" output="&#x0010;" /> <!-- F13 -->
+      <key code="106" output="&#x0010;" /> <!-- F16 -->
+      <key code="107" output="&#x0010;" /> <!-- F14 -->
+      <key code="108" output="&#x0010;" /> <!-- ?? -->
+      <key code="109" output="&#x0010;" /> <!-- F10 -->
+      <key code="110" output="&#x0010;" /> <!-- ?? -->
+      <key code="111" output="&#x0010;" /> <!-- F12 -->
+      <key code="112" output="&#x0010;" /> <!-- ?? -->
+      <key code="113" output="&#x0010;" /> <!-- F15 -->
+      <key code="114" output="&#x0005;" /> <!-- Help -->
+      <key code="115" output="&#x0001;" /> <!-- Home -->
+      <key code="116" output="&#x000b;" /> <!-- Page Up -->
+      <key code="117" output="&#x007f;" /> <!-- Delete -->
+      <key code="118" output="&#x0010;" /> <!-- F4 -->
+      <key code="119" output="&#x0004;" /> <!-- End -->
+      <key code="120" output="&#x0010;" /> <!-- F2 -->
+      <key code="121" output="&#x000c;" /> <!-- Page Down -->
+      <key code="122" output="&#x0010;" /> <!-- F1 -->
+      <key code="123" output="&#x001c;" /> <!-- left arrow -->
+      <key code="124" output="&#x001d;" /> <!-- right arrow -->
+      <key code="125" output="&#x001f;" /> <!-- down arrow -->
+      <key code="126" output="&#x001e;" /> <!-- up arrow -->
+      <!-- gap, 127 -->
+    </keyMap>
+  </keyMapSet>
+  <keyMapSet id="ANSI">
+    <keyMap index="0" baseMapSet="ISO" baseIndex="0">  <!-- No modifiers -->
+      <key code="50" output="$" />
+    </keyMap>
+    <keyMap index="1" baseMapSet="ISO" baseIndex="1">  <!-- shift -->
+      <key code="50" output="#" />
+    </keyMap>
+    <keyMap index="2" baseMapSet="ISO" baseIndex="2">  <!-- caps lock -->
+      <key code="50" output="$" />
+    </keyMap>
+    <keyMap index="3" baseMapSet="ISO" baseIndex="3">  <!-- shift caps lock -->
+      <key code="50" output="#" />
+    </keyMap>
+    <keyMap index="4" baseMapSet="ISO" baseIndex="4">  <!-- option -->
+      <key code="50" output="" />
+    </keyMap>
+    <keyMap index="5" baseMapSet="ISO" baseIndex="5">  <!-- shift option -->
+      <key code="50" output="" />
+    </keyMap>
+    <keyMap index="6" baseMapSet="ISO" baseIndex="6">  <!-- shift option caps lock -->
+      <key code="50" output="" />
+    </keyMap>
+    <keyMap index="7" baseMapSet="ISO" baseIndex="7">  <!-- option caps lock -->
+      <key code="50" output="" />
+    </keyMap>
+    <keyMap index="8" baseMapSet="ISO" baseIndex="8">  <!-- option command -->
+      <key code="50" output="" />
+    </keyMap>
+    <keyMap index="9" baseMapSet="ISO" baseIndex="9">  <!-- control -->
+      <key code="50" output="`" />
+    </keyMap>
+  </keyMapSet>
+  
+
+  <actions>
+
+    <action id="$">
+        <when state="none" output="$"/>
+        <when state="scientifique" output="♀"/>
+        <when state="latin" output="♭"/>
+    </action>
+    
+    <action id="#">
+        <when state="none" output="#"/>
+        <when state="scientifique" output="☿"/>
+        <when state="latin" output="♯"/>
+    </action>
+    
+    <action id="–">
+        <when state="none" output="–"/>
+        <when state="scientifique" output="♂"/>
+        <when state="latin" output="&#x2012;"/>
+    </action>
+    
+    <action id="¶">
+        <when state="none" output="¶"/>
+        <when state="scientifique" output="♁"/>
+        <when state="latin" output="♮"/>
+    </action>
+
+    <action id="guillemet">
+        <when state="none" output="&#x0022;"/>
+        <when state="scientifique" output="♄"/>
+        <when state="latin" output="&#x201f;"/>
+    </action>
+
+    <action id="1">
+        <when state="none" output="1"/>
+        <when state="circonflexe" output="¹"/>
+        <when state="caron" output="₁"/>
+        <when state="scientifique" output="♃"/>
+        <when state="exposant" output="¹"/>
+        <when state="latin" output="ↀ"/>
+        <when state="indices" output="₁"/>
+        <when state="doubletrait" output="𝟙"/>
+        <when state="gras" output="𝟏"/>
+    </action>
+
+    <action id="—">
+        <when state="none" output="—"/>
+        <when state="scientifique" output="♆"/>
+        <when state="latin" output="&#x2015;"/>
+    </action>
+
+    <action id="„">
+        <when state="none" output="„"/>
+        <when state="circonflexe" output=""/>
+        <when state="scientifique" output="♅"/>
+    </action>
+
+    <action id="«">
+        <when state="none" output="«"/>
+        <when state="scientifique" output="⟨"/>
+        <when state="latin" output="‹"/>
+    </action>
+
+    <action id="2">
+        <when state="none" output="2"/>
+        <when state="circonflexe" output="²"/>
+        <when state="caron" output="₂"/>
+        <when state="scientifique" output="≪"/>
+        <when state="raye" output="ƻ"/>
+        <when state="exposant" output="²"/>
+        <when state="doubletrait" output="𝟚"/>
+        <when state="gras" output="𝟮"/>
+        <when state="indices" output="₂"/>
+    </action>
+
+    <action id="inferieur">
+        <when state="none" output="&#x003c;"/>
+        <when state="scientifique" output="≺"/>
+        <when state="barre" output="≮"/>
+        <when state="tilde" output="≲"/>
+        <when state="scientifiquebarre" output="&#x2280;"/>
+    </action>
+
+    <action id="“">
+        <when state="none" output="“"/>
+    </action>
+
+    <action id="»">
+        <when state="none" output="»"/>
+        <when state="scientifique" output="⟩"/>
+        <when state="latin" output="›"/>
+    </action>
+
+    <action id="3">
+        <when state="none" output="3"/>
+        <when state="circonflexe" output="³"/>
+        <when state="caron" output="₃"/>
+        <when state="scientifique" output="≫"/>
+        <when state="exposant" output="³"/>
+        <when state="doubletrait" output="𝟛"/>
+        <when state="gras" output="𝟯"/>
+        <when state="indices" output="₃"/>
+    </action>
+
+    <action id=">">
+        <when state="none" output=">"/>
+        <when state="scientifique" output="≻"/>
+        <when state="barre" output="≯"/>
+        <when state="tilde" output="≳"/>
+        <when state="scientifiquebarre" output="&#x226f;"/>
+    </action>
+    
+        <action id="”">
+        <when state="none" output="”"/>
+    </action>
+
+    <action id="(">
+        <when state="none" output="("/>
+        <when state="circonflexe" output="⁽"/>
+        <when state="caron" output="₍"/>
+        <when state="scientifique" output="⌊"/>
+        <when state="exposant" output="⁽"/>
+        <when state="indices" output="₍"/>
+    </action>
+
+    <action id="4">
+        <when state="none" output="4"/>
+        <when state="circonflexe" output="⁴"/>
+        <when state="caron" output="₄"/>
+        <when state="scientifique" output="⌈"/>
+        <when state="exposant" output="⁴"/>
+        <when state="doubletrait" output="𝟜"/>
+        <when state="gras" output="𝟰"/>
+        <when state="indices" output="₄"/>
+    </action>
+
+    <action id="[">
+        <when state="none" output="["/>
+        <when state="scientifique" output="&#x228f;"/>
+    </action>
+
+    <action id="⩽">
+        <when state="none" output="⩽"/>
+        <when state="scientifique" output="&#x2264;"/>
+        <when state="scientifiquebarre" output="&#x2270;"/>
+    </action>
+
+    <action id=")">
+        <when state="none" output=")"/>
+        <when state="circonflexe" output="⁾"/>
+        <when state="caron" output="₎"/>
+        <when state="scientifique" output="⌋"/>
+        <when state="exposant" output="⁾"/>
+        <when state="indices" output="₎"/>
+    </action>
+
+    <action id="5">
+        <when state="none" output="5"/>
+        <when state="circonflexe" output="⁵"/>
+        <when state="caron" output="₅"/>
+        <when state="scientifique" output="⌉"/>
+        <when state="exposant" output="⁵"/>
+        <when state="latin" output="&#x2181;"/>
+        <when state="doubletrait" output="𝟝"/>
+        <when state="gras" output="𝟱"/>
+        <when state="indices" output="₅"/>
+    </action>
+    
+    <action id="]">
+        <when state="none" output="]"/>
+        <when state="scientifique" output="&#x2290;"/>
+    </action>
+    
+    <action id="⩾">
+        <when state="none" output="⩾"/>
+        <when state="scientifique" output="&#x2265;"/>
+        <when state="scientifiquebarre" output="&#x2271;"/>
+    </action>
+
+    <action id="@">
+        <when state="none" output="@"/>
+        <when state="scientifique" output="⟶"/>
+    </action>
+
+    <action id="6">
+        <when state="none" output="6"/>
+        <when state="circonflexe" output="⁶"/>
+        <when state="caron" output="₆"/>
+        <when state="scientifique" output="⟼"/>
+        <when state="exposant" output="⁶"/>
+        <when state="doubletrait" output="𝟞"/>
+        <when state="gras" output="𝟲"/>
+        <when state="indices" output="₆"/>
+    </action>
+
+    <action id="^">
+        <when state="none" output="^"/>
+        <when state="scientifique" output="&#x20d7;"/>
+    </action>
+
+    <action id="☭">
+        <when state="none" output="⚠"/>
+        <when state="scientifique" output="&#x20d5;"/>
+    </action>
+
+    <action id="+">
+        <when state="none" output="+"/>
+        <when state="circonflexe" output="⁺"/>
+        <when state="caron" output="₊"/>
+        <when state="scientifique" output="⊕"/>
+        <when state="exposant" output="⁺"/>
+        <when state="latin" output="⁜"/>
+        <when state="indices" output="₊"/>
+    </action>
+
+    <action id="7">
+        <when state="none" output="7"/>
+        <when state="circonflexe" output="⁷"/>
+        <when state="caron" output="₇"/>
+        <when state="scientifique" output="⊞"/>
+        <when state="exposant" output="⁷"/>
+        <when state="doubletrait" output="𝟟"/>
+        <when state="gras" output="𝟳"/>
+        <when state="indices" output="₇"/>
+    </action>
+
+    <action id="±">
+        <when state="none" output="±"/>
+        <when state="scientifique" output="⊎"/>
+    </action>
+
+    <action id="¬">
+        <when state="none" output="¬"/>
+        <when state="latin" output="☞"/>
+    </action>
+
+    <action id="-">
+        <when state="none" output="-"/>
+        <when state="circonflexe" output="⁻"/>
+        <when state="caron" output="₋"/>
+        <when state="scientifique" output="∞"/>
+        <when state="exposant" output="⁻"/>
+        <when state="latin" output="&#x00ad;"/>
+        <when state="tilde" output="≃"/>
+        <when state="indices" output="₋"/>
+        <when state="tildebarre" output="&#x2244;"/>
+    </action>
+    
+    <action id="8">
+        <when state="none" output="8"/>
+        <when state="circonflexe" output="⁸"/>
+        <when state="caron" output="₈"/>
+        <when state="scientifique" output="∝"/>
+        <when state="exposant" output="⁸"/>
+        <when state="doubletrait" output="𝟠"/>
+        <when state="gras" output="𝟴"/>
+        <when state="indices" output="₈"/>
+    </action>
+
+    <action id="−">
+        <when state="none" output="−"/>
+        <when state="latin" output="&#x2010;"/>
+    </action>
+
+    <action id="¼">
+        <when state="none" output="¼"/>
+        <when state="latin" output="⅓"/>
+    </action>
+
+    <action id="/">
+        <when state="none" output="/"/>
+    </action>
+
+    <action id="9">
+        <when state="none" output="9"/>
+        <when state="circonflexe" output="⁹"/>
+        <when state="caron" output="₉"/>
+        <when state="exposant" output="⁹"/>
+        <when state="doubletrait" output="𝟡"/>
+        <when state="gras" output="𝟵"/>
+        <when state="indices" output="₉"/>
+    </action>
+
+    <action id="÷">
+        <when state="none" output="÷"/>
+    </action>
+
+    <action id="½">
+        <when state="none" output="½"/>
+    </action>
+
+    <action id="*">
+        <when state="none" output="*"/>
+        <when state="scientifique" output="⊗"/>
+        <when state="latin" output="∴"/>
+    </action>
+
+    <action id="0">
+        <when state="none" output="0"/>
+        <when state="circonflexe" output="⁰"/>
+        <when state="caron" output="₀"/>
+        <when state="scientifique" output="∗"/>
+        <when state="exposant" output="⁰"/>
+        <when state="latin" output="ↂ"/>
+        <when state="doubletrait" output="𝟘"/>
+        <when state="gras" output="𝟬"/>
+        <when state="indices" output="₀"/>
+    </action>
+
+    <action id="×">
+        <when state="none" output="×"/>
+        <when state="scientifique" output="⋆"/>
+        <when state="latin" output="※"/>
+    </action>
+
+    <action id="¾">
+        <when state="none" output="¾"/>
+        <when state="latin" output="⅔"/>
+    </action>
+
+    <action id="=">
+        <when state="none" output="="/>
+        <when state="circonflexe" output="⁼"/>
+        <when state="caron" output="₌"/>
+        <when state="scientifique" output="↔"/>
+        <when state="barre" output="≠"/>
+        <when state="exposant" output="⁼"/>
+        <when state="tilde" output="≈"/>
+        <when state="indices" output="₌"/>
+        <when state="tildebarre" output="&#x2249;"/>
+    </action>
+
+    <action id="°">
+        <when state="none" output="°"/>
+        <when state="scientifique" output="⇔"/>
+    </action>
+
+    <action id="≠">
+        <when state="none" output="≠"/>
+        <when state="scientifique" output="≡"/>
+        <when state="tilde" output="&#x2249;"/>
+        <when state="scientifiquebarre" output="≢"/>
+    </action>
+
+    <action id="′">
+        <when state="none" output="′"/>
+        <when state="scientifique" output="⇄"/>
+        <when state="latin" output="‴"/>
+    </action>
+
+    <action id="%">
+        <when state="none" output="%"/>
+        <when state="latin" output="‱"/>
+    </action>
+
+    <action id="`">
+        <when state="none" output="`"/>
+        <when state="latin" output="◌"/>
+    </action>
+
+    <action id="‰">
+        <when state="none" output="‰"/>
+    </action>
+
+    <action id="″">
+        <when state="none" output="″"/>
+        <when state="latin" output="⁗"/>
+    </action>
+
+    <action id="b">
+        <when state="none" output="b"/>
+        <when state="scientifique" next="doubletrait"/>
+        <when state="barre" output="&#x2422;"/>
+        <when state="raye" output="ƀ"/>
+        <when state="exposant" output="ᵇ"/>
+        <when state="latin" output="ꞵ"/>
+        <when state="grec" output="β"/>
+        <when state="pointsouscrit" output="ḅ"/>
+        <when state="pointsuscrit" output="ḃ"/>
+        <when state="monnaie" output="₿"/>
+        <when state="doubletrait" output="𝕓"/>
+        <when state="grasitalique" output="𝒃"/>
+        <when state="italique" output="𝑏"/>
+        <when state="calligraphique" output="𝓫"/>
+        <when state="scriptes" output="𝒷"/>
+        <when state="gras" output="𝐛"/>
+        <when state="gotiques" output="𝔟"/>
+        <when state="gotiquesgras" output="𝖇"/>
+        <when state="tildeinscrit" output="ᵬ"/>
+        <when state="macronsouscrit" output="ḇ"/>
+        <when state="crosse" output="ɓ"/>
+    </action>
+
+    <action id="B">
+        <when state="none" output="B"/>
+        <when state="scientifique" output="ℶ"/>
+        <when state="raye" output="Ƀ"/>
+        <when state="exposant" output="ᴮ"/>
+        <when state="latin" output="Ꞵ"/>
+        <when state="grec" output="Β"/>
+        <when state="pointsouscrit" output="Ḅ"/>
+        <when state="pointsuscrit" output="Ḃ"/>
+        <when state="monnaie" output="฿"/>
+        <when state="doubletrait" output="𝔹"/>
+        <when state="grasitalique" output="𝑩"/>
+        <when state="italique" output="𝐵"/>
+        <when state="calligraphique" output="𝓑"/>
+        <when state="gras" output="𝐁"/>
+        <when state="gotiques" output="𝔅"/>
+        <when state="gotiquesgras" output="𝕭"/>
+        <when state="macronsouscrit" output="Ḇ"/>
+        <when state="indices" output="ʙ"/>
+        <when state="crosse" output="Ɓ"/>
+    </action>
+
+    <action id="|">
+        <when state="none" output="|"/>
+        <when state="scientifique" output="∣"/>
+        <when state="scientifiquebarre" output="∤"/>
+    </action>
+
+    <action id="_">
+        <when state="none" output="_"/>
+        <when state="circonflexe" output="^"/>
+        <when state="aigu" output="´"/>
+        <when state="grave" output="`"/>
+        <when state="caron" output="ˇ"/>
+        <when state="barre" output="/"/>
+        <when state="raye" output="-"/>
+        <when state="trema" output="¨"/>
+        <when state="cedille" output="¸"/>
+        <when state="latin" output="‾"/>
+        <when state="breve" output="˘"/>
+        <when state="tilde" output="~"/>
+        <when state="macron" output="¯"/>
+        <when state="rond" output="&#x02da;"/>
+        <when state="ogonek" output="˛"/>
+        <when state="pointsuscrit" output="˙"/>
+        <when state="virgule" output=","/>
+        <when state="doubleaigu" output="˝"/>
+        <when state="caronsouscrit" output="&#x02f0;"/>
+        <when state="grecaigu" output="&#x0027;"/>
+        <when state="grectrema" output="¨"/>
+        <when state="grectremaaigu" output="΅"/>
+    </action>
+
+    <action id="é">
+        <when state="none" output="é"/>
+        <when state="circonflexe" output="ế"/>
+        <when state="scientifique" output="∧"/>
+        <when state="latin" output="ɛ"/>
+        <when state="macron" output="ḗ"/>
+        <when state="latinexposant" output="ᵋ"/>
+    </action>
+
+    <action id="É">
+        <when state="none" output="É"/>
+        <when state="circonflexe" output="Ế"/>
+        <when state="scientifique" output="⅋"/>
+        <when state="latin" output="Ɛ"/>
+        <when state="macron" output="Ḗ"/>
+    </action>
+
+    <action id="aigu">
+        <when state="none" next="aigu"/>
+        <when state="circonflexe" next="circonflexeaigu"/>
+        <when state="aigu" next="doubleaigu"/>
+        <when state="scientifique" output="↺"/>
+        <when state="barre" next="aigubarre"/>
+        <when state="trema" next="aigutrema"/>
+        <when state="cedille" next="aigucedille"/>
+        <when state="breve" next="aigubreve"/>
+        <when state="tilde" next="aigutilde"/>
+        <when state="macron" next="aigumacron"/>
+        <when state="rond" next="aigurond"/>
+        <when state="grec" next="grecaigu"/>
+        <when state="pointsuscrit" next="aigupoint"/>
+        <when state="corne" next="aigucorne"/>
+        <when state="grectrema" next="grectremaaigu"/>
+    </action>
+
+    <action id="♥">
+        <when state="none" output="♥"/>
+        <when state="scientifique" output="↻"/>
+    </action>
+
+    <action id="p">
+        <when state="none" output="p"/>
+        <when state="aigu" output="ṕ"/>
+        <when state="scientifique" output="∐"/>
+        <when state="raye" output="&#x1d7d;"/>
+        <when state="exposant" output="ᵖ"/>
+        <when state="grec" output="π"/>
+        <when state="pointsuscrit" output="ṗ"/>
+        <when state="monnaie" output="₱"/>
+        <when state="doubletrait" output="𝕡"/>
+        <when state="grasitalique" output="𝒑"/>
+        <when state="italique" output="𝑝"/>
+        <when state="calligraphique" output="𝓹"/>
+        <when state="scriptes" output="𝓅"/>
+        <when state="gras" output="𝐩"/>
+        <when state="gotiques" output="𝔭"/>
+        <when state="gotiquesgras" output="𝖕"/>
+        <when state="doubleraye" output="&#xA751;"/>
+        <when state="tildeinscrit" output="ᵱ"/>
+        <when state="indices" output="ₚ"/>
+        <when state="crosse" output="ƥ"/>
+    </action>
+
+    <action id="P">
+        <when state="none" output="P"/>
+        <when state="aigu" output="Ṕ"/>
+        <when state="scientifique" output="∏"/>
+        <when state="raye" output="&#x2c63;"/>
+        <when state="exposant" output="ᴾ"/>
+        <when state="grec" output="Π"/>
+        <when state="pointsuscrit" output="Ṗ"/>
+        <when state="monnaie" output="₧"/>
+        <when state="doubletrait" output="ℙ"/>
+        <when state="grasitalique" output="𝑷"/>
+        <when state="italique" output="𝑃"/>
+        <when state="calligraphique" output="𝓟"/>
+        <when state="scriptes" output="𝒫"/>
+        <when state="gras" output="𝐏"/>
+        <when state="gotiques" output="𝔓"/>
+        <when state="gotiquesgras" output="𝕻"/>
+        <when state="doubleraye" output="&#xa750;"/>
+        <when state="crosse" output="Ƥ"/>
+    </action>
+
+    <action id="esperluette">
+        <when state="none" output="&#x0026;"/>
+        <when state="raye" output="&#xa751;"/>
+        <when state="latin" output="⁊"/>
+        <when state="monnaie" output="₰"/>
+    </action>
+
+    <action id="§">
+        <when state="none" output="§"/>
+        <when state="raye" output="&#xa750;"/>
+        <when state="latin" output="℗"/>
+    </action>
+
+    <action id="o">
+        <when state="none" output="o"/>
+        <when state="circonflexe" output="ô"/>
+        <when state="aigu" output="ó"/>
+        <when state="grave" output="ò"/>
+        <when state="caron" output="ǒ"/>
+        <when state="scientifique" output="∘"/>
+        <when state="barre" output="ø"/>
+        <when state="raye" output="ɵ"/>
+        <when state="trema" output="ö"/>
+        <when state="exposant" output="ᵒ"/>
+        <when state="latin" output="ɔ"/>
+        <when state="breve" output="ŏ"/>
+        <when state="tilde" output="õ"/>
+        <when state="macron" output="ō"/>
+        <when state="grec" output="ο"/>
+        <when state="pointsouscrit" output="ọ"/>
+        <when state="ogonek" output="ǫ"/>
+        <when state="pointsuscrit" output="ȯ"/>
+        <when state="monnaie" output="௹"/>
+        <when state="crochet" output="ỏ"/>
+        <when state="corne" output="ơ"/>
+        <when state="circonflexeaigu" output="ố"/>
+        <when state="circonflexegrave" output="ồ"/>
+        <when state="circonflexetilde" output="ỗ"/>
+        <when state="circonflexecrochet" output="ổ"/>
+        <when state="circonflexepoint" output="ộ"/>
+        <when state="doubleaigu" output="ő"/>
+        <when state="aigubarre" output="ǿ"/>
+        <when state="aigutilde" output="ṍ"/>
+        <when state="aigumacron" output="ṓ"/>
+        <when state="aigucorne" output="ớ"/>
+        <when state="doublegrave" output="ȍ"/>
+        <when state="gravemacron" output="ṑ"/>
+        <when state="gravecorne" output="ờ"/>
+        <when state="doubletrait" output="𝕠"/>
+        <when state="grasitalique" output="𝒐"/>
+        <when state="italique" output="𝑜"/>
+        <when state="calligraphique" output="𝓸"/>
+        <when state="scriptes" output="ℴ"/>
+        <when state="gras" output="𝐨"/>
+        <when state="gotiques" output="𝔬"/>
+        <when state="gotiquesgras" output="𝖔"/>
+        <when state="barrelatin" output="ꬿ"/>
+        <when state="breveinverse" output="ȏ"/>
+        <when state="trematilde" output="ṏ"/>
+        <when state="tremamacron" output="ȫ"/>
+        <when state="latinexposant" output="ᵓ"/>
+        <when state="tildeinscrit" output="ɵ"/>
+        <when state="tildemacron" output="ȭ"/>
+        <when state="tildecorne" output="ỡ"/>
+        <when state="macronogonek" output="ǭ"/>
+        <when state="macronpointsuscrit" output="ȱ"/>
+        <when state="rondsouscrit" output="ⱺ"/>
+        <when state="grecaigu" output="ό"/>
+        <when state="indices" output="ₒ"/>
+        <when state="latinpoint" output="ꜿ"/>
+        <when state="pointsouscritcorne" output="ợ"/>
+        <when state="cornecrochet" output="ở"/>
+    </action>
+    
+    <action id="O">
+        <when state="none" output="O"/>
+        <when state="circonflexe" output="Ô"/>
+        <when state="aigu" output="Ó"/>
+        <when state="grave" output="Ò"/>
+        <when state="caron" output="Ǒ"/>
+        <when state="scientifique" output="∅"/>
+        <when state="barre" output="Ø"/>
+        <when state="raye" output="Ɵ"/>
+        <when state="trema" output="Ö"/>
+        <when state="exposant" output="ᴼ"/>
+        <when state="latin" output="Ɔ"/>
+        <when state="breve" output="Ŏ"/>
+        <when state="tilde" output="Õ"/>
+        <when state="macron" output="Ō"/>
+        <when state="grec" output="Ο"/>
+        <when state="pointsouscrit" output="Ọ"/>
+        <when state="ogonek" output="Ǫ"/>
+        <when state="pointsuscrit" output="Ȯ"/>
+        <when state="monnaie" output="૱"/>
+        <when state="crochet" output="Ỏ"/>
+        <when state="corne" output="Ơ"/>
+        <when state="circonflexeaigu" output="Ố"/>
+        <when state="circonflexegrave" output="Ồ"/>
+        <when state="circonflexetilde" output="Ỗ"/>
+        <when state="circonflexecrochet" output="Ổ"/>
+        <when state="circonflexepoint" output="Ộ"/>
+        <when state="doubleaigu" output="Ő"/>
+        <when state="aigubarre" output="Ǿ"/>
+        <when state="aigutilde" output="Ṍ"/>
+        <when state="aigumacron" output="Ṓ"/>
+        <when state="aigucorne" output="Ớ"/>
+        <when state="doublegrave" output="Ȍ"/>
+        <when state="gravemacron" output="Ṑ"/>
+        <when state="gravecorne" output="Ờ"/>
+        <when state="doubletrait" output="𝕆"/>
+        <when state="grasitalique" output="𝑶"/>
+        <when state="italique" output="𝑂"/>
+        <when state="calligraphique" output="𝓞"/>
+        <when state="scriptes" output="𝒪"/>
+        <when state="gras" output="𝐎"/>
+        <when state="gotiques" output="𝔒"/>
+        <when state="gotiquesgras" output="𝕺"/>
+        <when state="breveinverse" output="Ȏ"/>
+        <when state="trematilde" output="Ṏ"/>
+        <when state="tremamacron" output="Ȫ"/>
+        <when state="tildeinscrit" output="Ɵ"/>
+        <when state="tildemacron" output="Ȭ"/>
+        <when state="tildecorne" output="Ỡ"/>
+        <when state="macronogonek" output="Ǭ"/>
+        <when state="macronpointsuscrit" output="Ȱ"/>
+        <when state="grecaigu" output="Ό"/>
+        <when state="indices" output="ᴏ"/>
+        <when state="latinpoint" output="Ꜿ"/>
+        <when state="pointsouscritcorne" output="Ợ"/>
+        <when state="cornecrochet" output="Ở"/>
+    </action>
+
+    <action id="œ">
+        <when state="none" output="œ"/>
+        <when state="scientifique" output="⌀"/>
+        <when state="exposant" output="ꟹ"/>
+        <when state="latin" output="ꞷ"/>
+    </action>
+
+    <action id="Œ">
+        <when state="none" output="Œ"/>
+        <when state="latin" output="Ꞷ"/>
+        <when state="indices" output="ɶ"/>
+    </action>
+
+    <action id="è">
+        <when state="none" output="è"/>
+        <when state="circonflexe" output="ề"/>
+        <when state="grave" output="ȅ"/>
+        <when state="scientifique" output="←"/>
+        <when state="latin" output="&#x01dd;"/>
+        <when state="macron" output="ḕ"/>
+    </action>
+    
+    <action id="È">
+        <when state="none" output="È"/>
+        <when state="circonflexe" output="Ề"/>
+        <when state="grave" output="Ȅ"/>
+        <when state="scientifique" output="⇐"/>
+        <when state="latin" output="&#x018e;"/>
+        <when state="macron" output="Ḕ"/>
+        <when state="latinexposant" output="&#x1d32;"/>
+    </action>
+
+    <action id="grave">
+        <when state="none" next="grave"/>
+        <when state="circonflexe" next="circonflexegrave"/>
+        <when state="grave" next="doublegrave"/>
+        <when state="trema" next="gravetrema"/>
+        <when state="breve" next="gravebreve"/>
+        <when state="macron" next="gravemacron"/>
+        <when state="corne" next="gravecorne"/>
+    </action>
+
+    <action id="circonflexe">
+        <when state="none" next="circonflexe"/>
+        <when state="circonflexe" next="circonflexesouscrit"/>
+        <when state="aigu" next="circonflexeaigu"/>
+        <when state="grave" next="circonflexegrave"/>
+        <when state="scientifique" output="→"/>
+        <when state="tilde" next="circonflexetilde"/>
+        <when state="pointsouscrit" next="circonflexepoint"/>
+        <when state="crochet" next="circonflexecrochet"/>
+    </action>
+
+    <action id="!">
+        <when state="none" output="!"/>
+        <when state="scientifique" output="⇒"/>
+        <when state="latin" output="‽"/>
+    </action>
+
+    <action id="¡">
+        <when state="none" output="¡"/>
+        <when state="scientifique" output="↦"/>
+    </action>
+
+    <action id="☠">
+        <when state="none" output="☠"/>
+        <when state="scientifique" output="⇀"/>
+    </action>
+
+    <action id="v">
+        <when state="none" output="v"/>
+        <when state="aigu" output="ǘ"/>
+        <when state="grave" output="ǜ"/>
+        <when state="caron" output="ǚ"/>
+        <when state="scientifique" output="∨"/>
+        <when state="barre" output="ꝟ"/>
+        <when state="exposant" output="ᵛ"/>
+        <when state="latin" output="ʌ"/>
+        <when state="tilde" output="ṽ"/>
+        <when state="macron" output="ǖ"/>
+        <when state="grec" output="ω"/>
+        <when state="pointsouscrit" output="ṿ"/>
+        <when state="scientifiquebarre" output="⊽"/>
+        <when state="doubletrait" output="𝕧"/>
+        <when state="grasitalique" output="𝒗"/>
+        <when state="italique" output="𝑣"/>
+        <when state="calligraphique" output="𝓿"/>
+        <when state="scriptes" output="𝓋"/>
+        <when state="gras" output="𝐯"/>
+        <when state="gotiques" output="𝔳"/>
+        <when state="gotiquesgras" output="𝖛"/>
+        <when state="latinexposant" output="ᶺ"/>
+        <when state="grecaigu" output="ώ"/>
+        <when state="indices" output="ᵥ"/>
+        <when state="crosse" output="ʋ"/>
+    </action>
+    
+    <action id="V">
+        <when state="none" output="V"/>
+        <when state="aigu" output="Ǘ"/>
+        <when state="grave" output="Ǜ"/>
+        <when state="caron" output="Ǚ"/>
+        <when state="scientifique" output="√"/>
+        <when state="barre" output="Ꝟ"/>
+        <when state="exposant" output="ⱽ"/>
+        <when state="latin" output="Ʌ"/>
+        <when state="tilde" output="Ṽ"/>
+        <when state="macron" output="Ǖ"/>
+        <when state="grec" output="Ω"/>
+        <when state="pointsouscrit" output="Ṿ"/>
+        <when state="doubletrait" output="𝕍"/>
+        <when state="grasitalique" output="𝑽"/>
+        <when state="italique" output="𝑉"/>
+        <when state="calligraphique" output="𝓥"/>
+        <when state="scriptes" output="𝒱"/>
+        <when state="gras" output="𝐕"/>
+        <when state="gotiques" output="𝔙"/>
+        <when state="gotiquesgras" output="𝖁"/>
+        <when state="grecaigu" output="Ώ"/>
+        <when state="indices" output="ᴠ"/>
+        <when state="crosse" output="Ʋ"/>
+    </action>
+
+    <action id="caron">
+        <when state="none" next="caron"/>
+        <when state="caron" output="ˇ"/>
+        <when state="scientifique" output="⊻"/>
+        <when state="trema" next="carontrema"/>
+        <when state="latin" next="caronlatin"/>
+        <when state="pointsuscrit" next="caronpoint"/>
+        <when state="scientifiquebarre" output="⊼"/>
+    </action>
+
+    <action id="☢">
+        <when state="none" output="☢"/>
+    </action>
+
+    <action id="d">
+        <when state="none" output="d"/>
+        <when state="caron" output="ď"/>
+        <when state="scientifique" output="∂"/>
+        <when state="raye" output="đ"/>
+        <when state="cedille" output="ḑ"/>
+        <when state="exposant" output="ᵈ"/>
+        <when state="latin" output="ð"/>
+        <when state="grec" output="δ"/>
+        <when state="pointsouscrit" output="ḍ"/>
+        <when state="pointsuscrit" output="ḋ"/>
+        <when state="monnaie" output="₫"/>
+        <when state="crochet" output="ɖ"/>
+        <when state="circonflexesouscrit" output="ḓ"/>
+        <when state="doubletrait" output="𝕕"/>
+        <when state="grasitalique" output="𝒅"/>
+        <when state="italique" output="𝑑"/>
+        <when state="calligraphique" output="𝓭"/>
+        <when state="scriptes" output="𝒹"/>
+        <when state="gras" output="𝐝"/>
+        <when state="gotiques" output="𝔡"/>
+        <when state="gotiquesgras" output="𝖉"/>
+        <when state="latinexposant" output="ᶞ"/>
+        <when state="tildeinscrit" output="ᵭ"/>
+        <when state="macronsouscrit" output="ḏ"/>
+        <when state="crosse" output="ɗ"/>
+    </action>
+
+    <action id="D">
+        <when state="none" output="D"/>
+        <when state="caron" output="Ď"/>
+        <when state="scientifique" output="∆"/>
+        <when state="raye" output="Đ"/>
+        <when state="cedille" output="Ḑ"/>
+        <when state="exposant" output="ᴰ"/>
+        <when state="latin" output="Ð"/>
+        <when state="grec" output="Δ"/>
+        <when state="pointsouscrit" output="Ḍ"/>
+        <when state="pointsuscrit" output="Ḋ"/>
+        <when state="monnaie" output="₯"/>
+        <when state="crochet" output="Ɖ"/>
+        <when state="circonflexesouscrit" output="Ḓ"/>
+        <when state="doubletrait" output="𝔻"/>
+        <when state="grasitalique" output="𝑫"/>
+        <when state="italique" output="𝐷"/>
+        <when state="calligraphique" output="𝓓"/>
+        <when state="scriptes" output="𝒟"/>
+        <when state="gras" output="𝐃"/>
+        <when state="gotiques" output="𝔇"/>
+        <when state="gotiquesgras" output="𝕯"/>
+        <when state="indices" output="ᴅ"/>
+        <when state="macronsouscrit" output="Ḏ"/>
+        <when state="crosse" output="Ɗ"/>
+    </action>
+
+    <action id="scientifique">
+        <when state="none" next="scientifique"/>
+        <when state="scientifique" output="∇"/>
+        <when state="barre" next="scientifiquebarre"/>
+        <when state="grasitalique" output="𝜵"/>
+        <when state="italique" output="𝛻"/>
+        <when state="gras" output="𝛁"/>
+    </action>
+
+    <action id="☣">
+        <when state="none" output="☣"/>
+        <when state="scientifique" output="⊲"/>
+        <when state="scientifiquebarre" output="⋪"/>
+    </action>
+
+    <action id="l">
+        <when state="none" output="l"/>
+        <when state="aigu" output="ĺ"/>
+        <when state="caron" output="ľ"/>
+        <when state="scientifique" output="ℓ"/>
+        <when state="barre" output="ł"/>
+        <when state="raye" output="ƚ"/>
+        <when state="cedille" output="ļ"/>
+        <when state="exposant" output="ˡ"/>
+        <when state="grec" output="λ"/>
+        <when state="pointsouscrit" output="ḷ"/>
+        <when state="pointsuscrit" output="ŀ"/>
+        <when state="monnaie" output="₺"/>
+        <when state="circonflexesouscrit" output="ḽ"/>
+        <when state="doubletrait" output="𝕝"/>
+        <when state="grasitalique" output="𝒍"/>
+        <when state="italique" output="𝑙"/>
+        <when state="calligraphique" output="𝓵"/>
+        <when state="scriptes" output="𝓁"/>
+        <when state="gras" output="𝐥"/>
+        <when state="gotiques" output="𝔩"/>
+        <when state="gotiquesgras" output="𝖑"/>
+        <when state="doubleraye" output="ⱡ"/>
+        <when state="tildeinscrit" output="ɫ"/>
+        <when state="macronsouscrit" output="ḻ"/>
+        <when state="macronpointsouscrit" output="ḹ"/>
+        <when state="rondsouscrit" output="ꬹ"/>
+        <when state="indices" output="ₗ"/>
+    </action>
+
+    <action id="L">
+        <when state="none" output="L"/>
+        <when state="aigu" output="Ĺ"/>
+        <when state="caron" output="Ľ"/>
+        <when state="scientifique" output="℔"/>
+        <when state="barre" output="Ł"/>
+        <when state="raye" output="Ƚ"/>
+        <when state="cedille" output="Ļ"/>
+        <when state="exposant" output="ᴸ"/>
+        <when state="grec" output="Λ"/>
+        <when state="pointsouscrit" output="Ḷ"/>
+        <when state="pointsuscrit" output="Ŀ"/>
+        <when state="monnaie" output="₤"/>
+        <when state="circonflexesouscrit" output="Ḽ"/>
+        <when state="doubletrait" output="𝕃"/>
+        <when state="grasitalique" output="𝑳"/>
+        <when state="italique" output="𝐿"/>
+        <when state="calligraphique" output="𝓛"/>
+        <when state="scriptes" output="ℒ"/>
+        <when state="gras" output="𝐋"/>
+        <when state="gotiques" output="𝔏"/>
+        <when state="gotiquesgras" output="𝕷"/>
+        <when state="doubleraye" output="Ⱡ"/>
+        <when state="tildeinscrit" output="Ɫ"/>
+        <when state="macronsouscrit" output="Ḻ"/>
+        <when state="macronpointsouscrit" output="Ḹ"/>
+        <when state="indices" output="ʟ"/>
+    </action>
+
+    <action id="barre">
+        <when state="none" next="barre"/>
+        <when state="aigu" next="aigubarre"/>
+        <when state="scientifique" next="scientifiquebarre"/>
+        <when state="barre" next="doublebarre"/>
+        <when state="raye" next="barreraye"/>
+        <when state="latin" next="barrelatin"/>
+        <when state="tilde" next="tildebarre"/>
+        <when state="monnaie" output="₾"/>
+        <when state="tildeinscrit" output="ꬸ"/>
+        <when state="doublebarre" output="/"/>
+    </action>
+
+    <action id="£">
+        <when state="none" output="£"/>
+        <when state="monnaie" output="&#x20b6;"/>
+    </action>
+
+    <action id="j">
+        <when state="none" output="j"/>
+        <when state="circonflexe" output="ĵ"/>
+        <when state="caron" output="ǰ"/>
+        <when state="scientifique" output="↑"/>
+        <when state="raye" output="ɉ"/>
+        <when state="exposant" output="ʲ"/>
+        <when state="latin" output="ĳ"/>
+        <when state="grec" output="ξ"/>
+        <when state="pointsuscrit" output="ȷ"/>
+        <when state="doubletrait" output="𝕛"/>
+        <when state="grasitalique" output="𝒋"/>
+        <when state="italique" output="𝑗"/>
+        <when state="calligraphique" output="𝓳"/>
+        <when state="scriptes" output="𝒿"/>
+        <when state="gras" output="𝐣"/>
+        <when state="gotiques" output="𝔧"/>
+        <when state="gotiquesgras" output="𝖏"/>
+        <when state="rayepoint" output="ɟ"/>
+        <when state="indices" output="ⱼ"/>
+    </action>
+    
+    <action id="J">
+        <when state="none" output="J"/>
+        <when state="circonflexe" output="Ĵ"/>
+        <when state="scientifique" output="↓"/>
+        <when state="raye" output="Ɉ"/>
+        <when state="exposant" output="ᴶ"/>
+        <when state="latin" output="Ĳ"/>
+        <when state="grec" output="Ξ"/>
+        <when state="doubletrait" output="𝕁"/>
+        <when state="grasitalique" output="𝑱"/>
+        <when state="italique" output="𝐽"/>
+        <when state="calligraphique" output="𝓙"/>
+        <when state="scriptes" output="𝒥"/>
+        <when state="gras" output="𝐉"/>
+        <when state="gotiques" output="𝔍"/>
+        <when state="gotiquesgras" output="𝕵"/>
+        <when state="indices" output="ᴊ"/>
+    </action>
+    <action id="☮">
+        <when state="none" output="☮"/>
+        <when state="scientifique" output="⨡"/>
+    </action>
+
+    <action id="☯">
+        <when state="none" output="☯"/>
+    </action>
+
+    <action id="z">
+        <when state="none" output="z"/>
+        <when state="circonflexe" output="ẑ"/>
+        <when state="aigu" output="ź"/>
+        <when state="caron" output="ž"/>
+        <when state="scientifique" output="&#x200B;"/>
+        <when state="raye" output="ƶ"/>
+        <when state="exposant" output="ᶻ"/>
+        <when state="latin" output="ʒ"/>
+        <when state="grec" output="ζ"/>
+        <when state="pointsouscrit" output="ẓ"/>
+        <when state="pointsuscrit" output="ż"/>
+        <when state="crochet" output="ȥ"/>
+        <when state="caronlatin" output="ǯ"/>
+        <when state="doubletrait" output="𝕫"/>
+        <when state="grasitalique" output="𝒛"/>
+        <when state="italique" output="𝑧"/>
+        <when state="calligraphique" output="𝔃"/>
+        <when state="scriptes" output="𝓏"/>
+        <when state="gras" output="𝐳"/>
+        <when state="gotiques" output="𝔷"/>
+        <when state="gotiquesgras" output="𝖟"/>
+        <when state="latinexposant" output="ᶾ"/>
+        <when state="tildeinscrit" output="ᵶ"/>
+        <when state="macronsouscrit" output="ẕ"/>
+    </action>
+
+    <action id="Z">
+        <when state="none" output="Z"/>
+        <when state="circonflexe" output="Ẑ"/>
+        <when state="aigu" output="Ź"/>
+        <when state="caron" output="Ž"/>
+        <when state="scientifique" output="℥"/>
+        <when state="raye" output="Ƶ"/>
+        <when state="latin" output="Ʒ"/>
+        <when state="grec" output="Ζ"/>
+        <when state="pointsouscrit" output="Ẓ"/>
+        <when state="pointsuscrit" output="Ż"/>
+        <when state="crochet" output="Ȥ"/>
+        <when state="caronlatin" output="Ǯ"/>
+        <when state="doubletrait" output="ℤ"/>
+        <when state="grasitalique" output="𝒁"/>
+        <when state="italique" output="𝑍"/>
+        <when state="calligraphique" output="𝓩"/>
+        <when state="scriptes" output="𝒵"/>
+        <when state="gras" output="𝐙"/>
+        <when state="gotiques" output="ℨ"/>
+        <when state="gotiquesgras" output="𝖅"/>
+        <when state="macronsouscrit" output="Ẕ"/>
+        <when state="indices" output="ᴢ"/>
+    </action>
+
+    <action id="raye">
+        <when state="none" next="raye"/>
+        <when state="scientifique" output="℈"/>
+        <when state="barre" next="barreraye"/>
+        <when state="raye" next="doubleraye"/>
+        <when state="latin" next="rayelatin"/>
+        <when state="pointsuscrit" next="rayepoint"/>
+        <when state="rayelatin" next="doublerayelatin"/>
+    </action>
+
+    <action id="☙">
+        <when state="none" output="☙"/>
+    </action>
+
+    <action id="w">
+        <when state="none" output="w"/>
+        <when state="circonflexe" output="ŵ"/>
+        <when state="aigu" output="ẃ"/>
+        <when state="grave" output="ẁ"/>
+        <when state="scientifique" output="≈"/>
+        <when state="trema" output="ẅ"/>
+        <when state="exposant" output="ʷ"/>
+        <when state="latin" output="ƿ"/>
+        <when state="rond" output="ẘ"/>
+        <when state="grec" output="ς"/>
+        <when state="pointsouscrit" output="ẉ"/>
+        <when state="pointsuscrit" output="ẇ"/>
+        <when state="monnaie" output="₩"/>
+        <when state="scientifiquebarre" output="&#x2249;"/>
+        <when state="doubletrait" output="𝕨"/>
+        <when state="grasitalique" output="𝒘"/>
+        <when state="italique" output="𝑤"/>
+        <when state="calligraphique" output="𝔀"/>
+        <when state="scriptes" output="𝓌"/>
+        <when state="gras" output="𝐰"/>
+        <when state="gotiques" output="𝔴"/>
+        <when state="gotiquesgras" output="𝖜"/>
+        <when state="crosse" output="ⱳ"/>
+    </action>
+    
+    <action id="W">
+        <when state="none" output="W"/>
+        <when state="circonflexe" output="Ŵ"/>
+        <when state="aigu" output="Ẃ"/>
+        <when state="grave" output="Ẁ"/>
+        <when state="scientifique" output="∿"/>
+        <when state="trema" output="Ẅ"/>
+        <when state="exposant" output="ᵂ"/>
+        <when state="latin" output="Ƿ"/>
+        <when state="pointsouscrit" output="Ẉ"/>
+        <when state="pointsuscrit" output="Ẇ"/>
+        <when state="monnaie" output="₩"/>
+        <when state="doubletrait" output="𝕎"/>
+        <when state="grasitalique" output="𝑾"/>
+        <when state="italique" output="𝑊"/>
+        <when state="calligraphique" output="𝓦"/>
+        <when state="scriptes" output="𝒲"/>
+        <when state="gras" output="𝐖"/>
+        <when state="gotiques" output="𝔚"/>
+        <when state="gotiquesgras" output="𝖂"/>
+        <when state="indices" output="ᴡ"/>
+        <when state="crosse" output="Ⱳ"/>
+    </action>
+
+    <action id="⚜">
+        <when state="none" output="⚜"/>
+        <when state="scientifique" output="⎓"/>
+    </action>
+    
+    <action id="♿">
+        <when state="none" output="♿"/>
+    </action>
+
+    <action id="a">
+        <when state="none" output="a"/>
+        <when state="circonflexe" output="â"/>
+        <when state="aigu" output="á"/>
+        <when state="grave" output="à"/>
+        <when state="caron" output="ǎ"/>
+        <when state="barre" output="ⱥ"/>
+        <when state="trema" output="ä"/>
+        <when state="exposant" output="ᵃ"/>
+        <when state="latin" output="ɑ"/>
+        <when state="breve" output="ă"/>
+        <when state="tilde" output="ã"/>
+        <when state="macron" output="ā"/>
+        <when state="rond" output="å"/>
+        <when state="grec" output="α"/>
+        <when state="pointsouscrit" output="ạ"/>
+        <when state="ogonek" output="ą"/>
+        <when state="pointsuscrit" output="ȧ"/>
+        <when state="monnaie" output="؋"/>
+        <when state="crochet" output="ả"/>
+        <when state="circonflexeaigu" output="ấ"/>
+        <when state="circonflexegrave" output="ầ"/>
+        <when state="circonflexetilde" output="ẫ"/>
+        <when state="circonflexecrochet" output="ẩ"/>
+        <when state="circonflexepoint" output="ậ"/>
+        <when state="aigubreve" output="ắ"/>
+        <when state="aigurond" output="ǻ"/>
+        <when state="doublegrave" output="ȁ"/>
+        <when state="gravebreve" output="ằ"/>
+        <when state="doubletrait" output="𝕒"/>
+        <when state="grasitalique" output="𝒂"/>
+        <when state="italique" output="𝑎"/>
+        <when state="calligraphique" output="𝓪"/>
+        <when state="scriptes" output="𝒶"/>
+        <when state="gras" output="𝐚"/>
+        <when state="gotiques" output="𝔞"/>
+        <when state="gotiquesgras" output="𝖆"/>
+        <when state="rayelatin" output="ꬰ"/>
+        <when state="breveinverse" output="ȃ"/>
+        <when state="brevetilde" output="ẵ"/>
+        <when state="brevepoint" output="ặ"/>
+        <when state="brevecrochet" output="ẳ"/>
+        <when state="tremamacron" output="ǟ"/>
+        <when state="latinexposant" output="ᵅ"/>
+        <when state="macronpointsuscrit" output="ǡ"/>
+        <when state="rondsouscrit" output="ḁ"/>
+        <when state="grecaigu" output="ά"/>
+        <when state="indices" output="ₐ"/>
+    </action>
+
+    <action id="A">
+        <when state="none" output="A"/>
+        <when state="circonflexe" output="Â"/>
+        <when state="aigu" output="Á"/>
+        <when state="grave" output="À"/>
+        <when state="caron" output="Ǎ"/>
+        <when state="scientifique" output="∀"/>
+        <when state="barre" output="Ⱥ"/>
+        <when state="trema" output="Ä"/>
+        <when state="exposant" output="ᴬ"/>
+        <when state="latin" output="Ɑ"/>
+        <when state="breve" output="Ă"/>
+        <when state="tilde" output="Ã"/>
+        <when state="macron" output="Ā"/>
+        <when state="rond" output="Å"/>
+        <when state="grec" output="Α"/>
+        <when state="pointsouscrit" output="Ạ"/>
+        <when state="ogonek" output="Ą"/>
+        <when state="pointsuscrit" output="Ȧ"/>
+        <when state="monnaie" output="₳"/>
+        <when state="crochet" output="Ả"/>
+        <when state="circonflexeaigu" output="Ấ"/>
+        <when state="circonflexegrave" output="Ầ"/>
+        <when state="circonflexetilde" output="Ẫ"/>
+        <when state="circonflexecrochet" output="Ẩ"/>
+        <when state="circonflexepoint" output="Ậ"/>
+        <when state="aigubreve" output="Ắ"/>
+        <when state="aigurond" output="Ǻ"/>
+        <when state="doublegrave" output="Ȁ"/>
+        <when state="gravebreve" output="Ằ"/>
+        <when state="doubletrait" output="𝔸"/>
+        <when state="grasitalique" output="𝑨"/>
+        <when state="italique" output="𝐴"/>
+        <when state="calligraphique" output="𝓐"/>
+        <when state="scriptes" output="𝒜"/>
+        <when state="gras" output="𝐀"/>
+        <when state="gotiques" output="𝔄"/>
+        <when state="gotiquesgras" output="𝕬"/>
+        <when state="breveinverse" output="Ȃ"/>
+        <when state="brevetilde" output="Ẵ"/>
+        <when state="brevepoint" output="Ặ"/>
+        <when state="brevecrochet" output="Ẳ"/>
+        <when state="tremamacron" output="Ǟ"/>
+        <when state="macronpointsuscrit" output="Ǡ"/>
+        <when state="rondsouscrit" output="Ḁ"/>
+        <when state="grecaigu" output="Ά"/>
+        <when state="indices" output="ᴀ"/>
+    </action>
+
+    <action id="æ">
+        <when state="none" output="æ"/>
+        <when state="aigu" output="ǽ"/>
+        <when state="latin" output="ꜥ"/>
+        <when state="macron" output="ǣ"/>
+    </action>
+
+    <action id="Æ">
+        <when state="none" output="Æ"/>
+        <when state="aigu" output="Ǽ"/>
+        <when state="exposant" output="ᴭ"/>
+        <when state="latin" output="Ꜥ"/>
+        <when state="macron" output="Ǣ"/>
+        <when state="indices" output="ᴁ"/>
+    </action>
+
+    <action id="u">
+        <when state="none" output="u"/>
+        <when state="circonflexe" output="û"/>
+        <when state="aigu" output="ú"/>
+        <when state="grave" output="ù"/>
+        <when state="caron" output="ǔ"/>
+        <when state="scientifique" output="∪"/>
+        <when state="barre" output="&#xa7b9;"/>
+        <when state="raye" output="ʉ"/>
+        <when state="trema" output="ü"/>
+        <when state="exposant" output="ᵘ"/>
+        <when state="latin" output="ʊ"/>
+        <when state="breve" output="ŭ"/>
+        <when state="tilde" output="ũ"/>
+        <when state="macron" output="ū"/>
+        <when state="rond" output="ů"/>
+        <when state="grec" output="θ"/>
+        <when state="pointsouscrit" output="ụ"/>
+        <when state="ogonek" output="ų"/>
+        <when state="monnaie" output="元"/>
+        <when state="crochet" output="ủ"/>
+        <when state="corne" output="ư"/>
+        <when state="circonflexesouscrit" output="ṷ"/>
+        <when state="doubleaigu" output="ű"/>
+        <when state="aigutrema" output="ǘ"/>
+        <when state="aigutilde" output="ṹ"/>
+        <when state="aigucorne" output="ứ"/>
+        <when state="doublegrave" output="ȕ"/>
+        <when state="gravetrema" output="ǜ"/>
+        <when state="gravecorne" output="ừ"/>
+        <when state="carontrema" output="ǚ"/>
+        <when state="doubletrait" output="𝕦"/>
+        <when state="grasitalique" output="𝒖"/>
+        <when state="italique" output="𝑢"/>
+        <when state="calligraphique" output="𝓾"/>
+        <when state="scriptes" output="𝓊"/>
+        <when state="gras" output="𝐮"/>
+        <when state="gotiques" output="𝔲"/>
+        <when state="gotiquesgras" output="𝖚"/>
+        <when state="rayelatin" output="ᵿ"/>
+        <when state="breveinverse" output="ȗ"/>
+        <when state="tremasouscrit" output="ṳ"/>
+        <when state="tremamacron" output="ǖ"/>
+        <when state="latinexposant" output="ᶷ"/>
+        <when state="tildeinscrit" output="ṵ"/>
+        <when state="tildecorne" output="ữ"/>
+        <when state="indices" output="ᵤ"/>
+        <when state="pointsouscritcorne" output="ự"/>
+        <when state="cornecrochet" output="ử"/>
+        <when state="crosse" output="ꭒ"/>
+    </action>
+
+    <action id="U">
+        <when state="none" output="U"/>
+        <when state="circonflexe" output="Û"/>
+        <when state="aigu" output="Ú"/>
+        <when state="grave" output="Ù"/>
+        <when state="caron" output="Ǔ"/>
+        <when state="scientifique" output="∩"/>
+        <when state="barre" output="&#xa7b8;"/>
+        <when state="raye" output="Ʉ"/>
+        <when state="trema" output="Ü"/>
+        <when state="exposant" output="ᵁ"/>
+        <when state="latin" output="Ʊ"/>
+        <when state="breve" output="Ŭ"/>
+        <when state="tilde" output="Ũ"/>
+        <when state="macron" output="Ū"/>
+        <when state="rond" output="Ů"/>
+        <when state="grec" output="Θ"/>
+        <when state="pointsouscrit" output="Ụ"/>
+        <when state="ogonek" output="Ų"/>
+        <when state="monnaie" output="圓"/>
+        <when state="crochet" output="Ủ"/>
+        <when state="corne" output="Ư"/>
+        <when state="circonflexesouscrit" output="Ṷ"/>
+        <when state="doubleaigu" output="Ű"/>
+        <when state="aigutrema" output="Ǘ"/>
+        <when state="aigutilde" output="Ṹ"/>
+        <when state="aigucorne" output="Ứ"/>
+        <when state="doublegrave" output="Ȕ"/>
+        <when state="gravetrema" output="Ǜ"/>
+        <when state="gravecorne" output="Ừ"/>
+        <when state="carontrema" output="Ǚ"/>
+        <when state="doubletrait" output="𝕌"/>
+        <when state="grasitalique" output="𝑼"/>
+        <when state="italique" output="𝑈"/>
+        <when state="calligraphique" output="𝓤"/>
+        <when state="scriptes" output="𝒰"/>
+        <when state="gras" output="𝐔"/>
+        <when state="gotiques" output="𝔘"/>
+        <when state="gotiquesgras" output="𝖀"/>
+        <when state="breveinverse" output="Ȗ"/>
+        <when state="tremasouscrit" output="Ṳ"/>
+        <when state="tremamacron" output="Ǖ"/>
+        <when state="tildeinscrit" output="Ṵ"/>
+        <when state="tildecorne" output="Ữ"/>
+        <when state="indices" output="ᴜ"/>
+        <when state="pointsouscritcorne" output="Ự"/>
+        <when state="cornecrochet" output="Ử"/>
+    </action>
+
+    <action id="ù">
+        <when state="none" output="ù"/>
+        <when state="grave" output="ȕ"/>
+        <when state="trema" output="ǜ"/>
+        <when state="latin" output="ɥ"/>
+        <when state="corne" output="ừ"/>
+        <when state="tremamacron" output="ṻ"/>
+        <when state="latinexposant" output="ᶣ"/>
+    </action>
+
+    <action id="Ù">
+        <when state="none" output="Ù"/>
+        <when state="grave" output="Ȕ"/>
+        <when state="trema" output="Ǜ"/>
+        <when state="latin" output="Ɥ"/>
+        <when state="corne" output="Ừ"/>
+        <when state="tremamacron" output="Ṻ"/>
+    </action>
+
+    <action id="i">
+        <when state="none" output="i"/>
+        <when state="circonflexe" output="î"/>
+        <when state="aigu" output="í"/>
+        <when state="grave" output="ì"/>
+        <when state="caron" output="ǐ"/>
+        <when state="scientifique" next="italique"/>
+        <when state="raye" output="ɨ"/>
+        <when state="trema" output="ï"/>
+        <when state="exposant" output="ⁱ"/>
+        <when state="latin" output="ɩ"/>
+        <when state="breve" output="ĭ"/>
+        <when state="tilde" output="ĩ"/>
+        <when state="macron" output="ī"/>
+        <when state="grec" output="ι"/>
+        <when state="pointsouscrit" output="ị"/>
+        <when state="ogonek" output="į"/>
+        <when state="pointsuscrit" output="ı"/>
+        <when state="monnaie" output="﷼"/>
+        <when state="crochet" output="ỉ"/>
+        <when state="aigutrema" output="ḯ"/>
+        <when state="doublegrave" output="ȉ"/>
+        <when state="doubletrait" output="𝕚"/>
+        <when state="grasitalique" output="𝒊"/>
+        <when state="italique" output="𝑖"/>
+        <when state="calligraphique" output="𝓲"/>
+        <when state="scriptes" output="𝒾"/>
+        <when state="gras" output="𝐢"/>
+        <when state="gotiques" output="𝔦"/>
+        <when state="gotiquesgras" output="𝖎"/>
+        <when state="rayelatin" output="ᵼ"/>
+        <when state="breveinverse" output="ȋ"/>
+        <when state="latinexposant" output="ᶥ"/>
+        <when state="tildeinscrit" output="ḭ"/>
+        <when state="grecaigu" output="ί"/>
+        <when state="grectrema" output="ϊ"/>
+        <when state="indices" output="ᵢ"/>
+        <when state="grectremaaigu" output="ΐ"/>
+    </action>
+
+    <action id="I">
+        <when state="none" output="I"/>
+        <when state="circonflexe" output="Î"/>
+        <when state="aigu" output="Í"/>
+        <when state="grave" output="Ì"/>
+        <when state="caron" output="Ǐ"/>
+        <when state="scientifique" next="grasitalique"/>
+        <when state="raye" output="Ɨ"/>
+        <when state="trema" output="Ï"/>
+        <when state="exposant" output="ᴵ"/>
+        <when state="latin" output="Ɩ"/>
+        <when state="breve" output="Ĭ"/>
+        <when state="tilde" output="Ĩ"/>
+        <when state="macron" output="Ī"/>
+        <when state="grec" output="Ι"/>
+        <when state="pointsouscrit" output="Ị"/>
+        <when state="ogonek" output="Į"/>
+        <when state="pointsuscrit" output="İ"/>
+        <when state="monnaie" output="៛"/>
+        <when state="crochet" output="Ỉ"/>
+        <when state="aigutrema" output="Ḯ"/>
+        <when state="doublegrave" output="Ȉ"/>
+        <when state="doubletrait" output="𝕀"/>
+        <when state="grasitalique" output="𝑰"/>
+        <when state="italique" output="𝐼"/>
+        <when state="calligraphique" output="𝓘"/>
+        <when state="scriptes" output="ℐ"/>
+        <when state="gras" output="𝐈"/>
+        <when state="gotiques" output="ℑ"/>
+        <when state="gotiquesgras" output="𝕴"/>
+        <when state="breveinverse" output="Ȋ"/>
+        <when state="latinexposant" output=""/>
+        <when state="tildeinscrit" output="Ḭ"/>
+        <when state="grecaigu" output="Ί"/>
+        <when state="grectrema" output="Ϊ"/>
+        <when state="indices" output="ɪ"/>
+    </action>
+
+    <action id="trema">
+        <when state="none" next="trema"/>
+        <when state="aigu" next="aigutrema"/>
+        <when state="grave" next="gravetrema"/>
+        <when state="caron" next="carontrema"/>
+        <when state="scientifique" output="℩"/>
+        <when state="trema" next="tremasouscrit"/>
+        <when state="macron" next="tremamacron"/>
+        <when state="grec" next="grectrema"/>
+        <when state="grecaigu" next="grectremaaigu"/>
+    </action>
+
+    <action id="pointsuscrit">
+        <when state="none" next="pointsuscrit"/>
+        <when state="aigu" next="aigupoint"/>
+        <when state="caron" next="caronpoint"/>
+        <when state="raye" next="rayepoint"/>
+        <when state="latin" next="latinpoint"/>
+        <when state="macron" next="macronpointsuscrit"/>
+        <when state="pointsouscrit" next="points"/>
+        <when state="pointsuscrit" output="˙"/>
+    </action>
+
+    <action id="e">
+        <when state="none" output="e"/>
+        <when state="circonflexe" output="ê"/>
+        <when state="aigu" output="é"/>
+        <when state="grave" output="è"/>
+        <when state="caron" output="ě"/>
+        <when state="scientifique" output="∈"/>
+        <when state="barre" output="ɇ"/>
+        <when state="trema" output="ë"/>
+        <when state="cedille" output="ȩ"/>
+        <when state="exposant" output="ᵉ"/>
+        <when state="latin" output="ə"/>
+        <when state="breve" output="ĕ"/>
+        <when state="tilde" output="ẽ"/>
+        <when state="macron" output="ē"/>
+        <when state="grec" output="ε"/>
+        <when state="pointsouscrit" output="ẹ"/>
+        <when state="ogonek" output="ę"/>
+        <when state="pointsuscrit" output="ė"/>
+        <when state="monnaie" output="₠"/>
+        <when state="crochet" output="ẻ"/>
+        <when state="circonflexesouscrit" output="ḙ"/>
+        <when state="circonflexeaigu" output="ế"/>
+        <when state="circonflexegrave" output="ề"/>
+        <when state="circonflexetilde" output="ễ"/>
+        <when state="circonflexecrochet" output="ể"/>
+        <when state="circonflexepoint" output="ệ"/>
+        <when state="aigumacron" output="ḗ"/>
+        <when state="doublegrave" output="ȅ"/>
+        <when state="gravemacron" output="ḕ"/>
+        <when state="scientifiquebarre" output="∉"/>
+        <when state="doubletrait" output="𝕖"/>
+        <when state="grasitalique" output="𝒆"/>
+        <when state="italique" output="𝑒"/>
+        <when state="calligraphique" output="𝓮"/>
+        <when state="scriptes" output="ℯ"/>
+        <when state="gras" output="𝐞"/>
+        <when state="gotiques" output="𝔢"/>
+        <when state="gotiquesgras" output="𝖊"/>
+        <when state="breveinverse" output="ȇ"/>
+        <when state="brevecedille" output="ḝ"/>
+        <when state="latinexposant" output="ᵊ"/>
+        <when state="tildeinscrit" output="ḛ"/>
+        <when state="grecaigu" output="έ"/>
+        <when state="indices" output="ₑ"/>
+        <when state="crochetlatin" output="ɚ"/>
+    </action>
+
+    <action id="E">
+        <when state="none" output="E"/>
+        <when state="circonflexe" output="Ê"/>
+        <when state="aigu" output="É"/>
+        <when state="grave" output="È"/>
+        <when state="caron" output="Ě"/>
+        <when state="scientifique" output="∃"/>
+        <when state="barre" output="Ɇ"/>
+        <when state="trema" output="Ë"/>
+        <when state="cedille" output="Ȩ"/>
+        <when state="exposant" output="ᴱ"/>
+        <when state="latin" output="Ə"/>
+        <when state="breve" output="Ĕ"/>
+        <when state="tilde" output="Ẽ"/>
+        <when state="macron" output="Ē"/>
+        <when state="grec" output="Ε"/>
+        <when state="pointsouscrit" output="Ẹ"/>
+        <when state="ogonek" output="Ę"/>
+        <when state="pointsuscrit" output="Ė"/>
+        <when state="monnaie" output="€"/>
+        <when state="crochet" output="Ẻ"/>
+        <when state="circonflexesouscrit" output="Ḙ"/>
+        <when state="circonflexeaigu" output="Ế"/>
+        <when state="circonflexegrave" output="Ề"/>
+        <when state="circonflexetilde" output="Ễ"/>
+        <when state="circonflexecrochet" output="Ể"/>
+        <when state="circonflexepoint" output="Ệ"/>
+        <when state="aigumacron" output="Ḗ"/>
+        <when state="doublegrave" output="Ȅ"/>
+        <when state="gravemacron" output="Ḕ"/>
+        <when state="scientifiquebarre" output="∄"/>
+        <when state="doubletrait" output="𝔼"/>
+        <when state="grasitalique" output="𝑬"/>
+        <when state="italique" output="𝐸"/>
+        <when state="calligraphique" output="𝓔"/>
+        <when state="scriptes" output="ℰ"/>
+        <when state="gras" output="𝐄"/>
+        <when state="gotiques" output="𝔈"/>
+        <when state="gotiquesgras" output="𝕰"/>
+        <when state="breveinverse" output="Ȇ"/>
+        <when state="brevecedille" output="Ḝ"/>
+        <when state="tildeinscrit" output="Ḛ"/>
+        <when state="grecaigu" output="Έ"/>
+        <when state="indices" output="ᴇ"/>
+    </action>
+
+    <action id="€">
+        <when state="none" output="€"/>
+        <when state="scientifique" output="⊂"/>
+        <when state="scientifiquebarre" output="⊄"/>
+    </action>
+
+    <action id="monnaie">
+        <when state="none" next="monnaie"/>
+        <when state="scientifique" output="⊆"/>
+        <when state="monnaie" output="¤"/>
+        <when state="scientifiquebarre" output="⊊"/>
+    </action>
+
+    <action id=",">
+        <when state="none" output=","/>
+        <when state="scientifique" output="∋"/>
+        <when state="virgule" output=","/>
+        <when state="scientifiquebarre" output="∌"/>
+    </action>
+
+    <action id=";">
+        <when state="none" output=";"/>
+    </action>
+
+    <action id="'">
+        <when state="none" output="'"/>
+        <when state="scientifique" output="⊃"/>
+        <when state="latin" output="‛"/>
+        <when state="scientifiquebarre" output="⊅"/>
+    </action>
+
+    <action id="virgule">
+        <when state="none" next="virgule"/>
+        <when state="scientifique" output="⊇"/>
+        <when state="scientifiquebarre" output="⊋"/>
+    </action>
+
+    <action id="c">
+        <when state="none" output="c"/>
+        <when state="circonflexe" output="ĉ"/>
+        <when state="aigu" output="ć"/>
+        <when state="caron" output="č"/>
+        <when state="scientifique" next="calligraphique"/>
+        <when state="barre" output="ȼ"/>
+        <when state="raye" output="ꞓ"/>
+        <when state="cedille" output="ç"/>
+        <when state="exposant" output="ᶜ"/>
+        <when state="latin" output="θ"/>
+        <when state="grec" output="ψ"/>
+        <when state="pointsuscrit" output="ċ"/>
+        <when state="monnaie" output="¢"/>
+        <when state="aigucedille" output="ḉ"/>
+        <when state="doubletrait" output="𝕔"/>
+        <when state="grasitalique" output="𝒄"/>
+        <when state="italique" output="𝑐"/>
+        <when state="calligraphique" output="𝓬"/>
+        <when state="scriptes" output="𝒸"/>
+        <when state="gras" output="𝐜"/>
+        <when state="gotiques" output="𝔠"/>
+        <when state="gotiquesgras" output="𝖈"/>
+        <when state="latinexposant" output="ᶿ"/>
+        <when state="crosse" output="ƈ"/>
+    </action>
+    
+    <action id="C">
+        <when state="none" output="C"/>
+        <when state="circonflexe" output="Ĉ"/>
+        <when state="aigu" output="Ć"/>
+        <when state="caron" output="Č"/>
+        <when state="scientifique" output="∁"/>
+        <when state="barre" output="Ȼ"/>
+        <when state="raye" output="Ꞓ"/>
+        <when state="cedille" output="Ç"/>
+        <when state="exposant" output=""/>
+        <when state="latin" output="ϴ"/>
+        <when state="grec" output="Ψ"/>
+        <when state="pointsuscrit" output="Ċ"/>
+        <when state="monnaie" output="₵"/>
+        <when state="aigucedille" output="Ḉ"/>
+        <when state="doubletrait" output="ℂ"/>
+        <when state="grasitalique" output="𝑪"/>
+        <when state="italique" output="𝐶"/>
+        <when state="calligraphique" output="𝓒"/>
+        <when state="scriptes" output="𝒞"/>
+        <when state="gras" output="𝐂"/>
+        <when state="gotiques" output="ℭ"/>
+        <when state="gotiquesgras" output="𝕮"/>
+        <when state="indices" output="ᴄ"/>
+        <when state="crosse" output="Ƈ"/>
+    </action>
+
+    <action id="cedille">
+        <when state="none" next="cedille"/>
+        <when state="aigu" next="aigucedille"/>
+        <when state="scientifique" output="℃"/>
+        <when state="cedille" output="¸"/>
+        <when state="breve" next="brevecedille"/>
+        <when state="monnaie" output="₢"/>
+    </action>
+
+    <action id="©">
+        <when state="none" output="©"/>
+        <when state="monnaie" output="₡"/>
+    </action>
+
+    <action id="t">
+        <when state="none" output="t"/>
+        <when state="caron" output="ť"/>
+        <when state="scientifique" output="⊥"/>
+        <when state="barre" output="ⱦ"/>
+        <when state="raye" output="ŧ"/>
+        <when state="trema" output="ẗ"/>
+        <when state="cedille" output="ţ"/>
+        <when state="exposant" output="ᵗ"/>
+        <when state="latin" output="þ"/>
+        <when state="grec" output="τ"/>
+        <when state="pointsouscrit" output="ṭ"/>
+        <when state="pointsuscrit" output="ṫ"/>
+        <when state="monnaie" output="₸"/>
+        <when state="virgule" output="ț"/>
+        <when state="crochet" output="ʈ"/>
+        <when state="circonflexesouscrit" output="ṱ"/>
+        <when state="doubletrait" output="𝕥"/>
+        <when state="grasitalique" output="𝒕"/>
+        <when state="italique" output="𝑡"/>
+        <when state="calligraphique" output="𝓽"/>
+        <when state="scriptes" output="𝓉"/>
+        <when state="gras" output="𝐭"/>
+        <when state="gotiques" output="𝔱"/>
+        <when state="gotiquesgras" output="𝖙"/>
+        <when state="rayelatin" output="ꝥ"/>
+        <when state="tildeinscrit" output="ᵵ"/>
+        <when state="macronsouscrit" output="ṯ"/>
+        <when state="indices" output="ₜ"/>
+        <when state="crosse" output="ƭ"/>
+        <when state="doublerayelatin" output="ꝧ"/>
+    </action>
+
+    <action id="T">
+        <when state="none" output="T"/>
+        <when state="caron" output="Ť"/>
+        <when state="scientifique" output="⊤"/>
+        <when state="barre" output="Ⱦ"/>
+        <when state="raye" output="Ŧ"/>
+        <when state="trema" output=""/>
+        <when state="cedille" output="Ţ"/>
+        <when state="exposant" output="ᵀ"/>
+        <when state="latin" output="Þ"/>
+        <when state="grec" output="Τ"/>
+        <when state="pointsouscrit" output="Ṭ"/>
+        <when state="pointsuscrit" output="Ṫ"/>
+        <when state="monnaie" output="₮"/>
+        <when state="virgule" output="Ț"/>
+        <when state="crochet" output="Ʈ"/>
+        <when state="circonflexesouscrit" output="Ṱ"/>
+        <when state="doubletrait" output="𝕋"/>
+        <when state="grasitalique" output="𝑻"/>
+        <when state="italique" output="𝑇"/>
+        <when state="calligraphique" output="𝓣"/>
+        <when state="scriptes" output="𝒯"/>
+        <when state="gras" output="𝐓"/>
+        <when state="gotiques" output="𝔗"/>
+        <when state="gotiquesgras" output="𝕿"/>
+        <when state="rayelatin" output="Ꝥ"/>
+        <when state="macronsouscrit" output="Ṯ"/>
+        <when state="indices" output="ᴛ"/>
+        <when state="crosse" output="Ƭ"/>
+        <when state="doublerayelatin" output="Ꝧ"/>
+    </action>
+
+    <action id="exposant">
+        <when state="none" next="exposant"/>
+        <when state="scientifique" output="⊢"/>
+        <when state="exposant" next="indices"/>
+        <when state="latin" next="latinexposant"/>
+        <when state="monnaie" output="৳"/>
+        <when state="scientifiquebarre" output="⊬"/>
+        <when state="rayelatin" output="ꝧ"/>
+    </action>
+
+    <action id="™">
+        <when state="none" output="™"/>
+        <when state="scientifique" output="⊧"/>
+        <when state="monnaie" output="৲"/>
+        <when state="scientifiquebarre" output="⊭"/>
+        <when state="rayelatin" output="Ꝧ"/>
+    </action>
+
+    <action id="s">
+        <when state="none" output="s"/>
+        <when state="circonflexe" output="ŝ"/>
+        <when state="aigu" output="ś"/>
+        <when state="caron" output="š"/>
+        <when state="scientifique" output="∫"/>
+        <when state="barre" output="ꞩ"/>
+        <when state="cedille" output="ş"/>
+        <when state="exposant" output="ˢ"/>
+        <when state="latin" output="ß"/>
+        <when state="grec" output="σ"/>
+        <when state="pointsouscrit" output="ṣ"/>
+        <when state="pointsuscrit" output="ṡ"/>
+        <when state="monnaie" output="₪"/>
+        <when state="virgule" output="ș"/>
+        <when state="crochet" output="ʂ"/>
+        <when state="aigupoint" output="ṥ"/>
+        <when state="caronpoint" output="ṧ"/>
+        <when state="doubletrait" output="𝕤"/>
+        <when state="grasitalique" output="𝒔"/>
+        <when state="italique" output="𝑠"/>
+        <when state="calligraphique" output="𝓼"/>
+        <when state="scriptes" output="𝓈"/>
+        <when state="gras" output="𝐬"/>
+        <when state="gotiques" output="𝔰"/>
+        <when state="gotiquesgras" output="𝖘"/>
+        <when state="tildeinscrit" output="ᵴ"/>
+        <when state="indices" output="ₛ"/>
+        <when state="points" output="ṩ"/>
+    </action>
+
+    <action id="S">
+        <when state="none" output="S"/>
+        <when state="circonflexe" output="Ŝ"/>
+        <when state="aigu" output="Ś"/>
+        <when state="caron" output="Š"/>
+        <when state="scientifique" output="∑"/>
+        <when state="barre" output="Ꞩ"/>
+        <when state="cedille" output="Ş"/>
+        <when state="latin" output="ẞ"/>
+        <when state="grec" output="Σ"/>
+        <when state="pointsouscrit" output="Ṣ"/>
+        <when state="pointsuscrit" output="Ṡ"/>
+        <when state="monnaie" output="₷"/>
+        <when state="virgule" output="Ș"/>
+        <when state="aigupoint" output="Ṥ"/>
+        <when state="caronpoint" output="Ṧ"/>
+        <when state="doubletrait" output="𝕊"/>
+        <when state="grasitalique" output="𝑺"/>
+        <when state="italique" output="𝑆"/>
+        <when state="calligraphique" output="𝓢"/>
+        <when state="scriptes" output="𝒮"/>
+        <when state="gras" output="𝐒"/>
+        <when state="gotiques" output="𝔖"/>
+        <when state="gotiquesgras" output="𝕾"/>
+        <when state="indices" output="ꜱ"/>
+        <when state="points" output="Ṩ"/>
+    </action>
+
+    <action id="latin">
+        <when state="none" next="latin"/>
+        <when state="caron" next="caronlatin"/>
+        <when state="scientifique" output="∮"/>
+        <when state="barre" next="barrelatin"/>
+        <when state="raye" next="rayelatin"/>
+        <when state="exposant" next="latinexposant"/>
+        <when state="latin" output="ß"/>
+        <when state="pointsouscrit" next="latinpoint"/>
+        <when state="pointsuscrit" next="latinpoint"/>
+        <when state="crochet" next="crochetlatin"/>
+        <when state="doubleraye" next="doublerayelatin"/>
+    </action>
+
+    <action id="ſ">
+        <when state="none" output="ſ"/>
+        <when state="scientifique" output="∬"/>
+        <when state="barre" output="ẜ"/>
+        <when state="raye" output="ẝ"/>
+        <when state="latin" output="ẞ"/>
+        <when state="pointsuscrit" output="ẛ"/>
+    </action>
+
+    <action id="r">
+        <when state="none" output="r"/>
+        <when state="aigu" output="ŕ"/>
+        <when state="caron" output="ř"/>
+        <when state="scientifique" next="scriptes"/>
+        <when state="barre" output="ꞧ"/>
+        <when state="raye" output="ɍ"/>
+        <when state="cedille" output="ŗ"/>
+        <when state="exposant" output="ʳ"/>
+        <when state="grec" output="ρ"/>
+        <when state="pointsouscrit" output="ṛ"/>
+        <when state="pointsuscrit" output="ṙ"/>
+        <when state="monnaie" output="₽"/>
+        <when state="crochet" output="ɽ"/>
+        <when state="doublegrave" output="ȑ"/>
+        <when state="doubletrait" output="𝕣"/>
+        <when state="grasitalique" output="𝒓"/>
+        <when state="italique" output="𝑟"/>
+        <when state="calligraphique" output="𝓻"/>
+        <when state="scriptes" output="𝓇"/>
+        <when state="gras" output="𝐫"/>
+        <when state="gotiques" output="𝔯"/>
+        <when state="gotiquesgras" output="𝖗"/>
+        <when state="breveinverse" output="ȓ"/>
+        <when state="tildeinscrit" output="ᵲ"/>
+        <when state="macronsouscrit" output="ṟ"/>
+        <when state="macronpointsouscrit" output="ṝ"/>
+        <when state="indices" output="ᵣ"/>
+    </action>
+
+    <action id="R">
+        <when state="none" output="R"/>
+        <when state="aigu" output="Ŕ"/>
+        <when state="caron" output="Ř"/>
+        <when state="barre" output="Ꞧ"/>
+        <when state="raye" output="Ɍ"/>
+        <when state="cedille" output="Ŗ"/>
+        <when state="exposant" output="ᴿ"/>
+        <when state="grec" output="Ρ"/>
+        <when state="pointsouscrit" output="Ṛ"/>
+        <when state="pointsuscrit" output="Ṙ"/>
+        <when state="monnaie" output="₹"/>
+        <when state="crochet" output="Ɽ"/>
+        <when state="doublegrave" output="Ȑ"/>
+        <when state="doubletrait" output="ℝ"/>
+        <when state="grasitalique" output="𝑹"/>
+        <when state="italique" output="𝑅"/>
+        <when state="calligraphique" output="𝓡"/>
+        <when state="scriptes" output="ℛ"/>
+        <when state="gras" output="𝐑"/>
+        <when state="gotiques" output="ℜ"/>
+        <when state="gotiquesgras" output="𝕽"/>
+        <when state="breveinverse" output="Ȓ"/>
+        <when state="macronsouscrit" output="Ṟ"/>
+        <when state="macronpointsouscrit" output="Ṝ"/>
+        <when state="indices" output="ʀ"/>
+    </action>
+
+    <action id="breve">
+        <when state="none" next="breve"/>
+        <when state="aigu" next="aigubreve"/>
+        <when state="grave" next="gravebreve"/>
+        <when state="cedille" next="brevecedille"/>
+        <when state="breve" next="breveinverse"/>
+        <when state="tilde" next="brevetilde"/>
+        <when state="pointsouscrit" next="brevepoint"/>
+        <when state="monnaie" output="₨"/>
+        <when state="crochet" next="brevecrochet"/>
+    </action>
+
+    <action id="®">
+        <when state="none" output="®"/>
+    </action>
+
+    <action id="n">
+        <when state="none" output="n"/>
+        <when state="circonflexe" output="ṋ"/>
+        <when state="aigu" output="ń"/>
+        <when state="grave" output="ǹ"/>
+        <when state="caron" output="ň"/>
+        <when state="scientifique" output="‖"/>
+        <when state="barre" output="ꞥ"/>
+        <when state="cedille" output="ņ"/>
+        <when state="exposant" output="ⁿ"/>
+        <when state="latin" output="ŋ"/>
+        <when state="tilde" output="ñ"/>
+        <when state="grec" output="ν"/>
+        <when state="pointsouscrit" output="ṇ"/>
+        <when state="pointsuscrit" output="ṅ"/>
+        <when state="monnaie" output="₦"/>
+        <when state="crochet" output="ɲ"/>
+        <when state="doubletrait" output="𝕟"/>
+        <when state="grasitalique" output="𝒏"/>
+        <when state="italique" output="𝑛"/>
+        <when state="calligraphique" output="𝓷"/>
+        <when state="scriptes" output="𝓃"/>
+        <when state="gras" output="𝐧"/>
+        <when state="gotiques" output="𝔫"/>
+        <when state="gotiquesgras" output="𝖓"/>
+        <when state="latinexposant" output="ᵑ"/>
+        <when state="tildeinscrit" output="ᵰ"/>
+        <when state="macronpointsouscrit" output="ṉ"/>
+        <when state="indices" output="ₙ"/>
+    </action>
+
+    <action id="N">
+        <when state="none" output="N"/>
+        <when state="circonflexe" output="Ṋ"/>
+        <when state="aigu" output="Ń"/>
+        <when state="grave" output="Ǹ"/>
+        <when state="caron" output="Ň"/>
+        <when state="scientifique" output="ℵ"/>
+        <when state="barre" output="Ꞥ"/>
+        <when state="cedille" output="Ņ"/>
+        <when state="exposant" output="ᴺ"/>
+        <when state="latin" output="Ŋ"/>
+        <when state="tilde" output="Ñ"/>
+        <when state="grec" output="Ν"/>
+        <when state="pointsouscrit" output="Ṇ"/>
+        <when state="pointsuscrit" output="Ṅ"/>
+        <when state="monnaie" output="₦"/>
+        <when state="crochet" output="Ɲ"/>
+        <when state="doubletrait" output="ℕ"/>
+        <when state="grasitalique" output="𝑵"/>
+        <when state="italique" output="𝑁"/>
+        <when state="calligraphique" output="𝓝"/>
+        <when state="scriptes" output="𝒩"/>
+        <when state="gras" output="𝐍"/>
+        <when state="gotiques" output="𝔑"/>
+        <when state="gotiquesgras" output="𝕹"/>
+        <when state="macronpointsouscrit" output="Ṉ"/>
+        <when state="indices" output="ɴ"/>
+    </action>
+
+    <action id="tilde">
+        <when state="none" next="tilde"/>
+        <when state="circonflexe" next="circonflexetilde"/>
+        <when state="aigu" next="aigutilde"/>
+        <when state="trema" next="trematilde"/>
+        <when state="breve" next="brevetilde"/>
+        <when state="tilde" next="tildeinscrit"/>
+        <when state="macron" next="tildemacron"/>
+        <when state="corne" next="tildecorne"/>
+    </action>
+
+    <action id="⚓">
+        <when state="none" output="⚓"/>
+    </action>
+
+    <action id="m">
+        <when state="none" output="m"/>
+        <when state="aigu" output="ḿ"/>
+        <when state="exposant" output="ᵐ"/>
+        <when state="latin" output="º"/>
+        <when state="grec" output="μ"/>
+        <when state="pointsouscrit" output="ṃ"/>
+        <when state="pointsuscrit" output="ṁ"/>
+        <when state="monnaie" output="₥"/>
+        <when state="crochet" output="ɱ"/>
+        <when state="doubletrait" output="𝕞"/>
+        <when state="grasitalique" output="𝒎"/>
+        <when state="italique" output="𝑚"/>
+        <when state="calligraphique" output="𝓶"/>
+        <when state="scriptes" output="𝓂"/>
+        <when state="gras" output="𝐦"/>
+        <when state="gotiques" output="𝔪"/>
+        <when state="gotiquesgras" output="𝖒"/>
+        <when state="tildeinscrit" output="ᵯ"/>
+        <when state="indices" output="ₘ"/>
+    </action>
+    
+    <action id="M">
+        <when state="none" output="M"/>
+        <when state="aigu" output="Ḿ"/>
+        <when state="exposant" output="ᴹ"/>
+        <when state="latin" output=""/>
+        <when state="grec" output="Μ"/>
+        <when state="pointsouscrit" output="Ṃ"/>
+        <when state="pointsuscrit" output="Ṁ"/>
+        <when state="monnaie" output="ℳ"/>
+        <when state="crochet" output="Ɱ"/>
+        <when state="doubletrait" output="𝕄"/>
+        <when state="grasitalique" output="𝑴"/>
+        <when state="italique" output="𝑀"/>
+        <when state="calligraphique" output="𝓜"/>
+        <when state="scriptes" output="ℳ"/>
+        <when state="gras" output="𝐌"/>
+        <when state="gotiques" output="𝔐"/>
+        <when state="gotiquesgras" output="𝕸"/>
+        <when state="indices" output="ᴍ"/>
+    </action>
+
+    <action id="macron">
+        <when state="none" next="macron"/>
+        <when state="aigu" next="aigumacron"/>
+        <when state="grave" next="gravemacron"/>
+        <when state="trema" next="tremamacron"/>
+        <when state="exposant" output="º"/>
+        <when state="latin" output="º"/>
+        <when state="tilde" next="tildemacron"/>
+        <when state="macron" next="macronsouscrit"/>
+        <when state="pointsouscrit" next="macronpointsouscrit"/>
+        <when state="ogonek" next="macronogonek"/>
+        <when state="pointsuscrit" next="macronpointsuscrit"/>
+        <when state="monnaie" output="₼"/>
+    </action>
+
+    <action id="⛽">
+        <when state="none" output="⛽"/>
+        <when state="monnaie" output="₻"/>
+    </action>
+
+    <action id="ç">
+        <when state="none" output="ç"/>
+        <when state="aigu" output="ḉ"/>
+        <when state="latin" output="ʃ"/>
+        <when state="monnaie" output="₵"/>
+        <when state="latinexposant" output="ᶴ"/>
+    </action>
+
+    <action id="Ç">
+        <when state="none" output="Ç"/>
+        <when state="aigu" output="Ḉ"/>
+        <when state="latin" output="Ʃ"/>
+        <when state="monnaie" output="₵"/>
+    </action>
+
+    <action id="✈">
+        <when state="none" output="✈"/>
+    </action>
+    
+    <action id="copyleft">
+        <when state="none" output="&#x1f12f;"/>
+    </action>
+
+    <action id="ê">
+        <when state="none" output="ê"/>
+        <when state="aigu" output="ế"/>
+        <when state="grave" output="ề"/>
+        <when state="latin" output="ɪ"/>
+        <when state="tilde" output="ễ"/>
+        <when state="pointsouscrit" output="ệ"/>
+        <when state="crochet" output="ể"/>
+        <when state="rayelatin" output="ᵻ"/>
+    </action>
+
+    <action id="Ê">
+        <when state="none" output="Ê"/>
+        <when state="aigu" output="Ế"/>
+        <when state="grave" output="Ề"/>
+        <when state="latin" output="Ɪ"/>
+        <when state="tilde" output="Ễ"/>
+        <when state="pointsouscrit" output="Ệ"/>
+        <when state="crochet" output="Ể"/>
+    </action>
+
+    <action id="à">
+        <when state="none" output="à"/>
+        <when state="circonflexe" output="ầ"/>
+        <when state="grave" output="ȁ"/>
+        <when state="latin" output="ꜣ"/>
+        <when state="breve" output="ằ"/>
+    </action>
+
+    <action id="À">
+        <when state="none" output="À"/>
+        <when state="circonflexe" output="Ầ"/>
+        <when state="grave" output="Ȁ"/>
+        <when state="latin" output="Ꜣ"/>
+        <when state="breve" output="Ằ"/>
+    </action>
+
+    <action id="\">
+        <when state="none" output="\"/>
+        <when state="scientifique" output="∖"/>
+    </action>
+
+    <action id="‚">
+        <when state="none" output="‚"/>
+        <when state="latin" output="ʽ"/>
+    </action>
+
+    <action id="y">
+        <when state="none" output="y"/>
+        <when state="circonflexe" output="ŷ"/>
+        <when state="aigu" output="ý"/>
+        <when state="grave" output="ỳ"/>
+        <when state="scientifique" output="⋉"/>
+        <when state="raye" output="ɏ"/>
+        <when state="trema" output="ÿ"/>
+        <when state="exposant" output="ʸ"/>
+        <when state="latin" output="ȝ"/>
+        <when state="tilde" output="ỹ"/>
+        <when state="macron" output="ȳ"/>
+        <when state="rond" output="ẙ"/>
+        <when state="grec" output="υ"/>
+        <when state="pointsouscrit" output="ỵ"/>
+        <when state="pointsuscrit" output="ẏ"/>
+        <when state="monnaie" output="¥"/>
+        <when state="crochet" output="ỷ"/>
+        <when state="doubletrait" output="𝕪"/>
+        <when state="grasitalique" output="𝒚"/>
+        <when state="italique" output="𝑦"/>
+        <when state="calligraphique" output="𝔂"/>
+        <when state="scriptes" output="𝓎"/>
+        <when state="gras" output="𝐲"/>
+        <when state="gotiques" output="𝔶"/>
+        <when state="gotiquesgras" output="𝖞"/>
+        <when state="grecaigu" output="ύ"/>
+        <when state="grectrema" output="ϋ"/>
+        <when state="crosse" output="ƴ"/>
+        <when state="grectremaaigu" output="ΰ"/>
+    </action>
+
+    <action id="Y">
+        <when state="none" output="Y"/>
+        <when state="circonflexe" output="Ŷ"/>
+        <when state="aigu" output="Ý"/>
+        <when state="grave" output="Ỳ"/>
+        <when state="raye" output="Ɏ"/>
+        <when state="trema" output="Ÿ"/>
+        <when state="latin" output="Ȝ"/>
+        <when state="tilde" output="Ỹ"/>
+        <when state="macron" output="Ȳ"/>
+        <when state="grec" output="Υ"/>
+        <when state="pointsouscrit" output="Ỵ"/>
+        <when state="pointsuscrit" output="Ẏ"/>
+        <when state="monnaie" output="円"/>
+        <when state="crochet" output="Ỷ"/>
+        <when state="doubletrait" output="𝕐"/>
+        <when state="grasitalique" output="𝒀"/>
+        <when state="italique" output="𝑌"/>
+        <when state="calligraphique" output="𝓨"/>
+        <when state="scriptes" output="𝒴"/>
+        <when state="gras" output="𝐘"/>
+        <when state="gotiques" output="𝔜"/>
+        <when state="gotiquesgras" output="𝖄"/>
+        <when state="grecaigu" output="Ύ"/>
+        <when state="grectrema" output="Ϋ"/>
+        <when state="indices" output="ʏ"/>
+        <when state="crosse" output="Ƴ"/>
+    </action>
+
+    <action id="{">
+        <when state="none" output="{"/>
+        <when state="latin" output="ʿ"/>
+    </action>
+
+    <action id="‘">
+        <when state="none" output="‘"/>
+        <when state="latin" output="ʻ"/>
+    </action>
+
+    <action id="x">
+        <when state="none" output="x"/>
+        <when state="scientifique" output="⋊"/>
+        <when state="trema" output="ẍ"/>
+        <when state="exposant" output="ˣ"/>
+        <when state="latin" output="ꞌ"/>
+        <when state="grec" output="χ"/>
+        <when state="pointsuscrit" output="ẋ"/>
+        <when state="doubletrait" output="𝕩"/>
+        <when state="grasitalique" output="𝒙"/>
+        <when state="italique" output="𝑥"/>
+        <when state="calligraphique" output="𝔁"/>
+        <when state="scriptes" output="𝓍"/>
+        <when state="gras" output="𝐱"/>
+        <when state="gotiques" output="𝔵"/>
+        <when state="gotiquesgras" output="𝖝"/>
+        <when state="indices" output="ₓ"/>
+    </action>
+
+    <action id="X">
+        <when state="none" output="X"/>
+        <when state="trema" output="Ẍ"/>
+        <when state="latin" output="Ꞌ"/>
+        <when state="grec" output="Χ"/>
+        <when state="pointsuscrit" output="Ẋ"/>
+        <when state="doubletrait" output="𝕏"/>
+        <when state="grasitalique" output="𝑿"/>
+        <when state="italique" output="𝑋"/>
+        <when state="calligraphique" output="𝓧"/>
+        <when state="scriptes" output="𝒳"/>
+        <when state="gras" output="𝐗"/>
+        <when state="gotiques" output="𝔛"/>
+        <when state="gotiquesgras" output="𝖃"/>
+    </action>
+
+    <action id="}">
+        <when state="none" output="}"/>
+        <when state="latin" output="ʾ"/>
+    </action>
+
+    <action id="’">
+        <when state="none" output="’"/>
+        <when state="circonflexe" output="&#x0302;"/>
+        <when state="aigu" output="&#x0301;"/>
+        <when state="grave" output="&#x0300;"/>
+        <when state="caron" output="&#x030c;"/>
+        <when state="scientifique" output="⋯"/>
+        <when state="barre" output="&#x0338;"/>
+        <when state="raye" output="&#x0336;"/>
+        <when state="trema" output="&#x0308;"/>
+        <when state="cedille" output="&#x0327;"/>
+        <when state="latin" output="ʼ"/>
+        <when state="breve" output="&#x0306;"/>
+        <when state="tilde" output="&#x0303;"/>
+        <when state="macron" output="&#x0304;"/>
+        <when state="rond" output="&#x030a;"/>
+        <when state="pointsouscrit" output="&#x0323;"/>
+        <when state="ogonek" output="&#x0328;"/>
+        <when state="pointsuscrit" output="&#x0307;"/>
+        <when state="virgule" output="&#x0326;"/>
+        <when state="crochet" output="&#x0309;"/>
+        <when state="corne" output="&#x031b;"/>
+        <when state="circonflexesouscrit" output="&#x032d;"/>
+        <when state="doubleaigu" output="&#x030b;"/>
+        <when state="doublegrave" output="&#x030f;"/>
+        <when state="breveinverse" output="&#x0311;"/>
+        <when state="tremasouscrit" output="&#x0324;"/>
+        <when state="tildeinscrit" output="&#x0334;"/>
+        <when state="macronsouscrit" output="&#x0331;"/>
+        <when state="rondsouscrit" output="&#x0325;"/>
+        <when state="grecaigu" output="&#x0341;"/>
+        <when state="grectremaaigu" output="&#x0344;"/>
+    </action>
+
+    <action id=".">
+        <when state="none" output="."/>
+        <when state="circonflexe" output="&#x0302;"/>
+        <when state="aigu" output="&#x0301;"/>
+        <when state="grave" output="&#x0300;"/>
+        <when state="caron" output="&#x030c;"/>
+        <when state="scientifique" output="∙"/>
+        <when state="barre" output="&#x0338;"/>
+        <when state="raye" output="&#x0336;"/>
+        <when state="trema" output="&#x0308;"/>
+        <when state="cedille" output="&#x0327;"/>
+        <when state="latin" output="•"/>
+        <when state="breve" output="&#x0306;"/>
+        <when state="tilde" output="&#x0303;"/>
+        <when state="macron" output="&#x0304;"/>
+        <when state="rond" output="&#x030a;"/>
+        <when state="pointsouscrit" output="&#x0323;"/>
+        <when state="ogonek" output="&#x0328;"/>
+        <when state="pointsuscrit" output="&#x0307;"/>
+        <when state="virgule" output="&#x0326;"/>
+        <when state="crochet" output="&#x0309;"/>
+        <when state="corne" output="&#x031b;"/>
+        <when state="circonflexesouscrit" output="&#x032d;"/>
+        <when state="doubleaigu" output="&#x030b;"/>
+        <when state="doublegrave" output="&#x030f;"/>
+        <when state="breveinverse" output="&#x0311;"/>
+        <when state="tremasouscrit" output="&#x0324;"/>
+        <when state="tildeinscrit" output="&#x0334;"/>
+        <when state="macronsouscrit" output="&#x0331;"/>
+        <when state="rondsouscrit" output="&#x0325;"/>
+        <when state="grecaigu" output="&#x0341;"/>
+        <when state="grectremaaigu" output="&#x0344;"/>
+    </action>
+
+    <action id=":">
+        <when state="none" output=":"/>
+        <when state="circonflexe" output="&#x0302;"/>
+        <when state="aigu" output="&#x0301;"/>
+        <when state="grave" output="&#x0300;"/>
+        <when state="caron" output="&#x030c;"/>
+        <when state="scientifique" output="∎"/>
+        <when state="barre" output="&#x0338;"/>
+        <when state="raye" output="&#x0336;"/>
+        <when state="trema" output="&#x0308;"/>
+        <when state="cedille" output="&#x0327;"/>
+        <when state="latin" output="⁃"/>
+        <when state="breve" output="&#x0306;"/>
+        <when state="tilde" output="&#x0303;"/>
+        <when state="macron" output="&#x0304;"/>
+        <when state="rond" output="&#x030a;"/>
+        <when state="pointsouscrit" output="&#x0323;"/>
+        <when state="ogonek" output="&#x0328;"/>
+        <when state="pointsuscrit" output="&#x0307;"/>
+        <when state="virgule" output="&#x0326;"/>
+        <when state="crochet" output="&#x0309;"/>
+        <when state="corne" output="&#x031b;"/>
+        <when state="circonflexesouscrit" output="&#x032d;"/>
+        <when state="doubleaigu" output="&#x030b;"/>
+        <when state="doublegrave" output="&#x030f;"/>
+        <when state="breveinverse" output="&#x0311;"/>
+        <when state="tremasouscrit" output="&#x0324;"/>
+        <when state="tildeinscrit" output="&#x0334;"/>
+        <when state="macronsouscrit" output="&#x0331;"/>
+        <when state="rondsouscrit" output="&#x0325;"/>
+        <when state="grecaigu" output="&#x0341;"/>
+        <when state="grectremaaigu" output="&#x0344;"/>
+    </action>
+
+    <action id="…">
+        <when state="none" output="…"/>
+        <when state="circonflexe" output="&#x0302;"/>
+        <when state="aigu" output="&#x0301;"/>
+        <when state="grave" output="&#x0300;"/>
+        <when state="caron" output="&#x030c;"/>
+        <when state="scientifique" output="⃛"/>
+        <when state="barre" output="&#x0338;"/>
+        <when state="raye" output="&#x0336;"/>
+        <when state="trema" output="&#x0308;"/>
+        <when state="cedille" output="&#x0327;"/>
+        <when state="breve" output="&#x0306;"/>
+        <when state="tilde" output="&#x0303;"/>
+        <when state="macron" output="&#x0304;"/>
+        <when state="rond" output="&#x030a;"/>
+        <when state="pointsouscrit" output="&#x0323;"/>
+        <when state="ogonek" output="&#x0328;"/>
+        <when state="pointsuscrit" output="&#x0307;"/>
+        <when state="virgule" output="&#x0326;"/>
+        <when state="crochet" output="&#x0309;"/>
+        <when state="corne" output="&#x031b;"/>
+        <when state="circonflexesouscrit" output="&#x032d;"/>
+        <when state="doubleaigu" output="&#x030b;"/>
+        <when state="doublegrave" output="&#x030f;"/>
+        <when state="breveinverse" output="&#x0311;"/>
+        <when state="tremasouscrit" output="&#x0324;"/>
+        <when state="tildeinscrit" output="&#x0334;"/>
+        <when state="macronsouscrit" output="&#x0331;"/>
+        <when state="rondsouscrit" output="&#x0325;"/>
+        <when state="grecaigu" output="&#x0341;"/>
+        <when state="grectremaaigu" output="&#x0344;"/>
+    </action>
+
+    <action id="·">
+        <when state="none" output="·"/>
+        <when state="circonflexe" output="&#x0302;"/>
+        <when state="aigu" output="&#x0301;"/>
+        <when state="grave" output="&#x0300;"/>
+        <when state="caron" output="&#x030c;"/>
+        <when state="scientifique" output="⃜"/>
+        <when state="barre" output="&#x0338;"/>
+        <when state="raye" output="&#x0336;"/>
+        <when state="trema" output="&#x0308;"/>
+        <when state="cedille" output="&#x0327;"/>
+        <when state="latin" output="▪"/>
+        <when state="breve" output="&#x0306;"/>
+        <when state="tilde" output="&#x0303;"/>
+        <when state="macron" output="&#x0304;"/>
+        <when state="rond" output="&#x030a;"/>
+        <when state="pointsouscrit" output="&#x0323;"/>
+        <when state="ogonek" output="&#x0328;"/>
+        <when state="pointsuscrit" output="&#x0307;"/>
+        <when state="virgule" output="&#x0326;"/>
+        <when state="crochet" output="&#x0309;"/>
+        <when state="corne" output="&#x031b;"/>
+        <when state="circonflexesouscrit" output="&#x032d;"/>
+        <when state="doubleaigu" output="&#x030b;"/>
+        <when state="doublegrave" output="&#x030f;"/>
+        <when state="breveinverse" output="&#x0311;"/>
+        <when state="tremasouscrit" output="&#x0324;"/>
+        <when state="tildeinscrit" output="&#x0334;"/>
+        <when state="macronsouscrit" output="&#x0331;"/>
+        <when state="rondsouscrit" output="&#x0325;"/>
+        <when state="grecaigu" output="&#x0341;"/>
+        <when state="grectremaaigu" output="&#x0344;"/>
+    </action>
+
+    <action id="k">
+        <when state="none" output="k"/>
+        <when state="aigu" output="ḱ"/>
+        <when state="caron" output="ǩ"/>
+        <when state="scientifique" output="∼"/>
+        <when state="barre" output="ꝃ"/>
+        <when state="raye" output="ꝁ"/>
+        <when state="cedille" output="ķ"/>
+        <when state="exposant" output="ᵏ"/>
+        <when state="latin" output="ĸ"/>
+        <when state="grec" output="κ"/>
+        <when state="pointsouscrit" output="ḳ"/>
+        <when state="monnaie" output="₭"/>
+        <when state="scientifiquebarre" output="≁"/>
+        <when state="doubletrait" output="𝕜"/>
+        <when state="grasitalique" output="𝒌"/>
+        <when state="italique" output="𝑘"/>
+        <when state="calligraphique" output="𝓴"/>
+        <when state="scriptes" output="𝓀"/>
+        <when state="gras" output="𝐤"/>
+        <when state="gotiques" output="𝔨"/>
+        <when state="gotiquesgras" output="𝖐"/>
+        <when state="barreraye" output="ꝅ"/>
+        <when state="macronsouscrit" output="ḵ"/>
+        <when state="indices" output="ₖ"/>
+        <when state="crosse" output="ƙ"/>
+        <when state="doublebarre" output="ꞣ"/>
+    </action>
+
+    <action id="K">
+        <when state="none" output="K"/>
+        <when state="aigu" output="Ḱ"/>
+        <when state="caron" output="Ǩ"/>
+        <when state="scientifique" output="⥲"/>
+        <when state="barre" output="Ꝃ"/>
+        <when state="raye" output="Ꝁ"/>
+        <when state="cedille" output="Ķ"/>
+        <when state="exposant" output="ᴷ"/>
+        <when state="grec" output="Κ"/>
+        <when state="pointsouscrit" output="Ḳ"/>
+        <when state="monnaie" output="₭"/>
+        <when state="doubletrait" output="𝕂"/>
+        <when state="grasitalique" output="𝑲"/>
+        <when state="italique" output="𝐾"/>
+        <when state="calligraphique" output="𝓚"/>
+        <when state="scriptes" output="𝒦"/>
+        <when state="gras" output="𝐊"/>
+        <when state="gotiques" output="𝔎"/>
+        <when state="gotiquesgras" output="𝕶"/>
+        <when state="barreraye" output="Ꝅ"/>
+        <when state="macronsouscrit" output="Ḵ"/>
+        <when state="indices" output="ᴋ"/>
+        <when state="crosse" output="Ƙ"/>
+        <when state="doublebarre" output="Ꞣ"/>
+    </action>
+
+    <action id="~">
+        <when state="none" output="~"/>
+        <when state="scientifique" output="↪"/>
+        <when state="barre" output="ꞣ"/>
+    </action>
+
+    <action id="‑">
+        <when state="none" output="‑"/>
+        <when state="scientifique" output="↠"/>
+        <when state="barre" output="Ꞣ"/>
+    </action>
+
+    <action id="?">
+        <when state="none" output="?"/>
+        <when state="circonflexe" output="&#x0302;"/>
+        <when state="aigu" output="&#x0301;"/>
+        <when state="grave" output="&#x0300;"/>
+        <when state="caron" output="&#x030c;"/>
+        <when state="scientifique" output="⋮"/>
+        <when state="barre" output="&#x0338;"/>
+        <when state="raye" output="&#x0336;"/>
+        <when state="trema" output="&#x0308;"/>
+        <when state="cedille" output="&#x0327;"/>
+        <when state="latin" output="⸮"/>
+        <when state="breve" output="&#x0306;"/>
+        <when state="tilde" output="&#x0303;"/>
+        <when state="macron" output="&#x0304;"/>
+        <when state="rond" output="&#x030a;"/>
+        <when state="pointsouscrit" output="&#x0323;"/>
+        <when state="ogonek" output="&#x0328;"/>
+        <when state="pointsuscrit" output="&#x0307;"/>
+        <when state="virgule" output="&#x0326;"/>
+        <when state="crochet" output="&#x0309;"/>
+        <when state="corne" output="&#x031b;"/>
+        <when state="circonflexesouscrit" output="&#x032d;"/>
+        <when state="doubleaigu" output="&#x030b;"/>
+        <when state="doublegrave" output="&#x030f;"/>
+        <when state="breveinverse" output="&#x0311;"/>
+        <when state="tremasouscrit" output="&#x0324;"/>
+        <when state="tildeinscrit" output="&#x0334;"/>
+        <when state="macronsouscrit" output="&#x0331;"/>
+        <when state="rondsouscrit" output="&#x0325;"/>
+        <when state="grecaigu" output="&#x0341;"/>
+        <when state="grectremaaigu" output="&#x0344;"/>
+    </action>
+
+    <action id="¿">
+        <when state="none" output="¿"/>
+        <when state="circonflexe" output="&#x0302;"/>
+        <when state="aigu" output="&#x0301;"/>
+        <when state="grave" output="&#x0300;"/>
+        <when state="caron" output="&#x030c;"/>
+        <when state="scientifique" output="⋱"/>
+        <when state="barre" output="&#x0338;"/>
+        <when state="raye" output="&#x0336;"/>
+        <when state="trema" output="&#x0308;"/>
+        <when state="cedille" output="&#x0327;"/>
+        <when state="breve" output="&#x0306;"/>
+        <when state="tilde" output="&#x0303;"/>
+        <when state="macron" output="&#x0304;"/>
+        <when state="rond" output="&#x030a;"/>
+        <when state="pointsouscrit" output="&#x0323;"/>
+        <when state="ogonek" output="&#x0328;"/>
+        <when state="pointsuscrit" output="&#x0307;"/>
+        <when state="virgule" output="&#x0326;"/>
+        <when state="crochet" output="&#x0309;"/>
+        <when state="corne" output="&#x031b;"/>
+        <when state="circonflexesouscrit" output="&#x032d;"/>
+        <when state="doubleaigu" output="&#x030b;"/>
+        <when state="doublegrave" output="&#x030f;"/>
+        <when state="breveinverse" output="&#x0311;"/>
+        <when state="tremasouscrit" output="&#x0324;"/>
+        <when state="tildeinscrit" output="&#x0334;"/>
+        <when state="macronsouscrit" output="&#x0331;"/>
+        <when state="rondsouscrit" output="&#x0325;"/>
+        <when state="grecaigu" output="&#x0341;"/>
+        <when state="grectremaaigu" output="&#x0344;"/>
+    </action>
+
+    <action id="crochet">
+        <when state="none" next="crochet"/>
+        <when state="circonflexe" next="circonflexecrochet"/>
+        <when state="aigu" output="&#x0301;"/>
+        <when state="grave" output="&#x0300;"/>
+        <when state="caron" output="&#x030c;"/>
+        <when state="scientifique" output="⋰"/>
+        <when state="barre" output="&#x0338;"/>
+        <when state="raye" output="&#x0336;"/>
+        <when state="trema" output="&#x0308;"/>
+        <when state="cedille" output="&#x0327;"/>
+        <when state="latin" output="ʻ"/>
+        <when state="breve" next="brevecrochet"/>
+        <when state="tilde" output="&#x0303;"/>
+        <when state="macron" output="&#x0304;"/>
+        <when state="rond" output="&#x030a;"/>
+        <when state="pointsouscrit" output="&#x0323;"/>
+        <when state="ogonek" output="&#x0328;"/>
+        <when state="pointsuscrit" output="&#x0307;"/>
+        <when state="virgule" output="&#x0326;"/>
+        <when state="crochet" next="crosse"/>
+        <when state="corne" next="cornecrochet"/>
+        <when state="circonflexesouscrit" output="&#x032d;"/>
+        <when state="doubleaigu" output="&#x030b;"/>
+        <when state="doublegrave" output="&#x030f;"/>
+        <when state="breveinverse" output="&#x0311;"/>
+        <when state="tremasouscrit" output="&#x0324;"/>
+        <when state="tildeinscrit" output="&#x0334;"/>
+        <when state="macronsouscrit" output="&#x0331;"/>
+        <when state="rondsouscrit" output="&#x0325;"/>
+        <when state="grecaigu" output="&#x0341;"/>
+        <when state="grectremaaigu" output="&#x0344;"/>
+    </action>
+
+    <action id="q">
+        <when state="none" output="q"/>
+        <when state="scientifique" output="⟂"/>
+        <when state="barre" output="ꝙ"/>
+        <when state="raye" output="ꝗ"/>
+        <when state="latin" output="ꭓ"/>
+        <when state="crochet" output="ɋ"/>
+        <when state="doubletrait" output="𝕢"/>
+        <when state="grasitalique" output="𝒒"/>
+        <when state="italique" output="𝑞"/>
+        <when state="calligraphique" output="𝓺"/>
+        <when state="scriptes" output="𝓆"/>
+        <when state="gras" output="𝐪"/>
+        <when state="gotiques" output="𝔮"/>
+        <when state="gotiquesgras" output="𝖖"/>
+        <when state="crosse" output="ʠ"/>
+    </action>
+
+    <action id="Q">
+        <when state="none" output="Q"/>
+        <when state="scientifique" output="∥"/>
+        <when state="barre" output="Ꝙ"/>
+        <when state="raye" output="Ꝗ"/>
+        <when state="latin" output="Ꭓ"/>
+        <when state="crochet" output="Ɋ"/>
+        <when state="scientifiquebarre" output="∦"/>
+        <when state="doubletrait" output="ℚ"/>
+        <when state="grasitalique" output="𝙌"/>
+        <when state="italique" output="𝘘"/>
+        <when state="calligraphique" output="𝓠"/>
+        <when state="scriptes" output="𝒬"/>
+        <when state="gras" output="𝐐"/>
+        <when state="gotiques" output="𝔔"/>
+        <when state="gotiquesgras" output="𝕼"/>
+        <when state="indices" output="&#xa7af;" />
+    </action>
+
+    <action id="rond">
+        <when state="none" next="rond"/>
+        <when state="aigu" next="aigurond"/>
+        <when state="rond" next="rondsouscrit"/>
+    </action>
+
+    <action id="corne">
+        <when state="none" next="corne"/>
+        <when state="aigu" next="aigucorne"/>
+        <when state="grave" next="gravecorne"/>
+        <when state="tilde" next="tildecorne"/>
+        <when state="pointsouscrit" next="pointsouscritcorne"/>
+        <when state="crochet" next="cornecrochet"/>
+        <when state="corne" output="̛"/>
+    </action>
+
+    <action id="g">
+        <when state="none" output="g"/>
+        <when state="circonflexe" output="ĝ"/>
+        <when state="aigu" output="ǵ"/>
+        <when state="caron" output="ǧ"/>
+        <when state="scientifique" next="gras"/>
+        <when state="barre" output="ꞡ"/>
+        <when state="raye" output="ǥ"/>
+        <when state="cedille" output="ģ"/>
+        <when state="exposant" output="ᵍ"/>
+        <when state="latin" output="ɣ"/>
+        <when state="breve" output="ğ"/>
+        <when state="macron" output="ḡ"/>
+        <when state="grec" output="γ"/>
+        <when state="pointsuscrit" output="ġ"/>
+        <when state="monnaie" output="₲"/>
+        <when state="doubletrait" output="𝕘"/>
+        <when state="grasitalique" output="𝒈"/>
+        <when state="italique" output="𝑔"/>
+        <when state="calligraphique" output="𝓰"/>
+        <when state="scriptes" output="ℊ"/>
+        <when state="gras" output="𝐠"/>
+        <when state="gotiques" output="𝔤"/>
+        <when state="gotiquesgras" output="𝖌"/>
+        <when state="latinexposant" output="ˠ"/>
+        <when state="crosse" output="ɠ"/>
+    </action>
+
+    <action id="G">
+        <when state="none" output="G"/>
+        <when state="circonflexe" output="Ĝ"/>
+        <when state="aigu" output="Ǵ"/>
+        <when state="caron" output="Ǧ"/>
+        <when state="barre" output="Ꞡ"/>
+        <when state="raye" output="Ǥ"/>
+        <when state="cedille" output="Ģ"/>
+        <when state="exposant" output="ᴳ"/>
+        <when state="latin" output="Ɣ"/>
+        <when state="breve" output="Ğ"/>
+        <when state="macron" output="Ḡ"/>
+        <when state="grec" output="Γ"/>
+        <when state="pointsuscrit" output="Ġ"/>
+        <when state="monnaie" output="₲"/>
+        <when state="doubletrait" output="𝔾"/>
+        <when state="grasitalique" output="𝑮"/>
+        <when state="italique" output="𝐺"/>
+        <when state="calligraphique" output="𝓖"/>
+        <when state="scriptes" output="𝒢"/>
+        <when state="gras" output="𝐆"/>
+        <when state="gotiques" output="𝔊"/>
+        <when state="gotiquesgras" output="𝕲"/>
+        <when state="indices" output="ɢ" />
+        <when state="latinexposant" output=""/>
+        <when state="crosse" output="Ɠ"/>
+    </action>
+
+    <action id="grec">
+        <when state="none" next="grec"/>
+        <when state="aigu" next="grecaigu"/>
+        <when state="trema" next="grectrema"/>
+        <when state="grec" output="µ"/>
+        <when state="aigutrema" next="grectremaaigu"/>
+    </action>
+
+    <action id="†">
+        <when state="none" output="†"/>
+    </action>
+
+    <action id="h">
+        <when state="none" output="h"/>
+        <when state="circonflexe" output="ĥ"/>
+        <when state="caron" output="ȟ"/>
+        <when state="scientifique" output="ℎ"/>
+        <when state="raye" output="ħ"/>
+        <when state="trema" output="ḧ"/>
+        <when state="cedille" output="ḩ"/>
+        <when state="exposant" output="ʰ"/>
+        <when state="latin" output="ɂ"/>
+        <when state="breve" output="ḫ"/>
+        <when state="grec" output="η"/>
+        <when state="pointsouscrit" output="ḥ"/>
+        <when state="pointsuscrit" output="ḣ"/>
+        <when state="monnaie" output="₴"/>
+        <when state="crochet" output="ꜧ"/>
+        <when state="doubletrait" output="𝕙"/>
+        <when state="grasitalique" output="𝒉"/>
+        <when state="italique" output="ℎ"/>
+        <when state="calligraphique" output="𝓱"/>
+        <when state="scriptes" output="𝒽"/>
+        <when state="gras" output="𝐡"/>
+        <when state="gotiques" output="𝔥"/>
+        <when state="gotiquesgras" output="𝖍"/>
+        <when state="breveinverse" output="ḫ"/>
+        <when state="latinexposant" output="ˀ"/>
+        <when state="macronsouscrit" output="ẖ"/>
+        <when state="grecaigu" output="ή"/>
+        <when state="indices" output="ₕ"/>
+        <when state="crosse" output="ɦ"/>
+    </action>
+
+    <action id="H">
+        <when state="none" output="H"/>
+        <when state="circonflexe" output="Ĥ"/>
+        <when state="caron" output="Ȟ"/>
+        <when state="raye" output="Ħ"/>
+        <when state="trema" output="Ḧ"/>
+        <when state="cedille" output="Ḩ"/>
+        <when state="exposant" output="ᴴ"/>
+        <when state="latin" output="Ɂ"/>
+        <when state="breve" output="Ḫ"/>
+        <when state="grec" output="Η"/>
+        <when state="pointsouscrit" output="Ḥ"/>
+        <when state="pointsuscrit" output="Ḣ"/>
+        <when state="monnaie" output="₴"/>
+        <when state="crochet" output="Ꜧ"/>
+        <when state="doubletrait" output="ℍ"/>
+        <when state="grasitalique" output="𝑯"/>
+        <when state="italique" output="𝐻"/>
+        <when state="calligraphique" output="𝓗"/>
+        <when state="scriptes" output="ℋ"/>
+        <when state="gras" output="𝐇"/>
+        <when state="gotiques" output="ℌ"/>
+        <when state="gotiquesgras" output="𝕳"/>
+        <when state="breveinverse" output="Ḫ"/>
+        <when state="grecaigu" output="Ή"/>
+        <when state="indices" output="ʜ"/>
+        <when state="crosse" output="Ɦ"/>
+    </action>
+
+    <action id="pointsouscrit">
+        <when state="none" next="pointsouscrit"/>
+        <when state="circonflexe" next="circonflexepoint"/>
+        <when state="scientifique" output="ℏ"/>
+        <when state="breve" next="brevepoint"/>
+        <when state="macron" next="macronpointsouscrit"/>
+        <when state="pointsouscrit" output="̣"/>
+        <when state="pointsuscrit" next="points"/>
+        <when state="corne" next="pointsouscritcorne"/>
+    </action>
+
+    <action id="‡">
+        <when state="none" output="‡"/>
+    </action>
+
+    <action id="f">
+        <when state="none" output="f"/>
+        <when state="scientifique" next="gotiques"/>
+        <when state="raye" output="ꞙ"/>
+        <when state="exposant" output="ᶠ"/>
+        <when state="latin" output="ª"/>
+        <when state="grec" output="φ"/>
+        <when state="pointsuscrit" output="ḟ"/>
+        <when state="monnaie" output="ƒ"/>
+        <when state="crochet" output="ƒ"/>
+        <when state="doubletrait" output="𝕗"/>
+        <when state="grasitalique" output="𝒇"/>
+        <when state="italique" output="𝑓"/>
+        <when state="calligraphique" output="𝓯"/>
+        <when state="scriptes" output="𝒻"/>
+        <when state="gras" output="𝐟"/>
+        <when state="gotiques" output="𝔣"/>
+        <when state="gotiquesgras" output="𝖋"/>
+        <when state="tildeinscrit" output="ᵮ"/>
+    </action>
+
+    <action id="F">
+        <when state="none" output="F"/>
+        <when state="scientifique" next="gotiquesgras"/>
+        <when state="raye" output="Ꞙ"/>
+        <when state="grec" output="Φ"/>
+        <when state="pointsuscrit" output="Ḟ"/>
+        <when state="monnaie" output="₣"/>
+        <when state="crochet" output="Ƒ"/>
+        <when state="doubletrait" output="𝔽"/>
+        <when state="grasitalique" output="𝑭"/>
+        <when state="italique" output="𝐹"/>
+        <when state="calligraphique" output="𝓕"/>
+        <when state="scriptes" output="ℱ"/>
+        <when state="gras" output="𝐅"/>
+        <when state="gotiques" output="𝔉"/>
+        <when state="gotiquesgras" output="𝕱"/>
+        <when state="indices" output="ꜰ"/>
+    </action>
+
+    <action id="ogonek">
+        <when state="none" next="ogonek"/>
+        <when state="scientifique" output="℉"/>
+        <when state="exposant" output="ª"/>
+        <when state="latin" output="ª"/>
+        <when state="macron" next="macronogonek"/>
+        <when state="ogonek" output="˛"/>
+    </action>
+
+    <action id="⛄">
+        <when state="none" output="⛄"/>
+    </action>
+
+    <action id="espace">
+        <when state="none" output=" "/>
+        <when state="circonflexe" output="^"/>
+        <when state="aigu" output="´"/>
+        <when state="grave" output="`"/>
+        <when state="caron" output="ˇ"/>
+        <when state="barre" output="/"/>
+        <when state="raye" output="-"/>
+        <when state="trema" output="¨"/>
+        <when state="cedille" output="¸"/>
+        <when state="latin" output="␣"/>
+        <when state="breve" output="˘"/>
+        <when state="grec" output="µ"/>
+        <when state="monnaie" output="¤"/>
+        <when state="tilde" output="~"/>
+        <when state="macron" output="¯"/>
+        <when state="rond" output="&#x00b0;"/>
+        <when state="ogonek" output="˛"/>
+        <when state="pointsuscrit" output="˙"/>
+        <when state="virgule" output=","/>
+        <when state="circonflexesouscrit" output="˰"/>
+        <when state="doubleaigu" output="˝"/>
+        <when state="caronsouscrit" output="&#x02f0;"/>
+        <when state="grecaigu" output="&#x0027;"/>
+        <when state="grectrema" output="¨"/>
+        <when state="grectremaaigu" output="΅"/>
+    </action>
+
+    <action id="fineinsecable">
+        <when state="none" output="&#x202f;"/>
+        <when state="circonflexe" output="^"/>
+        <when state="aigu" output="´"/>
+        <when state="grave" output="`"/>
+        <when state="caron" output="ˇ"/>
+        <when state="barre" output="/"/>
+        <when state="raye" output="-"/>
+        <when state="trema" output="¨"/>
+        <when state="cedille" output="¸"/>
+        <when state="latin" output="&#x2003;"/>
+        <when state="breve" output="˘"/>
+        <when state="grec" output="µ"/>
+        <when state="monnaie" output="¤"/>
+        <when state="tilde" output="~"/>
+        <when state="macron" output="¯"/>
+        <when state="rond" output="&#x02da;"/>
+        <when state="ogonek" output="˛"/>
+        <when state="pointsuscrit" output="˙"/>
+        <when state="virgule" output=","/>
+        <when state="circonflexesouscrit" output="˰"/>
+        <when state="doubleaigu" output="˝"/>
+        <when state="caronsouscrit" output="&#x02f0;"/>
+        <when state="grecaigu" output="&#x0027;"/>
+        <when state="grectrema" output="¨"/>
+        <when state="grectremaaigu" output="΅"/>
+    </action>
+
+    <action id="insecable">
+        <when state="none" output="&#x00a0;"/>
+        <when state="circonflexe" output="^"/>
+        <when state="aigu" output="´"/>
+        <when state="grave" output="`"/>
+        <when state="caron" output="ˇ"/>
+        <when state="barre" output="/"/>
+        <when state="raye" output="-"/>
+        <when state="trema" output="¨"/>
+        <when state="cedille" output="¸"/>
+        <when state="latin" output="&#x203f;"/>
+        <when state="breve" output="˘"/>
+        <when state="grec" output="µ"/>
+        <when state="monnaie" output="¤"/>
+        <when state="tilde" output="~"/>
+        <when state="macron" output="¯"/>
+        <when state="rond" output="&#x02da;"/>
+        <when state="ogonek" output="˛"/>
+        <when state="pointsuscrit" output="˙"/>
+        <when state="virgule" output=","/>
+        <when state="circonflexesouscrit" output="˰"/>
+        <when state="doubleaigu" output="˝"/>
+        <when state="caronsouscrit" output="&#x02f0;"/>
+        <when state="grecaigu" output="&#x0027;"/>
+        <when state="grectrema" output="¨"/>
+        <when state="grectremaaigu" output="΅"/>
+    </action>
+
+    <action id="">
+        <when state="none" output=""/>
+        <when state="circonflexe" output=""/>
+        <when state="aigu" output=""/>
+        <when state="grave" output=""/>
+        <when state="caron" output=""/>
+        <when state="scientifique" output=""/>
+        <when state="barre" output=""/>
+        <when state="raye" output=""/>
+        <when state="trema" output=""/>
+        <when state="cedille" output=""/>
+        <when state="exposant" output=""/>
+        <when state="latin" output=""/>
+        <when state="breve" output=""/>
+        <when state="tilde" output=""/>
+        <when state="macron" output=""/>
+        <when state="rond" output=""/>
+        <when state="grec" output=""/>
+        <when state="pointsouscrit" output=""/>
+        <when state="ogonek" output=""/>
+        <when state="pointsuscrit" output=""/>
+        <when state="monnaie" output=""/>
+        <when state="virgule" output=""/>
+        <when state="crochet" output=""/>
+        <when state="corne" output=""/>
+        <when state="circonflexesouscrit" output=""/>
+        <when state="circonflexeaigu" output=""/>
+        <when state="circonflexegrave" output=""/>
+        <when state="circonflexetilde" output=""/>
+        <when state="circonflexecrochet" output=""/>
+        <when state="circonflexepoint" output=""/>
+        <when state="doubleaigu" output=""/>
+        <when state="aigubarre" output=""/>
+        <when state="aigubreve" output=""/>
+        <when state="aigutrema" output=""/>
+        <when state="aigutilde" output=""/>
+        <when state="aigumacron" output=""/>
+        <when state="aigucedille" output=""/>
+        <when state="aigurond" output=""/>
+        <when state="aigupoint" output=""/>
+        <when state="aigucorne" output=""/>
+        <when state="doublegrave" output=""/>
+        <when state="gravetrema" output=""/>
+        <when state="gravebreve" output=""/>
+        <when state="gravemacron" output=""/>
+        <when state="gravecorne" output=""/>
+        <when state="carontrema" output=""/>
+        <when state="caronlatin" output=""/>
+        <when state="caronpoint" output=""/>
+        <when state="caronsouscrit" output=""/>
+        <when state="scientifiquebarre" output=""/>
+        <when state="doubletrait" output=""/>
+        <when state="grasitalique" output=""/>
+        <when state="italique" output=""/>
+        <when state="calligraphique" output=""/>
+        <when state="scriptes" output=""/>
+        <when state="gras" output=""/>
+        <when state="gotiques" output=""/>
+        <when state="gotiquesgras" output=""/>
+        <when state="barreraye" output=""/>
+        <when state="barrelatin" output=""/>
+        <when state="doubleraye" output=""/>
+        <when state="rayelatin" output=""/>
+        <when state="rayepoint" output=""/>
+        <when state="breveinverse" output=""/>
+        <when state="brevetilde" output=""/>
+        <when state="brevecedille" output=""/>
+        <when state="brevepoint" output=""/>
+        <when state="brevecrochet" output=""/>
+        <when state="tremasouscrit" output=""/>
+        <when state="trematilde" output=""/>
+        <when state="tremamacron" output=""/>
+        <when state="latinexposant" output=""/>
+        <when state="tildeinscrit" output=""/>
+        <when state="tildemacron" output=""/>
+        <when state="tildecorne" output=""/>
+        <when state="macronsouscrit" output=""/>
+        <when state="macronogonek" output=""/>
+        <when state="macronpointsuscrit" output=""/>
+        <when state="macronpointsouscrit" output=""/>
+        <when state="rondsouscrit" output=""/>
+        <when state="grecaigu" output=""/>
+        <when state="grectrema" output=""/>
+        <when state="indices" output=""/>
+        <when state="latinpoint" output=""/>
+        <when state="pointsouscritcorne" output=""/>
+        <when state="points" output=""/>
+        <when state="cornecrochet" output=""/>
+        <when state="cornepointsouscrit" output=""/>
+        <when state="crochetlatin" output=""/>
+        <when state="crosse" output=""/>
+        <when state="doubletilde" output=""/>
+        <when state="grectremaaigu" output=""/>
+        <when state="doublebarre" output=""/>
+        <when state="tildebarre" output=""/>
+        <when state="doublerayelatin" output=""/>
+    </action>
+  </actions>
+
+
+  <terminators>
+    <when state="circonflexe" output="^"/>
+    <when state="aigu" output="´"/>
+    <when state="grave" output="`"/>
+    <when state="caron" output="ˇ"/>
+    <when state="scientifique" output="∞"/>
+    <when state="barre" output="/"/>
+    <when state="raye" output="–"/>
+    <when state="trema" output="¨"/>
+    <when state="cedille" output="¸"/>
+    <when state="exposant" output="ᵉ"/>
+    <when state="latin" output="ß"/>
+    <when state="breve" output="˘"/>
+    <when state="tilde" output="~"/>
+    <when state="macron" output="¯"/>
+    <when state="rond" output="°"/>
+    <when state="grec" output="µ"/>
+    <when state="pointsouscrit" output="."/>
+    <when state="ogonek" output="˛"/>
+    <when state="pointsuscrit" output="˙"/>
+    <when state="monnaie" output="¤"/>
+    <when state="virgule" output=","/>
+    <when state="crochet" output="̉"/>
+    <when state="corne" output="̛"/>
+
+    <when state="circonflexesouscrit" output="˰"/>
+    <when state="circonflexeaigu" output="^´"/>
+    <when state="circonflexegrave" output="^`"/>
+    <when state="circonflexetilde" output="^~"/>
+    <when state="circonflexecrochet" output="^̉"/>
+    <when state="circonflexepoint" output="^."/>
+
+    <when state="doubleaigu" output="˝"/>
+    <when state="aigubarre" output="´/"/>
+    <when state="aigubreve" output="´˘"/>
+    <when state="aigutrema" output="´¨"/>
+    <when state="aigutilde" output="´~"/>
+    <when state="aigumacron" output="´¯"/>
+    <when state="aigucedille" output="´¸"/>
+    <when state="aigurond" output="´°"/>
+    <when state="aigupoint" output="´˙"/>
+    <when state="aigucorne" output="´̛"/>
+
+    <when state="doublegrave" output="̏"/>
+   <when state="gravetrema" output="`¨"/>
+    <when state="gravebreve" output="`˘"/>
+    <when state="gravemacron" output="`¯"/>
+    <when state="gravecorne" output="`̛"/>
+
+    <when state="carontrema" output="ˇ¨"/>
+    <when state="caronlatin" output="ß̌"/>
+    <when state="caronpoint" output="ˇ˙"/>
+    <when state="caronsouscrit" output="&#x02f0;"/>
+
+    <when state="scientifiquebarre" output="∞̸"/>
+    <when state="doubletrait" output="𝕓"/>
+    <when state="grasitalique" output="𝑰"/>
+    <when state="italique" output="𝑖"/>
+    <when state="calligraphique" output="𝓬"/>
+    <when state="scriptes" output="𝓇"/>
+    <when state="gras" output="𝐆"/>
+    <when state="gotiques" output="𝔉"/>
+    <when state="gotiquesgras" output="𝕱"/>
+
+    <when state="barreraye" output="/̵"/>
+    <when state="barrelatin" output="ß̸"/>
+
+    <when state="doubleraye" output="="/>
+    <when state="rayelatin" output="ß̵"/>
+    <when state="rayepoint" output="–̇"/>
+
+    <when state="breveinverse" output="̑"/>
+    <when state="brevetilde" output="˘~"/>
+    <when state="brevecedille" output="˘¸"/>
+    <when state="brevepoint" output="˘."/>
+    <when state="brevecrochet" output="˘̉"/>
+
+    <when state="tremasouscrit" output="̤"/>
+    <when state="trematilde" output="¨~"/>
+    <when state="tremamacron" output="¨¯"/>
+
+    <when state="latinexposant" output="ßᵉ"/>
+
+    <when state="tildeinscrit" output="ɫ"/>
+    <when state="tildemacron" output="~¯"/>
+    <when state="tildecorne" output="~̛"/>
+
+    <when state="macronsouscrit" output="_"/>
+    <when state="macronogonek" output="¯˛"/>
+    <when state="macronpointsuscrit" output="¯˙"/>
+    <when state="macronpointsouscrit" output="¯."/>
+
+    <when state="rondsouscrit" output="̥"/>
+
+    <when state="grecaigu" output="μ̍"/>
+    <when state="grectrema" output="μ̈"/>
+
+    <when state="indices" output="ᵢ"/>
+
+    <when state="latinpoint" output="ß̇"/>
+
+    <when state="pointsouscritcorne" output=".̛"/>
+    <when state="points" output="˙."/>
+
+    <when state="cornecrochet" output="̛̉"/>
+    <when state="cornepointsouscrit" output=".̛"/>
+
+    <when state="crochetlatin" output="ß̉"/>
+    <when state="crosse" output="ɗ"/>
+
+    <when state="doubletilde" output="≈"/>
+    <when state="grectremaaigu" output="μ̈́"/>
+    <when state="doublebarre" output="//"/>
+    <when state="tildebarre" output="~/"/>
+    <when state="doublerayelatin" output="Ꝧ"/>
+
+  </terminators>
+
+
+</keyboard>
