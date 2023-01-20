@@ -4,7 +4,8 @@
   # csrutil enable --without fs --without debug --without nvram
   # nvram boot-args=-arm64e_preview_abi
   environment.etc."sudoers.d/yabai".text = ''
-hub ALL = (root) NOPASSWD: ${pkgs.yabai}/bin/yabai --load-sa
+hub ALL = (root) NOPASSWD: sha256:6f316734a0dec66b04d8de5aab7e5e65703b6013836d379df10d127d70d2c0a8 ${pkgs.yabai}/bin/yabai --load-sa
+
 ''; # TODO: don't hardcode user 'hub'
   launchd.user.agents.yabai.serviceConfig = {
    StandardErrorPath = "/tmp/yabai.err.log";

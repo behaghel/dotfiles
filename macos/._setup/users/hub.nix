@@ -107,7 +107,6 @@
         nivApps.Kindle
       ];
     home.file.".config/foo".text = "bar";
-    home.file."Library/Keyboard Layouts/bepo1.1.bundle".source = ../../Library + "/Keyboard\ Layouts/bepo1.1.bundle";
 
     # Email
     accounts.email = {
@@ -209,7 +208,6 @@ SyncState "*"
         userName = "Hubert Behaghel";
         userEmail = "behaghel@gmail.com";
       };
-      # FIXME: it's empty in the store home.file.".vim".source = ./vim/.vim;
       password-store = {
         enable = true;
         settings = {
@@ -287,9 +285,10 @@ SyncState "*"
     home.file.".config/sketchybar/sketchybarrc".source = ../../.config/sketchybar/sketchybarrc;
     home.file.".config/sketchybar/sketchybarrc".executable = true;
 
+    home.file.".vim".source = ../../../vim/.vim; 
     # Emacs
     # FIXME: rework all my other git repo that need to be in ~
-    # home.file.".emacs.d".source = ./emacs/emacs.d;
+    home.file.".emacs.d".source = ../../../emacs/.emacs.d;
     programs.emacs = {
       enable = true;
       package = pkgs.emacsUnstable;
@@ -308,6 +307,10 @@ SyncState "*"
       aliasMu4e = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
                   $DRY_RUN_CMD sudo ln -sfn ${pkgs.mu}/share/emacs $HOME/.local/share
                 '';
+      # macos doesn't support symlink for keyboard layouts
+      copyBepoLayout = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+                       $DRY_RUN_CMD cp ".dotfiles/macos/Library/Keyboard Layouts/bepo.keylayout" $HOME/Library/Keyboard\ Layouts
+      '';
     };
   };
 }
