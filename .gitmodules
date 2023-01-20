@@ -1,9 +1,9 @@
 [submodule "vim/.vim"]
 	path = vim/.vim
-	url = git@github.com:behaghel/.vim.git
+	url = https://github.com/behaghel/.vim.git
 [submodule "pass/.password-store"]
 	path = pass/.password-store
-	url = git@gitlab.com:behaghel/pass.git
+	url = https://gitlab.com/behaghel/pass.git
 [submodule "zsh/.oh-my-zsh/custom/plugins/zsh-autosuggestions"]
 	path = zsh/.oh-my-zsh/custom/plugins/zsh-autosuggestions
 	url = https://github.com/zsh-users/zsh-autosuggestions
@@ -12,31 +12,31 @@
 	url = https://github.com/zsh-users/zsh-syntax-highlighting.git
 [submodule "zsh/.oh-my-zsh/custom/themes/powerlevel10k"]
 	path = zsh/.oh-my-zsh/custom/themes/powerlevel10k
-	url = git://github.com/romkatv/powerlevel10k.git
+	url = https://github.com/romkatv/powerlevel10k.git
 [submodule "tmux/.oh-my-tmux"]
 	path = tmux/.oh-my-tmux
 	url = https://github.com/gpakosz/.tmux.git
 [submodule "emacs/install/git/mu"]
 	path = emacs/install/git/mu
-	url = git://github.com/djcb/mu.git
+	url = https://github.com/djcb/mu.git
 [submodule "python/.pyenv/plugins/pyenv-install-latest"]
 	path = python/.pyenv/plugins/pyenv-install-latest
-	url = git://github.com/momo-lab/pyenv-install-latest.git
+	url = https://github.com/momo-lab/pyenv-install-latest.git
 [submodule "python/.pyenv/plugins/xxenv-latest"]
 	path = python/.pyenv/plugins/xxenv-latest
-	url = git://github.com/momo-lab/xxenv-latest.git
+	url = https://github.com/momo-lab/xxenv-latest.git
 [submodule "emacs/.emacs.d"]
 	path = emacs/.emacs.d
-	url = git@github.com:behaghel/.emacs.d.git
+	url = https://github.com/behaghel/.emacs.d.git
 [submodule "mail/install/git/mu"]
 	path = mail/install/git/mu
-	url = git://github.com/djcb/mu.git
+	url = https://github.com/djcb/mu.git
 [submodule "emacs/install/git/emacs"]
 	path = emacs/install/git/emacs
-	url = git://git.savannah.gnu.org/emacs.git
+	url = https://git.savannah.gnu.org/emacs.git
 [submodule "emacs/install/git/grasp"]
 	path = emacs/install/git/grasp
-	url = git://github.com/karlicoss/grasp.git
+	url = https://github.com/karlicoss/grasp.git
 [submodule "._setup/testing/bats"]
 	path = ._setup/testing/bats
 	url = https://github.com/sstephenson/bats
@@ -54,4 +54,4 @@
 	url = https://github.com/bats-core/bats-core.git
 [submodule ".password-store"]
 	path = .password-store
-	url = git@gitlab.com:behaghel/pass.git
+	url = https://gitlab.com/behaghel/pass.git
