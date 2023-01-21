@@ -3,7 +3,7 @@
 	url = https://github.com/behaghel/.vim.git
 [submodule "pass/.password-store"]
 	path = pass/.password-store
-	url = https://gitlab.com/behaghel/pass.git
+	url = git@gitlab.com:behaghel/pass.git
 [submodule "zsh/.oh-my-zsh/custom/plugins/zsh-autosuggestions"]
 	path = zsh/.oh-my-zsh/custom/plugins/zsh-autosuggestions
 	url = https://github.com/zsh-users/zsh-autosuggestions
@@ -33,13 +33,10 @@
 	url = https://github.com/djcb/mu.git
 [submodule "emacs/install/git/emacs"]
 	path = emacs/install/git/emacs
-	url = https://git.savannah.gnu.org/emacs.git
+	url = git://git.savannah.gnu.org/emacs.git
 [submodule "emacs/install/git/grasp"]
 	path = emacs/install/git/grasp
 	url = https://github.com/karlicoss/grasp.git
-[submodule "._setup/testing/bats"]
-	path = ._setup/testing/bats
-	url = https://github.com/sstephenson/bats
 [submodule "._setup/testing/libs/bats"]
 	path = ._setup/testing/libs/bats
 	url = https://github.com/sstephenson/bats
@@ -52,6 +49,3 @@
 [submodule "._setup/testing/libs/bats-core"]
 	path = ._setup/testing/libs/bats-core
 	url = https://github.com/bats-core/bats-core.git
-[submodule ".password-store"]
-	path = .password-store
-	url = https://gitlab.com/behaghel/pass.git
