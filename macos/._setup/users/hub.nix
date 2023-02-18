@@ -101,6 +101,8 @@
         terminal-notifier
         coreutils
         # dmg through niv
+        niv # Broken on darwin: https://github.com/NixOS/nixpkgs/issues/140774
+        #nivApps.Dropbox
         nivApps.Anki
         nivApps.VLC
         nivApps.Zotero
@@ -217,12 +219,14 @@ SyncState "*"
       firefox = {
         enable = true;
         package = pkgs.nivApps.Firefox;
-        # extensions = with pkgs.nur.repos.rycee.firefox-addons; [
-        #   ublock-origin
-        #   browserpass
-        #   org-capture
-        #   vimium
-        # ];
+        extensions = with config.nur.repos.rycee.firefox-addons; [
+          ublock-origin
+          browserpass
+          org-capture
+          pinboard
+          vimium
+          duckduckgo-privacy-essentials
+        ];
         profiles =
           let settings = {
                 "app.update.auto" = true;
@@ -285,13 +289,10 @@ SyncState "*"
     home.file.".config/sketchybar/sketchybarrc".source = ../../.config/sketchybar/sketchybarrc;
     home.file.".config/sketchybar/sketchybarrc".executable = true;
 
-    home.file.".vim".source = ../../../vim/.vim; 
     # Emacs
-    # FIXME: rework all my other git repo that need to be in ~
-    home.file.".emacs.d".source = ../../../emacs/.emacs.d;
     programs.emacs = {
       enable = true;
-      package = pkgs.emacsUnstable;
+      package = pkgs.emacs;
     };
 
     programs.zsh.enable = true;
@@ -305,11 +306,15 @@ SyncState "*"
       # FIXME: I had to hardcode the path of mu4e in emacs
       # in the end…
       aliasMu4e = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-                  $DRY_RUN_CMD sudo ln -sfn ${pkgs.mu}/share/emacs $HOME/.local/share
+                  $DRY_RUN_CMD mkdir -p $HOME/.local/share $HOME/tmp $HOME/ws;  sudo ln -sfn ${pkgs.mu}/share/emacs $HOME/.local/share
                 '';
       # macos doesn't support symlink for keyboard layouts
       copyBepoLayout = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
                        $DRY_RUN_CMD cp ".dotfiles/macos/Library/Keyboard Layouts/bepo.keylayout" $HOME/Library/Keyboard\ Layouts
+      '';
+      # link emacs, vim and password-store: git submodules don't work with home.file (they are empty)
+      linkHomeConfigs = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+                  $DRY_RUN_CMD ln -sf .dotfiles/vim/.vim; ln -sf .dotfiles/emacs/.emacs.d; ln -sf .dotfiles/pass/.password-store
       '';
     };
   };

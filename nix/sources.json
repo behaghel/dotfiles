@@ -6,6 +6,13 @@
         "url_template": "https://github.com/ankitects/anki/releases/download/<version>/anki-<version>-mac.dmg",
         "version": "2.1.49"
     },
+    "Dropbox": {
+        "sha256": "4151769b1a3780c78f5c8fddf54df4a075120beeb16dc63cccd8b749ae63a358",
+        "type": "file",
+        "url": "https://dl-web.dropbox.com/installer?build_no=165.4.4300&plat=mac",
+        "url_template": "https://dl-web.dropbox.com/installer?build_no=<version>&plat=mac",
+        "version": "165.4.4300"
+    },
     "Firefox": {
         "sha256": "1l0d3wq6ky706znm0rmdljslw35qw2v3hxrba1y3irhwchdwc2c1",
         "type": "file",
@@ -32,7 +39,7 @@
         "type": "file",
         "url": "https://www.zotero.org/download/client/dl?channel=release&platform=mac&version=6.0.18&ignore=.dmg",
         "url_template": "https://www.zotero.org/download/client/dl?channel=release&platform=mac&version=<version>",
-        "version": "6.0.18"
+        "version": "6.0.20"
     },
     "niv": {
         "branch": "master",

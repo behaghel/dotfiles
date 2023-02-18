@@ -14,9 +14,10 @@
     mk-darwin-system.inputs.nixpkgs.follows = "nixpkgs";
     mk-darwin-system.inputs.home-manager.follows = "home-manager";
     mk-darwin-system.inputs.nix-darwin.follows = "nix-darwin";
+    emacos.url = "github:cmacrae/emacs";
   };
 
-  outputs = { self, nixpkgs, home-manager, mk-darwin-system, nur, ...}@inputs:
+  outputs = { self, nixpkgs, home-manager, mk-darwin-system, nur, emacos, ...}@inputs:
     let
       # TODO: bring this home config and ./macos/._setup/users/hub.nix
       # together: what should be common / specific etc.
@@ -25,8 +26,9 @@
         userName = "hub";
         hostName = "tfmbp";
         flake = ./.;
+        inherit inputs;
         hostModules = ["${flake}/macos/._setup/hosts/${hostName}.nix"];
-        userModules = ["${flake}/macos/._setup/users/${userName}.nix"];
+        userModules = ["${flake}/macos/._setup/users/${userName}.nix" nur.nixosModules.nur];
       };
     in typeformFlake;
       #  // {

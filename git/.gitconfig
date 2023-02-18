@@ -9,6 +9,8 @@
   g = grep --break --heading --line-number
   ls = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=short
   all-files-by-freshness = "!git ls-tree -r HEAD | while read filename; do echo \"$(git log -1 --format=\"%ai\" -- $filename) $filename\"; done | sort -nr"
+[pull]
+  rebase = true
 [push]
 	default = simple
 [grep]
