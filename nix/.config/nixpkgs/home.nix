@@ -5,9 +5,15 @@
     ../../../bash
     ../../../zsh
     ../../../git
+    ../../../pass
     ../../../mail
     ../../../weechat
     ../../../nix
+    ../../../X
+    ../../../kitty
+    ../../../alacritty
+    # ../../../tex
+    ../../../firefox
   ];
 
   config = {
@@ -16,15 +22,12 @@
       username = "hubertbehaghel";
       homeDirectory = "/home/hubertbehaghel";
       stateVersion = "22.05";
-      packages = with pkgs; [
-        kitty
-        firefox
-      ];
     };
     hub = {
       git.enable = true;
       mail.enable = true;
-      # desktop.enable = false;
+      desktop.enable = false;
+      desktop.notify = false;
       nix.lorri = false;
       weechat.enable = false;
     };
@@ -34,6 +37,5 @@
     };
 
     services.dropbox.enable = true;
-    services.dunst.enable = true;
   };
 }

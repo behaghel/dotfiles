@@ -19,10 +19,6 @@ in {
   };
 
   config = mkIf (cfg.enable) {
-    home.packages = with pkgs; [
-      firefox
-      kitty
-    ];
     services.dunst = mkIf (cfg.notify) {
       enable = true;
     };

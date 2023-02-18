@@ -48,5 +48,16 @@ in {
       wget
       my-aspell
     ];
+    home.activation = {
+      # FIXME: I had to hardcode the path of mu4e in emacs
+      # in the end…
+      createHomeSubdirs = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+                  $DRY_RUN_CMD mkdir -p $HOME/.local/share $HOME/tmp $HOME/ws;
+                '';
+      # link emacs, vim: git submodules don't work with home.file (they are empty)
+      linkEditorConfigs = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+                  $DRY_RUN_CMD ln -sf .dotfiles/vim/.vim
+      '';
+    };
   };
 }

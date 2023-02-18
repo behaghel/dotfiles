@@ -8,8 +8,13 @@
     ../../../bash # FIXME: has to be here for ./zsh to work
     ../../../zsh
     ../../../git
+    ../../../pass
     ../../../mail
     ../../../weechat
+    ../../../kitty
+    ../../../alacritty
+    ../../../tex
+    ../../../firefox
   ];
 
   config =  {
@@ -51,7 +56,6 @@
         };
       };
       firefox = {
-        enable = true;
         package = pkgs.nivApps.Firefox;
         profiles =
           let settings = {
@@ -83,9 +87,8 @@
             };
           };
       };
-      browserpass = {
-        enable = true;
-        browsers = [ "firefox" ];
+      emacs = {
+        package = pkgs.emacs;
       };
       kitty = {
         enable = true; # see https://github.com/NixOS/nixpkgs/pull/137512
@@ -132,6 +135,7 @@
       };
 
     };
+    # sketchybar
     home.file.".config/sketchybar/sketchybarrc".source = ../../.config/sketchybar/sketchybarrc;
     home.file.".config/sketchybar/sketchybarrc".executable = true;
 
@@ -145,18 +149,9 @@
 
     # Link apps installed by home-manager.
     home.activation = {
-      # FIXME: I had to hardcode the path of mu4e in emacs
-      # in the end…
-      aliasMu4e = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-                  $DRY_RUN_CMD mkdir -p $HOME/.local/share $HOME/tmp $HOME/ws;  sudo ln -sfn ${pkgs.mu}/share/emacs $HOME/.local/share
-                '';
       # macos doesn't support symlink for keyboard layouts
       copyBepoLayout = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
                        $DRY_RUN_CMD cp ".dotfiles/macos/Library/Keyboard Layouts/bepo.keylayout" $HOME/Library/Keyboard\ Layouts
-      '';
-      # link emacs, vim and password-store: git submodules don't work with home.file (they are empty)
-      linkHomeConfigs = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-                  $DRY_RUN_CMD ln -sf .dotfiles/vim/.vim; ln -sf .dotfiles/emacs/.emacs.d; ln -sf .dotfiles/pass/.password-store
       '';
     };
   };

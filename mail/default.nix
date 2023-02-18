@@ -109,5 +109,12 @@ SyncState "*"
       };
     };
     home.packages = [ pkgs.mu ];
+    home.activation = {
+      # FIXME: I had to hardcode the path of mu4e in emacs
+      # in the end…
+      aliasMu4e = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+                  $DRY_RUN_CMD sudo ln -sfn ${pkgs.mu}/share/emacs $HOME/.local/share
+                '';
+    };
   };
 }
