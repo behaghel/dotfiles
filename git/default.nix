@@ -14,7 +14,7 @@ in {
     userName = mkOption {
       description = "user's name for git";
       type = types.str;
-      default = "behaghel";
+      default = "Hubert Behaghel";
     };
 
     userEmail = mkOption {

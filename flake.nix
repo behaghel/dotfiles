@@ -28,7 +28,6 @@
     let
       # TODO: bring this home config and ./macos/._setup/users/hub.nix
       # together: what should be common / specific etc.
-      home = import ./nix/.config/nixpkgs/home.nix;
       typeformFlake = mk-darwin-system.mkFlake rec {
         userName = "hub";
         hostName = "tfmbp";
@@ -37,8 +36,6 @@
         hostModules = ["${flake}/macos/._setup/hosts/${hostName}.nix"];
         userModules = ["${flake}/macos/._setup/users/${userName}.nix" nur.nixosModules.nur];
       };
-    in typeformFlake;
-      #  // {
       # homeConfigurations = {
       #   "hub@dell-laptop" = home-manager.lib.homeManagerConfiguration {
       #     configuration = home;
@@ -93,6 +90,12 @@
       #     }];
       #     cpuCores = 4;
       #   };
-    #   };
-    # };
+    in typeformFlake // {
+      homeConfigurations."hubertbehaghel@F2200346" = home-manager.lib.homeManagerConfiguration rec {
+        pkgs = nixpkgs.legacyPackages."x86_64-linux";
+        modules = [
+          ./nix/.config/nixpkgs/home.nix
+        ];
+      };
+    };
 }

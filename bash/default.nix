@@ -10,7 +10,7 @@ in {
     enable = mkOption {
       description = "Enable bash";
       type = types.bool;
-      default = true;
+      default = true;           # TODO: I don't think we support false
     };
 
     direnv = mkOption {
@@ -39,5 +39,14 @@ in {
       nix-direnv.enable = cfg.direnv;
     };
     xdg.configFile."direnv/direnvrc".source = ./.direnvrc;
+
+    home.packages = with pkgs;
+      let my-aspell = aspellWithDicts (ds: with ds; [en fr es]);
+      in [
+      neofetch
+      pandoc
+      wget
+      my-aspell
+    ];
   };
 }

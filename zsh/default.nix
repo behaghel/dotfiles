@@ -10,7 +10,6 @@ in {
       type = types.bool;
       default = true;
     };
-
   };
 
   config = mkIf (cfg.enable) {
@@ -72,5 +71,7 @@ in {
     };
     xdg.configFile."zsh.d/gpg.zsh".source = ./.config/zsh.d/gpg.zsh;
     xdg.configFile."zsh.d/bepo.zsh".source = ./.config/zsh.d/bepo.zsh;
+
+    programs.direnv.enableZshIntegration = true;
   };
 }
