@@ -25,7 +25,7 @@ in {
           pinboard
           vimium
           duckduckgo-privacy-essentials
-          kristofferhagen-nord-theme-2.0
+          kristofferhagen-nord-theme
         ];
         profiles =
           let settings = {

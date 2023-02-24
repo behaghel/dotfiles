@@ -1,6 +1,8 @@
+alias ffh="nixGLIntel firefox -P home &"
+alias ffw="nixGLIntel firefox -P work &"
+alias t="nixGLIntel alacritty &"
 # UNIX Shell
-alias ls="ls --color"
-alias e="gvim"
+alias e="emacsclient"
 alias p="cd $PROJECTS_DIR"
 alias httpd="ruby -run -e httpd . -p 5000"
 alias lst="tree -Car . | less -r"

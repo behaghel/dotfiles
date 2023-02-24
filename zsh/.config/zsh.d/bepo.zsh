@@ -23,5 +23,6 @@ bindkey -a k vi-substitute
 bindkey -a K vi-change-whole-line
 bindkey -a dd vi-change-whole-line
 
+autoload edit-command-line; zle -N edit-command-line
 bindkey -a v edit-command-line
 bindkey '^R' history-incremental-search-backward

@@ -18,6 +18,7 @@ in {
       dotDir = ".config/zsh";
       enableCompletion = true;
       enableAutosuggestions = true;
+      enableSyntaxHighlighting = true;
       # oh-my-zsh = {
       #   enable = true;
       #   # theme = "${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k";
@@ -26,16 +27,16 @@ in {
       plugins = [
         # update these in nix-shell -p nix-prefetch-github
         # $ nix-prefetch-github zsh-users zsh-syntax-highlighting
-        {
-          name = "zsh-syntax-highlighting";
-          src = pkgs.fetchFromGitHub {
-            owner = "zsh-users";
-            repo = "zsh-syntax-highlighting";
-            "rev" = "0e1bb14452e3fc66dcc81531212e1061e02c1a61";
-            "sha256" = "13nzmkljmzkjh85phby2d8ni7x0fs0ggnii51vsbngkbqqzxs6zb";
-            "fetchSubmodules" = true;
-          };
-        }
+        # {
+        #   name = "zsh-syntax-highlighting";
+        #   src = pkgs.fetchFromGitHub {
+        #     owner = "zsh-users";
+        #     repo = "zsh-syntax-highlighting";
+        #     "rev" = "0e1bb14452e3fc66dcc81531212e1061e02c1a61";
+        #     "sha256" = "13nzmkljmzkjh85phby2d8ni7x0fs0ggnii51vsbngkbqqzxs6zb";
+        #     "fetchSubmodules" = true;
+        #   };
+        # }
       ];
 
       # stolen: https://github.com/mjlbach/nix-dotfiles/blob/master/home-manager/modules/cli.nix
@@ -56,6 +57,7 @@ in {
         for i in ~/.config/profile.d/*.profile; do
           source $i
         done
+        source ~/.aliases
         for i in ~/.config/zsh.d/*.zsh; do
           source $i
         done
