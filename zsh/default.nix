@@ -51,6 +51,7 @@ in {
         fi
         # password-store completion broken
         fpath=(${pkgs.pass}/share/zsh/site-functions $fpath)
+        source ~/.aliases
       '';
       initExtra = ''
         for i in ~/.config/profile.d/*.profile; do

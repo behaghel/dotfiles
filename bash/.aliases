@@ -1,4 +1,5 @@
 # UNIX Shell
+alias ls="ls --color"
 alias e="gvim"
 alias p="cd $PROJECTS_DIR"
 alias httpd="ruby -run -e httpd . -p 5000"

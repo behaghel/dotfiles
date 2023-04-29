@@ -205,6 +205,9 @@ SyncState "*"
     };
 
     programs = {
+      dircolors = {
+        enable = true;
+      };
       git = {
         enable = true;
         userName = "Hubert Behaghel";
@@ -260,12 +263,20 @@ SyncState "*"
           enable_audio_bell = "no";
           term = "xterm-256color";
           macos_titlebar_color = "background";
-          macos_option_as_alt = "yes";
+          macos_option_as_alt = "left";
           scrollback_lines = 10000;
+          scrollback_pager = "less +G -R";
+          open_url_modifiers = "ctrl+shift";
         };
         font = {
           package = pkgs.jetbrains-mono;
           name = "JetBrains Mono";
+        };
+        keybindings = {
+          "alt+space" = "_";
+          "alt+y" = "{";
+          "alt+x" = "}";
+          "alt+è" = "grave_accent";
         };
       };
       alacritty = {

@@ -122,4 +122,5 @@
       SoftwareUpdate.AutomaticallyInstallMacOSUpdates = false;
     };
   };
+  environment.systemPackages = [ pkgs.jdk19_headless ]; # for languagetools from Emacs
 }
