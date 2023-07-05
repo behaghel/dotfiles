@@ -17,7 +17,7 @@ in {
       kitty = {
         enable = true; # see https://github.com/NixOS/nixpkgs/pull/137512
         settings = {
-          font_size = (if pkgs.stdenv.isDarwin then 14 else 12);
+          font_size = 14; #(if pkgs.stdenv.isDarwin then 14 else 12);
           strip_trailing_spaces = "smart";
           enable_audio_bell = "no";
           term = "xterm-256color";
@@ -26,8 +26,8 @@ in {
           scrollback_lines = 10000;
         };
         font = {
-          package = pkgs.jetbrains-mono;
-          name = "JetBrains Mono";
+          package = pkgs.iosevka;
+          name = "Iosevka Term";
         };
       };
     };
