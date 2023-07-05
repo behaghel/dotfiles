@@ -9,22 +9,21 @@
       url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    emacs-overlay.url = "github:nix-community/emacs-overlay";
+    emacs-src.url = "github:emacs-mirror/emacs/emacs-29";
+    emacs-src.flake = false;
+    # macOS
     nix-darwin.url = "github:lnl7/nix-darwin/master";
-    mk-darwin-system = {
-      url = "github:vic/mk-darwin-system/1321309223d7ef11937bd2539e2da77e5b7e0151";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        home-manager.follows = "home-manager";
-        nix-darwin.follows = "nix-darwin";
-      };
-    };
-    darwin-emacs = {
-      url = "github:c4710n/nix-darwin-emacs";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    mk-darwin-system.url = "github:vic/mk-darwin-system/1321309223d7ef11937bd2539e2da77e5b7e0151";
+    mk-darwin-system.inputs.nixpkgs.follows = "nixpkgs";
+    mk-darwin-system.inputs.home-manager.follows = "home-manager";
+    mk-darwin-system.inputs.nix-darwin.follows = "nix-darwin";
+    emacos.url = "github:cmacrae/emacs";
+    # non-NixOS
+    nixgl.url = "github:guibou/nixGL";
   };
 
-  outputs = { self, nixpkgs, home-manager, mk-darwin-system, nur, ...}@inputs:
+  outputs = { self, nixpkgs, home-manager, mk-darwin-system, nur, emacs-overlay, emacs-src, emacos, nixgl, ...}@inputs:
     let
       # TODO: bring this home config and ./macos/._setup/users/hub.nix
       # together: what should be common / specific etc.
@@ -92,9 +91,24 @@
       #   };
     in typeformFlake // {
       homeConfigurations."hubertbehaghel@F2200346" = home-manager.lib.homeManagerConfiguration rec {
-        pkgs = nixpkgs.legacyPackages."x86_64-linux";
+        pkgs = import nixpkgs {
+          system = "x86_64-linux";
+          overlays = [
+            nixgl.overlay
+            emacs-overlay.overlays.default
+	          (final : prev: {
+	            emacs29 = prev.emacsGit.overrideAttrs (old : {
+	              name = "emacs29";
+                version = "29.0-${inputs.emacs-src.shortRev}";
+                src = inputs.emacs-src;
+                withPgtk = true;
+	            });
+	          })
+          ];
+        };
         modules = [
           ./nix/.config/nixpkgs/home.nix
+          nur.nixosModules.nur
         ];
       };
     };
