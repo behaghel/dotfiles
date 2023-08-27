@@ -222,14 +222,6 @@ SyncState "*"
       firefox = {
         enable = true;
         package = pkgs.nivApps.Firefox;
-        extensions = with config.nur.repos.rycee.firefox-addons; [
-          ublock-origin
-          browserpass
-          org-capture
-          pinboard
-          vimium
-          duckduckgo-privacy-essentials
-        ];
         profiles =
           let settings = {
                 "app.update.auto" = true;
@@ -238,16 +230,25 @@ SyncState "*"
                 # reopen windows and tabs on startup
                 "browser.startup.page" = 3;
               };
+              extensions = with config.nur.repos.rycee.firefox-addons; [
+                ublock-origin
+                browserpass
+                org-capture
+                pinboard
+                vimium
+                duckduckgo-privacy-essentials
+              ];
           in {
             home = {
               id = 0;
-              inherit settings;
+              inherit settings extensions;
             };
             work2 = {
               id = 1;
               settings = settings // {
                 "extensions.activeThemeID" = "cheers-bold-colorway@mozilla.org";
               };
+              inherit extensions;
             };
           };
       };
@@ -266,7 +267,6 @@ SyncState "*"
           macos_option_as_alt = "left";
           scrollback_lines = 10000;
           scrollback_pager = "less +G -R";
-          open_url_modifiers = "ctrl+shift";
         };
         font = {
           package = pkgs.jetbrains-mono;
@@ -276,8 +276,12 @@ SyncState "*"
           "alt+space" = "_";
           "alt+y" = "{";
           "alt+x" = "}";
-          "alt+è" = "grave_accent";
+          "alt+è" = "`";
         };
+        extraConfig = ''
+        mouse_map left click ungrabbed mouse_handle_click selection link prompt
+        mouse_map ctrl+left press ungrabbed,grabbed mouse_click_url
+        '';
       };
       alacritty = {
         enable = true;

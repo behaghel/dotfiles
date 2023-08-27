@@ -66,6 +66,8 @@ in {
         source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/config/p10k-lean.zsh
         # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
         [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+        export -U PATH=~/.nix-profile/bin''${PATH:+:$PATH}
       '';
     };
     xdg.configFile."zsh.d/gpg.zsh".source = ./.config/zsh.d/gpg.zsh;

@@ -4,7 +4,7 @@
         "type": "file",
         "url": "https://github.com/ankitects/anki/releases/download/2.1.49/anki-2.1.49-mac.dmg",
         "url_template": "https://github.com/ankitects/anki/releases/download/<version>/anki-<version>-mac.dmg",
-        "version": "2.1.49"
+        "version": "2.1.66"
     },
     "Dropbox": {
         "sha256": "4151769b1a3780c78f5c8fddf54df4a075120beeb16dc63cccd8b749ae63a358",
@@ -18,28 +18,28 @@
         "type": "file",
         "url": "https://download-installer.cdn.mozilla.net/pub/firefox/releases/95.0/mac/en-GB/Firefox%2095.0.dmg",
         "url_template": "https://download-installer.cdn.mozilla.net/pub/firefox/releases/<version>/mac/en-GB/Firefox%20<version>.dmg",
-        "version": "107.0"
+        "version": "116.0.3"
     },
     "Kindle": {
         "sha256": "12ssvxdsc6ixqfvpmszb7jggqc8ny3cxlpk01i0n5kpqg7780ljx",
         "type": "file",
         "url": "https://kindleformac.s3.amazonaws.com/65301/KindleForMac-installer-1.39.65301.dmg",
         "url_template": "https://kindleformac.s3.amazonaws.com/65301/KindleForMac-installer-<version>.dmg",
-        "version": "1.39.65301"
+        "version": "1.40.1"
     },
     "VLC": {
         "sha256": "002jcljzgbp2pgyfq6xy4jc9cz6vzf6r891lmb5mi1y8c2k7ivnd",
         "type": "file",
         "url": "https://get.videolan.org/vlc/3.0.17.3/macosx/vlc-3.0.17.3-arm64.dmg",
         "url_template": "https://get.videolan.org/vlc/<version>/macosx/vlc-<version>-arm64.dmg",
-        "version": "3.0.17.3"
+        "version": "3.0.18"
     },
     "Zotero": {
         "sha256": "0gcav9ihm54l3hik2h83yyyrr3gzkp263m072yfy7csr78vqhfi6",
         "type": "file",
         "url": "https://www.zotero.org/download/client/dl?channel=release&platform=mac&version=6.0.18&ignore=.dmg",
         "url_template": "https://www.zotero.org/download/client/dl?channel=release&platform=mac&version=<version>",
-        "version": "6.0.20"
+        "version": "6.0.26"
     },
     "niv": {
         "branch": "master",

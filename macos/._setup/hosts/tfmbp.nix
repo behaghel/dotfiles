@@ -70,7 +70,7 @@
 
 
     ./../darwin/yabai.nix
-    ./../services/sketchybar
+    # ./../services/sketchybar
     ./../darwin/sketchybar
     ./../darwin/skhd
 
