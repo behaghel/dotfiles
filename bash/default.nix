@@ -35,7 +35,8 @@ in {
     programs.direnv = {
       enable = cfg.direnv;
       enableZshIntegration = config.hub.zsh.enable;
-      # enableNixDirenvIntegration = true;
+      enableBashIntegration = config.hub.bash.enable;
+      nix-direnv.enable = cfg.direnv;
     };
     xdg.configFile."direnv/direnvrc".source = ./.direnvrc;
   };

@@ -14,7 +14,7 @@
   environment.systemPackages = with pkgs; [nixVersions.stable];
   nixpkgs.overlays = [
     (import ./../overlay.nix)
-    inputs.emacos.overlay
+    inputs.darwin-emacs.overlays.emacs
 
     (self: super: {
       # https://github.com/nmattia/niv/issues/332#issuecomment-958449218
@@ -24,13 +24,14 @@
           super.haskellPackages.niv;
     })
   ];
-  nix.binaryCaches = [
-    "https://cachix.org/api/v1/cache/emacs"
-  ];
-  nix.binaryCachePublicKeys = [
-    "emacs.cachix.org-1:b1SMJNLY/mZF6GxQE+eDBeps7WnkT0Po55TAyzwOxTY="
-  ];
-
+  nix.settings = {
+    substituters = [
+      "https://cachix.org/api/v1/cache/emacs"
+    ];
+    trusted-public-keys = [
+      "emacs.cachix.org-1:b1SMJNLY/mZF6GxQE+eDBeps7WnkT0Po55TAyzwOxTY="
+    ];
+  };
   imports = [
     ./../darwin/system.nix
 

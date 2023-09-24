@@ -10,14 +10,21 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nix-darwin.url = "github:lnl7/nix-darwin/master";
-    mk-darwin-system.url = "github:vic/mk-darwin-system/1321309223d7ef11937bd2539e2da77e5b7e0151";
-    mk-darwin-system.inputs.nixpkgs.follows = "nixpkgs";
-    mk-darwin-system.inputs.home-manager.follows = "home-manager";
-    mk-darwin-system.inputs.nix-darwin.follows = "nix-darwin";
-    emacos.url = "github:cmacrae/emacs";
+    mk-darwin-system = {
+      url = "github:vic/mk-darwin-system/1321309223d7ef11937bd2539e2da77e5b7e0151";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        home-manager.follows = "home-manager";
+        nix-darwin.follows = "nix-darwin";
+      };
+    };
+    darwin-emacs = {
+      url = "github:c4710n/nix-darwin-emacs";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { self, nixpkgs, home-manager, mk-darwin-system, nur, emacos, ...}@inputs:
+  outputs = { self, nixpkgs, home-manager, mk-darwin-system, nur, ...}@inputs:
     let
       # TODO: bring this home config and ./macos/._setup/users/hub.nix
       # together: what should be common / specific etc.
