@@ -33,7 +33,7 @@ in {
           userName = "behaghel@mailfence.com";
           passwordCommand = "${pkgs.pass}/bin/pass online/mailfence.com";
           aliases = ["behaghel@mailfence.com"];
-          gpg.signByDefault = true;
+          gpg.signByDefault = false;
           imap = {
             host = "imap.mailfence.com";
             port = 993;

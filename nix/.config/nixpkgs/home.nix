@@ -4,6 +4,7 @@
   imports = [
     ../../../bash
     ../../../zsh
+    ../../../gpg
     ../../../git
     ../../../pass
     ../../../mail
@@ -55,6 +56,7 @@
     fonts.fontconfig.enable = true;
     hub = {
       git.enable = true;
+      gpg.enable = true;
       mail.enable = true;
       desktop.enable = false;
       desktop.notify = false;
