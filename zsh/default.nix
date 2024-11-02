@@ -43,12 +43,6 @@ in {
       initExtraBeforeCompInit = ''
         # Emacs tramp mode compatibility
         [[ $TERM == "tramp" ]] && unsetopt zle && PS1='$ ' && return
-        # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-        # Initialization code that may require console input (password prompts, [y/n]
-        # confirmations, etc.) must go above this block; everything else may go below.
-        if [[ -r "''${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-''${(%):-%n}.zsh" ]]; then
-          source "''${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-''${(%):-%n}.zsh"
-        fi
         # password-store completion broken
         fpath=(${pkgs.pass}/share/zsh/site-functions $fpath)
         source ~/.aliases
@@ -63,12 +57,9 @@ in {
         done
         bindkey '^ ' autosuggest-accept
         ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=23'
-        source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme
-        source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/config/p10k-lean.zsh
-        # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-        [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
         export -U PATH=~/.nix-profile/bin''${PATH:+:$PATH}
+        eval "$(${pkgs.starship}/bin/starship init zsh)"
       '';
     };
     xdg.configFile."zsh.d/gpg.zsh".source = ./.config/zsh.d/gpg.zsh;
