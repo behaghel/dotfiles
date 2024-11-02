@@ -18,15 +18,6 @@ in {
     programs = {
       firefox = {
         enable = true;
-        extensions = with config.nur.repos.rycee.firefox-addons; [
-          ublock-origin
-          browserpass
-          org-capture
-          pinboard
-          vimium
-          duckduckgo-privacy-essentials
-          kristofferhagen-nord-theme
-        ];
         profiles =
           let settings = {
                 "app.update.auto" = true;
@@ -34,6 +25,16 @@ in {
                 "browser.tabs.inTitlebar" = 0;
                 # reopen windows and tabs on startup
                 "browser.startup.page" = 3;
+                extensions = with config.nur.repos.rycee.firefox-addons; [
+                  ublock-origin
+                  browserpass
+                  org-capture
+                  pinboard
+                  vimium
+                  duckduckgo-privacy-essentials
+                  kristofferhagen-nord-theme
+                ];
+
               };
           in {
             home = {
@@ -50,7 +51,7 @@ in {
       };
       browserpass = {
         enable = true;
-        browsers = [ "firefox" ];
+        browsers = [ "firefox" "brave" ];
       };
     };
   };

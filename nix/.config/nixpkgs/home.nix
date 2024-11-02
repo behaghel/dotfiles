@@ -73,15 +73,15 @@
         EDITOR = (pkgs.writeShellScript "editor" ''
 if [ $# -ne 0 ]; then
   ${
-    pkgs.emacs29
+    pkgs.emacs-unstable
   }/bin/emacsclient -nw "$@"
 elif [ -n "$DISPLAY" ]; then
   ${
-    pkgs.emacs29
+    pkgs.emacs-unstable
   }/bin/emacsclient -c -n
 else
   ${
-    pkgs.emacs29
+    pkgs.emacs-unstable
   }/bin/emacsclient -c
 fi'');
       };
@@ -100,10 +100,10 @@ fi'');
 
     services.dropbox.enable = true;
     services.emacs = {
-      package = pkgs.emacs29;
+      package = pkgs.emacs-unstable;
     };
     programs.emacs = {
-      package = pkgs.emacs29;
+      package = pkgs.emacs-unstable;
       enable = true;
     };
   };
